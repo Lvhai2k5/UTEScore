@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>UTEScore – Đơn đặt sân</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+    margin: 30px;
+    color: #1e293b;
+    background: #f8fafc;
+  }
+
+  h2 {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 24px;
+  }
+
+  .booking-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    background: white;
+  }
+
+  .booking-table th {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 14px;
+    text-align: left;
+  }
+
+  .booking-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .booking-table tr:hover {
+    background: #f1f5f9;
+  }
+
+  .status {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .status.confirmed { background: #dcfce7; color: #15803d; }
+  .status.pending { background: #fef9c3; color: #a16207; }
+  .status.cancelled { background: #fee2e2; color: #b91c1c; }
+</style>
+</head>
+<body>
+
+  <h2>📋 Danh sách đơn đặt sân</h2>
+
+  <table class="booking-table">
+    <thead>
+      <tr>
+        <th>Mã đơn</th>
+        <th>Tên khách</th>
+        <th>Giờ đặt</th>
+        <th>Trạng thái</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="order : ${bookings}">
+        <td th:text="${order.id}">001</td>
+        <td th:text="${order.customerName}">Nguyễn Văn A</td>
+        <td th:text="${order.time}">07:00</td>
+        <td>
+          <span th:classappend="${order.status == 'Đã xác nhận'} ? 'status confirmed' :
+                                ${order.status == 'Đang chờ'} ? 'status pending' :
+                                'status cancelled'"
+                th:text="${order.status}">Đã xác nhận</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

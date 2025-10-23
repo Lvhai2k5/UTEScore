@@ -114,7 +114,7 @@
     border-radius: 3px;
   }
   
-  .menu button {
+  .menu a {
     background: rgba(255,255,255,0.05);
     border: none; 
     color: white;
@@ -134,7 +134,7 @@
     overflow: hidden;
   }
   
-  .menu button::before {
+  .menu a::before {
     content: '';
     position: absolute;
     left: 0;
@@ -146,20 +146,20 @@
     transition: transform 0.3s ease;
   }
   
-  .menu button:hover {
+  .menu a {
     background: rgba(102, 126, 234, 0.2);
     transform: translateX(4px);
   }
   
-  .menu button:hover::before {
+  .menu a::before {
     transform: scaleY(1);
   }
   
-  .menu button.active {
+  .menu a.active {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
   }
   
-  .menu button.active::before {
+  .menu a.active::before {
     transform: scaleY(1);
   }
   
@@ -457,44 +457,36 @@
         <div class="staff-role">Nhân viên quản lý</div>
       </div>
     </div>
-    <div class="menu">
-      <button class="active">
-        <span class="menu-icon">📋</span>
-        <span>Đơn đặt sân</span>
-      </button>
-      <button>
-        <span class="menu-icon">🎫</span>
-        <span>Check-in</span>
-      </button>
-      <button>
-        <span class="menu-icon">💰</span>
-        <span>Thanh toán</span>
-      </button>
-      <button>
-        <span class="menu-icon">📅</span>
-        <span>Lịch sân</span>
-      </button>
-      <button>
-        <span class="menu-icon">↩️</span>
-        <span>Hoàn tiền</span>
-      </button>
-      <button>
-        <span class="menu-icon">👥</span>
-        <span>Khách tại sân</span>
-      </button>
-      <button>
-        <span class="menu-icon">⚠️</span>
-        <span>Ghi chú / Sự cố</span>
-      </button>
-      <button>
-        <span class="menu-icon">🔔</span>
-        <span>Thông báo</span>
-      </button>
-      <button>
-        <span class="menu-icon">📊</span>
-        <span>Thống kê</span>
-      </button>
-    </div>
+	    <div class="menu">
+	  <a href="/employee/booking" class="menu-link active">
+	    <span class="menu-icon">📋</span>Đơn đặt sân
+	  </a>
+	  <a href="/employee/checkin" class="menu-link">
+	    <span class="menu-icon">🎫</span>Check-in
+	  </a>
+	  <a href="/employee/payment" class="menu-link">
+	    <span class="menu-icon">💰</span>Thanh toán
+	  </a>
+	  <a href="/schedule" class="menu-link">
+	    <span class="menu-icon">📅</span>Lịch sân
+	  </a>
+	  <a href="/refund" class="menu-link">
+	    <span class="menu-icon">↩️</span>Hoàn tiền
+	  </a>
+	  <a href="/customer" class="menu-link">
+	    <span class="menu-icon">👥</span>Khách tại sân
+	  </a>
+	  <a href="/incident" class="menu-link">
+	    <span class="menu-icon">⚠️</span>Ghi chú / Sự cố
+	  </a>
+	  <a href="/notify" class="menu-link">
+	    <span class="menu-icon">🔔</span>Thông báo
+	  </a>
+	  <a href="/employee/report" class="menu-link">
+	    <span class="menu-icon">📊</span>Thống kê
+	  </a>
+	</div>
+
   </aside>
   
   <section class="content">
