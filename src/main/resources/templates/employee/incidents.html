@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Check-in khách – UTEScore</title>
+<title>Sự cố / Ghi chú – UTEScore</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css" />
 </head>
-<body data-page="checkin">
+<body data-page="incidents">
   
     <aside class="sidebar">
       <div class="logo-section">
@@ -39,7 +39,7 @@
   <section class="content">
     
     <header class="page-header">
-      <h2>Check-in khách</h2>
+      <h2>Sự cố / Ghi chú</h2>
       <div class="header-actions">
         <button class="btn-secondary" onclick="location.href='index.html'">Trang chủ</button>
         <button class="btn" onclick="notify('Bạn có 3 thông báo mới!')">🔔 Thông báo</button>
@@ -49,20 +49,20 @@
     
 <div class="grid cols-2">
   <div class="card">
-    <h3 style="margin-bottom:10px">Quét mã QR / Nhập mã đơn</h3>
-    <div class="toolbar">
-      <input class="input" placeholder="Nhập mã đơn #Dxxxx">
-      <button class="btn" onclick="notify('Đã xác nhận khách đến sân!')">✅ Xác nhận</button>
+    <h3 style="margin-bottom:10px">Báo cáo sự cố</h3>
+    <div class="grid">
+      <input class="input" placeholder="Mã đơn (#Dxxxx)" />
+      <select class="select"><option>Loại sự cố</option><option>Mưa</option><option>Hỏng đèn</option><option>Khách vắng</option></select>
+      <textarea class="input" placeholder="Mô tả chi tiết..." rows="4" style="height:110px"></textarea>
+      <button class="btn" onclick="notify('Đã gửi báo cáo sự cố!')">⚠️ Gửi báo cáo</button>
     </div>
-    <p class="footer-note">Mẹo: Bấm <span class="kbd">Ctrl</span>+<span class="kbd">K</span> để nhảy nhanh đến ô tìm kiếm.</p>
   </div>
   <div class="card">
-    <h3 style="margin-bottom:10px">Kết quả gần đây</h3>
+    <h3 style="margin-bottom:10px">Sự cố gần đây</h3>
     <table class="table">
-      <thead><tr><th>Mã đơn</th><th>Khách</th><th>Sân</th><th>Kết quả</th></tr></thead>
+      <thead><tr><th>Thời gian</th><th>Loại</th><th>Đơn</th><th>Trạng thái</th></tr></thead>
       <tbody>
-        <tr><td>#D2301</td><td>Trần Minh</td><td>7A</td><td><span class="badge green">Thành công</span></td></tr>
-        <tr><td>#D2290</td><td>Phạm Hải</td><td>5B</td><td><span class="badge red">Không hợp lệ</span></td></tr>
+        <tr><td>20:05</td><td>Mưa</td><td>#D2298</td><td><span class="badge green">Hoàn tất</span></td></tr>
       </tbody>
     </table>
   </div>

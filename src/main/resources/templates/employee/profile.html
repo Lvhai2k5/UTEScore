@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Check-in khách – UTEScore</title>
+<title>Thông tin cá nhân – UTEScore</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css" />
 </head>
-<body data-page="checkin">
+<body data-page="profile">
   
     <aside class="sidebar">
       <div class="logo-section">
@@ -39,7 +39,7 @@
   <section class="content">
     
     <header class="page-header">
-      <h2>Check-in khách</h2>
+      <h2>Thông tin cá nhân</h2>
       <div class="header-actions">
         <button class="btn-secondary" onclick="location.href='index.html'">Trang chủ</button>
         <button class="btn" onclick="notify('Bạn có 3 thông báo mới!')">🔔 Thông báo</button>
@@ -49,22 +49,21 @@
     
 <div class="grid cols-2">
   <div class="card">
-    <h3 style="margin-bottom:10px">Quét mã QR / Nhập mã đơn</h3>
-    <div class="toolbar">
-      <input class="input" placeholder="Nhập mã đơn #Dxxxx">
-      <button class="btn" onclick="notify('Đã xác nhận khách đến sân!')">✅ Xác nhận</button>
+    <h3 style="margin-bottom:10px">Thông tin cá nhân</h3>
+    <div class="grid">
+      <input class="input" placeholder="Họ và tên" value="Nguyễn Văn A">
+      <input class="input" placeholder="Email" value="nv.a@example.com">
+      <input class="input" placeholder="SĐT" value="09xx xxx xxx">
+      <button class="btn" onclick="notify('Đã lưu thông tin!')">💾 Lưu thông tin</button>
     </div>
-    <p class="footer-note">Mẹo: Bấm <span class="kbd">Ctrl</span>+<span class="kbd">K</span> để nhảy nhanh đến ô tìm kiếm.</p>
   </div>
   <div class="card">
-    <h3 style="margin-bottom:10px">Kết quả gần đây</h3>
-    <table class="table">
-      <thead><tr><th>Mã đơn</th><th>Khách</th><th>Sân</th><th>Kết quả</th></tr></thead>
-      <tbody>
-        <tr><td>#D2301</td><td>Trần Minh</td><td>7A</td><td><span class="badge green">Thành công</span></td></tr>
-        <tr><td>#D2290</td><td>Phạm Hải</td><td>5B</td><td><span class="badge red">Không hợp lệ</span></td></tr>
-      </tbody>
-    </table>
+    <h3 style="margin-bottom:10px">Bảo mật</h3>
+    <div class="grid">
+      <input class="input" type="password" placeholder="Mật khẩu mới">
+      <input class="input" type="password" placeholder="Xác nhận mật khẩu">
+      <button class="btn-secondary" onclick="notify('Đã cập nhật mật khẩu!')">🔐 Cập nhật mật khẩu</button>
+    </div>
   </div>
 </div>
 

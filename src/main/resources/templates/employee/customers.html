@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Check-in khách – UTEScore</title>
+<title>Khách tại sân – UTEScore</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="css/styles.css" />
 </head>
-<body data-page="checkin">
+<body data-page="customers">
   
     <aside class="sidebar">
       <div class="logo-section">
@@ -39,7 +39,7 @@
   <section class="content">
     
     <header class="page-header">
-      <h2>Check-in khách</h2>
+      <h2>Khách tại sân</h2>
       <div class="header-actions">
         <button class="btn-secondary" onclick="location.href='index.html'">Trang chủ</button>
         <button class="btn" onclick="notify('Bạn có 3 thông báo mới!')">🔔 Thông báo</button>
@@ -47,29 +47,19 @@
     </header>
     
     
-<div class="grid cols-2">
-  <div class="card">
-    <h3 style="margin-bottom:10px">Quét mã QR / Nhập mã đơn</h3>
-    <div class="toolbar">
-      <input class="input" placeholder="Nhập mã đơn #Dxxxx">
-      <button class="btn" onclick="notify('Đã xác nhận khách đến sân!')">✅ Xác nhận</button>
-    </div>
-    <p class="footer-note">Mẹo: Bấm <span class="kbd">Ctrl</span>+<span class="kbd">K</span> để nhảy nhanh đến ô tìm kiếm.</p>
-  </div>
-  <div class="card">
-    <h3 style="margin-bottom:10px">Kết quả gần đây</h3>
-    <table class="table">
-      <thead><tr><th>Mã đơn</th><th>Khách</th><th>Sân</th><th>Kết quả</th></tr></thead>
-      <tbody>
-        <tr><td>#D2301</td><td>Trần Minh</td><td>7A</td><td><span class="badge green">Thành công</span></td></tr>
-        <tr><td>#D2290</td><td>Phạm Hải</td><td>5B</td><td><span class="badge red">Không hợp lệ</span></td></tr>
-      </tbody>
-    </table>
-  </div>
+<div class="card">
+  <h3 style="margin-bottom:10px">Khách hàng đang sử dụng sân</h3>
+  <table class="table">
+    <thead><tr><th>Khách hàng</th><th>SĐT</th><th>Sân</th><th>Giờ bắt đầu</th><th>Còn lại</th></tr></thead>
+    <tbody>
+      <tr><td>Trần Minh</td><td>09xx xxx 123</td><td>7A</td><td>18:00</td><td>150.000</td></tr>
+      <tr><td>Nguyễn Long</td><td>09xx xxx 456</td><td>5B</td><td>19:30</td><td>280.000</td></tr>
+    </tbody>
+  </table>
 </div>
 
     <p class="footer-note">© 2025 UTEScore • Employee UI</p>
   </section>
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

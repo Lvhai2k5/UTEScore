@@ -1,10 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thanh toán & Hoàn tiền – UTEScore</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body data-page="payment">
+  
+    <aside class="sidebar">
+      <div class="logo-section">
+        <div class="logo">UTEScore</div>
+        <div class="staff-info">
+          <div class="staff-avatar">👤</div>
+          <div class="staff-name">Nguyễn Văn A</div>
+          <div class="staff-role">Nhân viên quản lý</div>
+        </div>
+      </div>
+      <div class="menu">
+        <p class="menu-title">🏟️ Quản lý sân</p>
+        <a href="booking.html" class="menu-link"><span class="menu-icon">📋</span>Đơn đặt sân</a>
+        <a href="checkin.html" class="menu-link"><span class="menu-icon">🎫</span>Check-in khách</a>
+        <a href="payment.html" class="menu-link"><span class="menu-icon">💳</span>Thanh toán & Hoàn tiền</a>
+        <a href="customers.html" class="menu-link"><span class="menu-icon">👥</span>Khách tại sân</a>
+        <a href="schedule.html" class="menu-link"><span class="menu-icon">📅</span>Lịch sân & Bảo trì</a>
+        <p class="menu-title">📢 Báo cáo & Thông tin</p>
+        <a href="incidents.html" class="menu-link"><span class="menu-icon">⚠️</span>Sự cố / Ghi chú</a>
+        <a href="notifications.html" class="menu-link"><span class="menu-icon">🔔</span>Thông báo hệ thống</a>
+        <a href="report.html" class="menu-link"><span class="menu-icon">📊</span>Thống kê công việc</a>
+        <p class="menu-title">⚙️ Cá nhân</p>
+        <a href="shifts.html" class="menu-link"><span class="menu-icon">🕒</span>Ca làm việc</a>
+        <a href="profile.html" class="menu-link"><span class="menu-icon">👤</span>Thông tin cá nhân</a>
+        <a href="login.html" class="menu-link"><span class="menu-icon">🚪</span>Đăng xuất</a>
+      </div>
+    </aside>
+    
+  <section class="content">
+    
+    <header class="page-header">
+      <h2>Thanh toán & Hoàn tiền</h2>
+      <div class="header-actions">
+        <button class="btn-secondary" onclick="location.href='index.html'">Trang chủ</button>
+        <button class="btn" onclick="notify('Bạn có 3 thông báo mới!')">🔔 Thông báo</button>
+      </div>
+    </header>
+    
+    
+<div class="grid cols-2">
+  <div class="card">
+    <h3 style="margin-bottom:10px">Thanh toán còn lại</h3>
+    <div class="toolbar">
+      <input class="input" placeholder="Mã đơn (#Dxxxx)" style="max-width:200px">
+      <select class="select" style="max-width:220px">
+        <option>Phương thức</option><option>QR / Online</option><option>Chuyển khoản</option><option>Tiền mặt</option>
+      </select>
+      <button class="btn" onclick="notify('Đã cập nhật thanh toán!')">💳 Cập nhật</button>
+    </div>
+  </div>
+  <div class="card">
+    <h3 style="margin-bottom:10px">Lịch sử thanh toán</h3>
+    <table class="table">
+      <thead><tr><th>Thời điểm</th><th>Mã đơn</th><th>Số tiền</th><th>Trạng thái</th></tr></thead>
+      <tbody>
+        <tr><td>18:05</td><td>#D2301</td><td>200.000</td><td><span class="badge green">Thành công</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
+    <p class="footer-note">© 2025 UTEScore • Employee UI</p>
+  </section>
+  <script src="script.js"></script>
 </body>
 </html>
