@@ -2,32 +2,40 @@ package vn.ute.utescore.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.*;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "ThueSan")
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class ThueSan {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer maDonDat;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Integer maDonDat;
 
-    @ManyToOne @JoinColumn(name = "maKhachHang", nullable = false)
-    private KhachHang khachHang;
+@ManyToOne(fetch = FetchType.LAZY)
+@JoinColumn(name = "maKhachHang")
+private KhachHang khachHang;
 
-    @ManyToOne @JoinColumn(name = "maSan", nullable = false)
-    private SanBong sanBong;
+@ManyToOne(fetch = FetchType.LAZY)
+@JoinColumn(name = "maSan")
+private SanBong san;
 
-    private LocalDateTime ngayThue;
-    private LocalTime khungGioBatDau;
-    private LocalTime khungGioKetThuc;
+private LocalDateTime ngayThue;
+private LocalTime khungGioBatDau;
+private LocalTime khungGioKetThuc;
 
-    private Double tongTien;
-    private Double tienCocBatBuoc;
-    private Double soTienConLai;
+private BigDecimal tongTien;
+private BigDecimal tienCocBatBuoc;
+private BigDecimal soTienConLai;
 
-    private LocalDateTime ngayTao;
-    private LocalDateTime hanGiuCho;
+private LocalDateTime ngayTao;
+private LocalDateTime hanGiuCho;
 
-    @Column(length = 255)
-    private String ghiChu;
+@Column(length = 255)
+private String ghiChu;
 }

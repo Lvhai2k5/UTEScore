@@ -2,36 +2,44 @@ package vn.ute.utescore.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.*;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "Camera")
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class Camera {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer cameraID;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Integer cameraId;
 
-    @Column(length = 50)
-    private String tenCamera;
+@Column(length = 50)
+private String tenCamera;
 
-    @ManyToOne @JoinColumn(name = "sanID")
-    private SanBong sanBong;
+@ManyToOne(fetch = FetchType.LAZY)
+@JoinColumn(name = "sanId")
+private SanBong san;
 
-    @Column(length = 50)
-    private String ip;
+@Column(length = 50)
+private String ip;
 
-    @Column(length = 30)
-    private String trangThai; // Hoạt động, Mất kết nối, Bảo trì, Tạm ngưng
+@Column(length = 30)
+private String trangThai; // 'Hoạt động', 'Mất kết nối', 'Bảo trì', 'Tạm ngưng'
 
-    @Column(length = 255)
-    private String fileMoPhong;
+@Column(length = 255)
+private String fileMoPhong;
 
-    @ManyToOne @JoinColumn(name = "nhanVienPhuTrach")
-    private NhanVien nhanVienPhuTrach;
+@ManyToOne(fetch = FetchType.LAZY)
+@JoinColumn(name = "nhanVienPhuTrach")
+private NhanVien nhanVienPhuTrach;
 
-    @Column(length = 255)
-    private String ghiChu;
+@Column(length = 255)
+private String ghiChu;
 
-    private LocalDateTime ngayTao;
-    private LocalDateTime ngayCapNhat;
+private LocalDateTime ngayTao;
+private LocalDateTime ngayCapNhat;
 }

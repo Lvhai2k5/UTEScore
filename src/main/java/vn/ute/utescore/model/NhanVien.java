@@ -2,33 +2,40 @@ package vn.ute.utescore.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.*;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "NhanVien")
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class NhanVien {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userID;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Integer userId;
 
-    @Column(nullable = false, length = 50)
-    private String fullName;
+@Column(length = 50)
+private String fullName;
 
-    @Column(nullable = false, unique = true, length = 100)
-    private String email;
+@Column(length = 100)
+private String email;
 
-    @Column(length = 11)
-    private String phone;
+@Column(length = 11)
+private String phone;
 
-    @Column(nullable = false, length = 255)
-    private String passwordHash;
+@Column(length = 255)
+private String passwordHash;
 
-    @ManyToOne @JoinColumn(name = "roleID")
-    private Roles role;
+@ManyToOne(fetch = FetchType.LAZY)
+@JoinColumn(name = "roleId")
+private Roles role;
 
-    @Column(length = 20)
-    private String status; // Hoạt động, Ngưng
+@Column(length = 20)
+private String status; // 'Hoạt động', 'Ngưng'
 
-    private LocalDateTime createdAt;
-    private LocalDateTime updateAt;
+private LocalDateTime createdAt;
+private LocalDateTime updateAt;
 }

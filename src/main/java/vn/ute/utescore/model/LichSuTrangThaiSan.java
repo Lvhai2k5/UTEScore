@@ -2,29 +2,37 @@ package vn.ute.utescore.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.*;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "LichSuTrangThaiSan")
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class LichSuTrangThaiSan {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer lichSuID;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Integer lichSuId;
 
-    @ManyToOne @JoinColumn(name = "sanID", nullable = false)
-    private SanBong sanBong;
+@ManyToOne(fetch = FetchType.LAZY)
+@JoinColumn(name = "sanId")
+private SanBong san;
 
-    @Column(length = 50)
-    private String trangThaiCu;
+@Column(length = 50)
+private String trangThaiCu;
 
-    @Column(length = 50)
-    private String trangThaiMoi;
+@Column(length = 50)
+private String trangThaiMoi;
 
-    private LocalDateTime thoiGianThayDoi;
+private LocalDateTime thoiGianThayDoi;
 
-    @ManyToOne @JoinColumn(name = "nguoiThucHien")
-    private NhanVien nguoiThucHien;
+@ManyToOne(fetch = FetchType.LAZY)
+@JoinColumn(name = "nguoiThucHien")
+private NhanVien nguoiThucHien;
 
-    @Column(length = 255)
-    private String ghiChu;
+@Column(length = 255)
+private String ghiChu;
 }

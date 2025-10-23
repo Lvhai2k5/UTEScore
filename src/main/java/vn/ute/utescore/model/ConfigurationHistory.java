@@ -2,29 +2,35 @@ package vn.ute.utescore.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.*;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
-@Table(name = "configuration_history")
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
+@Table(name = "ConfigurationHistory")
 public class ConfigurationHistory {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Integer id;
 
-    @Column(name = "config_key", length = 100)
-    private String configKey;
+@Column(length = 100, nullable = false)
+private String configKey;
 
-    @Lob
-    private String oldValue;
+@Lob
+private String oldValue;
 
-    @Lob
-    private String newValue;
+@Lob
+private String newValue;
 
-    @Column(length = 255)
-    private String changedBy;
+@Column(length = 255)
+private String changedBy;
 
-    @Lob
-    private String changeReason;
+@Column(length = 255)
+private String changeReason;
 
-    private LocalDateTime createdAt;
+private LocalDateTime createdAt;
 }

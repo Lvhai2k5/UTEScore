@@ -2,15 +2,21 @@ package vn.ute.utescore.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.*;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "CaLam")
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class CaLam {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer maCaLam;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Integer maCaLam;
 
-    private java.time.LocalTime gioBatDau;
-    private java.time.LocalTime gioKetThuc;
+private LocalTime gioBatDau;
+private LocalTime gioKetThuc;
 }

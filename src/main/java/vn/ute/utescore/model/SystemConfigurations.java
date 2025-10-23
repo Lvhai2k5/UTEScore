@@ -2,30 +2,35 @@ package vn.ute.utescore.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.*;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
-@Table(name = "system_configurations")
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
+@Table(name = "SystemConfigurations")
 public class SystemConfigurations {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Integer id;
 
-    @Column(name = "config_key", unique = true, nullable = false, length = 100)
-    private String configKey;
+@Column(length = 100, unique = true, nullable = false)
+private String configKey;
 
-    @Lob
-    @Column(name = "config_value", nullable = false)
-    private String configValue;
+@Lob
+private String configValue;
 
-    @Column(name = "config_type", length = 50)
-    private String configType; // payment, booking, notification, system
+@Column(length = 50, nullable = false)
+private String configType; // 'payment', 'booking', 'notification', 'system'
 
-    @Lob
-    private String description;
+@Lob
+private String description;
 
-    private Boolean isActive;
+private Boolean isActive = true;
 
-    private java.time.LocalDateTime createdAt;
-    private java.time.LocalDateTime updatedAt;
+private LocalDateTime createdAt;
+private LocalDateTime updatedAt;
 }

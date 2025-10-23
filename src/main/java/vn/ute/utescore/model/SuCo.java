@@ -2,31 +2,39 @@ package vn.ute.utescore.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.*;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "SuCo")
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class SuCo {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer suCoID;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Integer suCoId;
 
-    @ManyToOne @JoinColumn(name = "maDon")
-    private ThueSan donDat;
+@ManyToOne(fetch = FetchType.LAZY)
+@JoinColumn(name = "maDon")
+private ThueSan donDat;
 
-    @Column(length = 255)
-    private String moTa;
+@Column(length = 255)
+private String moTa;
 
-    @Column(length = 50)
-    private String loaiSuCo;
+@Column(length = 50)
+private String loaiSuCo;
 
-    @ManyToOne @JoinColumn(name = "nhanVienID")
-    private NhanVien nhanVien;
+@ManyToOne(fetch = FetchType.LAZY)
+@JoinColumn(name = "nhanVienId")
+private NhanVien nhanVien;
 
-    private LocalDateTime thoiGianBaoCao;
+private LocalDateTime thoiGianBaoCao;
 
-    @Column(length = 50)
-    private String trangThai; // Đang xử lý, Hoàn tất, Đã hủy
+@Column(length = 50)
+private String trangThai; // 'Đang xử lý', 'Hoàn tất', 'Đã hủy'
 
-    private LocalDateTime thoiGianHoanThanh;
+private LocalDateTime thoiGianHoanThanh;
 }

@@ -1,16 +1,13 @@
 package vn.ute.utescore.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+//import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import vn.ute.utescore.repository.DonDatSanRepository;
 
 @Controller
 public class EmployeeController {
 
-    @Autowired
-    private DonDatSanRepository donDatSanRepository;
 
     @GetMapping("/")              		  public String homepage()  { return "employee/employee"; }
     @GetMapping("/employee")              public String dashboard()  { return "employee/employee"; }
