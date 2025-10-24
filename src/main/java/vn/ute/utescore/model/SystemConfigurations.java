@@ -1,36 +1,36 @@
 package vn.ute.utescore.model;
 
+
 import jakarta.persistence.*;
 import lombok.*;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "SystemConfigurations")
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class SystemConfigurations {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer ID;
 
-@Column(length = 100, unique = true, nullable = false)
-private String configKey;
+    @Column(name = "configKey", columnDefinition = "NVARCHAR(100)")
+    private String configKey;
 
-@Lob
-private String configValue;
+    @Lob
+    @Column(name = "configValue")
+    private String configValue;
 
-@Column(length = 50, nullable = false)
-private String configType; // 'payment', 'booking', 'notification', 'system'
+    @Column(name = "configType", columnDefinition = "NVARCHAR(50)")
+    private String configType;
 
-@Lob
-private String description;
+    @Lob
+    private String Description;
 
-private Boolean isActive = true;
+    private Boolean isActive;
 
-private LocalDateTime createdAt;
-private LocalDateTime updatedAt;
+    @Column(name = "createdAt")
+    private LocalDateTime createdAt;
+
+    @Column(name = "updatedAt")
+    private LocalDateTime updatedAt;
 }

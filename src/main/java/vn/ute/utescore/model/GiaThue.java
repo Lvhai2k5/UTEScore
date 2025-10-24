@@ -1,34 +1,32 @@
 package vn.ute.utescore.model;
 
+
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "GiaThue")
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class GiaThue {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer maBangGia;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer MaBangGia;
 
-@Column(length = 20, nullable = false)
-private String loaiSan; // '5 người', '7 người', '11 người'
+    @Column(columnDefinition = "NVARCHAR(20)")
+    private String LoaiSan;
 
-private LocalTime khungGioBatDau;
-private LocalTime khungGioKetThuc;
+    private LocalTime KhungGioBatDau;
+    private LocalTime KhungGioKetThuc;
 
-@Column(length = 255)
-private String moTa;
+    @Column(columnDefinition = "NVARCHAR(255)")
+    private String MoTa;
 
-private BigDecimal giaThue;
-private LocalDateTime ngayApDung;
+    private BigDecimal GiaThue;
+    private LocalDateTime NgayApDung;
 
-@Column(length = 50)
-private String trangThai; // 'Đang áp dụng', 'Hết hiệu lực'
+    @Column(columnDefinition = "NVARCHAR(50)")
+    private String TrangThai;
 }

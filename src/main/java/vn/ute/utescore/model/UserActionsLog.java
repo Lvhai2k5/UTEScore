@@ -1,35 +1,29 @@
 package vn.ute.utescore.model;
 
+
 import jakarta.persistence.*;
 import lombok.*;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "UserActionsLog")
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class UserActionsLog {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer logId;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer LogID;
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "userId")
-private NhanVien user;
+    @ManyToOne @JoinColumn(name = "UserID")
+    private NhanVien user;
 
-@Column(length = 100)
-private String actionType;
+    @Column(columnDefinition = "NVARCHAR(255)")
+    private String ActionType;
 
-@Column(length = 255)
-private String reason;
+    @Column(columnDefinition = "NVARCHAR(255)")
+    private String Reason;
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "performedBy")
-private NhanVien performedBy;
+    @ManyToOne @JoinColumn(name = "PerformedBy")
+    private NhanVien performedBy;
 
-private LocalDateTime createAt;
+    private LocalDateTime CreateAt;
 }

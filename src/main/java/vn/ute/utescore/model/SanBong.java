@@ -1,46 +1,62 @@
 package vn.ute.utescore.model;
 
+
 import jakarta.persistence.*;
 import lombok.*;
-import java.math.BigDecimal;
+
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "SanBong")
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class SanBong {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer maSan;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer MaSan;
 
-@Column(length = 20, nullable = false)
-private String tenSan;
+    @Column(columnDefinition = "NVARCHAR(20)", nullable = false)
+    private String TenSan;
 
-@Column(length = 20, nullable = false)
-private String loaiSan; // '5 người', '7 người', '11 người'
+    @Column(columnDefinition = "NVARCHAR(20)", nullable = false)
+    private String LoaiSan;
 
-@Column(length = 50)
-private String khuVuc;
+    @Column(columnDefinition = "NVARCHAR(50)")
+    private String KhuVuc;
 
-@Column(length = 255)
-private String duongDanGgMap;
+    @Column(columnDefinition = "NVARCHAR(255)")
+    private String DuongDanGGMap;
 
-private LocalTime gioMoCua;
-private LocalTime gioDongCua;
+    private LocalTime GioMoCua;
+    private LocalTime GioDongCua;
 
-@Column(length = 255)
-private String moTa;
+    @Column(columnDefinition = "NVARCHAR(255)")
+    private String MoTa;
 
-@Lob
-private byte[] hinhAnh;
+    @Lob
+    private byte[] HinhAnh;
 
-@Column(length = 50)
-private String trangThai; // 'Hoạt động', 'Bảo trì', 'Ngưng sử dụng'
+    @Column(columnDefinition = "NVARCHAR(50)")
+    private String TrangThai;
 
-private LocalDateTime ngayTao;
-private LocalDateTime ngayCapNhat;
+    private LocalDateTime NgayTao;
+    private LocalDateTime NgayCapNhat;
+
+    @OneToMany(mappedBy = "sanBong", cascade = CascadeType.ALL)
+    private List<ThueSan> thueSans;
+
+    @OneToMany(mappedBy = "sanBong", cascade = CascadeType.ALL)
+    private List<BaoTri> baoTris;
+
+    @OneToMany(mappedBy = "sanBong", cascade = CascadeType.ALL)
+    private List<TinhNangSan> tinhNangSans;
+
+    @OneToMany(mappedBy = "sanBong", cascade = CascadeType.ALL)
+    private List<GopYHeThong> gopYHeThongs;
+
+    @OneToMany(mappedBy = "sanBong", cascade = CascadeType.ALL)
+    private List<Camera> cameras;
+
+    @OneToMany(mappedBy = "sanBong", cascade = CascadeType.ALL)
+    private List<LichSuTrangThaiSan> lichSuTrangThaiSans;
 }

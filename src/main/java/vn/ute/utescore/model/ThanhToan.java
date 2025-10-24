@@ -1,46 +1,42 @@
 package vn.ute.utescore.model;
 
+
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "ThanhToan")
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class ThanhToan {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer maThanhToan;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer MaThanhToan;
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "maDonDat")
-private ThueSan donDat;
+    @ManyToOne @JoinColumn(name = "MaDonDat")
+    private ThueSan thueSan;
 
-private BigDecimal soTienNhan;
+    private BigDecimal SoTienNhan;
 
-@Column(length = 50, nullable = false)
-private String phuongThuc; // VNPay, Tiền mặt
+    @Column(columnDefinition = "NVARCHAR(50)", nullable = false)
+    private String PhuongThuc;
 
-@Column(length = 50, nullable = false)
-private String loaiThanhToan; // Đặt cọc, Còn lại, Hoàn tiền, Giảm điểm
+    @Column(columnDefinition = "NVARCHAR(50)", nullable = false)
+    private String LoaiThanhToan;
 
-@Column(length = 50, nullable = false)
-private String trangThaiThanhToan; // Thành công, Thất bại, Chờ
+    @Column(columnDefinition = "NVARCHAR(50)", nullable = false)
+    private String TrangThaiThanhToan;
 
-private Integer soDiemSuDung;
-private BigDecimal giaTriDiemGiam;
-private Integer soDiemCongThem;
+    private Integer SoDiemSuDung;
+    private BigDecimal GiaTriDiemGiam;
+    private Integer SoDiemCongThem;
 
-private LocalDateTime ngayThanhToan;
+    private LocalDateTime NgayThanhToan;
 
-@Column(length = 255)
-private String maGiaoDich;
+    @Column(columnDefinition = "NVARCHAR(255)")
+    private String MaGiaoDich;
 
-@Column(length = 255)
-private String ghiChu;
+    @Column(columnDefinition = "NVARCHAR(255)")
+    private String GhiChu;
 }

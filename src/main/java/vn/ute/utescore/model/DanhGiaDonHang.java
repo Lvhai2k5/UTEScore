@@ -1,41 +1,34 @@
 package vn.ute.utescore.model;
 
+
 import jakarta.persistence.*;
 import lombok.*;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "DanhGiaDonHang")
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class DanhGiaDonHang {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer maDanhGia;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer MaDanhGia;
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "maDonDat")
-private ThueSan donDat;
+    @ManyToOne @JoinColumn(name = "MaDonDat")
+    private ThueSan thueSan;
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "maKhachHang")
-private KhachHang khachHang;
+    @ManyToOne @JoinColumn(name = "MaKhachHang")
+    private KhachHang khachHang;
 
-private Integer rating;
+    private Integer Rating;
 
-@Column(length = 255)
-private String noiDung;
+    @Column(columnDefinition = "NVARCHAR(255)")
+    private String NoiDung;
 
-private LocalDateTime ngayDanhGia;
+    private LocalDateTime NgayDanhGia;
 
-@Column(length = 255)
-private String trangThaiPhanHoi;
+    @Column(columnDefinition = "NVARCHAR(255)")
+    private String TrangThaiPhanHoi;
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "maNhanVienPhanHoi")
-private NhanVien nhanVienPhanHoi;
+    @ManyToOne @JoinColumn(name = "MaNhanVienPhanHoi")
+    private NhanVien nhanVienPhanHoi;
 }

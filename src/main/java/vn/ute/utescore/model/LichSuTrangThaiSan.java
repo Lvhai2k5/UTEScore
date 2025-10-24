@@ -1,38 +1,32 @@
 package vn.ute.utescore.model;
 
+
 import jakarta.persistence.*;
 import lombok.*;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "LichSuTrangThaiSan")
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class LichSuTrangThaiSan {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer lichSuId;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer LichSuID;
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "sanId")
-private SanBong san;
+    @ManyToOne @JoinColumn(name = "SanID")
+    private SanBong sanBong;
 
-@Column(length = 50)
-private String trangThaiCu;
+    @Column(columnDefinition = "NVARCHAR(50)")
+    private String TrangThaiCu;
 
-@Column(length = 50)
-private String trangThaiMoi;
+    @Column(columnDefinition = "NVARCHAR(50)")
+    private String TrangThaiMoi;
 
-private LocalDateTime thoiGianThayDoi;
+    private LocalDateTime ThoiGianThayDoi;
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "nguoiThucHien")
-private NhanVien nguoiThucHien;
+    @ManyToOne @JoinColumn(name = "NguoiThucHien")
+    private NhanVien nguoiThucHien;
 
-@Column(length = 255)
-private String ghiChu;
+    @Column(columnDefinition = "NVARCHAR(255)")
+    private String GhiChu;
 }

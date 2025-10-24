@@ -1,25 +1,24 @@
 package vn.ute.utescore.model;
 
+
 import jakarta.persistence.*;
 import lombok.*;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+import java.util.List;
+
 @Entity
 @Table(name = "Permission")
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class Permission {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer permissionId;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer PermissionID;
 
-@Column(length = 100)
-private String permissionName;
+    @Column(columnDefinition = "NVARCHAR(255)")
+    private String PermissionName;
 
-@Column(length = 255)
-private String moTa;
+    @Column(columnDefinition = "NVARCHAR(255)")
+    private String MoTa;
+
+    @OneToMany(mappedBy = "permission", cascade = CascadeType.ALL)
+    private List<RolePermission> rolePermissions;
 }

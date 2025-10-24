@@ -1,45 +1,38 @@
 package vn.ute.utescore.model;
 
+
 import jakarta.persistence.*;
 import lombok.*;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "GopYHeThong")
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class GopYHeThong {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer maGopY;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer MaGopY;
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "maKhachHang")
-private KhachHang khachHang;
+    @ManyToOne @JoinColumn(name = "MaKhachHang")
+    private KhachHang khachHang;
 
-@Column(length = 50)
-private String loaiGopY; // 'Góp ý chung', 'Góp ý sân'
+    @Column(columnDefinition = "NVARCHAR(50)")
+    private String LoaiGopY;
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "maSan")
-private SanBong san;
+    @ManyToOne @JoinColumn(name = "MaSan")
+    private SanBong sanBong;
 
-@Column(length = 255)
-private String noiDung;
+    @Column(columnDefinition = "NVARCHAR(255)")
+    private String NoiDung;
 
-private LocalDateTime ngayGopY;
+    private LocalDateTime NgayGopY;
 
-@Column(length = 50)
-private String trangThaiXuLy; // 'Chưa xử lý', 'Đã phản hồi', 'Đã đóng'
+    @Column(columnDefinition = "NVARCHAR(50)")
+    private String TrangThaiXuLy;
 
-@Column(length = 255)
-private String phanHoiTuHeThong;
+    @Column(columnDefinition = "NVARCHAR(255)")
+    private String PhanHoiTuHeThong;
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "maNhanVienXuLy")
-private NhanVien nhanVienXuLy;
+    @ManyToOne @JoinColumn(name = "MaNhanVienXuLy")
+    private NhanVien nhanVienXuLy;
 }

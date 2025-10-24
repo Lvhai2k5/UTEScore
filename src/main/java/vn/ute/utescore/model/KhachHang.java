@@ -1,40 +1,48 @@
 package vn.ute.utescore.model;
 
+
 import jakarta.persistence.*;
 import lombok.*;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Entity
 @Table(name = "KhachHang")
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class KhachHang {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer maKhachHang;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer MaKhachHang;
 
-@Column(length = 50)
-private String hoTen;
+    @Column(columnDefinition = "NVARCHAR(50)")
+    private String HoTen;
 
-@Column(length = 11)
-private String soDienThoai;
+    @Column(columnDefinition = "NVARCHAR(11)")
+    private String SoDienThoai;
 
-@Column(length = 100)
-private String email;
+    @Column(columnDefinition = "NVARCHAR(100)")
+    private String Email;
 
-@Lob
-private byte[] anhDaiDien;
+    @Lob
+    private byte[] AnhDaiDien;
 
-private Integer diemTichLuy;
+    private Integer DiemTichLuy;
 
-@Column(length = 20)
-private String trangThai; // 'Hoạt động', 'Ngưng'
+    @Column(columnDefinition = "NVARCHAR(20)")
+    private String TrangThai;
 
-private LocalDateTime ngayDangKy;
+    private LocalDateTime NgayDangKy;
+    private Boolean IsDeleted;
 
-private Boolean isDeleted = false;
+    @OneToMany(mappedBy = "khachHang", cascade = CascadeType.ALL)
+    private List<ThueSan> thueSans;
+
+    @OneToMany(mappedBy = "khachHang", cascade = CascadeType.ALL)
+    private List<ThongBao> thongBaos;
+
+    @OneToMany(mappedBy = "khachHang", cascade = CascadeType.ALL)
+    private List<GopYHeThong> gopYHeThongs;
+
+    @OneToMany(mappedBy = "khachHang", cascade = CascadeType.ALL)
+    private List<DanhGiaDonHang> danhGiaDonHangs;
 }

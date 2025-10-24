@@ -1,37 +1,32 @@
 package vn.ute.utescore.model;
 
+
 import jakarta.persistence.*;
 import lombok.*;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "ThongBao")
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class ThongBao {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer maThongBao;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer MaThongBao;
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "maKhachHang")
-private KhachHang khachHang;
+    @ManyToOne @JoinColumn(name = "MaKhachHang")
+    private KhachHang khachHang;
 
-@Column(length = 255)
-private String tieuDe;
+    @Column(columnDefinition = "NVARCHAR(255)")
+    private String TieuDe;
 
-@Column(length = 255)
-private String noiDung;
+    @Column(columnDefinition = "NVARCHAR(255)")
+    private String NoiDung;
 
-@Column(length = 50)
-private String loaiThongBao;
+    @Column(columnDefinition = "NVARCHAR(50)")
+    private String LoaiThongBao;
 
-private LocalDateTime ngayGui;
+    private LocalDateTime NgayGui;
 
-@Column(length = 50)
-private String trangThai; // 'Đã gửi', 'Đã Xóa', 'Chưa đọc' (default)
+    @Column(columnDefinition = "NVARCHAR(50)")
+    private String TrangThai;
 }

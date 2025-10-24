@@ -1,32 +1,27 @@
 package vn.ute.utescore.model;
 
+
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "CaLamViec")
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class CaLamViec {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer caId;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer CaID;
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "nhanVienId")
-private NhanVien nhanVien;
+    @ManyToOne @JoinColumn(name = "NhanVienID")
+    private NhanVien nhanVien;
 
-private LocalDateTime ngayLam;
+    private LocalDateTime NgayLam;
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "maCaLam")
-private CaLam caLam;
+    @ManyToOne @JoinColumn(name = "MaCaLam")
+    private CaLam caLam;
 
-private Integer tongDonXuLy;
-private BigDecimal tongDoanhThu;
+    private Integer TongDonXuLy;
+    private BigDecimal TongDoanhThu;
 }

@@ -1,41 +1,49 @@
 package vn.ute.utescore.model;
 
+
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "ThueSan")
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class ThueSan {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer maDonDat;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer MaDonDat;
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "maKhachHang")
-private KhachHang khachHang;
+    @ManyToOne @JoinColumn(name = "MaKhachHang")
+    private KhachHang khachHang;
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "maSan")
-private SanBong san;
+    @ManyToOne @JoinColumn(name = "MaSan")
+    private SanBong sanBong;
 
-private LocalDateTime ngayThue;
-private LocalTime khungGioBatDau;
-private LocalTime khungGioKetThuc;
+    private LocalDateTime NgayThue;
+    private LocalTime KhungGioBatDau;
+    private LocalTime KhungGioKetThuc;
 
-private BigDecimal tongTien;
-private BigDecimal tienCocBatBuoc;
-private BigDecimal soTienConLai;
+    private BigDecimal TongTien;
+    private BigDecimal TienCocBatBuoc;
 
-private LocalDateTime ngayTao;
-private LocalDateTime hanGiuCho;
+    @Column(insertable = false, updatable = false)
+    private BigDecimal SoTienConLai;
 
-@Column(length = 255)
-private String ghiChu;
+    private LocalDateTime NgayTao;
+    private LocalDateTime HanGiuCho;
+
+    @Column(columnDefinition = "NVARCHAR(255)")
+    private String GhiChu;
+
+    @OneToMany(mappedBy = "thueSan", cascade = CascadeType.ALL)
+    private List<ThanhToan> thanhToans;
+
+    @OneToMany(mappedBy = "thueSan", cascade = CascadeType.ALL)
+    private List<DanhGiaDonHang> danhGiaDonHangs;
+
+    @OneToMany(mappedBy = "thueSan", cascade = CascadeType.ALL)
+    private List<SuCo> suCos;
 }

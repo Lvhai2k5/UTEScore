@@ -1,41 +1,58 @@
 package vn.ute.utescore.model;
 
+
 import jakarta.persistence.*;
 import lombok.*;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Entity
 @Table(name = "NhanVien")
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class NhanVien {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer userId;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer UserID;
 
-@Column(length = 50)
-private String fullName;
+    @Column(columnDefinition = "NVARCHAR(50)")
+    private String FullName;
 
-@Column(length = 100)
-private String email;
+    @Column(columnDefinition = "NVARCHAR(100)")
+    private String Email;
 
-@Column(length = 11)
-private String phone;
+    @Column(columnDefinition = "NVARCHAR(11)")
+    private String Phone;
 
-@Column(length = 255)
-private String passwordHash;
+    @ManyToOne @JoinColumn(name = "RoleID")
+    private Roles role;
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "roleId")
-private Roles role;
+    @Column(columnDefinition = "NVARCHAR(20)")
+    private String Status;
 
-@Column(length = 20)
-private String status; // 'Hoạt động', 'Ngưng'
+    private LocalDateTime CreatedAt;
+    private LocalDateTime UpdateAt;
 
-private LocalDateTime createdAt;
-private LocalDateTime updateAt;
+    @OneToMany(mappedBy = "nhanVien", cascade = CascadeType.ALL)
+    private List<BaoTri> baoTris;
+
+    @OneToMany(mappedBy = "nhanVien", cascade = CascadeType.ALL)
+    private List<SuCo> suCos;
+
+    @OneToMany(mappedBy = "nhanVienPhuTrach", cascade = CascadeType.ALL)
+    private List<Camera> cameras;
+
+    @OneToMany(mappedBy = "nhanVien", cascade = CascadeType.ALL)
+    private List<LichSuCamera> lichSuCameras;
+
+    @OneToMany(mappedBy = "nguoiThucHien", cascade = CascadeType.ALL)
+    private List<LichSuTrangThaiSan> lichSuTrangThais;
+
+    @OneToMany(mappedBy = "nhanVienXuLy", cascade = CascadeType.ALL)
+    private List<GopYHeThong> gopYXuLys;
+
+    @OneToMany(mappedBy = "nhanVienPhanHoi", cascade = CascadeType.ALL)
+    private List<DanhGiaDonHang> danhGiaPhanHois;
+
+    @OneToMany(mappedBy = "nhanVien", cascade = CascadeType.ALL)
+    private List<CaLamViec> caLamViecs;
 }

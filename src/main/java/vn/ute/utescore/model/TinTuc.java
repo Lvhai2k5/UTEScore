@@ -1,33 +1,29 @@
 package vn.ute.utescore.model;
 
+
 import jakarta.persistence.*;
 import lombok.*;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "TinTuc")
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class TinTuc {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer tinId;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer TinID;
 
-@Column(length = 255)
-private String tieuDe;
+    @Column(columnDefinition = "NVARCHAR(255)")
+    private String TieuDe;
 
-@Column(length = 255)
-private String noiDung;
+    @Column(columnDefinition = "NVARCHAR(255)")
+    private String NoiDung;
 
-@Lob
-private byte[] hinhAnh;
+    @Lob
+    private byte[] HinhAnh;
 
-private LocalDateTime ngayDang;
+    private LocalDateTime NgayDang;
 
-@Column(length = 50)
-private String trangThai; // 'Hiển thị', 'Ẩn'
+    @Column(columnDefinition = "NVARCHAR(50)")
+    private String TrangThai;
 }
