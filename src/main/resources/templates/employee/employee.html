@@ -61,9 +61,6 @@
     padding: 16px;
     flex: 1;
   }
-  .menu-section {
-    margin-bottom: 20px;
-  }
   .menu-title {
     font-size: 13px;
     font-weight: 600;
@@ -84,7 +81,6 @@
     margin-bottom: 6px;
     font-size: 15px;
     transition: all 0.3s ease;
-    position: relative;
   }
   .menu-link:hover {
     background: rgba(255,255,255,0.1);
@@ -112,7 +108,7 @@
 
   header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start; /* ✅ Không còn phần bên phải */
     align-items: center;
     margin-bottom: 32px;
   }
@@ -123,38 +119,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-
-  .btn-notification {
-    background: white;
-    border: none;
-    width: 44px; height: 44px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 20px;
-    position: relative;
-    transition: all 0.3s ease;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  }
-  .btn-notification:hover { transform: translateY(-2px); }
-  .notification-badge {
-    position: absolute;
-    top: 6px; right: 6px;
-    width: 10px; height: 10px;
-    background: #ef4444;
-    border-radius: 50%;
-    border: 2px solid white;
-  }
-  .btn-logout {
-    background: linear-gradient(135deg, #ef4444, #dc2626);
-    border: none;
-    color: white;
-    padding: 10px 18px;
-    border-radius: 10px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  .btn-logout:hover { transform: translateY(-2px); }
 
   /* ===== CARDS ===== */
   .welcome-card {
@@ -231,35 +195,27 @@
     <div class="logo-section">
       <div class="logo">UTEScore</div>
       <div class="staff-info">
-        <div class="staff-avatar">👤</div>
-        <div class="staff-name">Nguyễn Văn A</div>
-        <div class="staff-role">Nhân viên quản lý</div>
+        <div class="staff-avatar">⚙️</div>
+        <div class="staff-name" th:text="${nhanVienDangNhap?.hoTen}">Nhân viên</div>
+        <div class="staff-role">Bộ phận sân bóng</div>
       </div>
     </div>
 
     <div class="menu">
-      <div class="menu-section">
-        <p class="menu-title">🏟️ Quản lý sân</p>
-        <a href="/employee/booking" class="menu-link active"><span class="menu-icon">📋</span>Đơn đặt sân</a>
-        <a href="/employee/checkin" class="menu-link"><span class="menu-icon">🎫</span>Check-in khách</a>
-        <a href="/employee/payment" class="menu-link"><span class="menu-icon">💰</span>Thanh toán & Hoàn tiền</a>
-        <a href="/employee/customers" class="menu-link"><span class="menu-icon">👥</span>Khách tại sân</a>
-        <a href="/employee/schedule" class="menu-link"><span class="menu-icon">📅</span>Lịch sân & Bảo trì</a>
-      </div>
+      <p class="menu-title">🏟️ Quản lý sân</p>
+      <a href="/employee/booking" class="menu-link active"><span class="menu-icon">📋</span>Đơn đặt sân</a>
+      <a href="/employee/checkin" class="menu-link"><span class="menu-icon">🎫</span>Check-in khách</a>
+      <a href="/employee/payment" class="menu-link"><span class="menu-icon">💰</span>Thanh toán</a>
+      <a href="/employee/refund" class="menu-link"><span class="menu-icon">👥</span>Hoàn tiền</a>
+      <a href="/employee/schedule" class="menu-link"><span class="menu-icon">📅</span>Lịch sân</a>
 
-      <div class="menu-section">
-        <p class="menu-title">📢 Báo cáo & Thông tin</p>
-        <a href="/employee/incidents" class="menu-link"><span class="menu-icon">⚠️</span>Sự cố / Ghi chú</a>
-        <a href="/employee/notifications" class="menu-link"><span class="menu-icon">🔔</span>Thông báo hệ thống</a>
-        <a href="/employee/report" class="menu-link"><span class="menu-icon">📊</span>Thống kê công việc</a>
-      </div>
+      <p class="menu-title">📢 Báo cáo & Thông tin</p>
+      <a href="/employee/incidents" class="menu-link"><span class="menu-icon">⚠️</span>Sự cố / Ghi chú</a>
+      <a href="/employee/report" class="menu-link"><span class="menu-icon">📊</span>Thống kê công việc</a>
 
-      <div class="menu-section">
-        <p class="menu-title">⚙️ Cá nhân</p>
-        <a href="/employee/shifts" class="menu-link"><span class="menu-icon">🕒</span>Ca làm việc</a>
-        <a href="/employee/profile" class="menu-link"><span class="menu-icon">👤</span>Thông tin cá nhân</a>
-        <a href="/logout" class="menu-link"><span class="menu-icon">🚪</span>Đăng xuất</a>
-      </div>
+      <p class="menu-title">⚙️ Cá nhân</p>
+      <a href="/employee/profile" class="menu-link"><span class="menu-icon">👤</span>Thông tin cá nhân</a>
+      <a href="/logout" class="menu-link"><span class="menu-icon">🚪</span>Đăng xuất</a>
     </div>
   </aside>
 
@@ -267,13 +223,6 @@
   <section class="content">
     <header>
       <h2>Bảng điều khiển</h2>
-      <div class="header-actions">
-        <button class="btn-notification">
-          🔔
-          <span class="notification-badge"></span>
-        </button>
-        <button class="btn-logout">Đăng xuất</button>
-      </div>
     </header>
 
     <div class="welcome-card">
@@ -302,10 +251,15 @@
     <div class="quick-actions">
       <h4>Thao tác nhanh</h4>
       <div class="action-grid">
-        <button class="action-btn"><span class="action-btn-icon">➕</span>Tạo đơn mới</button>
-        <button class="action-btn"><span class="action-btn-icon">✅</span>Check-in khách</button>
-        <button class="action-btn"><span class="action-btn-icon">💳</span>Thanh toán nhanh</button>
-        <button class="action-btn"><span class="action-btn-icon">📊</span>Xem báo cáo</button>
+        <button class="action-btn" onclick="window.location.href='/employee/checkin'">
+          <span class="action-btn-icon">✅</span>Check-In
+        </button>
+        <button class="action-btn" onclick="window.location.href='/employee/payment'">
+          <span class="action-btn-icon">💳</span>Thanh toán nhanh
+        </button>
+        <button class="action-btn" onclick="window.location.href='/employee/report'">
+          <span class="action-btn-icon">📊</span>Xem báo cáo
+        </button>
       </div>
     </div>
   </section>
@@ -317,24 +271,6 @@
       link.addEventListener('click', () => {
         menuLinks.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
-      });
-    });
-
-    // Logout confirm
-    document.querySelector('.btn-logout').addEventListener('click', () => {
-      if(confirm('Bạn có chắc chắn muốn đăng xuất?')) alert('Đăng xuất thành công!');
-    });
-
-    // Notifications
-    document.querySelector('.btn-notification').addEventListener('click', () => {
-      alert('Bạn có 3 thông báo mới!');
-    });
-
-    // Quick actions alert
-    document.querySelectorAll('.action-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const text = btn.textContent.trim();
-        alert(`Chức năng "${text}" đang được phát triển!`);
       });
     });
   </script>

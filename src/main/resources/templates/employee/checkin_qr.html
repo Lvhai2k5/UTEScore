@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTEScore – Mã QR Check-in</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+    color: #1e293b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px 16px;
+  }
+
+  .qr-container {
+    background: #f8fafc;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    padding: 48px 60px;
+    text-align: center;
+    max-width: 460px;
+    width: 100%;
+    animation: fadeIn 1s ease;
+  }
+
+  h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #1e293b, #475569);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  p {
+    color: #475569;
+    margin-bottom: 28px;
+    font-size: 16px;
+  }
+
+  .qr-box {
+    display: inline-block;
+    padding: 20px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    transition: transform 0.3s ease;
+  }
+
+  .qr-box:hover { transform: scale(1.05); }
+
+  .btn-back {
+    display: inline-block;
+    margin-top: 32px;
+    padding: 12px 28px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .btn-back:hover {
+    background: linear-gradient(135deg, #5a67d8, #6d28d9);
+    transform: translateY(-3px);
+  }
+
+  footer {
+    margin-top: 40px;
+    font-size: 14px;
+    color: rgba(30,41,59,0.7);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+
+<body>
+  <div class="qr-container">
+    <h2>📱 Mã QR Check-in đơn #<span th:text="${maDonDat}"></span></h2>
+    <p>Khách hàng vui lòng quét mã bên dưới để xác nhận check-in</p>
+
+    <div class="qr-box">
+      <canvas id="qrcode"></canvas>
+    </div>
+
+    <a href="/employee/checkin" class="btn-back">⬅️ Quay lại danh sách</a>
+  </div>
+
+  <footer>© 2025 UTEScore – Football Booking System</footer>
+
+  <script th:inline="javascript">
+  /*<![CDATA[*/
+    let id = /*[[${maDonDat}]]*/ 0;
+    const url = 'http://LeVuHai:8080/employee/checkin/' + id;
+    new QRious({
+      element: document.getElementById('qrcode'),
+      size: 250,
+      value: url,
+      background: 'white',
+      foreground: '#1e293b'
+    });
+  /*]]>*/
+  </script>
+</body>
+</html>

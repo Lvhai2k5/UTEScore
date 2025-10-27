@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>UTEScore – Kết quả Check-in</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * {margin:0; padding:0; box-sizing:border-box;}
+  body {
+    font-family:'Inter',sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+
+  .card {
+    background: white;
+    padding: 60px 80px;
+    border-radius: 24px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    animation: fadeIn 1s ease;
+  }
+
+  .icon {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, #38b6ff, #3b82f6);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    margin: 0 auto 24px;
+    box-shadow: 0 6px 20px rgba(56,182,255,0.4);
+  }
+
+  h2 {
+    color: #0f172a;
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  p {
+    color: #475569;
+    font-size: 18px;
+    margin-bottom: 28px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 12px 32px;
+    font-size: 16px;
+    color: white;
+    background: linear-gradient(135deg, #38b6ff, #3b82f6);
+    border: none;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(56,182,255,0.4);
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(56,182,255,0.6);
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="icon">✅</div>
+  <h2>Kết quả Check-in</h2>
+  <p th:text="${message}">✅ Check-in thành công!</p>
+  <p>Cảm ơn bạn! Hệ thống đã ghi nhận check-in của bạn.</p>
+  <a href="/employee" class="btn">Quay lại trang nhân viên</a>
+</div>
+
+</body>
+</html>

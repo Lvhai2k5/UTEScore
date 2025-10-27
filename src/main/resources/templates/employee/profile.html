@@ -1,137 +1,157 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UTEScore – Thông tin cá nhân</title>
+<title>UTEScore – Thông tin nhân viên</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  display: flex; height: 100vh; overflow: hidden;
-}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* SIDEBAR */
-.sidebar {
-  width: 270px;
-  background: linear-gradient(180deg, #1e293b, #0f172a);
-  color: white;
-  display: flex; flex-direction: column;
-  box-shadow: 4px 0 24px rgba(0,0,0,0.3);
-  overflow-y: auto;
-}
-.logo-section { padding: 24px 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-.logo {
-  font-size: 26px; font-weight: 700; text-align: center;
-  background: linear-gradient(135deg, #667eea, #a78bfa);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-.staff-info {
-  text-align: center; margin-top: 16px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 12px; padding: 12px;
-}
-.staff-avatar {
-  width: 60px; height: 60px; border-radius: 50%;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  margin: 0 auto 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 26px;
-}
-.staff-name { font-weight: 600; font-size: 15px; }
-.staff-role { font-size: 13px; color: #94a3b8; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #1e293b;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
 
-.menu { padding: 16px; flex: 1; }
-.menu-title {
-  font-size: 13px; font-weight: 600; color: #94a3b8;
-  margin: 8px 0; text-transform: uppercase; letter-spacing: 0.5px;
-}
-.menu-link {
-  display: flex; align-items: center; gap: 10px;
-  color: white; text-decoration: none;
-  background: rgba(255,255,255,0.05);
-  padding: 12px 14px; border-radius: 10px;
-  margin-bottom: 6px; font-size: 15px;
-  transition: all 0.3s ease;
-}
-.menu-link:hover { background: rgba(255,255,255,0.1); transform: translateX(4px); }
-.menu-link.active {
-  background: linear-gradient(135deg, rgba(102,126,234,0.4), rgba(118,75,162,0.4));
-}
-.menu-icon { font-size: 18px; width: 26px; text-align: center; }
+  /* ===== SIDEBAR ===== */
+  .sidebar {
+    width: 270px;
+    background: linear-gradient(180deg, #1e293b, #0f172a);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.3);
+    overflow-y: auto;
+  }
+  .logo-section {
+    padding: 24px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .logo {
+    font-size: 26px;
+    font-weight: 700;
+    text-align: center;
+    background: linear-gradient(135deg, #667eea, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .staff-info {
+    text-align: center;
+    margin-top: 16px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 12px;
+  }
+  .staff-avatar {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    margin: 0 auto 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+  }
+  .staff-name { font-weight: 600; font-size: 15px; }
+  .staff-role { font-size: 13px; color: #94a3b8; }
 
-/* CONTENT */
-.content {
-  flex: 1;
-  background: #f8fafc;
-  margin: 24px;
-  border-radius: 24px;
-  padding: 32px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-  overflow-y: auto;
-}
-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
-header h2 {
-  font-size: 32px; font-weight: 700;
-  background: linear-gradient(135deg, #1e293b, #475569);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
+  .menu {
+    padding: 16px;
+    flex: 1;
+  }
+  .menu-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #94a3b8;
+    margin: 8px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .menu-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    background: rgba(255,255,255,0.05);
+    padding: 12px 14px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+  }
+  .menu-link:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateX(4px);
+  }
+  .menu-link.active {
+    background: linear-gradient(135deg, rgba(102,126,234,0.4), rgba(118,75,162,0.4));
+  }
+  .menu-icon {
+    font-size: 18px;
+    width: 26px;
+    text-align: center;
+  }
 
-/* HEADER BUTTONS */
-.header-actions { display: flex; align-items: center; gap: 14px; }
-.btn-notification {
-  background: white;
-  border: none;
-  width: 44px; height: 44px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 20px;
-  position: relative;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-.btn-notification:hover { transform: translateY(-2px); }
-.notification-badge {
-  position: absolute; top: 6px; right: 6px;
-  width: 10px; height: 10px;
-  background: #ef4444;
-  border-radius: 50%;
-  border: 2px solid white;
-}
-.btn-logout {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
-  border: none; color: white;
-  padding: 10px 18px;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.btn-logout:hover { transform: translateY(-2px); }
+  /* ===== CONTENT ===== */
+  .content {
+    flex: 1;
+    background: #f8fafc;
+    margin: 24px;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    overflow-y: auto;
+  }
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #1e293b, #475569);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px;
+  }
 
-/* PROFILE CARD */
-.profile-card {
-  display: flex; align-items: center; gap: 24px;
-  background: white; padding: 24px;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-}
-.profile-avatar {
-  width: 120px; height: 120px; border-radius: 50%;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  display: flex; align-items: center; justify-content: center;
-  color: white; font-size: 48px; font-weight: bold;
-}
-.profile-info { flex: 1; }
-.profile-info h3 { font-size: 22px; margin-bottom: 8px; color: #1e293b; }
-.profile-info p { color: #475569; margin: 4px 0; }
+  .profile-card {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    max-width: 700px;
+    margin: auto;
+  }
 
-.footer-note {
-  text-align: center; margin-top: 24px;
-  color: #64748b; font-size: 13px;
-}
+  .avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #667eea;
+    color: white;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0 auto 20px auto;
+  }
+
+  .info {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .info strong {
+    width: 160px;
+    display: inline-block;
+    color: #1e293b;
+  }
+
+  .info p {
+    margin-bottom: 8px;
+  }
+
 </style>
 </head>
 <body>
@@ -140,9 +160,9 @@ header h2 {
     <div class="logo-section">
       <div class="logo">UTEScore</div>
       <div class="staff-info">
-        <div class="staff-avatar">👤</div>
-        <div class="staff-name">Nguyễn Văn A</div>
-        <div class="staff-role">Nhân viên quản lý</div>
+        <div class="staff-avatar">⚙️</div>
+        <div class="staff-name" th:text="${nhanVienDangNhap?.hoTen ?: 'Nhân viên'}">Nhân viên</div>
+        <div class="staff-role">Bộ phận sân bóng</div>
       </div>
     </div>
 
@@ -150,17 +170,15 @@ header h2 {
       <p class="menu-title">🏟️ Quản lý sân</p>
       <a href="/employee/booking" class="menu-link"><span class="menu-icon">📋</span>Đơn đặt sân</a>
       <a href="/employee/checkin" class="menu-link"><span class="menu-icon">🎫</span>Check-in khách</a>
-      <a href="/employee/payment" class="menu-link"><span class="menu-icon">💰</span>Thanh toán & Hoàn tiền</a>
-      <a href="/employee/customers" class="menu-link"><span class="menu-icon">👥</span>Khách tại sân</a>
-      <a href="/employee/schedule" class="menu-link"><span class="menu-icon">📅</span>Lịch sân & Bảo trì</a>
+      <a href="/employee/payment" class="menu-link"><span class="menu-icon">💰</span>Thanh toán</a>
+      <a href="/employee/refund" class="menu-link"><span class="menu-icon">👥</span>Hoàn tiền</a>
+      <a href="/employee/schedule" class="menu-link"><span class="menu-icon">📅</span>Lịch sân</a>
 
       <p class="menu-title">📢 Báo cáo & Thông tin</p>
       <a href="/employee/incidents" class="menu-link"><span class="menu-icon">⚠️</span>Sự cố / Ghi chú</a>
-      <a href="/employee/notifications" class="menu-link"><span class="menu-icon">🔔</span>Thông báo hệ thống</a>
       <a href="/employee/report" class="menu-link"><span class="menu-icon">📊</span>Thống kê công việc</a>
 
       <p class="menu-title">⚙️ Cá nhân</p>
-      <a href="/employee/shifts" class="menu-link"><span class="menu-icon">🕒</span>Ca làm việc</a>
       <a href="/employee/profile" class="menu-link active"><span class="menu-icon">👤</span>Thông tin cá nhân</a>
       <a href="/logout" class="menu-link"><span class="menu-icon">🚪</span>Đăng xuất</a>
     </div>
@@ -168,28 +186,37 @@ header h2 {
 
   <!-- MAIN CONTENT -->
   <section class="content">
-    <header>
-      <h2>Thông tin cá nhân</h2>
-      <div class="header-actions">
-        <button class="btn-notification" onclick="alert('Bạn có 3 thông báo mới!')">
-          🔔<span class="notification-badge"></span>
-        </button>
-        <button class="btn-logout" onclick="location.href='/login'">Đăng xuất</button>
-      </div>
-    </header>
+    <h2>Thông tin cá nhân</h2>
 
     <div class="profile-card">
-      <div class="profile-avatar">A</div>
-      <div class="profile-info">
-        <h3>Nguyễn Văn A</h3>
-        <p><strong>Chức vụ:</strong> Nhân viên quản lý</p>
-        <p><strong>Email:</strong> nguyenvana@utescore.vn</p>
-        <p><strong>Số điện thoại:</strong> 0901 234 567</p>
-        <p><strong>Ngày vào làm:</strong> 12/02/2023</p>
+      <div class="avatar" th:text="${nhanVien != null && nhanVien.fullName != null ? nhanVien.fullName.substring(0,1) : '?'}">?</div>
+
+      <h3 style="text-align:center; margin-bottom:24px;"
+          th:text="${nhanVien != null && nhanVien.fullName != null ? nhanVien.fullName : 'Chưa có tên'}">
+        Chưa có tên
+      </h3>
+
+      <div class="info">
+        <p><strong>Email:</strong> 
+          <span th:text="${nhanVien != null && nhanVien.email != null ? nhanVien.email : 'Chưa có'}">Chưa có</span>
+        </p>
+        <p><strong>Số điện thoại:</strong> 
+          <span th:text="${nhanVien != null && nhanVien.phone != null ? nhanVien.phone : 'Chưa có'}">Chưa có</span>
+        </p>
+        <p><strong>Trạng thái:</strong> 
+          <span th:text="${nhanVien != null && nhanVien.status != null ? nhanVien.status : 'Không xác định'}">Không xác định</span>
+        </p>
+        <p><strong>Ngày tạo:</strong> 
+          <span th:text="${nhanVien != null && nhanVien.createdAt != null ? #temporals.format(nhanVien.createdAt, 'dd/MM/yyyy HH:mm') : 'N/A'}">N/A</span>
+        </p>
+        <p><strong>Cập nhật lần cuối:</strong> 
+          <span th:text="${nhanVien != null && nhanVien.updateAt != null ? #temporals.format(nhanVien.updateAt, 'dd/MM/yyyy HH:mm') : 'N/A'}">N/A</span>
+        </p>
+        <p><strong>Vai trò:</strong> 
+          <span th:text="${nhanVien != null && nhanVien.role != null && nhanVien.role.roleName != null ? nhanVien.role.roleName : 'Chưa có vai trò'}">Chưa có vai trò</span>
+        </p>
       </div>
     </div>
-
-    <p class="footer-note">© 2025 UTEScore • Employee UI</p>
   </section>
 </body>
 </html>

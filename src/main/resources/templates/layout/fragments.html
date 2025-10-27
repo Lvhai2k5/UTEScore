@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+  <div th:fragment="sidebar" class="sidebar">
+    <div class="logo-section">
+      <div class="logo">UTEScore</div>
+      <div class="staff-info">
+        <div class="staff-avatar">👤</div>
+        <div class="staff-name">Nguyễn Văn A</div>
+        <div class="staff-role">Nhân viên quản lý</div>
+      </div>
+    </div>
+
+    <div class="menu">
+      <div class="menu-section">
+        <p class="menu-title">🏟️ Quản lý sân</p>
+        <a th:href="@{/employee/dashboard}" class="menu-link active"><span class="menu-icon">📋</span>Bảng điều khiển</a>
+        <a th:href="@{/employee/booking}" class="menu-link"><span class="menu-icon">📅</span>Đơn đặt sân</a>
+        <a th:href="@{/employee/checkin}" class="menu-link"><span class="menu-icon">🎫</span>Check-in khách</a>
+        <a th:href="@{/employee/payment}" class="menu-link"><span class="menu-icon">💰</span>Thanh toán & Hoàn tiền</a>
+      </div>
+
+      <div class="menu-section">
+        <p class="menu-title">📢 Báo cáo & Thông tin</p>
+        <a th:href="@{/employee/customers}" class="menu-link"><span class="menu-icon">👥</span>Khách tại sân</a>
+        <a th:href="@{/employee/report}" class="menu-link"><span class="menu-icon">📊</span>Thống kê công việc</a>
+        <a th:href="@{/employee/notifications}" class="menu-link"><span class="menu-icon">🔔</span>Thông báo hệ thống</a>
+      </div>
+
+      <div class="menu-section">
+        <p class="menu-title">⚙️ Cá nhân</p>
+        <a th:href="@{/employee/profile}" class="menu-link"><span class="menu-icon">👤</span>Thông tin cá nhân</a>
+        <a th:href="@{/employee/shifts}" class="menu-link"><span class="menu-icon">🕒</span>Ca làm việc</a>
+        <a th:href="@{/logout}" class="menu-link"><span class="menu-icon">🚪</span>Đăng xuất</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,47 +1,54 @@
 package vn.ute.utescore.model;
 
-
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
 @Entity
 @Table(name = "SanBong")
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class SanBong {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer MaSan;
 
-    @Column(columnDefinition = "NVARCHAR(20)", nullable = false)
-    private String TenSan;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "MaSan")
+    private Integer maSan;
 
-    @Column(columnDefinition = "NVARCHAR(20)", nullable = false)
-    private String LoaiSan;
+    @Column(name = "TenSan", columnDefinition = "NVARCHAR(20)", nullable = false)
+    private String tenSan;
 
-    @Column(columnDefinition = "NVARCHAR(50)")
-    private String KhuVuc;
+    @Column(name = "LoaiSan", columnDefinition = "NVARCHAR(20)", nullable = false)
+    private String loaiSan;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
-    private String DuongDanGGMap;
+    @Column(name = "KhuVuc", columnDefinition = "NVARCHAR(50)")
+    private String khuVuc;
 
-    private LocalTime GioMoCua;
-    private LocalTime GioDongCua;
+    @Column(name = "DuongDanGGMap", columnDefinition = "NVARCHAR(255)")
+    private String duongDanGGMap;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
-    private String MoTa;
+    @Column(name = "GioMoCua")
+    private LocalTime gioMoCua;
+
+    @Column(name = "GioDongCua")
+    private LocalTime gioDongCua;
+
+    @Column(name = "MoTa", columnDefinition = "NVARCHAR(255)")
+    private String moTa;
 
     @Lob
-    private byte[] HinhAnh;
+    @Column(name = "HinhAnh")
+    private byte[] hinhAnh;
 
-    @Column(columnDefinition = "NVARCHAR(50)")
-    private String TrangThai;
+    @Column(name = "TrangThai", columnDefinition = "NVARCHAR(50)")
+    private String trangThai;
 
-    private LocalDateTime NgayTao;
-    private LocalDateTime NgayCapNhat;
+    @Column(name = "NgayTao")
+    private LocalDateTime ngayTao;
 
+    @Column(name = "NgayCapNhat")
+    private LocalDateTime ngayCapNhat;
+
+    // ========== QUAN HỆ ==========
     @OneToMany(mappedBy = "sanBong", cascade = CascadeType.ALL)
     private List<ThueSan> thueSans;
 
@@ -59,4 +66,80 @@ public class SanBong {
 
     @OneToMany(mappedBy = "sanBong", cascade = CascadeType.ALL)
     private List<LichSuTrangThaiSan> lichSuTrangThaiSans;
+
+    // ========== CONSTRUCTORS ==========
+    public SanBong() {}
+
+    public SanBong(Integer maSan, String tenSan, String loaiSan, String khuVuc, String duongDanGGMap,
+                   LocalTime gioMoCua, LocalTime gioDongCua, String moTa, byte[] hinhAnh,
+                   String trangThai, LocalDateTime ngayTao, LocalDateTime ngayCapNhat) {
+        this.maSan = maSan;
+        this.tenSan = tenSan;
+        this.loaiSan = loaiSan;
+        this.khuVuc = khuVuc;
+        this.duongDanGGMap = duongDanGGMap;
+        this.gioMoCua = gioMoCua;
+        this.gioDongCua = gioDongCua;
+        this.moTa = moTa;
+        this.hinhAnh = hinhAnh;
+        this.trangThai = trangThai;
+        this.ngayTao = ngayTao;
+        this.ngayCapNhat = ngayCapNhat;
+    }
+
+    // ========== GETTERS & SETTERS ==========
+
+    public Integer getMaSan() { return maSan; }
+    public void setMaSan(Integer maSan) { this.maSan = maSan; }
+
+    public String getTenSan() { return tenSan; }
+    public void setTenSan(String tenSan) { this.tenSan = tenSan; }
+
+    public String getLoaiSan() { return loaiSan; }
+    public void setLoaiSan(String loaiSan) { this.loaiSan = loaiSan; }
+
+    public String getKhuVuc() { return khuVuc; }
+    public void setKhuVuc(String khuVuc) { this.khuVuc = khuVuc; }
+
+    public String getDuongDanGGMap() { return duongDanGGMap; }
+    public void setDuongDanGGMap(String duongDanGGMap) { this.duongDanGGMap = duongDanGGMap; }
+
+    public LocalTime getGioMoCua() { return gioMoCua; }
+    public void setGioMoCua(LocalTime gioMoCua) { this.gioMoCua = gioMoCua; }
+
+    public LocalTime getGioDongCua() { return gioDongCua; }
+    public void setGioDongCua(LocalTime gioDongCua) { this.gioDongCua = gioDongCua; }
+
+    public String getMoTa() { return moTa; }
+    public void setMoTa(String moTa) { this.moTa = moTa; }
+
+    public byte[] getHinhAnh() { return hinhAnh; }
+    public void setHinhAnh(byte[] hinhAnh) { this.hinhAnh = hinhAnh; }
+
+    public String getTrangThai() { return trangThai; }
+    public void setTrangThai(String trangThai) { this.trangThai = trangThai; }
+
+    public LocalDateTime getNgayTao() { return ngayTao; }
+    public void setNgayTao(LocalDateTime ngayTao) { this.ngayTao = ngayTao; }
+
+    public LocalDateTime getNgayCapNhat() { return ngayCapNhat; }
+    public void setNgayCapNhat(LocalDateTime ngayCapNhat) { this.ngayCapNhat = ngayCapNhat; }
+
+    public List<ThueSan> getThueSans() { return thueSans; }
+    public void setThueSans(List<ThueSan> thueSans) { this.thueSans = thueSans; }
+
+    public List<BaoTri> getBaoTris() { return baoTris; }
+    public void setBaoTris(List<BaoTri> baoTris) { this.baoTris = baoTris; }
+
+    public List<TinhNangSan> getTinhNangSans() { return tinhNangSans; }
+    public void setTinhNangSans(List<TinhNangSan> tinhNangSans) { this.tinhNangSans = tinhNangSans; }
+
+    public List<GopYHeThong> getGopYHeThongs() { return gopYHeThongs; }
+    public void setGopYHeThongs(List<GopYHeThong> gopYHeThongs) { this.gopYHeThongs = gopYHeThongs; }
+
+    public List<Camera> getCameras() { return cameras; }
+    public void setCameras(List<Camera> cameras) { this.cameras = cameras; }
+
+    public List<LichSuTrangThaiSan> getLichSuTrangThaiSans() { return lichSuTrangThaiSans; }
+    public void setLichSuTrangThaiSans(List<LichSuTrangThaiSan> lichSuTrangThaiSans) { this.lichSuTrangThaiSans = lichSuTrangThaiSans; }
 }

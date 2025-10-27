@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>UTEScore – Thanh toán VNPay</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+<style>
+  * {margin:0; padding:0; box-sizing:border-box;}
+  body {
+    font-family:'Inter',sans-serif;
+    background: linear-gradient(135deg, #38b6ff 0%, #3b82f6 100%);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#0f172a;
+  }
+
+  .card {
+    background:#fff;
+    border-radius:24px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    padding:60px 80px;
+    text-align:center;
+    animation:fadeIn 1s ease;
+  }
+
+  .logo {
+    font-size:50px;
+    margin-bottom:20px;
+    color:#38b6ff;
+    text-shadow:0 0 10px rgba(56,182,255,0.5);
+  }
+
+  h2 {
+    font-size:28px;
+    font-weight:700;
+    color:#1e293b;
+    margin-bottom:20px;
+  }
+
+  p {
+    font-size:18px;
+    color:#475569;
+    margin-bottom:8px;
+  }
+
+  .amount {
+    font-size:22px;
+    color:#2563eb;
+    font-weight:600;
+    margin:10px 0 24px 0;
+  }
+
+  .qr-box {
+    display:inline-block;
+    padding:20px;
+    background:white;
+    border:3px solid #38b6ff;
+    border-radius:20px;
+    margin-top:10px;
+    box-shadow:0 4px 20px rgba(56,182,255,0.3);
+  }
+
+  .select-box {
+    margin-top:30px;
+  }
+
+  select {
+    padding:12px 20px;
+    border-radius:12px;
+    border:2px solid #38b6ff;
+    font-size:16px;
+    color:#0f172a;
+    background:white;
+    box-shadow:0 3px 10px rgba(56,182,255,0.25);
+    outline:none;
+    transition:all 0.3s ease;
+  }
+
+  select:hover {
+    border-color:#2563eb;
+    box-shadow:0 4px 15px rgba(37,99,235,0.35);
+  }
+
+  a.btn {
+    display:inline-block;
+    margin-top:32px;
+    text-decoration:none;
+    font-weight:500;
+    background:linear-gradient(135deg, #38b6ff, #3b82f6);
+    color:white;
+    padding:12px 32px;
+    border-radius:12px;
+    transition:all 0.3s ease;
+    box-shadow:0 4px 15px rgba(56,182,255,0.4);
+  }
+
+  a.btn:hover {
+    transform:translateY(-3px);
+    box-shadow:0 6px 20px rgba(56,182,255,0.6);
+  }
+
+  @keyframes fadeIn {
+    from {opacity:0; transform:translateY(20px);}
+    to {opacity:1; transform:translateY(0);}
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo">💳</div>
+  <h2>Thanh toán qua VNPay</h2>
+
+  <p>Đơn hàng: <b>#<span th:text="${paymentId}">123</span></b></p>
+  <p>Khách hàng: <b th:text="${customer}">Nguyễn Văn A</b></p>
+  <p class="amount">Số tiền: <span th:text="${#numbers.formatDecimal(amount,0,'COMMA',0,'POINT')}"></span> đ</p>
+
+  <div class="qr-box">
+    <canvas id="qrcode"></canvas>
+  </div>
+
+  <div class="select-box">
+  <form th:action="@{/employee/payment/method}" method="post">
+    <!-- ✅ ID ẩn của đơn hàng -->
+    <input type="hidden" name="paymentId" th:value="${paymentId}" />
+
+    <label for="method" style="font-size:16px; color:#1e293b; font-weight:500;">
+      Chọn phương thức thanh toán:
+    </label><br>
+
+    <select id="method" name="method">
+      <option value="Tiền mặt">💵 Tiền mặt</option>
+      <option value="Chuyển khoản">🏦 Chuyển khoản</option>
+    </select>
+
+    <br>
+    <button type="submit" class="btn" style="margin-top:20px;">Xác nhận</button>
+    
+  </form>
+</div>
+
+
+
+  <a href="/employee/payment" class="btn">⬅ Quay lại danh sách</a>
+</div>
+
+<script th:inline="javascript">
+  new QRious({
+    element: document.getElementById('qrcode'),
+    size: 260,
+    value: /*[[${qrData}]]*/ ''
+  });
+</script>
+
+</body>
+</html>
