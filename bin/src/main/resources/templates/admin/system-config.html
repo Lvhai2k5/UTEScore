@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cấu hình hệ thống - UTEScore</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --secondary-color: #fbbf24;
+            --accent-color: #22c55e;
+            --danger-color: #ef4444;
+            --warning-color: #f59e0b;
+            --info-color: #3b82f6;
+            --dark-color: #0f172a;
+            --light-color: #f8fafc;
+            --gradient-primary: linear-gradient(135deg, #0f172a 0%, #1e40af 50%, #3b82f6 100%);
+            --gradient-secondary: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            --gradient-accent: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            --gradient-success: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            --gradient-warning: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --gradient-danger: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            --shadow-primary: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
+            --shadow-secondary: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --sidebar-width: 280px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
+            min-height: 100vh;
+            color: white;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: var(--sidebar-width);
+            background: rgba(22, 33, 62, 0.95);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(251, 191, 36, 0.2);
+            color: white;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-brand {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: white;
+            text-decoration: none;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+        }
+
+        .sidebar-brand i {
+            color: var(--secondary-color);
+            margin-right: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        .sidebar-nav {
+            padding: 1rem 0;
+        }
+
+        .nav-item {
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-link:hover {
+            color: white;
+            background: rgba(251, 191, 36, 0.1);
+            border-left-color: var(--secondary-color);
+            transform: translateX(5px);
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
+        }
+
+        .nav-link.active {
+            color: white;
+            background: rgba(251, 191, 36, 0.2);
+            border-left-color: var(--secondary-color);
+        }
+
+        .nav-link i {
+            margin-right: 0.75rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .nav-section {
+            padding: 1rem 1.5rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            min-height: 100vh;
+            transition: all 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(251, 191, 36, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-primary);
+            min-width: 100%;
+            overflow: visible;
+            width: 100%;
+            flex-wrap: nowrap;
+        }
+
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            flex-shrink: 1;
+            min-width: 0;
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 900;
+            color: white;
+            margin: 0;
+            background: linear-gradient(135deg, #ffffff 0%, #fbbf24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(251, 191, 36, 0.5);
+        }
+
+        .breadcrumb {
+            background: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .breadcrumb-item a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+            min-width: fit-content;
+            flex-shrink: 0;
+        }
+
+        .notification-dropdown {
+            flex-shrink: 0;
+            display: inline-flex;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            flex-shrink: 0;
+            display: inline-flex;
+        }
+
+        .user-menu:hover {
+            background: rgba(251, 191, 36, 0.2);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-secondary);
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .user-role {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Content Area */
+        .content-area {
+            padding: 2rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .page-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+        }
+
+        .header-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            border: none;
+            color: white;
+            font-weight: 700;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-secondary);
+            color: white;
+            background: var(--gradient-primary);
+        }
+
+        /* Configuration Tabs */
+        .config-tabs {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            border-radius: 20px;
+            box-shadow: var(--shadow-secondary);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .nav-tabs {
+            border-bottom: 2px solid rgba(251, 191, 36, 0.2);
+            margin: 0;
+            padding: 0 2rem;
+        }
+
+        .nav-tabs .nav-link {
+            border: none;
+            border-radius: 12px 12px 0 0;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 700;
+            padding: 1rem 2rem;
+            margin-right: 0.5rem;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .nav-tabs .nav-link.active {
+            background: var(--gradient-secondary);
+            color: var(--dark-color);
+            border-color: transparent;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .nav-tabs .nav-link:hover {
+            border-color: transparent;
+            background: rgba(251, 191, 36, 0.1);
+            color: var(--secondary-color);
+        }
+
+        .nav-tabs .nav-link.active:hover {
+            background: var(--gradient-secondary);
+            color: var(--dark-color);
+        }
+
+        .tab-content {
+            padding: 2rem;
+        }
+
+        /* Configuration Sections */
+        .config-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(251, 191, 36, 0.2);
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+        }
+
+        .section-title i {
+            margin-right: 0.75rem;
+            color: var(--secondary-color);
+        }
+
+        .section-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Form Styles */
+        .form-label {
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control, .form-select {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s ease;
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.2rem rgba(251, 191, 36, 0.25);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6) !important;
+            opacity: 1;
+        }
+
+        .form-control:focus::placeholder {
+            color: rgba(255, 255, 255, 0.4) !important;
+        }
+
+        .form-select option {
+            background: rgba(15, 23, 42, 0.95);
+            color: white;
+        }
+
+        .form-select option:checked {
+            background: var(--secondary-color);
+            color: var(--dark-color);
+        }
+
+        .input-group-text {
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            border-right: none;
+            color: var(--secondary-color);
+            font-weight: 700;
+            backdrop-filter: blur(10px);
+        }
+
+        .input-group .form-control {
+            border-left: none;
+        }
+
+        /* Configuration Cards */
+        .config-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .config-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .config-card:hover::before {
+            left: 100%;
+        }
+
+        .config-card:hover {
+            border-color: rgba(251, 191, 36, 0.5);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--shadow-secondary);
+        }
+
+        .config-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .config-card-title {
+            font-weight: 700;
+            color: white;
+            margin: 0;
+        }
+
+        .config-card-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .config-value {
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: var(--secondary-color);
+            text-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+        }
+
+        /* Status Indicators */
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .status-active {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--accent-color);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.2);
+        }
+
+        .status-inactive {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--danger-color);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+        }
+
+        .status-warning {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning-color);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
+        }
+
+        /* Action Buttons */
+        .btn-save {
+            background: var(--gradient-success);
+            border: none;
+            color: white;
+            font-weight: 700;
+            padding: 0.75rem 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .btn-save:hover {
+            background: var(--gradient-success);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-secondary);
+            color: white;
+        }
+
+        .btn-reset {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            color: var(--secondary-color);
+            font-weight: 700;
+            padding: 0.75rem 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-reset:hover {
+            background: rgba(251, 191, 36, 0.2);
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-secondary);
+        }
+
+        /* History Section */
+        .history-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(251, 191, 36, 0.2);
+        }
+
+        .history-item:last-child {
+            border-bottom: none;
+        }
+
+        .history-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-color);
+            margin-right: 1rem;
+            font-size: 1rem;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .history-content {
+            flex: 1;
+        }
+
+        .history-title {
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.25rem;
+        }
+
+        .history-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.875rem;
+        }
+
+        .history-time {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.show {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .page-header-content {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .nav-tabs {
+                padding: 0 1rem;
+            }
+            
+            .nav-tabs .nav-link {
+                padding: 0.75rem 1rem;
+                font-size: 0.875rem;
+            }
+            
+            .tab-content {
+                padding: 1rem;
+            }
+        }
+
+        /* Toggle Button */
+        .sidebar-toggle {
+            display: none;
+            background: var(--primary-color);
+            border: none;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 8px;
+            margin-right: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar-toggle {
+                display: block;
+            }
+        }
+
+        /* Fix notification dropdown z-index */
+        .notification-dropdown {
+            z-index: 9999 !important;
+            position: absolute !important;
+            top: 100% !important;
+            right: 0 !important;
+            margin-top: 0.5rem !important;
+        }
+
+        .notification-dropdown .dropdown-menu {
+            z-index: 9999 !important;
+            position: absolute !important;
+            transform: none !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: auto !important;
+            bottom: auto !important;
+        }
+
+        /* Ensure top-bar has proper z-index */
+        .top-bar {
+            z-index: 1000 !important;
+            position: relative !important;
+        }
+
+        /* Ensure main content doesn't overlap dropdowns */
+        .main-content {
+            z-index: 1 !important;
+            position: relative !important;
+        }
+
+        .btn-outline-primary:hover, .btn-outline-success:hover, .btn-outline-danger:hover {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.2) !important;
+            border-color: rgba(255, 255, 255, 0.5) !important;
+        }
+
+        .dropdown-menu {
+            background: rgba(15, 23, 42, 0.95) !important;
+            border: 1px solid rgba(251, 191, 36, 0.2) !important;
+            backdrop-filter: blur(20px);
+        }
+
+        .dropdown-item {
+            color: white !important;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(251, 191, 36, 0.2) !important;
+            color: white !important;
+        }
+
+        .dropdown-header {
+            color: var(--secondary-color) !important;
+        }
+
+        .badge {
+            color: white !important;
+        }
+
+        /* Responsive improvements for notification */
+        @media (max-width: 768px) {
+            .top-bar-right {
+                gap: 0.5rem;
+            }
+            
+            .notification-dropdown .btn {
+                padding: 0.5rem;
+            }
+            
+            .user-menu {
+                padding: 0.4rem 0.8rem;
+                gap: 0.5rem;
+            }
+            
+            .user-info {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="#" class="sidebar-brand">
+                <i class="fas fa-cog"></i>
+                UTEScore
+            </a>
+        </div>
+        
+        <nav class="sidebar-nav">
+            
+            
+            <div class="nav-section">Quản lý</div>
+            <div class="nav-item">
+                <a href="/admin/fields" class="nav-link">
+                    <i class="fas fa-cog"></i>
+                    Quản lý sân
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="/admin/user-management" class="nav-link">
+                    <i class="fas fa-users"></i>
+                    Quản lý người dùng
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="/admin/live-cameras" class="nav-link">
+                    <i class="fas fa-video"></i>
+                    Xem camera sân
+                </a>
+            </div>
+            
+            <div class="nav-section">Tài chính</div>
+            <div class="nav-item">
+                <a href="/admin/payment-management" class="nav-link">
+                    <i class="fas fa-credit-card"></i>
+                    Quản lý thanh toán
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="/admin/refund-management" class="nav-link">
+                    <i class="fas fa-undo"></i>
+                    Duyệt hoàn tiền
+                </a>
+            </div>
+            
+            <div class="nav-section">Hệ thống</div>
+            <div class="nav-item">
+                <a href="/admin/system-config" class="nav-link active">
+                    <i class="fas fa-cogs"></i>
+                    Cấu hình
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div>
+                    <h1 class="page-title">Cấu hình hệ thống</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin/payment-management">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a href="#">Hệ thống</a></li>
+                            <li class="breadcrumb-item active">Cấu hình</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            
+            <div class="top-bar-right">
+                <div class="user-menu" data-bs-toggle="dropdown">
+                    <div class="user-avatar">AD</div>
+                    <div class="user-info">
+                        <div class="user-name">Admin User</div>
+                        <div class="user-role">Quản trị viên</div>
+                    </div>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Hồ sơ</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Cài đặt</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="/admin/login"><i class="fas fa-sign-out-alt me-2"></i>Đăng xuất</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="page-header-content">
+                    <div>
+                        <h2 class="header-title">Cấu hình hệ thống</h2>
+                        <p class="header-subtitle">Điều chỉnh các tham số và chính sách của hệ thống quản lý sân bóng</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-primary" id="saveAllConfig">
+                            <i class="fas fa-save me-2"></i>
+                            Lưu tất cả
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Configuration Tabs -->
+            <div class="config-tabs">
+                <ul class="nav nav-tabs" id="configTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="payment-tab" data-bs-toggle="tab" data-bs-target="#payment" type="button" role="tab">
+                            <i class="fas fa-credit-card me-2"></i>
+                            Thanh toán & Cọc
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="booking-tab" data-bs-toggle="tab" data-bs-target="#booking" type="button" role="tab">
+                            <i class="fas fa-calendar-alt me-2"></i>
+                            Đặt sân
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="configTabsContent">
+                    <!-- Payment & Deposit Configuration -->
+                    <div class="tab-pane fade show active" id="payment" role="tabpanel">
+                        <div class="config-section">
+                            <div class="section-header">
+                                <div>
+                                    <h3 class="section-title">
+                                        <i class="fas fa-percentage"></i>
+                                        Cấu hình phí và tỷ lệ
+                                    </h3>
+                                    <p class="section-description">Điều chỉnh các tỷ lệ cọc, phí giao dịch và chính sách hoàn tiền</p>
+                                </div>
+                                <div class="status-indicator status-active">
+                                    <i class="fas fa-circle"></i>
+                                    Đang hoạt động
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="config-card">
+                                        <div class="config-card-header">
+                                            <h5 class="config-card-title">Tỷ lệ tiền cọc</h5>
+                                        </div>
+                                        <p class="config-card-description">Phần trăm tiền cọc so với tổng giá trị đặt sân</p>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" name="deposit_rate" value="20" min="0" max="100">
+                                            <span class="input-group-text">%</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="config-card">
+                                        <div class="config-card-header">
+                                            <h5 class="config-card-title">Phí dịch vụ</h5>
+                                        </div>
+                                        <p class="config-card-description">Phí dịch vụ được tính trên tổng giá trị đơn hàng</p>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" name="service_fee" value="5" min="0" max="50">
+                                            <span class="input-group-text">%</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="config-card">
+                                        <div class="config-card-header">
+                                            <h5 class="config-card-title">Phí giao dịch</h5>
+                                        </div>
+                                        <p class="config-card-description">Phí giao dịch cố định cho mỗi đơn hàng</p>
+                                        <div class="input-group">
+                                            <span class="input-group-text">VNĐ</span>
+                                            <input type="number" class="form-control" name="transaction_fee" value="5000" min="0">
+                                        </div>
+                                    </div>
+
+                                    <div class="config-card">
+                                        <div class="config-card-header">
+                                            <h5 class="config-card-title">Thời gian hoàn tiền</h5>
+                                        </div>
+                                        <p class="config-card-description">Số ngày để xử lý hoàn tiền</p>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" name="refund_time" value="7" min="1" max="30">
+                                            <span class="input-group-text">ngày</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="config-card">
+                                        <div class="config-card-header">
+                                            <h5 class="config-card-title">Chính sách hủy đơn</h5>
+                                        </div>
+                                        <p class="config-card-description">Thời gian và điều kiện hủy đơn để được hoàn tiền</p>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label class="form-label">Hủy trước 24h</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control" name="cancel_before_24h" value="100" min="0" max="100">
+                                                    <span class="input-group-text">% hoàn tiền</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label">Hủy trước 12h</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control" name="cancel_before_12h" value="50" min="0" max="100">
+                                                    <span class="input-group-text">% hoàn tiền</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label">Hủy dưới 12h</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control" name="cancel_under_12h" value="0" min="0" max="100">
+                                                    <span class="input-group-text">% hoàn tiền</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-end">
+                                <button class="btn btn-reset me-3">
+                                    <i class="fas fa-undo me-2"></i>
+                                    Đặt lại
+                                </button>
+                                <button class="btn btn-save">
+                                    <i class="fas fa-save me-2"></i>
+                                    Lưu cấu hình
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Booking Configuration -->
+                    <div class="tab-pane fade" id="booking" role="tabpanel">
+                        <div class="config-section">
+                            <div class="section-header">
+                                <div>
+                                    <h3 class="section-title">
+                                        <i class="fas fa-calendar-check"></i>
+                                        Cấu hình đặt sân
+                                    </h3>
+                                    <p class="section-description">Thiết lập quy tắc và giới hạn cho việc đặt sân</p>
+                                </div>
+                                <div class="status-indicator status-active">
+                                    <i class="fas fa-circle"></i>
+                                    Đang hoạt động
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="config-card">
+                                        <div class="config-card-header">
+                                            <h5 class="config-card-title">Thời gian đặt trước tối thiểu</h5>
+                                        </div>
+                                        <p class="config-card-description">Khách hàng phải đặt sân trước tối thiểu bao nhiêu giờ</p>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" value="2" min="0" max="24">
+                                            <span class="input-group-text">giờ</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="config-card">
+                                        <div class="config-card-header">
+                                            <h5 class="config-card-title">Thời gian đặt trước tối đa</h5>
+                                        </div>
+                                        <p class="config-card-description">Khách hàng có thể đặt sân trước tối đa bao nhiêu ngày</p>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" value="30" min="1" max="90">
+                                            <span class="input-group-text">ngày</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="config-card">
+                                        <div class="config-card-header">
+                                            <h5 class="config-card-title">Số lần đặt tối đa</h5>
+                                        </div>
+                                        <p class="config-card-description">Mỗi khách hàng có thể đặt tối đa bao nhiêu sân cùng lúc</p>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" value="3" min="1" max="10">
+                                            <span class="input-group-text">sân</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="config-card">
+                                        <div class="config-card-header">
+                                            <h5 class="config-card-title">Thời gian giữ chỗ</h5>
+                                        </div>
+                                        <p class="config-card-description">Thời gian hệ thống giữ chỗ chờ thanh toán</p>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" value="15" min="5" max="60">
+                                            <span class="input-group-text">phút</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="config-card">
+                                        <div class="config-card-header">
+                                            <h5 class="config-card-title">Khung giờ hoạt động</h5>
+                                        </div>
+                                        <p class="config-card-description">Thời gian hệ thống cho phép đặt sân</p>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label class="form-label">Giờ mở cửa</label>
+                                                <input type="time" class="form-control" value="06:00">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Giờ đóng cửa</label>
+                                                <input type="time" class="form-control" value="22:00">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-end">
+                                <button class="btn btn-reset me-3">
+                                    <i class="fas fa-undo me-2"></i>
+                                    Đặt lại
+                                </button>
+                                <button class="btn btn-save">
+                                    <i class="fas fa-save me-2"></i>
+                                    Lưu cấu hình
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Configuration History -->
+            <div class="config-section">
+                <div class="section-header">
+                    <div>
+                        <h3 class="section-title">
+                            <i class="fas fa-history"></i>
+                            Lịch sử thay đổi cấu hình
+                        </h3>
+                        <p class="section-description">Theo dõi các thay đổi cấu hình hệ thống</p>
+                    </div>
+                </div>
+
+                <!-- History items will be rendered dynamically from backend -->
+                <div th:if="${histories == null or histories.isEmpty()}" class="text-center text-muted py-4">
+                    <p>Chưa có lịch sử thay đổi nào</p>
+                </div>
+                
+                <div th:each="history : ${histories}" class="history-item">
+                    <div class="history-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <div class="history-content">
+                        <div class="history-title" th:text="'Thay đổi ' + ${history.configKey} + ' từ ' + ${history.oldValue} + ' thành ' + ${history.newValue}"></div>
+                        <div class="history-description" th:text="'Người thay đổi: ' + ${history.changedBy} + ' - ' + ${history.changeReason}"></div>
+                    </div>
+                    <div class="history-time" th:text="${#temporals.format(history.createdAt, 'dd/MM/yyyy HH:mm')}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Sidebar toggle for mobile
+        document.getElementById('sidebarToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('show');
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(e) {
+            const sidebar = document.getElementById('sidebar');
+            const toggle = document.getElementById('sidebarToggle');
+            
+            if (window.innerWidth <= 768 && 
+                !sidebar.contains(e.target) && 
+                !toggle.contains(e.target)) {
+                sidebar.classList.remove('show');
+            }
+        });
+
+        // Save configuration
+        document.querySelectorAll('.btn-save').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Đang lưu...';
+                this.disabled = true;
+                
+                // Collect configuration data from all input fields
+                const configData = {};
+                const inputs = document.querySelectorAll('.tab-pane.active input, .tab-pane.active select');
+                
+                inputs.forEach(input => {
+                    if (input.type === 'number' || input.type === 'text' || input.type === 'time') {
+                        const key = input.getAttribute('name') || input.getAttribute('id');
+                        if (key) {
+                            configData[key] = input.value;
+                        }
+                    }
+                });
+                
+                console.log('Sending config data:', configData);
+                
+                // Send to API
+                fetch('/admin/system-config/save', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        ...configData,
+                        changedBy: 'Admin'
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Save result:', data);
+                    if (data.success) {
+                        alert('Đã lưu ' + data.savedCount + ' cấu hình thành công!');
+                        // Reload page to see changes
+                        location.reload();
+                    } else {
+                        alert('Lỗi: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Đã xảy ra lỗi khi lưu cấu hình');
+                })
+                .finally(() => {
+                    this.innerHTML = originalText;
+                    this.disabled = false;
+                });
+            });
+        });
+
+        // Reset configuration
+        document.querySelectorAll('.btn-reset').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (confirm('Bạn có chắc chắn muốn đặt lại cấu hình về mặc định?')) {
+                    // Reset form values to default
+                    const form = this.closest('.config-section');
+                    const inputs = form.querySelectorAll('input, select');
+                    inputs.forEach(input => {
+                        if (input.type === 'checkbox') {
+                            input.checked = false;
+                        } else {
+                            input.value = input.getAttribute('data-default') || '';
+                        }
+                    });
+                    alert('Cấu hình đã được đặt lại!');
+                }
+            });
+        });
+
+        // Save all configurations
+        document.getElementById('saveAllConfig').addEventListener('click', function() {
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Đang lưu tất cả...';
+            this.disabled = true;
+            
+            setTimeout(() => {
+                this.innerHTML = originalText;
+                this.disabled = false;
+                alert('Tất cả cấu hình đã được lưu thành công!');
+            }, 3000);
+        });
+
+        // Configuration validation
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('input', function() {
+                const min = parseInt(this.getAttribute('min'));
+                const max = parseInt(this.getAttribute('max'));
+                const value = parseInt(this.value);
+                
+                if (value < min || value > max) {
+                    this.style.borderColor = 'var(--danger-color)';
+                } else {
+                    this.style.borderColor = 'var(--accent-color)';
+                }
+            });
+        });
+
+        // Real-time preview
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('input', function() {
+                // Update preview or calculate values in real-time
+                console.log('Configuration changed:', this.name || this.id, this.value);
+            });
+        });
+
+        // Tab switching animation
+        document.querySelectorAll('[data-bs-toggle="tab"]').forEach(tab => {
+            tab.addEventListener('shown.bs.tab', function(e) {
+                // Add animation or load data when tab is shown
+                console.log('Tab switched to:', e.target.getAttribute('data-bs-target'));
+            });
+        });
+    </script>
+</body>
+</html>

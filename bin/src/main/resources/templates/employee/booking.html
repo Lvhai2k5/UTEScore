@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTEScore – Đơn đặt sân</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #1e293b;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+  /* Sidebar */
+  .sidebar {
+    width: 270px;
+    background: linear-gradient(180deg, #1e293b, #0f172a);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.3);
+    overflow-y: auto;
+  }
+  .logo-section { padding: 24px 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .logo { font-size: 26px; font-weight: 700; text-align: center; background: linear-gradient(135deg,#667eea,#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .staff-info { text-align:center; margin-top:16px; background:rgba(255,255,255,0.05); border-radius:12px; padding:12px; }
+  .staff-avatar { width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#667eea,#764ba2);margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:26px; }
+  .staff-name{font-weight:600;font-size:15px;}
+  .staff-role{font-size:13px;color:#94a3b8;}
+  .menu{padding:16px;flex:1;}
+  .menu-title{font-size:13px;font-weight:600;color:#94a3b8;margin:8px 0;text-transform:uppercase;letter-spacing:0.5px;}
+  .menu-link{display:flex;align-items:center;gap:10px;color:white;text-decoration:none;background:rgba(255,255,255,0.05);padding:12px 14px;border-radius:10px;margin-bottom:6px;font-size:15px;transition:all 0.3s ease;}
+  .menu-link:hover{background:rgba(255,255,255,0.1);transform:translateX(4px);}
+  .menu-link.active{background:linear-gradient(135deg,rgba(102,126,234,0.4),rgba(118,75,162,0.4));}
+  .menu-icon{font-size:18px;width:26px;text-align:center;}
+
+  /* Content */
+  .content {
+    flex: 1;
+    background: #f8fafc;
+    margin: 24px;
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    overflow-y: auto;
+  }
+  header { display:flex;justify-content:space-between;align-items:center;margin-bottom:32px; }
+  header h2 {
+    font-size:32px;font-weight:700;
+    background:linear-gradient(135deg,#1e293b,#475569);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .btn { background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;padding:10px 18px;border-radius:10px;cursor:pointer;font-weight:600;transition:all .3s; }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-secondary{background:white;color:#1e293b;border:1px solid #e2e8f0;padding:10px 18px;border-radius:10px;font-weight:500;cursor:pointer;}
+  .toolbar{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;}
+  .input,.select{padding:10px 14px;border-radius:8px;border:1px solid #cbd5e1;font-size:15px;}
+  .card{
+    background:white;
+    border-radius:16px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.06);
+    padding:24px;
+  }
+  .table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:12px;
+  }
+  .table th,.table td{
+    padding:12px 14px;
+    border-bottom:1px solid #e2e8f0;
+    text-align:left;
+  }
+  .table th{background:#f1f5f9;color:#1e293b;font-weight:600;}
+  .table tr:hover{background:#f9fafb;}
+  .badge{padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;}
+  .badge.green{background:#dcfce7;color:#166534;}
+  .badge.gray{background:#f1f5f9;color:#475569;}
+  .footer-note{text-align:center;margin-top:16px;color:#64748b;font-size:13px;}
+
+  /* Modal */
+  .modal-overlay{
+    position:fixed; inset:0; display:none; align-items:center; justify-content:center;
+    background:rgba(15,23,42,.55); z-index:1000;
+  }
+  .modal{
+    background:#fff; border-radius:16px; padding:24px; width:min(640px,92vw);
+    box-shadow:0 20px 60px rgba(0,0,0,.2);
+  }
+  .modal header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+  .modal h3{font-size:20px;margin:0}
+  .close{cursor:pointer;border:none;background:#e2e8f0;border-radius:8px;padding:6px 10px}
+  .modal .row{display:flex;gap:12px;margin:8px 0}
+  .modal .label{width:140px;color:#64748b}
+  .modal .value{font-weight:600}
+  .modal .badge{padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600}
+  .modal .badge.green{background:#dcfce7;color:#166534}
+  .modal .badge.gray{background:#f1f5f9;color:#475569}
+</style>
+</head>
+<body>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo-section">
+    <div class="logo">UTEScore</div>
+    <div class="staff-info">
+      <div class="staff-avatar">⚙️</div>
+      <div class="staff-name" th:text="${nhanVienDangNhap?.hoTen}">Nhân viên</div>
+      <div class="staff-role">Bộ phận sân bóng</div>
+    </div>
+  </div>
+
+    <div class="menu">
+      <p class="menu-title">🏟️ Quản lý sân</p>
+      <a href="/employee/booking" class="menu-link active"><span class="menu-icon">📋</span>Đơn đặt sân</a>
+        <a href="/employee/checkin" class="menu-link"><span class="menu-icon">🎫</span>Check-in khách</a>
+        <a href="/employee/payment" class="menu-link"><span class="menu-icon">💰</span>Thanh toán</a>
+        <a href="/employee/refund" class="menu-link"><span class="menu-icon">👥</span>Hoàn tiền</a>
+        <a href="/employee/schedule" class="menu-link"><span class="menu-icon">📅</span>Lịch sân</a>
+
+      <p class="menu-title">📢 Báo cáo & Thông tin</p>
+      <a href="/employee/incidents" class="menu-link"><span class="menu-icon">⚠️</span>Sự cố / Ghi chú</a>
+      <a href="/employee/report" class="menu-link"><span class="menu-icon">📊</span>Thống kê công việc</a>
+
+      <p class="menu-title">⚙️ Cá nhân</p>
+      <a href="/employee/profile" class="menu-link"><span class="menu-icon">👤</span>Thông tin cá nhân</a>
+      <a href="/logout" class="menu-link"><span class="menu-icon">🚪</span>Đăng xuất</a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <section class="content">
+    <header>
+  <h2>Đơn đặt sân</h2>
+  <div>
+    <button class="btn-secondary" onclick="location.href='/employee'">Trang chủ</button>
+  </div>
+</header>
+
+
+    <div class="toolbar">
+      <form th:action="@{/employee/booking/search}" method="get" style="display:flex;gap:8px;">
+        <input class="input" name="keyword" placeholder="🔎 Tìm theo tên khách / mã đơn ..." style="max-width:320px">
+        <button class="btn" type="submit">Tìm kiếm</button>
+      </form>
+
+      <form th:action="@{/employee/booking/filter}" method="get">
+        <select name="type" class="select" style="max-width:180px" onchange="this.form.submit()">
+          <option value="" th:selected="${selectedType == null or selectedType == ''}">Tất cả</option>
+          <option value="Đặt cọc" th:selected="${selectedType == 'Đặt cọc'}">Đặt cọc</option>
+          <option value="Đã thanh toán" th:selected="${selectedType == 'Đã thanh toán'}">Đã thanh toán</option>
+          <option value="Hoàn tất" th:selected="${selectedType == 'Hoàn tất'}">Hoàn tất</option>
+        </select>
+      </form>
+
+    </div>
+
+    <div class="card">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Mã đơn</th><th>Khách hàng</th><th>Sân</th><th>Thời gian</th><th>Trạng thái</th><th>Tổng tiền</th><th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="b : ${bookings}">
+            <td th:text="'#D' + ${b.maDonDat}">#Mã</td>
+            <td th:text="${b.khachHang.hoTen}">Tên khách</td>
+            <td th:text="${b.sanBong.tenSan}">Tên sân</td>
+            <td th:text="${b.khungGioBatDau} + ' - ' + ${b.khungGioKetThuc}">18:00–19:30</td>
+            <td>
+              <span class="badge green" th:text="${not #lists.isEmpty(b.thanhToans) ? b.thanhToans.get(0).loaiThanhToan : 'Chưa thanh toán'}">Đã cọc</span>
+            </td>
+            <td th:text="${#numbers.formatDecimal(b.tongTien,0,'COMMA',0,'POINT')} + ' đ'">350.000 đ</td>
+            <td>
+              <button class="btn-secondary btn-detail"
+                th:attr="data-madon=${'#D' + b.maDonDat},
+                         data-khach=${b.khachHang.hoTen},
+                         data-san=${b.sanBong.tenSan},
+                         data-batdau=${b.khungGioBatDau},
+                         data-ketthuc=${b.khungGioKetThuc},
+                         data-ngay=${#temporals.format(b.ngayThue, 'dd/MM/yyyy HH:mm')},
+                         data-tongtien=${#numbers.formatDecimal(b.tongTien,0,'COMMA',0,'POINT') + ' đ'},
+                         data-trangthai=${not #lists.isEmpty(b.thanhToans) ? b.thanhToans.get(0).loaiThanhToan : 'Chưa thanh toán'}">
+                Chi tiết
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="footer-note" th:if="${#lists.isEmpty(bookings)}">Không có thêm đơn nào.</p>
+    </div>
+    <p class="footer-note">© 2025 UTEScore • Employee UI</p>
+  </section>
+
+  <!-- MODAL CHI TIẾT -->
+  <div id="detailModal" class="modal-overlay">
+    <div class="modal">
+      <header>
+        <h3>Chi tiết đơn <span id="mMaDon"></span></h3>
+        <button id="closeModal" class="close">Đóng</button>
+      </header>
+      <div class="row"><div class="label">Khách hàng:</div><div class="value" id="mKhach"></div></div>
+      <div class="row"><div class="label">Sân:</div><div class="value" id="mSan"></div></div>
+      <div class="row"><div class="label">Thời gian:</div><div class="value" id="mThoiGian"></div></div>
+      <div class="row"><div class="label">Ngày đặt:</div><div class="value" id="mNgay"></div></div>
+      <div class="row"><div class="label">Tổng tiền:</div><div class="value" id="mTongTien"></div></div>
+      <div class="row"><div class="label">Trạng thái:</div><div class="value"><span id="mTrangThai" class="badge gray"></span></div></div>
+    </div>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', ()=>{
+    const modal = document.getElementById('detailModal');
+    const closeBtn = document.getElementById('closeModal');
+
+    document.querySelectorAll('.btn-detail').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const d = btn.dataset;
+        document.getElementById('mMaDon').textContent = d.madon || '';
+        document.getElementById('mKhach').textContent = d.khach || '';
+        document.getElementById('mSan').textContent = d.san || '';
+        document.getElementById('mThoiGian').textContent = (d.batdau||'') + ' - ' + (d.ketthuc||'');
+        document.getElementById('mNgay').textContent = d.ngay || '';
+        document.getElementById('mTongTien').textContent = d.tongtien || '';
+        const badge = document.getElementById('mTrangThai');
+        const tt = d.trangthai || 'Chưa thanh toán';
+        badge.textContent = tt;
+        badge.className = 'badge ' + ((tt === 'Đã cọc' || tt === 'Hoàn tất') ? 'green' : 'gray');
+        modal.style.display = 'flex';
+      });
+    });
+
+    closeBtn.addEventListener('click', ()=> modal.style.display='none');
+    modal.addEventListener('click', e=>{ if(e.target===modal) modal.style.display='none'; });
+    document.addEventListener('keydown', e=>{ if(e.key === 'Escape') modal.style.display='none'; });
+  });
+  </script>
+</body>
+</html>

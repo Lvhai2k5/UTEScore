@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+  <section th:fragment="content">
+    <header>
+      <h2>Bảng điều khiển</h2>
+      <div class="header-actions">
+        <button class="btn-notification">🔔<span class="notification-badge"></span></button>
+        <button class="btn-logout">Đăng xuất</button>
+      </div>
+    </header>
+
+    <div class="welcome-card">
+      <h3>Chào mừng trở lại! 👋</h3>
+      <p>Chúc bạn một ngày làm việc hiệu quả và tràn đầy năng lượng!</p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-header"><div>Đơn hôm nay</div><div class="stat-icon blue">📋</div></div>
+        <div class="stat-value">12</div>
+        <div class="stat-label">Tổng số đơn</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-header"><div>Khách đang chơi</div><div class="stat-icon green">👥</div></div>
+        <div class="stat-value">4</div>
+        <div class="stat-label">Đang hoạt động</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-header"><div>Doanh thu ca</div><div class="stat-icon purple">💰</div></div>
+        <div class="stat-value">6.35M</div>
+        <div class="stat-label">Triệu đồng</div>
+      </div>
+    </div>
+
+    <div class="quick-actions">
+      <h4>Thao tác nhanh</h4>
+      <div class="action-grid">
+        <button class="action-btn"><span class="action-btn-icon">➕</span>Tạo đơn mới</button>
+        <button class="action-btn"><span class="action-btn-icon">✅</span>Check-in khách</button>
+        <button class="action-btn"><span class="action-btn-icon">💳</span>Thanh toán nhanh</button>
+        <button class="action-btn"><span class="action-btn-icon">📊</span>Xem báo cáo</button>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

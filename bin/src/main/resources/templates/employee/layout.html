@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${pageTitle} ?: 'UTEScore – Trang nhân viên'"></title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex; height: 100vh; color: #1e293b; overflow: hidden;
+    }
+    .sidebar {
+      width: 270px;
+      background: linear-gradient(180deg, #1e293b, #0f172a);
+      color: white; display: flex; flex-direction: column;
+      box-shadow: 4px 0 24px rgba(0,0,0,0.3); overflow-y: auto;
+    }
+    .logo-section { padding: 24px 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .logo {
+      font-size: 26px; font-weight: 700; text-align: center;
+      background: linear-gradient(135deg, #667eea, #a78bfa);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .staff-info { text-align: center; margin-top: 16px;
+      background: rgba(255,255,255,0.05); border-radius: 12px; padding: 12px; }
+    .staff-avatar { width: 60px; height: 60px; border-radius: 50%;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 26px; }
+    .staff-name { font-weight: 600; font-size: 15px; }
+    .staff-role { font-size: 13px; color: #94a3b8; }
+    .menu { padding: 16px; flex: 1; }
+    .menu-title {
+      font-size: 13px; font-weight: 600; color: #94a3b8;
+      margin: 8px 0; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .menu-link {
+      display: flex; align-items: center; gap: 10px; color: white;
+      text-decoration: none; background: rgba(255,255,255,0.05);
+      padding: 12px 14px; border-radius: 10px; margin-bottom: 6px;
+      font-size: 15px; transition: all 0.3s ease;
+    }
+    .menu-link:hover { background: rgba(255,255,255,0.1); transform: translateX(4px); }
+    .menu-link.active { background: linear-gradient(135deg, rgba(102,126,234,0.4), rgba(118,75,162,0.4)); }
+
+    .content {
+      flex: 1; background: #f8fafc; margin: 24px;
+      border-radius: 24px; padding: 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+      overflow-y: auto;
+    }
+
+    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+    header h2 {
+      font-size: 32px; font-weight: 700;
+      background: linear-gradient(135deg, #1e293b, #475569);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white; border: none; padding: 10px 18px;
+      border-radius: 10px; cursor: pointer; font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-secondary {
+      background: white; color: #1e293b; border: 1px solid #e2e8f0;
+      padding: 10px 18px; border-radius: 10px; cursor: pointer; font-weight: 500;
+    }
+
+    .footer-note { text-align: center; margin-top: 24px; color: #64748b; font-size: 13px; }
+  </style>
+</head>
+
+<body>
+  <aside class="sidebar">
+    <div class="logo-section">
+    <div class="logo">UTEScore</div>
+    <div class="staff-info">
+      <div class="staff-avatar">⚙️</div>
+      <div class="staff-name" th:text="${nhanVienDangNhap?.hoTen}">Nhân viên</div>
+      <div class="staff-role">Bộ phận sân bóng</div>
+    </div>
+  </div>
+
+    <div class="menu" th:fragment="menu(activePage)">
+      <p class="menu-title">🏟️ Quản lý sân</p>
+      <a href="/employee/booking" class="menu-link" th:classappend="${activePage=='booking'}?' active'">📋 Đơn đặt sân</a>
+      <a href="/employee/checkin" class="menu-link" th:classappend="${activePage=='checkin'}?' active'">🎫 Check-in khách</a>
+      <a href="/employee/payment" class="menu-link" th:classappend="${activePage=='payment'}?' active'">💰 Thanh toán & Hoàn tiền</a>
+      <a href="/employee/customers" class="menu-link">👥 Khách tại sân</a>
+      <a href="/employee/schedule" class="menu-link">📅 Lịch sân & Bảo trì</a>
+    </div>
+  </aside>
+
+  <section class="content">
+    <!-- nội dung trang con -->
+    <div th:replace="${contentFragment}"></div>
+    <p class="footer-note">© 2025 UTEScore • Employee UI</p>
+  </section>
+</body>
+</html>

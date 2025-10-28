@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title th:text="${pageTitle} ?: 'UTEScore – Nhân viên'">UTEScore – Nhân viên</title>
+  <link rel="stylesheet" th:href="@{/css/employee.css}" />
+  <script defer th:src="@{/js/employee.js}"></script>
+</head>
+
+<body>
+  <div class="container-layout">
+    <!-- Sidebar -->
+    <aside th:replace="~{layout/fragments :: sidebar}"></aside>
+
+    <!-- Content -->
+    <main class="main-content">
+      <div th:replace="~{${content} :: content}"></div>
+    </main>
+  </div>
+</body>
+</html>

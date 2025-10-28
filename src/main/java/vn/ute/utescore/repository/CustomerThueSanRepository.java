@@ -8,7 +8,9 @@ import org.springframework.data.repository.query.Param;
 import vn.ute.utescore.model.KhachHang;
 import vn.ute.utescore.model.ThueSan;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -111,4 +113,21 @@ public interface CustomerThueSanRepository extends JpaRepository<ThueSan, Intege
     	        @Param("to") LocalDateTime to,
     	        Pageable pageable
     	);
+    @Query(value = """
+    	    SELECT * FROM ThueSan
+    	    WHERE MaSan = :pitchId
+    	      AND CAST(NgayThue AS date) = CAST(:ngayThue AS date)
+    	      AND (
+    	            (KhungGioBatDau < :endTime AND KhungGioKetThuc > :startTime)
+    	          )
+    	      AND (GhiChu IS NULL OR LOWER(GhiChu) NOT LIKE N'%hủy%')
+    	    """, nativeQuery = true)
+    	List<ThueSan> findOverlappingBookings(
+    	        @Param("pitchId") Integer pitchId,
+    	        @Param("ngayThue") LocalDate ngayThue,
+    	        @Param("startTime") String startTime,
+    	        @Param("endTime") String endTime
+    	);
+
+
 }

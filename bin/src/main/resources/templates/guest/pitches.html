@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Danh sách sân bóng</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1aa34a;
+      color: white;
+      padding: 10px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .pitch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 30px;
+    }
+    .pitch-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: 0.3s;
+      padding: 15px;
+    }
+    .pitch-card:hover { transform: scale(1.02); }
+    .pitch-card img {
+      width: 100%;
+      height: 220px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+    .btn-book {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn-book:hover { background-color: #0056b3; }
+  </style>
+</head>
+<body>
+  <header>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <img th:src="@{https://res.cloudinary.com/du6x32par/image/upload/v1761411547/logo_kbhaey.jpg}" alt="Logo" style="height:50px;border-radius:5px;">
+    <h2 style="margin:0;">⚽ UTEScore</h2>
+  </div>
+
+  <nav style="display:flex;gap:25px;">
+    <a th:href="@{/}" style="color:white;text-decoration:none;">🏠 Trang chủ</a>
+   
+    <a th:href="@{/login}" style="background:white;color:#1aa34a;padding:6px 14px;border-radius:6px;text-decoration:none;">🔑 Đăng nhập</a>
+  </nav>
+</header>
+
+<!-- ✅ Hiển thị danh sách sân -->
+<div class="pitch-grid">
+  <div th:each="p : ${pitches}" class="pitch-card">
+    
+    <img th:src="@{${p.hinhAnh}}" class="card-img-top" alt="Sân bóng" style="height:220px;object-fit:cover;">
+    <h3 th:text="${p.tenSan}"></h3>
+    <p><b>Địa chỉ:</b> <span th:text="${p.diaChi}"></span></p>
+    <p><b>Loại sân:</b> <span th:text="${p.loaiSan}"></span></p>
+    
+    <p><b>Khung giờ trống:</b> <span th:text="${p.khungGioConTrong}"></span></p>
+
+    <div style="margin-top:10px; display:flex; gap:10px;">
+  
+  <a th:href="@{'/pitches/' + ${p.sanId}}" class="btn btn-outline-primary">
+      🔍 Chi tiết
+  </a>
+
+  <a th:href="@{'/pitches/' + ${p.sanId} + '/reviews'}" class="btn btn-link">
+      ⭐ Xem đánh giá
+  </a>
+
+  <button class="btn-book" onclick="redirectToLogin()">Đặt sân</button>
+
+</div>
+
+  </div>
+</div>
+
+<script>
+  function redirectToLogin() {
+    window.location.href = "/login";
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTEScore – Thông tin nhân viên</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #1e293b;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* ===== SIDEBAR ===== */
+  .sidebar {
+    width: 270px;
+    background: linear-gradient(180deg, #1e293b, #0f172a);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.3);
+    overflow-y: auto;
+  }
+  .logo-section {
+    padding: 24px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .logo {
+    font-size: 26px;
+    font-weight: 700;
+    text-align: center;
+    background: linear-gradient(135deg, #667eea, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .staff-info {
+    text-align: center;
+    margin-top: 16px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 12px;
+  }
+  .staff-avatar {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    margin: 0 auto 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+  }
+  .staff-name { font-weight: 600; font-size: 15px; }
+  .staff-role { font-size: 13px; color: #94a3b8; }
+
+  .menu {
+    padding: 16px;
+    flex: 1;
+  }
+  .menu-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #94a3b8;
+    margin: 8px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .menu-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    background: rgba(255,255,255,0.05);
+    padding: 12px 14px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+  }
+  .menu-link:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateX(4px);
+  }
+  .menu-link.active {
+    background: linear-gradient(135deg, rgba(102,126,234,0.4), rgba(118,75,162,0.4));
+  }
+  .menu-icon {
+    font-size: 18px;
+    width: 26px;
+    text-align: center;
+  }
+
+  /* ===== CONTENT ===== */
+  .content {
+    flex: 1;
+    background: #f8fafc;
+    margin: 24px;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    overflow-y: auto;
+  }
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #1e293b, #475569);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px;
+  }
+
+  .profile-card {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    max-width: 700px;
+    margin: auto;
+  }
+
+  .avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #667eea;
+    color: white;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0 auto 20px auto;
+  }
+
+  .info {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .info strong {
+    width: 160px;
+    display: inline-block;
+    color: #1e293b;
+  }
+
+  .info p {
+    margin-bottom: 8px;
+  }
+
+</style>
+</head>
+<body>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo-section">
+      <div class="logo">UTEScore</div>
+      <div class="staff-info">
+        <div class="staff-avatar">⚙️</div>
+        <div class="staff-name" th:text="${nhanVienDangNhap?.hoTen ?: 'Nhân viên'}">Nhân viên</div>
+        <div class="staff-role">Bộ phận sân bóng</div>
+      </div>
+    </div>
+
+    <div class="menu">
+      <p class="menu-title">🏟️ Quản lý sân</p>
+      <a href="/employee/booking" class="menu-link"><span class="menu-icon">📋</span>Đơn đặt sân</a>
+      <a href="/employee/checkin" class="menu-link"><span class="menu-icon">🎫</span>Check-in khách</a>
+      <a href="/employee/payment" class="menu-link"><span class="menu-icon">💰</span>Thanh toán</a>
+      <a href="/employee/refund" class="menu-link"><span class="menu-icon">👥</span>Hoàn tiền</a>
+      <a href="/employee/schedule" class="menu-link"><span class="menu-icon">📅</span>Lịch sân</a>
+
+      <p class="menu-title">📢 Báo cáo & Thông tin</p>
+      <a href="/employee/incidents" class="menu-link"><span class="menu-icon">⚠️</span>Sự cố / Ghi chú</a>
+      <a href="/employee/report" class="menu-link"><span class="menu-icon">📊</span>Thống kê công việc</a>
+
+      <p class="menu-title">⚙️ Cá nhân</p>
+      <a href="/employee/profile" class="menu-link active"><span class="menu-icon">👤</span>Thông tin cá nhân</a>
+      <a href="/logout" class="menu-link"><span class="menu-icon">🚪</span>Đăng xuất</a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <section class="content">
+    <h2>Thông tin cá nhân</h2>
+
+    <div class="profile-card">
+      <div class="avatar" th:text="${nhanVien != null && nhanVien.fullName != null ? nhanVien.fullName.substring(0,1) : '?'}">?</div>
+
+      <h3 style="text-align:center; margin-bottom:24px;"
+          th:text="${nhanVien != null && nhanVien.fullName != null ? nhanVien.fullName : 'Chưa có tên'}">
+        Chưa có tên
+      </h3>
+
+      <div class="info">
+        <p><strong>Email:</strong> 
+          <span th:text="${nhanVien != null && nhanVien.email != null ? nhanVien.email : 'Chưa có'}">Chưa có</span>
+        </p>
+        <p><strong>Số điện thoại:</strong> 
+          <span th:text="${nhanVien != null && nhanVien.phone != null ? nhanVien.phone : 'Chưa có'}">Chưa có</span>
+        </p>
+        <p><strong>Trạng thái:</strong> 
+          <span th:text="${nhanVien != null && nhanVien.status != null ? nhanVien.status : 'Không xác định'}">Không xác định</span>
+        </p>
+        <p><strong>Ngày tạo:</strong> 
+          <span th:text="${nhanVien != null && nhanVien.createdAt != null ? #temporals.format(nhanVien.createdAt, 'dd/MM/yyyy HH:mm') : 'N/A'}">N/A</span>
+        </p>
+        <p><strong>Cập nhật lần cuối:</strong> 
+          <span th:text="${nhanVien != null && nhanVien.updateAt != null ? #temporals.format(nhanVien.updateAt, 'dd/MM/yyyy HH:mm') : 'N/A'}">N/A</span>
+        </p>
+        <p><strong>Vai trò:</strong> 
+          <span th:text="${nhanVien != null && nhanVien.role != null && nhanVien.role.roleName != null ? nhanVien.role.roleName : 'Chưa có vai trò'}">Chưa có vai trò</span>
+        </p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

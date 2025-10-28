@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTEScore – Lịch đặt sân</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #1e293b;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* ===== SIDEBAR ===== */
+  .sidebar {
+    width: 270px;
+    background: linear-gradient(180deg, #1e293b, #0f172a);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.3);
+    overflow-y: auto;
+  }
+  .logo-section { padding: 24px 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .logo {
+    font-size: 26px; font-weight: 700; text-align: center;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .staff-info {
+    text-align: center; margin-top: 16px;
+    background: rgba(255,255,255,0.05); border-radius: 12px; padding: 12px;
+  }
+  .staff-avatar {
+    width: 60px; height: 60px; border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    margin: 0 auto 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+  }
+  .staff-name { font-weight: 600; font-size: 15px; }
+  .staff-role { font-size: 13px; color: #94a3b8; }
+
+  .menu { padding: 16px; flex: 1; }
+  .menu-title {
+    font-size: 13px; font-weight: 600; color: #94a3b8;
+    margin: 8px 0; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .menu-link {
+    display: flex; align-items: center; gap: 10px; color: white;
+    text-decoration: none; background: rgba(255,255,255,0.05);
+    padding: 12px 14px; border-radius: 10px; margin-bottom: 6px;
+    font-size: 15px; transition: all 0.3s ease;
+  }
+  .menu-link:hover { background: rgba(255,255,255,0.1); transform: translateX(4px); }
+  .menu-link.active {
+    background: linear-gradient(135deg, rgba(102,126,234,0.4), rgba(118,75,162,0.4));
+  }
+
+  /* ===== CONTENT ===== */
+  .content {
+    flex: 1; background: #f8fafc;
+    margin: 24px; border-radius: 24px; padding: 32px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1); overflow-y: auto;
+  }
+
+  header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 24px;
+  }
+  header h2 {
+    font-size: 32px; font-weight: 700;
+    background: linear-gradient(135deg, #1e293b, #475569);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .btn-logout {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    border: none; color: white; padding: 10px 18px;
+    border-radius: 10px; font-weight: 600; cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .btn-logout:hover { opacity: 0.8; }
+
+  /* ===== FORM ===== */
+  .schedule-form {
+    background: white; border-radius: 16px; padding: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06); margin-bottom: 24px;
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .schedule-form label { font-weight: 600; }
+  .schedule-form input, .schedule-form select {
+    padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 8px;
+    font-size: 14px;
+  }
+  .schedule-form button {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white; border: none; padding: 10px 18px;
+    border-radius: 8px; font-weight: 600; cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .schedule-form button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(102,126,234,0.4);
+  }
+
+  /* ===== STATISTICS ===== */
+  .summary-bar {
+    display: flex; gap: 20px; margin-bottom: 28px; flex-wrap: wrap;
+  }
+  .summary-card {
+    flex: 1; min-width: 200px;
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 18px; border-radius: 16px;
+    color: white; box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    animation: fadeIn 0.6s ease;
+  }
+  .summary-card.free { background: linear-gradient(135deg, #22c55e, #16a34a); }
+  .summary-card.booked { background: linear-gradient(135deg, #ef4444, #b91c1c); }
+  .summary-card .icon {
+    font-size: 28px; background: rgba(255,255,255,0.25);
+    padding: 10px; border-radius: 10px;
+  }
+
+  /* ===== SCHEDULE GRID ===== */
+  .schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+    animation: fadeIn 0.8s ease;
+  }
+  .slot-card {
+    border-radius: 14px; text-align: center; padding: 20px 10px;
+    background: white; transition: all 0.25s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    position: relative; overflow: hidden;
+  }
+  .slot-card::after {
+    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 6px;
+    border-radius: 14px 14px 0 0;
+  }
+  .slot-card.free::after { background: #22c55e; }
+  .slot-card.booked::after { background: #ef4444; }
+
+  .slot-card .time { font-weight: 700; font-size: 16px; margin-top: 6px; }
+  .slot-card .status { font-size: 13px; margin-top: 4px; opacity: 0.8; }
+  .slot-card.free { color: #16a34a; border: 1px solid #86efac; }
+  .slot-card.booked { color: #b91c1c; border: 1px solid #fca5a5; }
+  .slot-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 30px; text-align: center;
+    color: #94a3b8; font-size: 13px;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+   <div class="logo-section">
+    <div class="logo">UTEScore</div>
+    <div class="staff-info">
+      <div class="staff-avatar">⚙️</div>
+      <div class="staff-name" th:text="${nhanVienDangNhap?.hoTen}">Nhân viên</div>
+      <div class="staff-role">Bộ phận sân bóng</div>
+    </div>
+  </div>
+     <div class="menu">
+      <p class="menu-title">🏟️ Quản lý sân</p>
+      <a href="/employee/booking" class="menu-link active"><span class="menu-icon">📋</span>Đơn đặt sân</a>
+        <a href="/employee/checkin" class="menu-link"><span class="menu-icon">🎫</span>Check-in khách</a>
+        <a href="/employee/payment" class="menu-link"><span class="menu-icon">💰</span>Thanh toán</a>
+        <a href="/employee/refund" class="menu-link"><span class="menu-icon">👥</span>Hoàn tiền</a>
+        <a href="/employee/schedule" class="menu-link"><span class="menu-icon">📅</span>Lịch sân</a>
+
+      <p class="menu-title">📢 Báo cáo & Thông tin</p>
+      <a href="/employee/incidents" class="menu-link"><span class="menu-icon">⚠️</span>Sự cố / Ghi chú</a>
+      <a href="/employee/report" class="menu-link"><span class="menu-icon">📊</span>Thống kê công việc</a>
+
+      <p class="menu-title">⚙️ Cá nhân</p>
+      <a href="/employee/profile" class="menu-link"><span class="menu-icon">👤</span>Thông tin cá nhân</a>
+      <a href="/logout" class="menu-link"><span class="menu-icon">🚪</span>Đăng xuất</a>
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <section class="content">
+    <header>
+      <h2>Lịch đặt sân</h2>
+    </header>
+
+    <!-- Form chọn ngày + sân -->
+    <div class="schedule-form">
+      <form method="get" th:action="@{/employee/schedule}">
+        <label>📆 Chọn ngày:</label>
+        <input type="date" name="date" th:value="${selectedDate}" required>
+
+        <label>⚽ Chọn sân:</label>
+        <select name="sanId" required>
+          <option th:each="s : ${sanList}"
+                  th:value="${s.maSan}"
+                  th:text="${s.tenSan}"
+                  th:selected="${selectedSan != null and selectedSan.maSan == s.maSan}">
+          </option>
+        </select>
+
+        <button type="submit">🔍 Xem lịch</button>
+      </form>
+    </div>
+
+    <!-- Thống kê nhanh -->
+    <div class="summary-bar" th:if="${slots.size() > 0}">
+      <div class="summary-card free">
+        <span class="icon">✅</span>
+        <div>
+          <h4 th:text="${#lists.size(slots.?[status == 'Trống'])}"></h4>
+          <p>Khung trống</p>
+        </div>
+      </div>
+      <div class="summary-card booked">
+        <span class="icon">❌</span>
+        <div>
+          <h4 th:text="${#lists.size(slots.?[status == 'Đã đặt'])}"></h4>
+          <p>Đã đặt</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lịch khung giờ -->
+    <div class="schedule-grid" th:if="${slots.size() > 0}">
+      <div th:each="slot : ${slots}"
+           th:class="'slot-card ' + (${slot.status == 'Đã đặt'} ? 'booked' : 'free')">
+        <div class="time" th:text="${slot.time}"></div>
+        <div class="status" th:text="${slot.status}"></div>
+      </div>
+    </div>
+
+    <footer>© 2025 UTEScore – Lịch quản lý sân bóng chuyên nghiệp</footer>
+  </section>
+</body>
+</html>

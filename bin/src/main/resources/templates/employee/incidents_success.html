@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>UTEScore – Báo cáo thành công</title>
+<meta http-equiv="refresh" content="3;url=/employee"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * {margin:0;padding:0;box-sizing:border-box;}
+  body {
+    font-family:'Inter',sans-serif;
+    height:100vh;
+    background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#1e293b;
+    animation:fadeIn 1s ease;
+  }
+
+  .box {
+    background:#fff;
+    padding:40px 60px;
+    border-radius:20px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.15);
+    text-align:center;
+    max-width:500px;
+  }
+  .icon {
+    font-size:70px;
+    color:#22c55e;
+    animation:pop 0.6s ease;
+  }
+  h2 {
+    font-size:26px;
+    color:#1e293b;
+    margin-top:10px;
+    background:linear-gradient(135deg,#16a34a,#22c55e);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  p {font-size:16px;color:#475569;margin-top:10px;}
+  .timer {
+    margin-top:14px;
+    font-size:14px;
+    color:#64748b;
+  }
+  @keyframes fadeIn {from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes pop {0%{transform:scale(0.7);}100%{transform:scale(1);}}
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="icon">✅</div>
+    <h2>Báo cáo sự cố thành công!</h2>
+    <p th:text="${message}">Cảm ơn bạn đã gửi báo cáo. Hệ thống sẽ xử lý sớm nhất.</p>
+    <p class="timer">⏳ Trang sẽ tự động quay lại sau <strong>3 giây</strong>...</p>
+  </div>
+</body>
+</html>

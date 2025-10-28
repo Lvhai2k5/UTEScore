@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Đăng ký - UTEScore</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+    <style>
+        :root {
+            --primary: #198754;
+            --primary-dark: #146c43;
+            --gray-light: #f8f9fa;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #d4edda 0%, #a8e6cf 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        .register-container {
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            max-width: 480px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .register-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 2rem 1.5rem 2.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .register-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+            pointer-events: none;
+        }
+
+        .register-header h3 {
+            margin: 0;
+            font-weight: 700;
+            font-size: 1.8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Ảnh Cloudinary */
+        .register-header img {
+            width: 110px;
+            height: 110px;
+            border-radius: 1rem;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .form-container {
+            padding: 2rem;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .input-group .form-control {
+            border-radius: 0.75rem;
+            padding: 0.75rem 1rem 0.75rem 2.8rem;
+            border: 1.5px solid #dee2e6;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            height: 50px;
+        }
+
+        .input-group .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .input-group .input-icon {
+            position: absolute;
+            left: 0.9rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+            font-size: 1.1rem;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 0.5rem;
+        }
+
+        .password-strength {
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .btn-register {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            border-radius: 0.75rem;
+            padding: 0.85rem;
+            font-weight: 600;
+            font-size: 1rem;
+            color: white;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-register:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(25, 135, 84, 0.3);
+        }
+
+        .btn-register::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-register:active::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .error-msg {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+            border: 1px solid #f5c6cb;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .back-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .back-link a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+
+        @media (max-width: 480px) {
+            .register-container {
+                margin: 1rem;
+                border-radius: 1rem;
+            }
+            .form-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="register-container mx-auto">
+        <!-- Header với Ảnh Cloudinary -->
+        <div class="register-header">
+            <img 
+                src="https://res.cloudinary.com/du6x32par/image/upload/v1761650728/meme-hai_qwvqnk.jpg" 
+                alt="UTEScore Meme">
+            <h3>Đăng ký tài khoản</h3>
+        </div>
+
+        <!-- Form -->
+        <div class="form-container">
+            <form method="post" th:action="@{/register}" th:object="${dto}">
+                <!-- Họ tên -->
+                <div>
+                    <label class="form-label">Họ và tên</label>
+                    <div class="input-group">
+                        <i class="fas fa-user input-icon"></i>
+                        <input type="text" class="form-control"
+                               th:field="*{hoTen}"
+                               placeholder="Nguyễn Văn A"
+                               required>
+                    </div>
+                </div>
+
+                <!-- Số điện thoại -->
+                <div>
+                    <label class="form-label">Số điện thoại</label>
+                    <div class="input-group">
+                        <i class="fas fa-phone input-icon"></i>
+                        <input type="text" class="form-control"
+                               th:field="*{soDienThoai}"
+                               placeholder="0901234567"
+                               required>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label class="form-label">Email</label>
+                    <div class="input-group">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input type="email" class="form-control"
+                               th:field="*{email}"
+                               placeholder="you@example.com"
+                               required>
+                    </div>
+                </div>
+
+                <!-- Mật khẩu + Kiểm tra độ mạnh -->
+                <div>
+                    <label class="form-label">Mật khẩu</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" id="passwordInput" class="form-control"
+                               th:field="*{matKhau}"
+                               placeholder="Ít nhất 8 ký tự, có chữ hoa, số, ký tự đặc biệt"
+                               required>
+                    </div>
+                    <div id="strengthMessage" class="password-strength"></div>
+                </div>
+
+                <!-- Lỗi -->
+                <div th:if="${error}" class="error-msg">
+                    <i class="fas fa-exclamation-triangle me-1"></i>
+                    <span th:text="${error}"></span>
+                </div>
+
+                <!-- Nút đăng ký -->
+                <button type="submit" class="btn btn-register w-100">
+                    Đăng ký ngay
+                </button>
+            </form>
+
+            <!-- Quay lại -->
+            <div class="back-link">
+                <a th:href="@{/login}">
+                    <i class="fas fa-arrow-left me-1"></i> Quay lại đăng nhập
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Kiểm tra độ mạnh mật khẩu -->
+<script>
+    const passwordInput = document.getElementById("passwordInput");
+    const strengthMsg = document.getElementById("strengthMessage");
+
+    passwordInput.addEventListener("input", () => {
+        const val = passwordInput.value;
+        let strength = 0;
+        let feedback = "";
+
+        if (val.length >= 8) strength++;
+        if (/[A-Z]/.test(val)) strength++;
+        if (/[0-9]/.test(val)) strength++;
+        if (/[^A-Za-z0-9]/.test(val)) strength++;
+
+        switch (strength) {
+            case 0:
+            case 1:
+                feedback = "Yếu";
+                strengthMsg.style.color = "#dc3545";
+                break;
+            case 2:
+                feedback = "Trung bình";
+                strengthMsg.style.color = "#fd7e14";
+                break;
+            case 3:
+                feedback = "Khá mạnh";
+                strengthMsg.style.color = "#198754";
+                break;
+            case 4:
+                feedback = "Mạnh!";
+                strengthMsg.style.color = "#0d6efd";
+                break;
+        }
+
+        strengthMsg.innerHTML = `<i class="fas fa-shield-alt"></i> ${feedback}`;
+    });
+</script>
+
+</body>
+</html>

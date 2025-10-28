@@ -1,0 +1,133 @@
+/* ============= CẤU TRÚC CHUNG ============= */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: #f1f5f9;
+  color: #1e293b;
+  overflow: hidden;
+}
+
+/* HEADER CỐ ĐỊNH */
+.navbar-gradient {
+  background: linear-gradient(90deg, rgba(34,197,94,0.95), rgba(59,130,246,0.95)) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  z-index: 1050;
+}
+
+/* FOOTER CỐ ĐỊNH */
+.footer-app {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(90deg, #16a34a, #3b82f6);
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 0.9rem;
+  z-index: 1040;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+}
+
+/* KHU VỰC CUỘN */
+.main-content {
+  position: absolute;
+  top: 70px;
+  bottom: 55px;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  background: #f8fafc;
+  padding-bottom: 80px;
+}
+
+/* ============= HERO SECTION ============= */
+.hero-section {
+  background: url('https://bcp.cdnchinhphu.vn/334894974524682240/2022/5/22/280806231-363169562346230-638931297679120063-n-1653220704384132757935.jpg')
+              center/cover no-repeat;
+  height: 420px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1s ease;
+}
+.hero-content h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+.hero-content p { font-size: 1.1rem; opacity: 0.9; }
+.user-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid white;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* ============= CARD CHỨC NĂNG ============= */
+.feature-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  padding: 35px 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.feature-icon {
+  font-size: 2.6rem;
+  margin-bottom: 10px;
+  color: #16a34a;
+  transition: all .3s;
+}
+.feature-card:hover .feature-icon {
+  color: #3b82f6;
+  transform: scale(1.1);
+}
+.feature-card .btn {
+  background: linear-gradient(90deg, #16a34a, #3b82f6);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 7px 20px;
+  transition: all 0.3s ease;
+}
+.feature-card .btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* ============= ANIMATION ============= */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============= RESPONSIVE ============= */
+@media (max-width: 768px) {
+  .hero-content h1 { font-size: 1.8rem; }
+  .feature-card { padding: 25px 18px; }
+  .feature-icon { font-size: 2.2rem; }
+}

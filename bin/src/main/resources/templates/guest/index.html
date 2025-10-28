@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="UTEScore - Đặt sân bóng online nhanh chóng, giá tốt nhất!">
+    <title>🏆 UTEScore - Đặt Sân Bóng Online #1 Việt Nam</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Bootstrap & AOS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    
+    <style>
+		    .navbar-nav .nav-link {
+		  white-space: nowrap;
+		  transition: 0.2s ease;
+		}
+		.navbar-nav .nav-link:hover {
+		  color: #ffc107 !important;
+		  transform: translateY(-1px);
+		}
+    
+        :root { --primary: #28a745; --secondary: #198754; --accent: #ffc107; }
+        body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); }
+        .navbar { background: linear-gradient(135deg, var(--primary), var(--secondary)) !important; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://res.cloudinary.com/du6x32par/image/upload/v1761412326/banner_qdgjqr.jpg'); background-size: cover; height: 100vh; }
+        .card { transition: all 0.3s ease; border: none; border-radius: 20px; overflow: hidden; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        .feature-card { perspective: 1000px; }
+        .feature-card:hover .card-inner { transform: rotateY(180deg); }
+        .card-inner { transition: transform 0.6s; transform-style: preserve-3d; }
+        .card-front, .card-back { backface-visibility: hidden; }
+        .card-back { transform: rotateY(180deg); background: linear-gradient(var(--primary), var(--secondary)); color: white; }
+        .btn-primary { background: linear-gradient(var(--primary), var(--secondary)); border: none; border-radius: 50px; padding: 12px 30px; }
+        .btn-primary:hover { transform: scale(1.05); }
+        footer { background: linear-gradient(135deg, #343a40, #212529); }
+        #loading { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 9999; display: flex; align-items: center; justify-content: center; }
+        .spinner { width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid var(--primary); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .typewriter { overflow: hidden; border-right: 3px solid var(--accent); white-space: nowrap; animation: typing 3s steps(40, end); }
+        @keyframes typing { from { width: 0; } to { width: 100%; } }
+    </style>
+</head>
+<body onload="document.getElementById('loading').style.display='none'">
+
+<!-- Loading Spinner -->
+<div id="loading">
+    <div class="spinner"></div>
+</div>
+
+<!-- Header Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top shadow-sm" style="background: linear-gradient(135deg, #28a745, #198754); padding: 6px 0;">
+  <div class="container d-flex align-items-center justify-content-between">
+
+    <!-- Logo + Tên thương hiệu -->
+    <a class="navbar-brand d-flex align-items-center fw-bold text-white fs-5 me-4" href="/" style="gap: 8px;">
+      <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"
+           alt="UTEScore Logo"
+           style="height:40px; margin-right:6px;">
+      <span><i class="fas fa-futbol text-warning me-1"></i>UTEScore</span>
+    </a>
+
+    <!-- Nút toggle cho mobile -->
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu chính -->
+    <div class="collapse navbar-collapse justify-content-center" id="mainNavbar">
+      <ul class="navbar-nav align-items-center flex-row flex-wrap justify-content-center" style="gap: 18px;">
+        <li class="nav-item"><a class="nav-link text-white fw-semibold small" href="/">🏠 Trang chủ</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-semibold small" href="/pitches">⚽ Sân bóng</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-semibold small" href="/login">📅 Đặt lịch</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-semibold small" th:href="@{/news}">📰 Tin tức</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-semibold small" th:href="@{/promotions}">🎁 Khuyến mãi</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-semibold small" href="javascript:void(0);" onclick="scrollToReviews()">⭐ Đánh giá</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-semibold small" href="javascript:void(0);" onclick="scrollToContact()">📞 Liên hệ</a></li>
+      </ul>
+    </div>
+
+    <!-- Cụm nút bên phải -->
+    <div class="d-flex align-items-center ms-4" style="gap: 12px;">
+      <button class="btn btn-warning fw-semibold btn-sm px-3" onclick="toggleDarkMode()">🌙 Dark</button>
+      <a th:href="@{/login}" class="btn btn-light fw-semibold btn-sm px-3">🔑 Đăng nhập</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+.navbar-nav .nav-link {
+  white-space: nowrap;
+  transition: 0.2s ease;
+  font-size: 0.9rem;
+}
+.navbar-nav .nav-link:hover {
+  color: #ffc107 !important;
+  transform: translateY(-1px);
+}
+</style>
+
+
+
+<!-- Hero Banner Carousel -->
+<section class="hero d-flex align-items-center text-white text-center" data-aos="fade-down">
+    <div class="container">
+        <h1 class="display-3 fw-bold mb-4" data-aos="zoom-in">Chào mừng đến <span class="typewriter text-warning">UTEScore!</span></h1>
+        <p class="lead fs-4 mb-4">Đặt sân bóng online chỉ trong 30s 🚀 Giá tốt nhất + Khuyến mãi hot!</p>
+        <a href="javascript:void(0);" class="btn btn-primary btn-lg" data-aos="flip-left"
+   			onclick="redirectBooking()">
+    	<i class="fas fa-calendar-plus me-2"></i>ĐẶT NGAY
+		</a>
+
+    </div>
+</section>
+
+<!-- Giới thiệu (phiên bản nâng cao, uy tín hơn) -->
+<section class="container my-5 py-5" data-aos="fade-up">
+  <div class="row align-items-center">
+    <div class="col-lg-6 mb-4 mb-lg-0">
+      <img src="https://res.cloudinary.com/du6x32par/image/upload/v1761411639/intro_nijknj.jpg" class="img-fluid rounded-4 shadow-lg" style="max-height:420px;object-fit:cover;">
+
+          
+    </div>
+
+    <div class="col-lg-6">
+      <h2 class="display-5 fw-bold text-success mb-3">
+        <i class="fas fa-trophy me-2"></i>UTEScore – #1 Đặt Sân Bóng Online Việt Nam
+      </h2>
+      <p class="lead text-secondary">
+        Ra đời từ năm <strong>2022</strong>, UTEScore tự hào là nền tảng đặt sân bóng hiện đại
+        giúp hơn <strong>50.000+</strong> người chơi kết nối nhanh chóng với các chủ sân trên toàn quốc.
+      </p>
+
+      <ul class="list-unstyled fs-5 mt-4">
+        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Liên kết <strong>300+ sân bóng</strong> đạt chuẩn FIFA Mini.</li>
+        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Đặt lịch và thanh toán chỉ trong <strong>30 giây</strong>.</li>
+        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Cập nhật thời gian thực – không trùng lịch.</li>
+        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Được tin dùng bởi <strong>50+ CLB & Doanh nghiệp thể thao</strong>.</li>
+      </ul>
+
+      <a href="javascript:void(0);" class="btn btn-success btn-lg rounded-pill mt-3 shadow-sm"
+   			onclick="redirectBooking()">
+    	<i class="fas fa-calendar-plus me-2"></i>Trải Nghiệm Ngay
+		</a>
+
+    </div>
+  </div>
+
+  <!-- Thống kê ấn tượng -->
+  <div class="row text-center mt-5">
+    <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+      <h2 class="fw-bold text-success">50K+</h2>
+      <p>Người dùng tin tưởng</p>
+    </div>
+    <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+      <h2 class="fw-bold text-success">300+</h2>
+      <p>Sân bóng đối tác</p>
+    </div>
+    <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+      <h2 class="fw-bold text-success">10+</h2>
+      <p>Tỉnh thành phủ sóng</p>
+    </div>
+    <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+      <h2 class="fw-bold text-success">4.9/5⭐</h2>
+      <p>Đánh giá trung bình</p>
+    </div>
+  </div>
+
+  <!-- Lý do chọn UTEScore -->
+  <div class="row mt-5">
+    <h3 class="text-center fw-bold mb-4 text-success">
+      <i class="fas fa-thumbs-up me-2"></i>Tại Sao Chọn UTEScore?
+    </h3>
+    <div class="col-md-4 text-center px-4" data-aos="zoom-in">
+      <i class="fas fa-bolt fa-3x text-success mb-3"></i>
+      <h5 class="fw-bold">Nhanh & Tiện Lợi</h5>
+      <p>Chỉ vài cú click để tìm, đặt và thanh toán sân yêu thích.</p>
+    </div>
+    <div class="col-md-4 text-center px-4" data-aos="zoom-in" data-aos-delay="150">
+      <i class="fas fa-shield-alt fa-3x text-success mb-3"></i>
+      <h5 class="fw-bold">Bảo Mật & Minh Bạch</h5>
+      <p>Thông tin rõ ràng, bảo mật tuyệt đối theo chuẩn SSL.</p>
+    </div>
+    <div class="col-md-4 text-center px-4" data-aos="zoom-in" data-aos-delay="300">
+      <i class="fas fa-heart fa-3x text-success mb-3"></i>
+      <h5 class="fw-bold">Cộng Đồng Nhiệt Huyết</h5>
+      <p>Hàng nghìn CLB và người chơi cùng chia sẻ đam mê bóng đá.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- Tính năng nổi bật -->
+<section class="bg-white py-5" data-aos="fade-up">
+    <div class="container">
+        <h3 class="text-center display-5 fw-bold mb-5 text-success"><i class="fas fa-star me-2"></i>Tính Năng Nổi Bật</h3>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card feature-card h-100 shadow-lg">
+                    <div class="card-inner">
+                        <div class="card-front text-center p-4">
+                            <i class="fas fa-calendar-check fa-4x text-success mb-3"></i>
+                            <h5>🗓️ Đặt Sân Trực Tuyến</h5>
+                            <p>Chọn giờ & sân chỉ 3 click!</p>
+                        </div>
+                        <div class="card-back text-center p-4">
+                            <h5>Nhanh Chóng & An Toàn</h5>
+                            <p>Thanh toán online, xác nhận ngay!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card h-100 shadow-lg">
+                    <div class="card-inner">
+                        <div class="card-front text-center p-4">
+                            <i class="fas fa-clock fa-4x text-success mb-3"></i>
+                            <h5>📅 Xem Lịch Trống</h5>
+                            <p>Real-time, không chờ đợi!</p>
+                        </div>
+                        <div class="card-back text-center p-4">
+                            <h5>Cập Nhật Tức Thì</h5>
+                            <p>App push notification miễn phí!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card h-100 shadow-lg">
+                    <div class="card-inner">
+                        <div class="card-front text-center p-4">
+                            <i class="fas fa-star fa-4x text-success mb-3"></i>
+                            <h5>⭐ Đánh Giá & Phản Hồi</h5>
+                            <p>Review thực từ 10k+ user!</p>
+                        </div>
+                        <div class="card-back text-center p-4">
+                            <h5>Community Trust</h5>
+                            <p>4.9/5 sao trung bình!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container my-5" data-aos="fade-up">
+    <h3 class="text-center display-5 fw-bold mb-5 text-success">
+        <i class="fas fa-fire me-2"></i>Sân Nổi Bật / Khuyến Mãi HOT
+    </h3>
+
+    <div id="featuredPitchesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+
+            <!-- Lặp danh sách sân -->
+            <div th:each="p, stat : ${featuredPitches}" 
+                 class="carousel-item" 
+                 th:classappend="${stat.index == 0} ? 'active'">
+
+                <div class="d-flex justify-content-center">
+                   <div class="card shadow-lg overflow-hidden" style="width: 35rem; border-radius: 22px;">
+
+                        <img th:src="${p.hinhAnh}" class="card-img-top"
+     alt="Sân" style="height:350px;object-fit:cover;border-bottom: 3px solid #28a745;">
+
+                        <div class="card-body p-4">
+                            <span class="badge bg-warning text-dark mb-2">Giảm 20% 🔥</span>
+                            <h5 class="card-title fw-bold" th:text="${p.tenSan}"></h5>
+                            <p class="text-success fs-4 fw-bold">
+                                <i class="fas fa-tag me-1"></i>
+                                <span th:text="${#numbers.formatDecimal(p.giaThue, 0, 'POINT', 0, 'COMMA')}"></span> đ/giờ
+                            </p>
+                            <div class="d-grid">
+                                <a th:href="@{/pitches/{id}(id=${p.sanId})}" class="btn btn-success">
+                                    <i class="fas fa-eye me-2"></i>Xem Chi Tiết
+                                </a>
+                                <a href="/book" class="btn btn-outline-success mt-2">
+                                    <i class="fas fa-calendar-plus me-2"></i>Đặt Ngay
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Nút chuyển thủ công -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#featuredPitchesCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#featuredPitchesCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+
+    </div>
+</section>
+
+
+
+<!-- Section Đánh giá -->
+<section id="reviews" class="container my-5 py-4">
+    <h2 class="text-center text-success fw-bold mb-4">⭐ Đánh giá từ người dùng</h2>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0">
+                <img src="https://res.cloudinary.com/du6x32par/image/upload/v1761407528/san1_di3hzv.jpg" class="card-img-top" style="height:200px;object-fit:cover;">
+                <div class="card-body">
+                    <h5>Nguyễn Văn A <small class="text-muted">(28 tuổi)</small></h5>
+                    <p class="text-warning fs-5">★★★★☆ (4.5/5)</p>
+                    <p>Sân sạch, ánh sáng tốt, quản lý nhiệt tình.</p>
+                    <small class="text-muted">Đăng ngày: 14/10/2025</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0">
+                <img src="https://res.cloudinary.com/du6x32par/image/upload/v1761411874/san2_fymvgv.jpg" class="card-img-top" style="height:200px;object-fit:cover;">
+                <div class="card-body">
+                    <h5>Trần Thị B <small class="text-muted">(22 tuổi)</small></h5>
+                    <p class="text-warning fs-5">★★★★☆ (4.0/5)</p>
+                    <p>Giá hợp lý, sân ổn định, sẽ quay lại!</p>
+                    <small class="text-muted">Đăng ngày: 12/10/2025</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0">
+               <img src="https://res.cloudinary.com/du6x32par/image/upload/v1761411882/san3_et5u2u.jpg" class="card-img-top" style="height:200px;object-fit:cover;">
+                <div class="card-body">
+                    <h5>Lê Công C <small class="text-muted">(31 tuổi)</small></h5>
+                    <p class="text-warning fs-5">★★★★★ (5.0/5)</p>
+                    <p>Rất hài lòng, sân đạt chuẩn, cảm giác chuyên nghiệp!</p>
+                    <small class="text-muted">Đăng ngày: 10/10/2025</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Liên hệ -->
+<section id="contact" class="py-5" style="background-color: #0d47a1; color: white;">
+    <div class="container">
+        <div class="row text-center text-md-start">
+            <!-- Giới thiệu -->
+            <div class="col-md-4 mb-4">
+                <h5 class="fw-bold text-warning mb-3">GIỚI THIỆU</h5>
+                <p>UTEScore cung cấp nền tảng đặt sân bóng thông minh giúp bạn tìm sân, đặt lịch và quản lý dễ dàng – nhanh chóng – hiệu quả.</p>
+                <ul class="list-unstyled small">
+                    <li>Chính sách bảo mật</li>
+                    <li>Chính sách hủy (đổi trả)</li>
+                    <li>Chính sách thanh toán</li>
+                </ul>
+            </div>
+
+            <!-- Thông tin -->
+            <div class="col-md-4 mb-4">
+                <h5 class="fw-bold text-warning mb-3">THÔNG TIN</h5>
+                <p><i class="fas fa-building me-2"></i> Công ty Cổ phần UTEScore</p>
+                <p><i class="fas fa-id-card me-2"></i> MST: <strong>0311234567</strong></p>
+                <p><i class="fas fa-envelope me-2"></i> Mail: <a href="mailto:support@utescore.vn" class="text-white text-decoration-underline">support@utescore.vn</a></p>
+               <p>
+  					<i class="fas fa-map-marker-alt me-2 text-warning"></i> 
+  					<a href="javascript:void(0);" onclick="openMapModal()" class="text-white text-decoration-underline">
+    				Địa chỉ: 1 Võ Văn Ngân, Thủ Đức , TP. Hồ Chí Minh
+  					</a>
+				</p>
+
+                <p><i class="fas fa-phone me-2"></i> Điện thoại: <strong>0355.848.178</strong></p>
+            </div>
+
+            <!-- Liên hệ -->
+            <div class="col-md-4 mb-4 text-center">
+                <h5 class="fw-bold text-warning mb-3">LIÊN HỆ NHANH</h5>
+                <div class="card bg-light text-dark border-0 shadow-sm mx-auto" style="max-width: 280px;">
+                    <div class="card-body">
+                        <p class="fw-semibold mb-1">Chăm sóc khách hàng:</p>
+                        <h4 class="text-primary mb-3">0355.848.178</h4>
+                        <a href="tel:0901234567" class="btn btn-warning fw-bold w-100">📞 Gọi ngay</a>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <a href="#" class="text-white fs-4 me-3"><i class="fab fa-facebook-square"></i></a>
+                    <a href="#" class="text-white fs-4 me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white fs-4"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <hr class="border-light my-4">
+        <div class="text-center small">
+            &copy; 2025 <strong>UTEScore</strong> | Giấy phép ĐKKD số 0311234567 do Sở KH&ĐT TP.HCM cấp ngày 01/09/2025.
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Footer -->
+<footer class="text-white py-5 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5><i class="fas fa-futbol me-2"></i>UTEScore</h5>
+                <p>Đặt sân bóng dễ dàng, vui vẻ!</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Liên Hệ</h5>
+                <p><i class="fas fa-phone me-2"></i>0123 456 789</p>
+                <p><i class="fas fa-envelope me-2"></i>support@utescore.vn</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Theo Dõi</h5>
+                <div class="social-icons">
+                    <a href="#" class="text-white me-3 fs-3"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-white me-3 fs-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white fs-3"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="text-center">&copy; 2025 UTEScore. All rights reserved. <a href="#" class="text-warning">Chính sách</a></div>
+    </div>
+    <button onclick="window.scrollTo(0,0)" class="btn btn-success rounded-circle position-fixed bottom-0 end-0 m-4" style="width:50px;height:50px;"><i class="fas fa-arrow-up"></i></button>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init({ duration: 1000 });</script>
+<script>
+    function toggleDarkMode() { document.body.classList.toggle('bg-dark'); document.body.classList.toggle('text-white'); }
+    window.addEventListener('offline', () => {
+        new bootstrap.Modal(document.getElementById('offlineModal')).show();
+    });
+</script>
+
+<!-- Offline Modal -->
+<div class="modal fade" id="offlineModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5><i class="fas fa-wifi me-2"></i>Mất Kết Nối!</h5>
+            </div>
+            <div class="modal-body">⚠️ Vui lòng kiểm tra mạng và tải lại trang.</div>
+            <div class="modal-footer"><button class="btn btn-success" onclick="location.reload()">Tải Lại</button></div>
+        </div>
+    </div>
+</div>
+
+<script>
+function scrollToReviews() {
+    const section = document.getElementById("reviews");
+    if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+        // hiệu ứng highlight nhẹ
+        section.style.transition = "background-color 0.6s";
+        section.style.backgroundColor = "#fff9d6";
+        setTimeout(() => section.style.backgroundColor = "", 1000);
+    }
+}
+</script>
+
+<script>
+function scrollToContact() {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth" });
+        contactSection.style.transition = "background-color 0.6s";
+        contactSection.style.backgroundColor = "#1565c0";
+        setTimeout(() => contactSection.style.backgroundColor = "#0d47a1", 800);
+    }
+}
+</script>
+
+<script>
+function openMapModal() {
+    const mapModal = new bootstrap.Modal(document.getElementById('mapModal'));
+    mapModal.show();
+}
+</script>
+
+
+
+<!-- Modal Google Maps -->
+<div class="modal fade" id="mapModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title"><i class="fas fa-map-marker-alt me-2"></i>Vị trí trên bản đồ</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body p-0">
+        <!-- ✅ Google Maps iframe -->
+        <iframe 
+  			id="googleMapFrame"
+  			src="https://www.google.com/maps?q=1%20Võ%20Văn%20Ngân,%20Thủ%20Đức,%20Thành%20phố%20Hồ%20Chí%20Minh&output=embed" 
+  			width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+		</iframe>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+function redirectBooking() {
+    // 🚀 Tạm thời luôn chuyển đến trang đăng nhập
+    window.location.href = "/login";
+}
+</script>
+
+<!-- Chatbox Trợ lý UTEScore -->
+<div id="chatbox">
+  <div id="chat-header" onclick="toggleChat()">💬 Trợ lý UTEScore</div>
+  <div id="chat-body">
+      <div id="faq-container" class="faq-list"></div>
+      <div id="answer-container"></div>
+  </div>
+</div>
+
+<style>
+#chatbox {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  z-index: 9999;
+  width: 320px;
+}
+#chat-header {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+#chat-body {
+  display: none;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0 0 10px 10px;
+  max-height: 380px;
+  overflow-y: auto;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  animation: slideUp 0.3s ease;
+}
+.faq-btn {
+  display: block;
+  background: #f8f9fa;
+  margin: 6px 10px;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  transition: 0.2s;
+}
+.faq-btn:hover { background: #e2e6ea; }
+.answer {
+  margin: 8px 10px;
+  background: #d9fdd3;
+  padding: 8px;
+  border-radius: 6px;
+}
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+</style>
+
+<script>
+async function toggleChat() {
+  const body = document.getElementById("chat-body");
+  body.style.display = body.style.display === "block" ? "none" : "block";
+
+  if (body.style.display === "block") {
+    const faqContainer = document.getElementById("faq-container");
+    faqContainer.innerHTML = "<p class='text-center text-muted'>Đang tải...</p>";
+
+    try {
+      const res = await fetch("/api/faqs");
+      const faqs = await res.json();
+      faqContainer.innerHTML = "";
+      faqs.forEach(faq => {
+        const btn = document.createElement("button");
+        btn.className = "faq-btn";
+        btn.textContent = faq.question;
+        btn.onclick = () => showAnswer(faq.answer);
+        faqContainer.appendChild(btn);
+      });
+    } catch (error) {
+      faqContainer.innerHTML = "<p class='text-danger text-center'>Không tải được dữ liệu ❌</p>";
+    }
+  }
+}
+
+function showAnswer(text) {
+  const container = document.getElementById("answer-container");
+  const div = document.createElement("div");
+  div.className = "answer";
+  div.textContent = text;
+  container.appendChild(div);
+}
+</script>
+
+
+
+
+</body>
+</html>

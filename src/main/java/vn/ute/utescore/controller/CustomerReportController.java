@@ -179,7 +179,7 @@ this.sanBongRepo = sanBongRepo;
                     .distinct()
                     .collect(Collectors.toList());
 
-            if (types.contains("Hoàn đơn")) {
+            if (types.contains("Hoàn tiền")) {
                 refundAgg.computeIfPresent(key, (k, v) -> v + 1);
             } else if (types.contains("Đã thanh toán") || types.contains("Hoàn tất")) {
                 successAgg.computeIfPresent(key, (k, v) -> v + 1);

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Kết quả thanh toán</title>
+<style>
+body { font-family:'Inter',sans-serif; background:#f8fafc; text-align:center; margin-top:80px; }
+.msg { font-size:20px; padding:20px; border-radius:10px; background:white; display:inline-block; box-shadow:0 0 10px rgba(0,0,0,0.1); }
+a { display:block; margin-top:20px; text-decoration:none; color:#2563eb; }
+</style>
+</head>
+<body>
+<div class="msg" th:text="${msg}"></div>
+<a href="/employee/payment">⬅ Quay lại danh sách</a>
+</body>
+</html>

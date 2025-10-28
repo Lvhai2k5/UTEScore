@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTEScore – Báo cáo sự cố</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * {margin:0;padding:0;box-sizing:border-box;}
+  body {
+    font-family:'Inter',sans-serif;
+    background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+    color:#1e293b;
+    display:flex;
+    height:100vh;
+    overflow:hidden;
+  }
+
+  /* ==== SIDEBAR ==== */
+  .sidebar {
+    width:270px;
+    background:linear-gradient(180deg,#1e293b,#0f172a);
+    color:white;
+    display:flex;
+    flex-direction:column;
+    box-shadow:4px 0 24px rgba(0,0,0,0.3);
+    overflow-y:auto;
+  }
+  .logo-section {padding:24px 16px;border-bottom:1px solid rgba(255,255,255,0.1);}
+  .logo {font-size:26px;font-weight:700;text-align:center;
+         background:linear-gradient(135deg,#667eea,#a78bfa);
+         -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .staff-info {
+    text-align:center;margin-top:16px;background:rgba(255,255,255,0.05);
+    border-radius:12px;padding:12px;
+  }
+  .staff-avatar {
+    width:60px;height:60px;border-radius:50%;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:26px;
+  }
+  .staff-name {font-weight:600;font-size:15px;}
+  .staff-role {font-size:13px;color:#94a3b8;}
+
+  .menu {padding:16px;flex:1;}
+  .menu-title {font-size:13px;font-weight:600;color:#94a3b8;margin:8px 0;text-transform:uppercase;}
+  .menu-link {
+    display:flex;align-items:center;gap:10px;color:white;text-decoration:none;
+    background:rgba(255,255,255,0.05);padding:12px 14px;border-radius:10px;
+    margin-bottom:6px;font-size:15px;transition:all 0.3s ease;
+  }
+  .menu-link:hover {background:rgba(255,255,255,0.1);transform:translateX(4px);}
+  .menu-link.active {background:linear-gradient(135deg,rgba(102,126,234,0.4),rgba(118,75,162,0.4));}
+  .menu-icon {font-size:18px;width:26px;text-align:center;}
+
+  /* ==== CONTENT ==== */
+  .content {
+    flex:1;
+    background:#f8fafc;
+    margin:24px;
+    border-radius:24px;
+    padding:32px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.1);
+    overflow-y:auto;
+  }
+  header {
+    display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;
+  }
+  header h2 {
+    font-size:32px;font-weight:700;
+    background:linear-gradient(135deg,#1e293b,#475569);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .btn-logout {
+    background:linear-gradient(135deg,#ef4444,#dc2626);
+    border:none;color:white;padding:10px 18px;border-radius:10px;font-weight:600;
+    cursor:pointer;transition:all 0.3s ease;
+  }
+  .btn-logout:hover {transform:translateY(-2px);}
+
+  /* ==== FORM + TABLE ==== */
+  .search-box input[type=text] {
+    width:calc(100% - 110px);padding:10px;border:1px solid #ccc;border-radius:10px;
+  }
+  .search-box button {
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    color:white;border:none;border-radius:10px;padding:10px 16px;
+    font-weight:600;cursor:pointer;margin-left:8px;
+  }
+  .search-box button:hover {opacity:0.9;}
+
+  table {width:100%;border-collapse:collapse;margin-top:20px;border-radius:10px;overflow:hidden;}
+  th,td {padding:12px;text-align:center;border-bottom:1px solid #e2e8f0;}
+  th {background:linear-gradient(135deg,#667eea,#764ba2);color:white;}
+  tr:hover {background:#eef2ff;}
+
+  .form-box {
+    margin-top:30px;background:white;padding:24px;border-radius:16px;
+    box-shadow:0 4px 20px rgba(102,126,234,0.2);
+    animation:fadeIn 0.6s ease;
+  }
+  .form-box h3 {
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    margin-bottom:16px;
+  }
+  .form-box label {font-weight:600;}
+  .form-box textarea,.form-box select {
+    width:100%;padding:10px;margin:8px 0 16px 0;border-radius:10px;border:1px solid #ccc;
+  }
+  .form-box button {
+    padding:10px 16px;border:none;border-radius:10px;font-weight:600;cursor:pointer;
+  }
+  .btn-confirm {background:linear-gradient(135deg,#38b6ff,#1e90ff);color:white;}
+  .btn-cancel {background:#e2e8f0;margin-left:8px;}
+  .btn-confirm:hover {opacity:0.9;}
+  .btn-cancel:hover {background:#cbd5e1;}
+
+  @keyframes fadeIn {from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="logo-section">
+    <div class="logo">UTEScore</div>
+    <div class="staff-info">
+      <div class="staff-avatar">⚙️</div>
+      <div class="staff-name" th:text="${nhanVienDangNhap?.hoTen}">Nhân viên</div>
+      <div class="staff-role">Bộ phận sân bóng</div>
+    </div>
+  </div>
+
+  <div class="menu">
+      <p class="menu-title">🏟️ Quản lý sân</p>
+      <a href="/employee/booking" class="menu-link active"><span class="menu-icon">📋</span>Đơn đặt sân</a>
+        <a href="/employee/checkin" class="menu-link"><span class="menu-icon">🎫</span>Check-in khách</a>
+        <a href="/employee/payment" class="menu-link"><span class="menu-icon">💰</span>Thanh toán</a>
+        <a href="/employee/refund" class="menu-link"><span class="menu-icon">👥</span>Hoàn tiền</a>
+        <a href="/employee/schedule" class="menu-link"><span class="menu-icon">📅</span>Lịch sân</a>
+
+      <p class="menu-title">📢 Báo cáo & Thông tin</p>
+      <a href="/employee/incidents" class="menu-link"><span class="menu-icon">⚠️</span>Sự cố / Ghi chú</a>
+      <a href="/employee/report" class="menu-link"><span class="menu-icon">📊</span>Thống kê công việc</a>
+
+      <p class="menu-title">⚙️ Cá nhân</p>
+      <a href="/employee/profile" class="menu-link"><span class="menu-icon">👤</span>Thông tin cá nhân</a>
+      <a href="/logout" class="menu-link"><span class="menu-icon">🚪</span>Đăng xuất</a>
+    </div>
+  </aside>
+
+<!-- CONTENT -->
+<section class="content">
+  <header>
+    <h2>⚠️ Báo cáo sự cố</h2>
+  </header>
+
+  <div class="search-box">
+    <form method="get" th:action="@{/employee/incidents/search}">
+      <input type="text" name="keyword" th:value="${keyword}" placeholder="🔍 Tìm mã đơn hoặc tên khách hàng...">
+      <button type="submit">Tìm kiếm</button>
+    </form>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Mã đơn</th>
+        <th>Khách hàng</th>
+        <th>Sân</th>
+        <th>Ngày thuê</th>
+        <th>Khung giờ</th>
+        <th>Thao tác</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="d : ${dsDon}">
+        <td th:text="${d.maDonDat}"></td>
+        <td th:text="${d.khachHang?.hoTen}"></td>
+        <td th:text="${d.sanBong?.tenSan}"></td>
+        <td th:text="${#temporals.format(d.ngayThue, 'dd/MM/yyyy')}"></td>
+        <td th:text="${d.khungGioBatDau} + ' - ' + ${d.khungGioKetThuc}"></td>
+        <td><button class="btn-confirm" type="button" th:onclick="|openForm(${d.maDonDat})|">Báo cáo</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- FORM -->
+  <div id="formBox" class="form-box" style="display:none;">
+    <form th:action="@{/employee/incidents/report}" method="post">
+      <input type="hidden" id="maDon" name="maDon">
+      <input type="hidden" id="nhanVienId" name="nhanVienId" th:value="${nhanVienDangNhapId}">
+      <h3>Báo cáo sự cố cho đơn <span id="donLabel" style="font-weight:700;"></span></h3>
+
+      <label>Mô tả sự cố:</label>
+      <textarea name="moTa" rows="3" placeholder="Nhập mô tả chi tiết..." required></textarea>
+
+      <label>Loại sự cố:</label>
+      <select name="loaiSuCo" required>
+        <option value="">-- Chọn loại sự cố --</option>
+        <option>Thời tiết</option>
+        <option>Thanh toán</option>
+        <option>Thiết bị</option>
+        <option>Khách hàng</option>
+        <option>Khác</option>
+      </select>
+
+      <label>Trạng thái ban đầu:</label>
+      <select name="trangThai" required>
+        <option>Chờ xử lý</option>
+        <option>Đang xử lý</option>
+      </select>
+
+      <button class="btn-confirm" type="submit">✅ Xác nhận</button>
+      <button class="btn-cancel" type="button" onclick="closeForm()">Hủy</button>
+    </form>
+  </div>
+
+  <h2 style="margin-top:40px;">📑 Danh sách sự cố đã báo cáo</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Mã SC</th>
+        <th>Đơn #</th>
+        <th>Loại</th>
+        <th>Mô tả</th>
+        <th>Nhân viên</th>
+        <th>Thời gian</th>
+        <th>Trạng thái</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="s : ${dsSuCo}">
+        <td th:text="${s.suCoID}"></td>
+        <td th:text="${s.thueSan?.maDonDat}"></td>
+        <td th:text="${s.loaiSuCo}"></td>
+        <td th:text="${s.moTa}"></td>
+        <td th:text="${s.nhanVien?.hoTen}"></td>
+        <td th:text="${#temporals.format(s.thoiGianBaoCao, 'dd/MM/yyyy HH:mm')}"></td>
+        <td th:text="${s.trangThai}"></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<script>
+function openForm(maDon) {
+  document.getElementById('formBox').style.display='block';
+  document.getElementById('maDon').value=maDon;
+  document.getElementById('donLabel').innerText='#'+maDon;
+  window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+}
+function closeForm() {
+  document.getElementById('formBox').style.display='none';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>💼 Hộp thư hỗ trợ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body{font-family:'Inter',sans-serif;background:#f8fafc;margin:0;padding:28px}
+  .wrap{max-width:900px;margin:auto}
+  h2{color:#1f2937;margin-bottom:14px}
+  .item{background:#eef2ff;border:1px solid #c7d2fe;border-radius:10px;padding:14px 16px;margin-bottom:10px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+  .item:hover{background:#e0e7ff}
+  .time{font-size:12px;color:#6b7280}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h2>💼 Khách hàng đang liên hệ</h2>
+  <div th:if="${#lists.isEmpty(threads)}">Chưa có hội thoại nào.</div>
+  <div th:each="t : ${threads}" class="item"
+       th:onclick="'window.location.href=\'/support/employee/chat/' + ${t.otherEmail} + '\';'">
+    <div>
+      <div th:text="${t.otherEmail}">email@example.com</div>
+      <div class="time" th:text="${t.lastTime}">time</div>
+    </div>
+    <div>➡</div>
+  </div>
+</div>
+</body>
+</html>

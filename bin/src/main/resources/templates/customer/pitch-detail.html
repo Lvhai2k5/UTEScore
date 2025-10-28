@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${pageTitle}">Chi tiết sân bóng | UTEScore</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    html, body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+      overflow-x: hidden;
+    }
+
+    header, nav.navbar {
+      background: linear-gradient(90deg, #16a34a, #3b82f6);
+      color: white !important;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1050;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      background: linear-gradient(90deg, #16a34a, #3b82f6);
+      color: white;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 0.9rem;
+      box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    main.container {
+      margin-top: 120px;
+      margin-bottom: 120px;
+      max-width: 1100px;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .pitch-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .pitch-header h2 {
+      font-weight: 800;
+      color: #1d4ed8;
+      text-shadow: 0 2px 6px rgba(37,99,235,0.2);
+    }
+
+    .pitch-header p {
+      color: #475569;
+      font-size: 1rem;
+    }
+
+    .pitch-image {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      margin-bottom: 30px;
+    }
+
+    .pitch-image img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      transition: all 0.4s ease;
+    }
+
+    .pitch-image img:hover {
+      transform: scale(1.03);
+    }
+
+    .section-box {
+      background: #fff;
+      border-radius: 18px;
+      padding: 25px 30px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      margin-bottom: 25px;
+    }
+
+    h4.section-title {
+      color: #1e40af;
+      font-weight: 700;
+      margin-bottom: 15px;
+      border-left: 4px solid #2563eb;
+      padding-left: 10px;
+    }
+
+    .feature-badge {
+      background: linear-gradient(135deg, #3b82f6, #16a34a);
+      color: #fff;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      padding: 6px 12px;
+      margin: 4px;
+      box-shadow: 0 2px 10px rgba(59,130,246,0.25);
+    }
+
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .price-table th, .price-table td {
+      padding: 10px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .price-table th {
+      background: #f1f5f9;
+      font-weight: 600;
+      color: #1e40af;
+    }
+
+    .btn-action {
+      display: inline-block;
+      padding: 12px 35px;
+      border-radius: 35px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .btn-book {
+      background: linear-gradient(135deg, #22c55e, #2563eb);
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(37,99,235,0.3);
+    }
+
+    .btn-book:hover {
+      background: linear-gradient(135deg, #16a34a, #1d4ed8);
+      transform: translateY(-2px);
+    }
+
+    .btn-back {
+      background: #e2e8f0;
+      color: #1e293b;
+    }
+
+    .btn-back:hover {
+      background: #cbd5e1;
+      transform: translateY(-2px);
+    }
+
+    .review-box {
+      background: #f8fafc;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .review-author {
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .rating-stars {
+      color: #facc15;
+      font-size: 1.1rem;
+    }
+
+  </style>
+</head>
+
+<body>
+  <header th:replace="~{fragments/header :: header}"></header>
+
+  <main class="container">
+    <div class="pitch-header">
+      <h2 th:text="${san.tenSan}">Sân 5A</h2>
+      <p>
+        📍 <span th:text="${san.khuVuc}">Khu A</span> |
+        👥 <span th:text="'Loại sân: ' + ${san.loaiSan}">5 người</span> |
+        ⚙️ <span th:text="${san.trangThai}">Hoạt động</span>
+      </p>
+    </div>
+
+    <div class="pitch-image">
+      <img th:src="${img}" alt="Ảnh sân">
+    </div>
+
+    <!-- 🔹 Bảng giá thuê -->
+    <div class="section-box">
+      <h4 class="section-title">💰 Bảng giá thuê sân</h4>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>Khung giờ</th>
+            <th>Giá thuê (VNĐ / giờ)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="g : ${bangGia}">
+            <td th:text="${g.khungGioBatDau} + ' - ' + ${g.khungGioKetThuc}"></td>
+            <td th:text="${#numbers.formatDecimal(g.giaThue, 0, 'COMMA', 0, 'POINT')} + 'đ'"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 🔹 Tính năng sân -->
+    <div class="section-box">
+      <h4 class="section-title">⚡ Tiện ích & Tính năng</h4>
+      <div th:if="${#lists.isEmpty(tinhNangList)}">
+        <p class="text-muted">Chưa có thông tin về tính năng sân.</p>
+      </div>
+      <div th:unless="${#lists.isEmpty(tinhNangList)}">
+        <span th:each="f : ${tinhNangList}" th:text="${f}" class="feature-badge"></span>
+      </div>
+    </div>
+
+    <!-- 🔹 Đánh giá -->
+    <div class="section-box">
+      <h4 class="section-title">⭐ Đánh giá từ khách hàng</h4>
+
+      <div th:if="${#lists.isEmpty(danhGiaList)}">
+        <p class="text-muted">Chưa có đánh giá nào cho sân này.</p>
+      </div>
+
+      <div th:unless="${#lists.isEmpty(danhGiaList)}">
+        <div class="d-flex align-items-center mb-3">
+          <div class="rating-stars me-2">
+            <span th:each="i : ${#numbers.sequence(1,5)}"
+                  th:text="${i <= avgRating ? '★' : '☆'}"></span>
+          </div>
+          <span th:text="'(' + ${#numbers.formatDecimal(avgRating, 1, 'COMMA', 1, 'POINT')} + '/5.0) - ' + ${#lists.size(danhGiaList)} + ' đánh giá'"></span>
+        </div>
+
+        <div th:each="d : ${danhGiaList}" class="review-box">
+          <div class="review-author" th:text="${d.khachHang.hoTen}">Khách hàng A</div>
+          <div class="rating-stars" th:text="${'★'.repeat(d.rating)}"></div>
+          <p th:text="${d.noiDung}">Sân đẹp, sạch sẽ, nhân viên nhiệt tình.</p>
+          <small class="text-muted" th:text="${#temporals.format(d.ngayDanhGia, 'dd/MM/yyyy HH:mm')}"></small>
+        </div>
+      </div>
+    </div>
+
+    <!-- 🔹 Nút hành động -->
+    <div class="text-center mt-4">
+      <a th:href="@{/customer/pitch-list}" class="btn-action btn-back me-3">⬅ Quay lại</a>
+      <a th:href="@{/customer/booking(pitch=${san.tenSan}, type=${san.loaiSan})}" class="btn-action btn-book">⚽ Đặt sân ngay</a>
+    </div>
+  </main>
+
+  <footer th:replace="~{fragments/footer :: footer}"></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+@GetMapping("/customer/refund")
+public String refundPage(Model model) {
+    List<Map<String, Object>> bookings = new ArrayList<>();
+
+    bookings.add(Map.of(
+        "id", 101,
+        "pitch", "Sân 5-1",
+        "timeFormatted", "2025-10-25 18:00",
+        "deposit", 300000,
+        "status", "paid",
+        "statusText", "Đã cọc"
+    ));
+
+    bookings.add(Map.of(
+        "id", 102,
+        "pitch", "Sân 7-1",
+        "timeFormatted", "2025-10-24 07:00",
+        "deposit", 400000,
+        "status", "pending",
+        "statusText", "Chờ xử lý"
+    ));
+
+    bookings.add(Map.of(
+        "id", 103,
+        "pitch", "Sân 11-1",
+        "timeFormatted", "2025-09-20 14:00",
+        "deposit", 0,
+        "status", "cancel",
+        "statusText", "Đã hủy"
+    ));
+
+    model.addAttribute("bookings", bookings);
+    return "customer/refund";
+}

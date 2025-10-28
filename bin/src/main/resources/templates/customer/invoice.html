@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Chi tiết hóa đơn</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #f5f9ff; padding-top: 80px; }
+    .invoice {
+      max-width: 700px; margin: auto;
+      background: #fff; padding: 30px;
+      border-radius: 12px; box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      animation: fadeIn 0.5s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <div th:replace="fragments/header :: header"></div>
+
+  <div class="invoice mt-4">
+    <h4 class="text-center text-primary mb-3">HÓA ĐƠN ĐẶT SÂN</h4>
+    <p><strong>Mã đơn:</strong> <span th:text="${invoice.id}">123</span></p>
+    <p><strong>Tên sân:</strong> <span th:text="${invoice.san.tenSan}">Sân A</span></p>
+    <p><strong>Ngày đá:</strong> <span th:text="${invoice.ngayDa}">2025-10-24</span></p>
+    <p><strong>Khung giờ:</strong> <span th:text="${invoice.khungGio}">18:00 - 20:00</span></p>
+    <p><strong>Tổng tiền:</strong> <span th:text="${invoice.tongTien}">500.000đ</span></p>
+    <p><strong>Phương thức thanh toán:</strong> <span th:text="${invoice.phuongThuc}">Momo</span></p>
+    <p><strong>Trạng thái:</strong> <span class="badge bg-success" th:text="${invoice.trangThai}">Thành công</span></p>
+
+    <hr>
+    <div class="text-center">
+      <button class="btn btn-outline-primary" onclick="window.print()">🖨 In hóa đơn</button>
+      <a href="/customer/history" class="btn btn-secondary">↩ Trở lại</a>
+    </div>
+  </div>
+
+  <div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

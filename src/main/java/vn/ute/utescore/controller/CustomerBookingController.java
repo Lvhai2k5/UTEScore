@@ -280,7 +280,7 @@ public class CustomerBookingController {
      * =========================================================== */
     private double getDepositRate() {
         try {
-            String val = systemConfigRepo.findValueByKey("DEPOSIT_PERCENTAGE");
+            String val = systemConfigRepo.findValueByKey("depositRate");
             if (val != null && !val.isBlank()) {
                 double parsed = Double.parseDouble(val.trim());
                 return parsed > 1 ? parsed / 100 : parsed;
