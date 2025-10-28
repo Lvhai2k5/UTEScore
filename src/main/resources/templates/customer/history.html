@@ -23,31 +23,13 @@ html, body {
 	background: linear-gradient(180deg, #f8fafc, #e2e8f0);
 	overflow-x: hidden;
 }
-
-nav.navbar, footer {
-	background: linear-gradient(90deg, #16a34a, #3b82f6);
-	color: white;
-}
-
-footer {
-	text-align: center;
-	padding: 10px 0;
-	font-size: 14px;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	z-index: 999;
-}
-
 .main-content {
-	position: absolute;
-	top: 70px;
-	bottom: 60px;
-	left: 0;
-	right: 0;
-	overflow-y: auto;
-	padding: 40px 0;
+  background: #f8fafc;
+  padding-top: 90px;      /* chừa khoảng trống cho header cố định */
+  padding-bottom: 100px;  /* tránh footer che nội dung cuối */
+  min-height: calc(100vh - 120px);
+  overflow: visible;
+  position: relative;     /* ✅ để footer theo luồng bình thường */
 }
 
 .history-wrapper {

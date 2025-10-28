@@ -33,29 +33,26 @@
     }
 
     .footer-app {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: linear-gradient(90deg, #16a34a, #3b82f6);
-      color: white;
-      text-align: center;
-      padding: 10px 0;
-      font-size: 0.9rem;
-      z-index: 1040;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
-    }
+  width: 100%;
+  background: linear-gradient(90deg, #16a34a, #3b82f6);
+  color: white;
+  text-align: center;
+  padding: 14px 0;
+  font-size: 0.95rem;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+  margin-top: 40px;       /* tạo khoảng cách với nội dung */
+  position: relative;      /* theo luồng bình thường */
+  z-index: 10;
+}
 
     .main-content {
-      position: absolute;
-      top: 70px;
-      bottom: 55px;
-      left: 0;
-      right: 0;
-      overflow-y: auto;
-      background: #f8fafc;
-      scroll-behavior: smooth;
-    }
+  background: #f8fafc;
+  padding-top: 90px;       /* chừa chỗ cho header cố định */
+  padding-bottom: 60px;    /* chừa không gian nhỏ cuối trang */
+  min-height: calc(100vh - 120px); /* đảm bảo full màn hình */
+  overflow: visible;
+  position: relative;
+}
 
     /* ===== HERO SECTION ===== */
     .hero-section {

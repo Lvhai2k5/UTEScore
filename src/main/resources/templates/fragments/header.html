@@ -39,7 +39,7 @@
               <li><a class="dropdown-item fs-6" th:href="@{/customer/feedback}">⭐ Góp ý & Đánh giá</a></li>
               <li><a class="dropdown-item fs-6" th:href="@{/customer/account}">👤 Tài khoản</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item text-danger fw-semibold fs-6" th:href="@{/customer/logout}">🚪 Đăng xuất</a></li>
+              <li><a href="#" class="dropdown-item text-danger fw-semibold fs-6" data-logout>🚪 Đăng xuất</a></li>
             </ul>
           </li>
         </ul>
@@ -172,4 +172,29 @@
       });
     });
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Cho Thymeleaf resolve URL đúng -->
+<script th:inline="javascript">
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('[data-logout]');
+    if (!btn) return;
+
+    e.preventDefault();
+
+    Swal.fire({
+      title: 'Bạn có chắc muốn đăng xuất?',
+      text: 'Phiên làm việc hiện tại sẽ kết thúc.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Đăng xuất',
+      cancelButtonText: 'Hủy'
+    }).then((r) => {
+      if (r.isConfirmed) {
+        // ✅ Gọi endpoint logout
+        window.location.href = /*[[ @{/customer/logout} ]]*/ '/customer/logout';
+      }
+    });
+  });
+</script>
 </header>

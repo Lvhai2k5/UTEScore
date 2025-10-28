@@ -166,6 +166,8 @@ public class CustomerBookingController {
                                  @RequestParam("total") Long total,
                                  HttpSession session,
                                  Model model) {
+
+        // 🔐 Kiểm tra đăng nhập
         String email = SessionUtil.getCustomerEmail(session);
         if (email == null) return "redirect:/login";
 
@@ -176,39 +178,71 @@ public class CustomerBookingController {
         KhachHang kh = khOpt.get();
         SanBong san = sanOpt.get();
 
+        // 🕒 Parse thời gian
+        LocalDate ngayThue = LocalDate.parse(date);
+        LocalTime gioBatDau = LocalTime.parse(start);
+        LocalTime gioKetThuc = LocalTime.parse(end);
+
+        /* ===========================================================
+         * 🚫 1️⃣ Kiểm tra khách hàng có đơn đang giữ chỗ chưa thanh toán
+         * =========================================================== */
         List<ThueSan> existing = thueSanRepository.findByKhachHang(kh);
+        boolean hasActiveHold = existing.stream().anyMatch(t -> {
+            if (t.getGhiChu() == null || !t.getGhiChu().contains("Chờ thanh toán VNPay"))
+                return false;
+            LocalDateTime hanGiuCho = t.getHanGiuCho();
+            return hanGiuCho != null && LocalDateTime.now().isBefore(hanGiuCho);
+        });
 
-     // 🔍 Chỉ kiểm tra những đơn còn hiệu lực trong 10 phút giữ chỗ
-     boolean hasActiveHold = existing.stream().anyMatch(t -> {
-         if (t.getGhiChu() == null || !t.getGhiChu().contains("Chờ thanh toán VNPay"))
-             return false;
+        if (hasActiveHold) {
+            model.addAttribute("errorMessage",
+                "⚠️ Bạn đang có một đơn đang chờ thanh toán cọc VNPay trong thời gian giữ chỗ. " +
+                "Vui lòng hoàn tất thanh toán hoặc đợi hết 10 phút để đặt sân mới.");
+            model.addAttribute("showAlert", true);
+            return showBookingPage(pitchId, model, session);
+        }
 
-         LocalDateTime hanGiuCho = t.getHanGiuCho();
-         // Nếu chưa có hạn giữ chỗ hoặc đã hết hạn thì không tính là giữ chỗ
-         if (hanGiuCho == null || LocalDateTime.now().isAfter(hanGiuCho))
-             return false;
+        /* ===========================================================
+         * 🚫 2️⃣ Kiểm tra trùng khung giờ đặt sân
+         * =========================================================== */
+        // 👉 Gọi query chuẩn (LocalDate + String HH:mm:ss)
+        List<ThueSan> overlapBookings = thueSanRepository.findOverlappingBookings(
+                pitchId,
+                ngayThue,
+                start + ":00", // thêm giây để tương thích TIME SQL Server
+                end + ":00"
+        );
 
-         // Nếu còn trong thời gian 10 phút giữ chỗ
-         return true;
-     });
+        // ❗ Nếu có ít nhất 1 đơn còn hiệu lực (thanh toán thành công hoặc đang giữ chỗ)
+        boolean isOverlapping = overlapBookings.stream().anyMatch(t -> {
+            // ✅ Đơn đã thanh toán
+            boolean isPaid = t.getThanhToans() != null && t.getThanhToans().stream()
+                .anyMatch(tt -> tt.getTrangThaiThanhToan() != null &&
+                        (tt.getTrangThaiThanhToan().equalsIgnoreCase("Đã thanh toán") ||
+                         tt.getTrangThaiThanhToan().equalsIgnoreCase("Thành công")));
+            // ✅ Đơn đang giữ chỗ (chờ thanh toán)
+            boolean isHolding = t.getGhiChu() != null && t.getGhiChu().contains("Chờ thanh toán VNPay")
+                && t.getHanGiuCho() != null && t.getHanGiuCho().isAfter(LocalDateTime.now());
+            return isPaid || isHolding;
+        });
 
-     if (hasActiveHold) {
-         model.addAttribute("errorMessage",
-             "⚠️ Bạn đang có một đơn đang chờ thanh toán cọc VNPay trong thời gian giữ chỗ. " +
-             "Vui lòng hoàn tất thanh toán hoặc đợi hết 10 phút để đặt sân mới.");
-         model.addAttribute("showAlert", true);
-         return showBookingPage(pitchId, model, session);
-     }
+        if (isOverlapping) {
+            model.addAttribute("errorMessage", "⚠️ Khung giờ này đã có người đặt trước. Vui lòng chọn thời gian khác!");
+            model.addAttribute("showAlert", true);
+            return showBookingPage(pitchId, model, session);
+        }
 
-
+        /* ===========================================================
+         * 💾 3️⃣ Lưu đơn đặt sân mới và chuyển đến VNPay
+         * =========================================================== */
         try {
             ThueSan thueSan = new ThueSan();
             thueSan.setKhachHang(kh);
             thueSan.setSanBong(san);
             thueSan.setNgayTao(LocalDateTime.now());
-            thueSan.setNgayThue(LocalDate.parse(date).atStartOfDay());
-            thueSan.setKhungGioBatDau(LocalTime.parse(start));
-            thueSan.setKhungGioKetThuc(LocalTime.parse(end));
+            thueSan.setNgayThue(ngayThue.atStartOfDay());
+            thueSan.setKhungGioBatDau(gioBatDau);
+            thueSan.setKhungGioKetThuc(gioKetThuc);
             thueSan.setTongTien(BigDecimal.valueOf(total));
             thueSan.setTienCocBatBuoc(BigDecimal.valueOf(cocAmount));
             thueSan.setHanGiuCho(LocalDateTime.now().plusMinutes(10));
@@ -217,32 +251,15 @@ public class CustomerBookingController {
 
             String orderInfo = kh.getSoDienThoai() + "_" + thueSan.getMaDonDat();
             return "redirect:/api/vnpay/create-payment?amount=" + cocAmount + "&orderInfo=" + orderInfo;
+
         } catch (Exception e) {
             e.printStackTrace();
-            return "redirect:/customer/booking?pitch=" + pitchId + "&error=save-failed";
+            model.addAttribute("errorMessage", "❌ Lỗi hệ thống khi lưu đơn đặt sân. Vui lòng thử lại.");
+            model.addAttribute("showAlert", true);
+            return showBookingPage(pitchId, model, session);
         }
     }
 
-    /* ===========================================================
-     * 💳 [GET] Thanh toán cọc lại qua VNPay cho đơn chưa thanh toán
-     * =========================================================== */
-    @GetMapping("/payment/deposit")
-    public String payDeposit(@RequestParam("maDonDat") Integer maDonDat, HttpSession session) {
-        String email = SessionUtil.getCustomerEmail(session);
-        if (email == null) return "redirect:/login";
-
-        Optional<ThueSan> opt = thueSanRepository.findById(maDonDat);
-        if (opt.isEmpty()) return "redirect:/customer/history";
-
-        ThueSan ts = opt.get();
-        ts.setGhiChu("Chờ thanh toán VNPay");
-        ts.setHanGiuCho(LocalDateTime.now().plusMinutes(10));
-        thueSanRepository.save(ts);
-
-        String orderInfo = ts.getKhachHang().getSoDienThoai() + "_" + ts.getMaDonDat();
-        long amount = ts.getTienCocBatBuoc() != null ? ts.getTienCocBatBuoc().longValue() : 0;
-        return "redirect:/api/vnpay/create-payment?amount=" + amount + "&orderInfo=" + orderInfo;
-    }
 
     /* ===========================================================
      * ❌ [GET] Hủy đơn chưa thanh toán
@@ -280,7 +297,7 @@ public class CustomerBookingController {
      * =========================================================== */
     private double getDepositRate() {
         try {
-            String val = systemConfigRepo.findValueByKey("depositRate");
+            String val = systemConfigRepo.findValueByKey("DEPOSIT_PERCENTAGE");
             if (val != null && !val.isBlank()) {
                 double parsed = Double.parseDouble(val.trim());
                 return parsed > 1 ? parsed / 100 : parsed;

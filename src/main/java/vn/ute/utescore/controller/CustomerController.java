@@ -46,7 +46,11 @@ public class CustomerController {
         model.addAttribute("pageTitle", "Trang chủ khách hàng");
         return "customer/home";
     }
-    
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "guest/index"; // về trang index khách
+    }
     // 👤 Trang tài khoản cá nhân
     @GetMapping("/account")
     public String account(Model model, HttpSession session) {
@@ -79,23 +83,49 @@ public class CustomerController {
         KhachHang kh = khachHangRepository.findByEmail(email).orElse(null);
         if (kh == null) return "redirect:/login";
 
-        try {
-            kh.setHoTen(hoTen);
-            kh.setSoDienThoai(soDienThoai);
+        // 🧠 Regex kiểm tra họ tên tiếng Việt: chỉ cho phép chữ, dấu, khoảng trắng
+        String hoTenPattern = "^[A-Za-zÀ-Ỹà-ỹĂăÂâÊêÔôƠơƯưĐđ\\s]{2,50}$";
 
-            if (file != null && !file.isEmpty()) {
-                kh.setAnhDaiDien(file.getBytes());
+        // 🧩 Kiểm tra dữ liệu đầu vào
+        if (hoTen == null || hoTen.trim().isEmpty()) {
+            model.addAttribute("errorMessage", "⚠️ Họ tên không được để trống!");
+        } else if (!hoTen.trim().matches(hoTenPattern)) {
+            model.addAttribute("errorMessage", "⚠️ Họ tên không hợp lệ! (Chỉ chứa chữ cái, có thể có dấu và khoảng trắng)");
+        } else if (soDienThoai == null || soDienThoai.trim().isEmpty()) {
+            model.addAttribute("errorMessage", "⚠️ Số điện thoại không được để trống!");
+        } else if (!soDienThoai.matches("^0\\d{9,10}$")) {
+            model.addAttribute("errorMessage", "⚠️ Số điện thoại không hợp lệ! (Phải bắt đầu bằng 0 và có 10–11 số)");
+        } else {
+            try {
+                kh.setHoTen(hoTen.trim());
+                kh.setSoDienThoai(soDienThoai.trim());
+
+                // 🖼️ Kiểm tra file ảnh (nếu có)
+                if (file != null && !file.isEmpty()) {
+                    String contentType = file.getContentType();
+                    if (contentType == null || 
+                        !(contentType.equals("image/jpeg") || contentType.equals("image/png"))) {
+                        model.addAttribute("errorMessage", "⚠️ Ảnh đại diện chỉ chấp nhận định dạng JPG hoặc PNG!");
+                    } else {
+                        kh.setAnhDaiDien(file.getBytes());
+                        model.addAttribute("successMessage", "✅ Cập nhật thông tin và ảnh đại diện thành công!");
+                    }
+                } else {
+                    model.addAttribute("successMessage", "✅ Cập nhật thông tin thành công!");
+                }
+
+                khachHangRepository.save(kh);
+
+            } catch (IOException e) {
+                model.addAttribute("errorMessage", "⚠️ Lỗi khi tải ảnh: " + e.getMessage());
             }
-
-            khachHangRepository.save(kh);
-            model.addAttribute("successMessage", "✅ Cập nhật thông tin thành công!");
-        } catch (IOException e) {
-            model.addAttribute("errorMessage", "⚠️ Lỗi khi tải ảnh: " + e.getMessage());
         }
 
-        if (kh.getAnhDaiDien() != null)
+        // 📸 Gửi lại ảnh để hiển thị
+        if (kh.getAnhDaiDien() != null) {
             model.addAttribute("anhBase64",
                     Base64.getEncoder().encodeToString(kh.getAnhDaiDien()));
+        }
 
         model.addAttribute("khachHang", kh);
         model.addAttribute("pageTitle", "Tài khoản cá nhân");

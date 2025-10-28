@@ -1,7 +1,152 @@
 <!-- ================= FOOTER (fragment) ================= -->
-<footer th:fragment="footer" class="text-center footer-app">
-  <div class="container py-2 small">
-    ⚽ Hệ thống Quản lý Sân Bóng Online — <b>Customer</b> | © <span th:text="${#temporals.format(#temporals.createNow(), 'yyyy')}">2025</span> UTEScore
-    <br/>Thiết kế bởi <b>Huỳnh Hoài Phương</b> 🌿
+<footer th:fragment="footer" class="footer-app text-light mt-4">
+  <style>
+    .footer-app {
+      background: linear-gradient(90deg, #16a34a, #3b82f6);
+      color: #f9fafb;
+      padding: 35px 0 15px;
+      font-size: 0.95rem;
+      position: relative;
+    }
+
+    .footer-app .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .footer-app h6 {
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .footer-brand {
+  display: flex;
+  align-items: center;      /* căn giữa theo chiều dọc */
+  justify-content: center;  /* căn giữa theo chiều ngang */
+  gap: 12px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.footer-brand img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.25));
+}
+
+.footer-brand span {
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+
+    .footer-app a {
+      color: #e0f2fe;
+      text-decoration: none;
+    }
+
+    .footer-app a:hover {
+      text-decoration: underline;
+      color: #fff;
+    }
+
+    .footer-app ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .footer-app ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.25);
+      margin-top: 25px;
+      padding-top: 10px;
+      text-align: center;
+      font-size: 0.88rem;
+      opacity: 0.95;
+    }
+
+    .social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      margin: 0 5px;
+      transition: background 0.3s ease;
+    }
+
+    .social a:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .footer-app {
+        text-align: center;
+      }
+
+      .footer-app .footer-top {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-app .footer-top > div {
+        max-width: 90%;
+      }
+    }
+  </style>
+
+  <div class="container footer-top">
+    <!-- Giới thiệu -->
+    <div class="col-lg-5 col-md-12">
+      <div class="footer-brand">
+        <img th:src="@{/uploads/Logo.jpg}" alt="UTEScore Logo">
+        <span>UTEScore</span>
+      </div>
+      <p class="mb-2">
+        Đặt sân nhanh — thanh toán tiện — quản lý lịch đá thông minh.<br>
+        Giao diện hiện đại, tối ưu cho người dùng di động & máy tính.
+      </p>
+      <div class="small">
+        <i class="bi bi-shield-check me-1"></i> Secure by HTTPS
+        <span class="mx-2">•</span>
+        <i class="bi bi-clock-history me-1"></i> Support: 08:00–22:00
+      </div>
+    </div>
+
+    <!-- Liên hệ -->
+    <div class="col-lg-4 col-md-6">
+      <h6>Liên hệ</h6>
+      <ul>
+        <li><i class="bi bi-geo-alt me-2"></i> Địa chỉ: số 1 Võ Văn Ngân, TP. Thủ Đức, TP.HCM</li>
+        <li><i class="bi bi-telephone me-2"></i> <a href="tel:0123456789">hotline: 0123 456 789</a></li>
+        <li><i class="bi bi-envelope me-2"></i> <a href="mailto:support@utescore.vn">Email: support@utescore.vn</a></li>
+        <li><i class="bi bi-map me-2"></i> 
+          <a th:href="@{https://maps.app.goo.gl/XVRqY6gfZvPwuySd6}" target="_blank">
+            Xem bản đồ tại đây!
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Dòng bản quyền -->
+  <div class="container footer-bottom">
+    © <span th:text="${#temporals.format(#temporals.createNow(), 'yyyy')}">2025</span> UTEScore —
+    Thiết kế bởi <b>Huỳnh Hoài Phương</b> 🌿
   </div>
 </footer>

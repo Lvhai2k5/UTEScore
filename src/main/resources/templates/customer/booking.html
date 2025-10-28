@@ -269,40 +269,74 @@
     }
 
     function fillTimeOptions(booked) {
-      startTime.innerHTML = "";
-      endTime.innerHTML = "";
-      const openM = parseTime(openTime);
-      const closeM = parseTime(closeTime);
-      const now = new Date();
-      const isToday = date.value === today;
+    	  startTime.innerHTML = "";
+    	  endTime.innerHTML = "";
 
-      for (let m = openM; m < closeM; m += 30) {
-        const timeStr = toHM(m);
-        const opt1 = document.createElement("option");
-        const opt2 = document.createElement("option");
-        opt1.value = opt2.value = timeStr;
-        opt1.textContent = opt2.textContent = timeStr;
+    	  const openM  = parseTime(openTime);
+    	  const closeM = parseTime(closeTime);
+    	  const now = new Date();
+    	  const toISODate = (d) => {
+    		  if (!d) return "";
+    		  const parts = d.includes("-") ? d.split("-") : d.split("/");
+    		  // Nếu dạng dd/mm/yyyy -> đảo lại
+    		  return parts[0].length === 4
+    		    ? d
+    		    : `${parts[2]}-${parts[1].padStart(2, "0")}-${parts[0].padStart(2, "0")}`;
+    		};
 
-        let disabled = false;
-        if (isToday) {
-          const nowM = now.getHours() * 60 + now.getMinutes();
-          if (m <= nowM) disabled = true;
-        }
-        for (const slot of booked) {
-          const [s, e] = slot.split("-");
-          if (parseTime(timeStr) >= parseTime(s) && parseTime(timeStr) < parseTime(e)) {
-            disabled = true;
-            break;
-          }
-        }
-        if (disabled) {
-          opt1.disabled = opt2.disabled = true;
-          opt1.title = opt2.title = "⛔ Giờ này đã được đặt hoặc đã qua";
-        }
-        startTime.appendChild(opt1);
-        endTime.appendChild(opt2);
-      }
-    }
+    		const isToday = toISODate(date.value) === today;
+
+    	  // START: open → close - 30
+    	  for (let m = openM; m < closeM; m += 30) {
+    	    const timeStr = toHM(m);
+    	    const opt = document.createElement("option");
+    	    opt.value = timeStr;
+    	    opt.textContent = timeStr;
+
+    	    let disabled = false;
+    	    if (isToday) {
+    	      const nowM = now.getHours() * 60 + now.getMinutes();
+    	      if (m <= nowM) disabled = true;
+    	    }
+    	    for (const slot of booked) {
+    	      const [s, e] = slot.split("-");
+    	      if (parseTime(timeStr) >= parseTime(s) && parseTime(timeStr) < parseTime(e)) {
+    	        disabled = true; break;
+    	      }
+    	    }
+    	    if (disabled) {
+    	      opt.disabled = true;
+    	      opt.title = "⛔ Giờ này đã được đặt hoặc đã qua";
+    	    }
+    	    startTime.appendChild(opt);
+    	  }
+
+    	  // END: open + 30 → close (bao gồm 23:00)
+    	  for (let m = openM + 30; m <= closeM; m += 30) {
+    	    const timeStr = toHM(m);
+    	    const opt = document.createElement("option");
+    	    opt.value = opt.textContent = timeStr;
+
+    	    let disabled = false;
+    	    if (isToday) {
+    	      const nowM = now.getHours() * 60 + now.getMinutes();
+    	      if (m <= nowM) disabled = true;
+    	    }
+    	    for (const slot of booked) {
+    	      const [s, e] = slot.split("-");
+    	      // nếu kết thúc rơi vào khoảng đã đặt, vô hiệu
+    	      if (parseTime(timeStr) > parseTime(s) && parseTime(timeStr) <= parseTime(e)) {
+    	        disabled = true; break;
+    	      }
+    	    }
+    	    if (disabled) {
+    	      opt.disabled = true;
+    	      opt.title = "⛔ Giờ này đã được đặt hoặc đã qua";
+    	    }
+    	    endTime.appendChild(opt);
+    	  }
+    	}
+
 
     date.addEventListener("change", loadBookedSlots);
     await loadBookedSlots();
