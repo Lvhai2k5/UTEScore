@@ -12445,3 +12445,493 @@ This generated password is for development use only. Your security configuration
 2025-10-28T17:15:58.765+07:00  INFO 93152 --- [UTEScore] [RMI TCP Connection(9)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-10-28T17:15:58.767+07:00  INFO 93152 --- [UTEScore] [RMI TCP Connection(9)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-10-28T17:15:58.769+07:00  INFO 93152 --- [UTEScore] [RMI TCP Connection(9)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-28T17:56:16.962+07:00  INFO 27124 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Starting UteScoreApplication using Java 22.0.2 with PID 27124 (D:\Workspace\UTEScore\target\classes started by HP in D:\Workspace\UTEScore)
+2025-10-28T17:56:16.964+07:00 DEBUG 27124 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Running with Spring Boot v3.5.6, Spring v6.2.11
+2025-10-28T17:56:16.964+07:00  INFO 27124 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-10-28T17:56:17.828+07:00  INFO 27124 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-28T17:56:17.938+07:00  INFO 27124 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 102 ms. Found 41 JPA repository interfaces.
+2025-10-28T17:56:18.384+07:00  INFO 27124 --- [UTEScore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-28T17:56:18.399+07:00  INFO 27124 --- [UTEScore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-28T17:56:18.399+07:00  INFO 27124 --- [UTEScore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-28T17:56:18.447+07:00  INFO 27124 --- [UTEScore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-28T17:56:18.447+07:00  INFO 27124 --- [UTEScore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1416 ms
+2025-10-28T17:56:18.603+07:00  INFO 27124 --- [UTEScore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-28T17:56:18.641+07:00  INFO 27124 --- [UTEScore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-10-28T17:56:18.661+07:00  INFO 27124 --- [UTEScore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-28T17:56:18.847+07:00  INFO 27124 --- [UTEScore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-28T17:56:18.871+07:00  INFO 27124 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-28T17:56:27.198+07:00  WARN 27124 --- [UTEScore] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 08S01
+2025-10-28T17:56:27.198+07:00 ERROR 27124 --- [UTEScore] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : The TCP/IP connection to the host LEVUHAI, port 1433 has failed. Error: "No such host is known (LEVUHAI). Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".
+2025-10-28T17:56:27.200+07:00  WARN 27124 --- [UTEScore] [main] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
+
+org.hibernate.exception.JDBCConnectionException: unable to obtain isolated JDBC connection [The TCP/IP connection to the host LEVUHAI, port 1433 has failed. Error: "No such host is known (LEVUHAI). Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:100) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:334) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:129) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:81) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:226) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:194) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1442) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1513) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970) ~[spring-context-6.2.11.jar:6.2.11]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.11.jar:6.2.11]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.6.jar:3.5.6]
+	at vn.ute.utescore.UteScoreApplication.main(UteScoreApplication.java:10) ~[classes/:na]
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: The TCP/IP connection to the host LEVUHAI, port 1433 has failed. Error: "No such host is known (LEVUHAI). Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:250) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerException.convertConnectExceptionToSQLServerException(SQLServerException.java:316) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SocketFinder.findSocket(IOBuffer.java:2593) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.TDSChannel.open(IOBuffer.java:721) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:4079) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:3695) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:3504) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:2212) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1320) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:144) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:370) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:207) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:488) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:576) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:97) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111) ~[HikariCP-6.3.3.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:126) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:485) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	... 35 common frames omitted
+
+2025-10-28T17:56:27.226+07:00  WARN 27124 --- [UTEScore] [main] org.hibernate.orm.deprecation            : HHH90000025: SQLServerDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-28T17:56:27.235+07:00  INFO 27124 --- [UTEScore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (null)']
+	Database driver: undefined/unknown
+	Database version: 11.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-28T17:56:27.579+07:00  WARN 27124 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.TinhNangSanId
+2025-10-28T17:56:27.579+07:00  WARN 27124 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.TinhNangSanId
+2025-10-28T17:56:27.581+07:00  WARN 27124 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-28T17:56:27.581+07:00  WARN 27124 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-28T17:56:27.582+07:00  WARN 27124 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-28T17:56:27.582+07:00  WARN 27124 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-28T17:56:28.173+07:00  INFO 27124 --- [UTEScore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-28T17:56:28.189+07:00  INFO 27124 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-28T17:56:29.193+07:00  WARN 27124 --- [UTEScore] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 08S01
+2025-10-28T17:56:29.194+07:00 ERROR 27124 --- [UTEScore] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : The TCP/IP connection to the host LEVUHAI, port 1433 has failed. Error: "LEVUHAI. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".
+2025-10-28T17:56:29.209+07:00 ERROR 27124 --- [UTEScore] [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [The TCP/IP connection to the host LEVUHAI, port 1433 has failed. Error: "LEVUHAI. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".] [n/a]
+2025-10-28T17:56:29.210+07:00  WARN 27124 --- [UTEScore] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [The TCP/IP connection to the host LEVUHAI, port 1433 has failed. Error: "LEVUHAI. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".] [n/a]
+2025-10-28T17:56:29.214+07:00  INFO 27124 --- [UTEScore] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-10-28T17:56:29.229+07:00  INFO 27124 --- [UTEScore] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-10-28T17:56:29.250+07:00 ERROR 27124 --- [UTEScore] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [The TCP/IP connection to the host LEVUHAI, port 1433 has failed. Error: "LEVUHAI. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".] [n/a]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1826) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970) ~[spring-context-6.2.11.jar:6.2.11]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.11.jar:6.2.11]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.6.jar:3.5.6]
+	at vn.ute.utescore.UteScoreApplication.main(UteScoreApplication.java:10) ~[classes/:na]
+Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [The TCP/IP connection to the host LEVUHAI, port 1433 has failed. Error: "LEVUHAI. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".] [n/a]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:431) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822) ~[spring-beans-6.2.11.jar:6.2.11]
+	... 15 common frames omitted
+Caused by: org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [The TCP/IP connection to the host LEVUHAI, port 1433 has failed. Error: "LEVUHAI. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:100) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:74) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:39) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcConnection(ImprovedExtractionContextImpl.java:63) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.tool.schema.extract.spi.ExtractionContext.getQueryResults(ExtractionContext.java:43) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.tool.schema.extract.internal.SequenceInformationExtractorLegacyImpl.extractMetadata(SequenceInformationExtractorLegacyImpl.java:39) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.initializeSequences(DatabaseInformationImpl.java:66) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.<init>(DatabaseInformationImpl.java:60) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.tool.schema.internal.Helper.buildDatabaseInformation(Helper.java:185) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:93) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:324) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1517) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419) ~[spring-orm-6.2.11.jar:6.2.11]
+	... 19 common frames omitted
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: The TCP/IP connection to the host LEVUHAI, port 1433 has failed. Error: "LEVUHAI. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:250) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerException.convertConnectExceptionToSQLServerException(SQLServerException.java:316) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SocketFinder.findSocket(IOBuffer.java:2593) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.TDSChannel.open(IOBuffer.java:721) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:4079) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:3695) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:3504) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:2212) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1320) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:144) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:370) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:207) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:488) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:576) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:97) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111) ~[HikariCP-6.3.3.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:126) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:485) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:46) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	... 39 common frames omitted
+
+2025-10-28T17:59:58.383+07:00  INFO 24712 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Starting UteScoreApplication using Java 22.0.2 with PID 24712 (D:\Workspace\UTEScore\target\classes started by HP in D:\Workspace\UTEScore)
+2025-10-28T17:59:58.384+07:00 DEBUG 24712 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Running with Spring Boot v3.5.6, Spring v6.2.11
+2025-10-28T17:59:58.384+07:00  INFO 24712 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-10-28T17:59:58.985+07:00  INFO 24712 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-28T17:59:59.125+07:00  INFO 24712 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 134 ms. Found 41 JPA repository interfaces.
+2025-10-28T17:59:59.797+07:00  INFO 24712 --- [UTEScore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-28T17:59:59.813+07:00  INFO 24712 --- [UTEScore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-28T17:59:59.813+07:00  INFO 24712 --- [UTEScore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-28T17:59:59.859+07:00  INFO 24712 --- [UTEScore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-28T17:59:59.859+07:00  INFO 24712 --- [UTEScore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1443 ms
+2025-10-28T18:00:00.030+07:00  INFO 24712 --- [UTEScore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-28T18:00:00.069+07:00  INFO 24712 --- [UTEScore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-10-28T18:00:00.092+07:00  INFO 24712 --- [UTEScore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-28T18:00:00.353+07:00  INFO 24712 --- [UTEScore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-28T18:00:00.379+07:00  INFO 24712 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-28T18:00:00.839+07:00  INFO 24712 --- [UTEScore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: 4df1f0b2-3423-4e62-9cbf-0fa543e37e2e
+2025-10-28T18:00:00.841+07:00  INFO 24712 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-28T18:00:00.927+07:00  WARN 24712 --- [UTEScore] [main] org.hibernate.orm.deprecation            : HHH90000025: SQLServerDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-28T18:00:00.945+07:00  INFO 24712 --- [UTEScore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-28T18:00:01.301+07:00  WARN 24712 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.TinhNangSanId
+2025-10-28T18:00:01.301+07:00  WARN 24712 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.TinhNangSanId
+2025-10-28T18:00:01.303+07:00  WARN 24712 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-28T18:00:01.303+07:00  WARN 24712 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-28T18:00:01.303+07:00  WARN 24712 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-28T18:00:01.304+07:00  WARN 24712 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-28T18:00:02.000+07:00  INFO 24712 --- [UTEScore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-28T18:00:02.003+07:00  INFO 24712 --- [UTEScore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-28T18:00:02.301+07:00  INFO 24712 --- [UTEScore] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-28T18:00:05.757+07:00  WARN 24712 --- [UTEScore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-28T18:00:05.956+07:00  WARN 24712 --- [UTEScore] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 3889cb17-4a5c-4d16-9807-e2bf71769d86
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-10-28T18:00:05.962+07:00  INFO 24712 --- [UTEScore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-10-28T18:00:06.309+07:00  INFO 24712 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2025-10-28T18:00:06.310+07:00  INFO 24712 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@45a9c5b9]]
+2025-10-28T18:00:06.311+07:00  INFO 24712 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2025-10-28T18:00:06.317+07:00  INFO 24712 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2025-10-28T18:00:06.317+07:00  INFO 24712 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@45a9c5b9]]
+2025-10-28T18:00:06.317+07:00  INFO 24712 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2025-10-28T18:00:06.317+07:00  WARN 24712 --- [UTEScore] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-10-28T18:00:06.322+07:00  INFO 24712 --- [UTEScore] [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-28T18:00:06.324+07:00  INFO 24712 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-28T18:00:06.329+07:00  INFO 24712 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-28T18:00:06.339+07:00  INFO 24712 --- [UTEScore] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-10-28T18:00:06.352+07:00 ERROR 24712 --- [UTEScore] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2025-10-28T18:00:22.597+07:00  INFO 42200 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Starting UteScoreApplication using Java 22.0.2 with PID 42200 (D:\Workspace\UTEScore\target\classes started by HP in D:\Workspace\UTEScore)
+2025-10-28T18:00:22.598+07:00 DEBUG 42200 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Running with Spring Boot v3.5.6, Spring v6.2.11
+2025-10-28T18:00:22.599+07:00  INFO 42200 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-10-28T18:00:23.342+07:00  INFO 42200 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-28T18:00:23.458+07:00  INFO 42200 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 110 ms. Found 41 JPA repository interfaces.
+2025-10-28T18:00:23.879+07:00  INFO 42200 --- [UTEScore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8089 (http)
+2025-10-28T18:00:23.890+07:00  INFO 42200 --- [UTEScore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-28T18:00:23.890+07:00  INFO 42200 --- [UTEScore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-28T18:00:23.928+07:00  INFO 42200 --- [UTEScore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-28T18:00:23.937+07:00  INFO 42200 --- [UTEScore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1306 ms
+2025-10-28T18:00:24.110+07:00  INFO 42200 --- [UTEScore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-28T18:00:24.149+07:00  INFO 42200 --- [UTEScore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-10-28T18:00:24.172+07:00  INFO 42200 --- [UTEScore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-28T18:00:24.373+07:00  INFO 42200 --- [UTEScore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-28T18:00:24.392+07:00  INFO 42200 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-28T18:00:24.730+07:00  INFO 42200 --- [UTEScore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: f8737583-10c2-4024-8b56-a69ac33d71b2
+2025-10-28T18:00:24.733+07:00  INFO 42200 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-28T18:00:24.806+07:00  WARN 42200 --- [UTEScore] [main] org.hibernate.orm.deprecation            : HHH90000025: SQLServerDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-28T18:00:24.828+07:00  INFO 42200 --- [UTEScore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-28T18:00:25.164+07:00  WARN 42200 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.TinhNangSanId
+2025-10-28T18:00:25.165+07:00  WARN 42200 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.TinhNangSanId
+2025-10-28T18:00:25.166+07:00  WARN 42200 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-28T18:00:25.167+07:00  WARN 42200 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-28T18:00:25.167+07:00  WARN 42200 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-28T18:00:25.168+07:00  WARN 42200 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-28T18:00:25.841+07:00  INFO 42200 --- [UTEScore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-28T18:00:25.843+07:00  INFO 42200 --- [UTEScore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-28T18:00:26.044+07:00  INFO 42200 --- [UTEScore] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-28T18:00:29.581+07:00  WARN 42200 --- [UTEScore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-28T18:00:29.816+07:00  WARN 42200 --- [UTEScore] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 94f9bea2-f112-48d5-92f2-ff3b951e8806
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-10-28T18:00:29.825+07:00  INFO 42200 --- [UTEScore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-10-28T18:00:30.152+07:00  INFO 42200 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2025-10-28T18:00:30.153+07:00  INFO 42200 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@61f0742d]]
+2025-10-28T18:00:30.154+07:00  INFO 42200 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2025-10-28T18:00:30.182+07:00  INFO 42200 --- [UTEScore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8089 (http) with context path '/'
+2025-10-28T18:00:30.190+07:00  INFO 42200 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Started UteScoreApplication in 7.958 seconds (process running for 8.445)
+2025-10-28T18:00:43.880+07:00  INFO 42200 --- [UTEScore] [http-nio-8089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-28T18:00:43.881+07:00  INFO 42200 --- [UTEScore] [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-28T18:00:43.886+07:00  INFO 42200 --- [UTEScore] [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2025-10-28T18:00:56.674+07:00  INFO 42200 --- [UTEScore] [http-nio-8089-exec-4] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-28T18:00:56.700+07:00  INFO 42200 --- [UTEScore] [http-nio-8089-exec-4] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 5
+2025-10-28T18:01:00.124+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:01:00.127+07:00  INFO 42200 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:01:00.127805500
+2025-10-28T18:01:06.848+07:00  INFO 42200 --- [UTEScore] [http-nio-8089-exec-10] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-28T18:01:06.865+07:00  INFO 42200 --- [UTEScore] [http-nio-8089-exec-10] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 5
+2025-10-28T18:01:09.231+07:00  INFO 42200 --- [UTEScore] [http-nio-8089-exec-3] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-28T18:01:09.246+07:00  INFO 42200 --- [UTEScore] [http-nio-8089-exec-3] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 5
+2025-10-28T18:01:11.852+07:00  INFO 42200 --- [UTEScore] [http-nio-8089-exec-7] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-28T18:01:11.869+07:00  INFO 42200 --- [UTEScore] [http-nio-8089-exec-7] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 5
+2025-10-28T18:01:16.228+07:00  INFO 42200 --- [UTEScore] [http-nio-8089-exec-10] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-28T18:01:16.247+07:00  INFO 42200 --- [UTEScore] [http-nio-8089-exec-10] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 5
+2025-10-28T18:01:18.213+07:00  INFO 42200 --- [UTEScore] [http-nio-8089-exec-3] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-28T18:01:18.223+07:00  INFO 42200 --- [UTEScore] [http-nio-8089-exec-3] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 5
+2025-10-28T18:01:30.157+07:00  INFO 42200 --- [UTEScore] [MessageBroker-2] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 1, completed tasks = 1]
+2025-10-28T18:02:00.045+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:02:00.045+07:00  INFO 42200 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:02:00.045552200
+2025-10-28T18:03:00.028+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:03:00.031+07:00  INFO 42200 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:03:00.031631800
+2025-10-28T18:04:00.040+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-3] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:04:00.044+07:00  INFO 42200 --- [UTEScore] [MessageBroker-3] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:04:00.044572400
+2025-10-28T18:05:00.043+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-5] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:05:00.043+07:00  INFO 42200 --- [UTEScore] [MessageBroker-5] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:05:00.043083900
+2025-10-28T18:06:00.054+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:06:00.059+07:00  INFO 42200 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:06:00.059632500
+2025-10-28T18:07:00.039+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:07:00.042+07:00  INFO 42200 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:07:00.042066300
+2025-10-28T18:08:00.054+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-7] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:08:00.056+07:00  INFO 42200 --- [UTEScore] [MessageBroker-7] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:08:00.056006500
+2025-10-28T18:09:00.077+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-5] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:09:00.083+07:00  INFO 42200 --- [UTEScore] [MessageBroker-5] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:09:00.083977800
+2025-10-28T18:10:00.042+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-6] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:10:00.042+07:00  INFO 42200 --- [UTEScore] [MessageBroker-6] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:10:00.042334900
+2025-10-28T18:11:00.052+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:11:00.052+07:00  INFO 42200 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:11:00.052577600
+2025-10-28T18:11:00.340+07:00  INFO 42200 --- [UTEScore] [http-nio-8089-exec-6] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-28T18:11:00.349+07:00  INFO 42200 --- [UTEScore] [http-nio-8089-exec-6] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 5
+2025-10-28T18:11:10.169+07:00  INFO 42200 --- [UTEScore] [http-nio-8089-exec-7] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-28T18:11:10.181+07:00  INFO 42200 --- [UTEScore] [http-nio-8089-exec-7] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 5
+2025-10-28T18:12:00.048+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:12:00.051+07:00  INFO 42200 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:12:00.051690400
+2025-10-28T18:13:00.056+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-4] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:13:00.061+07:00  INFO 42200 --- [UTEScore] [MessageBroker-4] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:13:00.061673
+2025-10-28T18:14:00.046+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:14:00.048+07:00  INFO 42200 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:14:00.048284800
+2025-10-28T18:15:00.058+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:15:00.060+07:00  INFO 42200 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:15:00.060042600
+2025-10-28T18:16:00.041+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:16:00.045+07:00  INFO 42200 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:16:00.045235900
+2025-10-28T18:17:00.032+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:17:00.035+07:00  INFO 42200 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:17:00.035161800
+2025-10-28T18:18:00.052+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:18:00.055+07:00  INFO 42200 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:18:00.055229400
+2025-10-28T18:19:00.049+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:19:00.053+07:00  INFO 42200 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:19:00.053434700
+2025-10-28T18:20:00.041+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:20:00.052+07:00  INFO 42200 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:20:00.052564
+2025-10-28T18:21:00.041+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:21:00.041+07:00  INFO 42200 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:21:00.041885800
+2025-10-28T18:22:00.056+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:22:00.060+07:00  INFO 42200 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:22:00.060774300
+2025-10-28T18:23:00.049+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:23:00.053+07:00  INFO 42200 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:23:00.053959600
+2025-10-28T18:24:00.047+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:24:00.050+07:00  INFO 42200 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:24:00.050590500
+2025-10-28T18:25:00.027+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:25:00.039+07:00  INFO 42200 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:25:00.039047
+2025-10-28T18:26:00.034+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:26:00.036+07:00  INFO 42200 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:26:00.036062300
+2025-10-28T18:27:00.046+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:27:00.049+07:00  INFO 42200 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:27:00.049570
+2025-10-28T18:28:00.042+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:28:00.042+07:00  INFO 42200 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:28:00.042151200
+2025-10-28T18:29:00.058+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:29:00.058+07:00  INFO 42200 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:29:00.058353700
+2025-10-28T18:30:00.059+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:30:00.074+07:00  INFO 42200 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:30:00.074992900
+2025-10-28T18:31:00.023+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:31:00.035+07:00  INFO 42200 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:31:00.035518800
+2025-10-28T18:31:30.165+07:00  INFO 42200 --- [UTEScore] [MessageBroker-9] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 16, active threads = 1, queued tasks = 1, completed tasks = 32]
+2025-10-28T18:32:00.067+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-6] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:32:00.067+07:00  INFO 42200 --- [UTEScore] [MessageBroker-6] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:32:00.067138400
+2025-10-28T18:33:00.040+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-6] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:33:00.045+07:00  INFO 42200 --- [UTEScore] [MessageBroker-6] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:33:00.045002400
+2025-10-28T18:34:00.043+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-6] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:34:00.044+07:00  INFO 42200 --- [UTEScore] [MessageBroker-6] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:34:00.044739800
+2025-10-28T18:35:00.060+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-5] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:35:00.060+07:00  INFO 42200 --- [UTEScore] [MessageBroker-5] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:35:00.060619100
+2025-10-28T18:36:00.039+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-5] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:36:00.042+07:00  INFO 42200 --- [UTEScore] [MessageBroker-5] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:36:00.042991400
+2025-10-28T18:37:00.052+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-5] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:37:00.054+07:00  INFO 42200 --- [UTEScore] [MessageBroker-5] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:37:00.054752500
+2025-10-28T18:38:00.064+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-5] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:38:00.066+07:00  INFO 42200 --- [UTEScore] [MessageBroker-5] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:38:00.066668200
+2025-10-28T18:39:00.046+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-5] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:39:00.050+07:00  INFO 42200 --- [UTEScore] [MessageBroker-5] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:39:00.050786800
+2025-10-28T18:40:00.055+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-5] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:40:00.060+07:00  INFO 42200 --- [UTEScore] [MessageBroker-5] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:40:00.060792300
+2025-10-28T18:41:00.046+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-5] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:41:00.052+07:00  INFO 42200 --- [UTEScore] [MessageBroker-5] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:41:00.052816800
+2025-10-28T18:42:00.037+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-5] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:42:00.037+07:00  INFO 42200 --- [UTEScore] [MessageBroker-5] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:42:00.037492900
+2025-10-28T18:43:00.065+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-5] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:43:00.065+07:00  INFO 42200 --- [UTEScore] [MessageBroker-5] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:43:00.065115
+2025-10-28T18:44:00.066+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-8] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:44:00.066+07:00  INFO 42200 --- [UTEScore] [MessageBroker-8] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:44:00.066838300
+2025-10-28T18:45:00.063+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-8] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:45:00.063+07:00  INFO 42200 --- [UTEScore] [MessageBroker-8] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:45:00.063383400
+2025-10-28T18:46:00.032+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-8] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:46:00.036+07:00  INFO 42200 --- [UTEScore] [MessageBroker-8] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:46:00.036164800
+2025-10-28T18:47:00.027+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-8] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:47:00.027+07:00  INFO 42200 --- [UTEScore] [MessageBroker-8] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:47:00.027338200
+2025-10-28T18:48:00.060+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-8] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:48:00.062+07:00  INFO 42200 --- [UTEScore] [MessageBroker-8] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:48:00.062814800
+2025-10-28T18:49:00.047+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-7] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:49:00.048+07:00  INFO 42200 --- [UTEScore] [MessageBroker-7] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:49:00.048908900
+2025-10-28T18:50:00.036+07:00 DEBUG 42200 --- [UTEScore] [MessageBroker-7] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-28T18:50:00.037+07:00  INFO 42200 --- [UTEScore] [MessageBroker-7] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:50:00.037036600
+2025-10-28T18:50:04.117+07:00  INFO 42200 --- [UTEScore] [RMI TCP Connection(59)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2025-10-28T18:50:04.124+07:00  INFO 42200 --- [UTEScore] [RMI TCP Connection(59)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-28T18:50:04.140+07:00  INFO 42200 --- [UTEScore] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-28T18:50:04.143+07:00  INFO 42200 --- [UTEScore] [RMI TCP Connection(59)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2025-10-28T18:50:04.143+07:00  INFO 42200 --- [UTEScore] [RMI TCP Connection(59)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@61f0742d]]
+2025-10-28T18:50:04.143+07:00  INFO 42200 --- [UTEScore] [RMI TCP Connection(59)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2025-10-28T18:50:04.149+07:00  INFO 42200 --- [UTEScore] [RMI TCP Connection(59)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-28T18:50:04.158+07:00  INFO 42200 --- [UTEScore] [RMI TCP Connection(59)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-28T18:50:04.161+07:00  INFO 42200 --- [UTEScore] [RMI TCP Connection(59)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-28T18:50:06.181+07:00  INFO 42544 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Starting UteScoreApplication using Java 22.0.2 with PID 42544 (D:\Workspace\UTEScore\target\classes started by HP in D:\Workspace\UTEScore)
+2025-10-28T18:50:06.182+07:00 DEBUG 42544 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Running with Spring Boot v3.5.6, Spring v6.2.11
+2025-10-28T18:50:06.183+07:00  INFO 42544 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-10-28T18:50:06.771+07:00  INFO 42544 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-28T18:50:06.891+07:00  INFO 42544 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 113 ms. Found 41 JPA repository interfaces.
+2025-10-28T18:50:07.329+07:00  INFO 42544 --- [UTEScore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8089 (http)
+2025-10-28T18:50:07.351+07:00  INFO 42544 --- [UTEScore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-28T18:50:07.352+07:00  INFO 42544 --- [UTEScore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-28T18:50:07.406+07:00  INFO 42544 --- [UTEScore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-28T18:50:07.406+07:00  INFO 42544 --- [UTEScore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1190 ms
+2025-10-28T18:50:07.583+07:00  INFO 42544 --- [UTEScore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-28T18:50:07.615+07:00  INFO 42544 --- [UTEScore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-10-28T18:50:07.639+07:00  INFO 42544 --- [UTEScore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-28T18:50:07.823+07:00  INFO 42544 --- [UTEScore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-28T18:50:07.844+07:00  INFO 42544 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-28T18:50:08.200+07:00  INFO 42544 --- [UTEScore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: 590bb831-8c00-442a-b509-7933218d48b0
+2025-10-28T18:50:08.202+07:00  INFO 42544 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-28T18:50:08.297+07:00  WARN 42544 --- [UTEScore] [main] org.hibernate.orm.deprecation            : HHH90000025: SQLServerDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-28T18:50:08.319+07:00  INFO 42544 --- [UTEScore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-28T18:50:08.673+07:00  WARN 42544 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.TinhNangSanId
+2025-10-28T18:50:08.674+07:00  WARN 42544 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.TinhNangSanId
+2025-10-28T18:50:08.676+07:00  WARN 42544 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-28T18:50:08.677+07:00  WARN 42544 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-28T18:50:08.677+07:00  WARN 42544 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-28T18:50:08.678+07:00  WARN 42544 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-28T18:50:09.382+07:00  INFO 42544 --- [UTEScore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-28T18:50:09.385+07:00  INFO 42544 --- [UTEScore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-28T18:50:09.615+07:00  INFO 42544 --- [UTEScore] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-28T18:50:12.888+07:00  WARN 42544 --- [UTEScore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-28T18:50:13.108+07:00  WARN 42544 --- [UTEScore] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 15b0dece-181e-4e1a-9dc7-3f25113c91cc
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-10-28T18:50:13.114+07:00  INFO 42544 --- [UTEScore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-10-28T18:50:13.504+07:00  INFO 42544 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2025-10-28T18:50:13.504+07:00  INFO 42544 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@13038209]]
+2025-10-28T18:50:13.505+07:00  INFO 42544 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2025-10-28T18:50:13.522+07:00  INFO 42544 --- [UTEScore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8089 (http) with context path '/'
+2025-10-28T18:50:13.531+07:00  INFO 42544 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Started UteScoreApplication in 7.697 seconds (process running for 8.147)
+2025-10-28T18:50:15.036+07:00  INFO 42544 --- [UTEScore] [http-nio-8089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-28T18:50:15.037+07:00  INFO 42544 --- [UTEScore] [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-28T18:50:15.039+07:00  INFO 42544 --- [UTEScore] [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-10-28T18:50:41.472+07:00  INFO 42544 --- [UTEScore] [RMI TCP Connection(9)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2025-10-28T18:50:41.477+07:00  INFO 42544 --- [UTEScore] [RMI TCP Connection(9)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-28T18:50:41.522+07:00  INFO 42544 --- [UTEScore] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-28T18:50:41.530+07:00  INFO 42544 --- [UTEScore] [RMI TCP Connection(9)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2025-10-28T18:50:41.531+07:00  INFO 42544 --- [UTEScore] [RMI TCP Connection(9)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@13038209]]
+2025-10-28T18:50:41.532+07:00  INFO 42544 --- [UTEScore] [RMI TCP Connection(9)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2025-10-28T18:50:41.552+07:00  INFO 42544 --- [UTEScore] [RMI TCP Connection(9)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-28T18:50:41.555+07:00  INFO 42544 --- [UTEScore] [RMI TCP Connection(9)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-28T18:50:41.564+07:00  INFO 42544 --- [UTEScore] [RMI TCP Connection(9)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

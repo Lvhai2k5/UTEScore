@@ -16,6 +16,15 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
     
     <style>
+		    .navbar-nav .nav-link {
+		  white-space: nowrap;
+		  transition: 0.2s ease;
+		}
+		.navbar-nav .nav-link:hover {
+		  color: #ffc107 !important;
+		  transform: translateY(-1px);
+		}
+    
         :root { --primary: #28a745; --secondary: #198754; --accent: #ffc107; }
         body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); }
         .navbar { background: linear-gradient(135deg, var(--primary), var(--secondary)) !important; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
@@ -45,50 +54,56 @@
 </div>
 
 <!-- Header Navbar -->
-<nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container">
-        
-        <a class="navbar-brand fw-bold text-white fs-3 d-flex align-items-center" href="/">
-    		<img src="https://res.cloudinary.com/du6x32par/image/upload/v1761411547/logo_kbhaey.jpg" alt="UTEScore Logo" style="height:50px; margin-right:10px;">
+<nav class="navbar navbar-expand-lg fixed-top shadow-sm" style="background: linear-gradient(135deg, #28a745, #198754); padding: 6px 0;">
+  <div class="container d-flex align-items-center justify-content-between">
 
-    		<span><i class="fas fa-futbol text-warning me-2"></i>UTEScore</span>
-		</a>
-        
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto align-items-center">
-    <li class="nav-item"><a class="nav-link text-white mx-2" href="/">🏠 Trang chủ</a></li>
-    <li class="nav-item"><a class="nav-link text-white mx-2" href="/pitches">⚽ Sân bóng</a></li>
-    <li class="nav-item"><a class="nav-link text-white mx-2" href="/book">📅 Đặt lịch</a></li>
-    <li class="nav-item"><a class="nav-link text-white mx-2" th:href="@{/news}">📰 Tin tức</a></li>
-	<li class="nav-item"><a class="nav-link text-white mx-2" th:href="@{/promotions}">🎁 Khuyến mãi</a></li>
-    
-     <!-- ✅ Nút Đánh giá -->
-    <li class="nav-item">
-        <a class="nav-link text-white mx-2" href="javascript:void(0);" onclick="scrollToReviews()">⭐ Đánh giá</a>
-    </li>
-    <li class="nav-item">
-    <a class="nav-link text-white mx-2" href="javascript:void(0);" onclick="scrollToContact()">📞 Liên hệ</a>
-	</li>
-    
-    
-    <!-- Dark Mode -->
-    <li class="nav-item">
-        <button class="btn btn-warning ms-3" onclick="toggleDarkMode()">🌙 Dark</button>
-    </li>
+    <!-- Logo + Tên thương hiệu -->
+    <a class="navbar-brand d-flex align-items-center fw-bold text-white fs-5 me-4" href="/" style="gap: 8px;">
+      <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg"
+           alt="UTEScore Logo"
+           style="height:40px; margin-right:6px;">
+      <span><i class="fas fa-futbol text-warning me-1"></i>UTEScore</span>
+    </a>
 
-    <!-- ✅ Nút Đăng nhập -->
-    <li class="nav-item">
-        <a th:href="@{/login}" class="btn btn-light ms-3 fw-semibold">
-            🔑 Đăng nhập
-        </a>
-    </li>
-</ul>
-        </div>
+    <!-- Nút toggle cho mobile -->
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu chính -->
+    <div class="collapse navbar-collapse justify-content-center" id="mainNavbar">
+      <ul class="navbar-nav align-items-center flex-row flex-wrap justify-content-center" style="gap: 18px;">
+        <li class="nav-item"><a class="nav-link text-white fw-semibold small" href="/">🏠 Trang chủ</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-semibold small" href="/pitches">⚽ Sân bóng</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-semibold small" href="/login">📅 Đặt lịch</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-semibold small" th:href="@{/news}">📰 Tin tức</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-semibold small" th:href="@{/promotions}">🎁 Khuyến mãi</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-semibold small" href="javascript:void(0);" onclick="scrollToReviews()">⭐ Đánh giá</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-semibold small" href="javascript:void(0);" onclick="scrollToContact()">📞 Liên hệ</a></li>
+      </ul>
     </div>
+
+    <!-- Cụm nút bên phải -->
+    <div class="d-flex align-items-center ms-4" style="gap: 12px;">
+      <button class="btn btn-warning fw-semibold btn-sm px-3" onclick="toggleDarkMode()">🌙 Dark</button>
+      <a th:href="@{/login}" class="btn btn-light fw-semibold btn-sm px-3">🔑 Đăng nhập</a>
+    </div>
+  </div>
 </nav>
+
+<style>
+.navbar-nav .nav-link {
+  white-space: nowrap;
+  transition: 0.2s ease;
+  font-size: 0.9rem;
+}
+.navbar-nav .nav-link:hover {
+  color: #ffc107 !important;
+  transform: translateY(-1px);
+}
+</style>
+
+
 
 <!-- Hero Banner Carousel -->
 <section class="hero d-flex align-items-center text-white text-center" data-aos="fade-down">
@@ -507,6 +522,104 @@ function redirectBooking() {
     window.location.href = "/login";
 }
 </script>
+
+<!-- Chatbox Trợ lý UTEScore -->
+<div id="chatbox">
+  <div id="chat-header" onclick="toggleChat()">💬 Trợ lý UTEScore</div>
+  <div id="chat-body">
+      <div id="faq-container" class="faq-list"></div>
+      <div id="answer-container"></div>
+  </div>
+</div>
+
+<style>
+#chatbox {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  z-index: 9999;
+  width: 320px;
+}
+#chat-header {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+#chat-body {
+  display: none;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0 0 10px 10px;
+  max-height: 380px;
+  overflow-y: auto;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  animation: slideUp 0.3s ease;
+}
+.faq-btn {
+  display: block;
+  background: #f8f9fa;
+  margin: 6px 10px;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  transition: 0.2s;
+}
+.faq-btn:hover { background: #e2e6ea; }
+.answer {
+  margin: 8px 10px;
+  background: #d9fdd3;
+  padding: 8px;
+  border-radius: 6px;
+}
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+</style>
+
+<script>
+async function toggleChat() {
+  const body = document.getElementById("chat-body");
+  body.style.display = body.style.display === "block" ? "none" : "block";
+
+  if (body.style.display === "block") {
+    const faqContainer = document.getElementById("faq-container");
+    faqContainer.innerHTML = "<p class='text-center text-muted'>Đang tải...</p>";
+
+    try {
+      const res = await fetch("/api/faqs");
+      const faqs = await res.json();
+      faqContainer.innerHTML = "";
+      faqs.forEach(faq => {
+        const btn = document.createElement("button");
+        btn.className = "faq-btn";
+        btn.textContent = faq.question;
+        btn.onclick = () => showAnswer(faq.answer);
+        faqContainer.appendChild(btn);
+      });
+    } catch (error) {
+      faqContainer.innerHTML = "<p class='text-danger text-center'>Không tải được dữ liệu ❌</p>";
+    }
+  }
+}
+
+function showAnswer(text) {
+  const container = document.getElementById("answer-container");
+  const div = document.createElement("div");
+  div.className = "answer";
+  div.textContent = text;
+  container.appendChild(div);
+}
+</script>
+
 
 
 
