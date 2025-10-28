@@ -64,7 +64,7 @@ public class Guest_AuthController {
             case "NhanVien":
                 return "redirect:/employee";
             case "QuanLy":
-                return "redirect:/admin/dashboard";
+                return "redirect:/admin/fields";
             default:
                 return "redirect:/";
         }
