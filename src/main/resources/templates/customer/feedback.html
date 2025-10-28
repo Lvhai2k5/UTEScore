@@ -9,17 +9,103 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <style>
-    body{font-family:'Segoe UI',Tahoma,sans-serif;background:linear-gradient(180deg,#f9fafb,#f0f4f8);}
-    nav.navbar,footer{background:linear-gradient(90deg,#16a34a,#3b82f6);color:white;}
-    footer{text-align:center;padding:10px 0;font-size:14px;position:fixed;bottom:0;left:0;right:0;z-index:999;}
-    .hero-section{background:linear-gradient(135deg,#3b82f6,#22c55e);color:white;text-align:center;padding:80px 20px;border-bottom-left-radius:50px;border-bottom-right-radius:50px;box-shadow:0 10px 25px rgba(0,0,0,0.1);}
-    .user-avatar{width:90px;height:90px;border-radius:50%;border:3px solid #fff;box-shadow:0 4px 15px rgba(255,255,255,0.5);}
-    .feature-card{background:#fff;border-radius:25px;box-shadow:0 5px 18px rgba(0,0,0,0.08);padding:30px;text-align:center;}
-    .feedback-form,.history-table{background:#fff;border-radius:25px;padding:30px;box-shadow:0 8px 25px rgba(0,0,0,0.1);max-width:900px;margin:30px auto;display:none;}
-    .show{display:block!important;animation:fadeIn .5s ease;}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
-    .close-btn{position:absolute;top:10px;right:15px;background:none;border:none;font-size:24px;cursor:pointer;color:#6b7280;}
-    .stars i{font-size:28px;color:#d1d5db;cursor:pointer;}
+    body {
+      font-family:'Segoe UI', Tahoma, sans-serif;
+      background:linear-gradient(180deg,#f9fafb,#f0f4f8);
+    }
+    nav.navbar,footer {
+      background:linear-gradient(90deg,#16a34a,#3b82f6);
+      color:white;
+    }
+    footer {
+      text-align:center;
+      padding:10px 0;
+      font-size:14px;
+      position:fixed;
+      bottom:0;left:0;right:0;
+      z-index:999;
+    }
+
+    /* ==== HERO ==== */
+    .hero-section {
+      background:linear-gradient(135deg,#3b82f6,#22c55e);
+      color:white;
+      text-align:center;
+      padding:80px 20px;
+      border-bottom-left-radius:50px;
+      border-bottom-right-radius:50px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    }
+    .user-avatar {
+      width:90px;height:90px;
+      border-radius:50%;
+      border:3px solid #fff;
+      box-shadow:0 4px 15px rgba(255,255,255,0.5);
+    }
+
+    /* ==== THẺ CHỨC NĂNG ==== */
+    .feature-card {
+      background:#fff;
+      border-radius:25px;
+      box-shadow:0 5px 18px rgba(0,0,0,0.08);
+      padding:40px 30px;
+      text-align:center;
+      transition:transform .3s ease, box-shadow .3s ease;
+    }
+    .feature-card:hover {
+      transform:scale(1.05);
+      box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    /* 🌟 Tăng kích thước chữ cho 2 thẻ */
+    .feature-card h5 {
+      font-size:1.9rem;
+      font-weight:700;
+      color:#111827;
+      margin-top:10px;
+    }
+    .feature-card p {
+      font-size:1.2rem;
+      color:#374151;
+      margin:15px 0 25px;
+    }
+    .feature-icon {
+      font-size:3rem;
+    }
+
+    /* ==== FORM & TABLE ==== */
+    .feedback-form,.history-table {
+      background:#fff;
+      border-radius:25px;
+      padding:30px;
+      box-shadow:0 8px 25px rgba(0,0,0,0.1);
+      max-width:900px;
+      margin:30px auto;
+      display:none;
+    }
+    .show {
+      display:block!important;
+      animation:fadeIn .5s ease;
+    }
+    @keyframes fadeIn {
+      from{opacity:0;transform:translateY(30px);}
+      to{opacity:1;transform:translateY(0);}
+    }
+    .close-btn {
+      position:absolute;
+      top:10px;
+      right:15px;
+      background:none;
+      border:none;
+      font-size:24px;
+      cursor:pointer;
+      color:#6b7280;
+    }
+    .stars i {
+      font-size:28px;
+      color:#d1d5db;
+      cursor:pointer;
+    }
   </style>
 </head>
 

@@ -1,0 +1,2462 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý sân bóng - UTEScore</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --secondary-color: #fbbf24;
+            --accent-color: #22c55e;
+            --danger-color: #ef4444;
+            --warning-color: #f59e0b;
+            --info-color: #3b82f6;
+            --dark-color: #0f172a;
+            --light-color: #f8fafc;
+            --gradient-primary: linear-gradient(135deg, #0f172a 0%, #1e40af 50%, #3b82f6 100%);
+            --gradient-secondary: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            --gradient-accent: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            --gradient-success: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            --gradient-warning: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --gradient-danger: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            --shadow-primary: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
+            --shadow-secondary: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --sidebar-width: 280px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
+            min-height: 100vh;
+            color: white;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: var(--sidebar-width);
+            background: rgba(22, 33, 62, 0.95);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(251, 191, 36, 0.2);
+            color: white;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-brand {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: white;
+            text-decoration: none;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+        }
+
+        .sidebar-brand i {
+            color: var(--secondary-color);
+            margin-right: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        .sidebar-nav {
+            padding: 1rem 0;
+        }
+
+        .nav-item {
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-link:hover {
+            color: white;
+            background: rgba(251, 191, 36, 0.1);
+            border-left-color: var(--secondary-color);
+            transform: translateX(5px);
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
+        }
+
+        .nav-link.active {
+            color: white;
+            background: rgba(251, 191, 36, 0.2);
+            border-left-color: var(--secondary-color);
+        }
+
+        .nav-link i {
+            margin-right: 0.75rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .nav-section {
+            padding: 1rem 1.5rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            min-height: 100vh;
+            transition: all 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(251, 191, 36, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-primary);
+            min-width: 100%;
+            overflow: visible;
+            width: 100%;
+            flex-wrap: nowrap;
+        }
+
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            flex-shrink: 1;
+            min-width: 0;
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 900;
+            color: white;
+            margin: 0;
+            background: linear-gradient(135deg, #ffffff 0%, #fbbf24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(251, 191, 36, 0.5);
+        }
+
+        .breadcrumb {
+            background: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .breadcrumb-item a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+            min-width: fit-content;
+            flex-shrink: 0;
+        }
+
+        .notification-dropdown {
+            flex-shrink: 0;
+            display: inline-flex;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            flex-shrink: 0;
+            display: inline-flex;
+        }
+
+        .user-menu:hover {
+            background: rgba(251, 191, 36, 0.2);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-secondary);
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .user-role {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Content Area */
+        .content-area {
+            padding: 2rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .page-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+        }
+
+        .header-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            border: none;
+            color: white;
+            font-weight: 700;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-secondary);
+            color: white;
+            background: var(--gradient-primary);
+        }
+
+        /* Search and Filter Section */
+        .search-filter-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-primary);
+        }
+        
+        .search-filter-section .form-control,
+        .search-filter-section .form-select {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            color: white;
+        }
+        
+        .search-filter-section .form-control:focus,
+        .search-filter-section .form-select:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--secondary-color);
+            color: white;
+            box-shadow: 0 0 0 0.25rem rgba(251, 191, 36, 0.25);
+        }
+        
+        .search-filter-section .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .search-filter-section .btn-primary {
+            background: var(--gradient-primary);
+            border: none;
+        }
+
+        /* Fields Grid */
+        .fields-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .field-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-secondary);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .field-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.1), transparent);
+            transition: left 0.6s;
+            z-index: 1;
+        }
+
+        .field-card:hover::before {
+            left: 100%;
+        }
+
+        .field-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-secondary);
+            border-color: rgba(251, 191, 36, 0.5);
+        }
+
+        .field-image {
+            height: 200px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .field-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .field-image-overlay {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .field-content {
+            padding: 1.5rem;
+        }
+
+        .field-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .field-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 0.25rem;
+            text-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
+        }
+
+        .field-type {
+            background: rgba(251, 191, 36, 0.2);
+            color: var(--secondary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 1px solid rgba(251, 191, 36, 0.4);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .field-price {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--secondary-color);
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
+        }
+
+        .field-info {
+            margin-bottom: 1rem;
+        }
+
+        .field-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .field-info-item i {
+            width: 20px;
+            margin-right: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .field-features {
+            margin-bottom: 1.5rem;
+        }
+
+        .field-features-title {
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .field-features-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .feature-tag {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--accent-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .field-actions {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: flex-end;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: none;
+            font-weight: 700;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .btn-outline-primary {
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            color: var(--secondary-color);
+            background: rgba(251, 191, 36, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline-primary:hover {
+            background: rgba(251, 191, 36, 0.2);
+            color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-secondary);
+        }
+
+        .btn-outline-success {
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: var(--accent-color);
+            background: rgba(34, 197, 94, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline-success:hover {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-secondary);
+        }
+
+        .btn-outline-danger {
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: var(--danger-color);
+            background: rgba(239, 68, 68, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline-danger:hover {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--danger-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-secondary);
+        }
+
+        /* Modal */
+        .modal-content {
+            border-radius: 20px;
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            box-shadow: var(--shadow-secondary);
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-body {
+            max-height: 70vh;
+            overflow-y: auto;
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .modal-body .form-label {
+            color: white !important;
+            font-weight: 600;
+        }
+
+        .modal-body .form-control {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(251, 191, 36, 0.3) !important;
+        }
+
+        .modal-body .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        .modal-body .form-select {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(251, 191, 36, 0.3) !important;
+        }
+
+        .modal-body .btn {
+            color: white !important;
+        }
+
+        .modal-body .btn-primary {
+            background: var(--gradient-primary) !important;
+            border: none !important;
+        }
+
+        .modal-body .btn-secondary {
+            background: #6c757d !important;
+            border: none !important;
+        }
+
+        .modal-dialog {
+            max-width: 800px;
+            margin: 1.75rem auto;
+        }
+
+        .modal-header {
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 20px 20px 0 0;
+            border: none;
+        }
+
+        .modal-title {
+            font-weight: 800;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+        }
+
+        .btn-close {
+            filter: invert(1);
+        }
+
+        .form-label {
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control, .form-select {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s ease;
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.2rem rgba(251, 191, 36, 0.25);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6) !important;
+            opacity: 1;
+        }
+
+        .form-control:focus::placeholder {
+            color: rgba(255, 255, 255, 0.4) !important;
+        }
+
+        .form-select option {
+            background: rgba(15, 23, 42, 0.95);
+            color: white;
+        }
+
+        .form-select option:checked {
+            background: var(--secondary-color);
+            color: var(--dark-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.show {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .page-header-content {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .fields-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Toggle Button */
+        .sidebar-toggle {
+            display: none;
+            background: var(--primary-color);
+            border: none;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 8px;
+            margin-right: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar-toggle {
+                display: block;
+            }
+        }
+
+        /* Fix notification dropdown z-index */
+        .notification-dropdown {
+            z-index: 9999 !important;
+            position: absolute !important;
+            top: 100% !important;
+            right: 0 !important;
+            margin-top: 0.5rem !important;
+        }
+
+        .notification-dropdown .dropdown-menu {
+            z-index: 9999 !important;
+            position: absolute !important;
+            transform: none !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: auto !important;
+            bottom: auto !important;
+        }
+
+        /* Ensure top-bar has proper z-index */
+        .top-bar {
+            z-index: 1000 !important;
+            position: relative !important;
+        }
+
+        /* Ensure main content doesn't overlap dropdowns */
+        .main-content {
+            z-index: 1 !important;
+            position: relative !important;
+        }
+
+        .btn-outline-primary:hover, .btn-outline-success:hover, .btn-outline-danger:hover {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.2) !important;
+            border-color: rgba(255, 255, 255, 0.5) !important;
+        }
+
+        .dropdown-menu {
+            background: rgba(15, 23, 42, 0.95) !important;
+            border: 1px solid rgba(251, 191, 36, 0.2) !important;
+            backdrop-filter: blur(20px);
+        }
+
+        .dropdown-item {
+            color: white !important;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(251, 191, 36, 0.2) !important;
+            color: white !important;
+        }
+
+        .dropdown-header {
+            color: var(--secondary-color) !important;
+        }
+
+        .badge {
+            color: white !important;
+        }
+
+        /* Responsive improvements for notification */
+        @media (max-width: 768px) {
+            .top-bar-right {
+                gap: 0.5rem;
+            }
+            
+            .notification-dropdown .btn {
+                padding: 0.5rem;
+            }
+            
+            .user-menu {
+                padding: 0.4rem 0.8rem;
+                gap: 0.5rem;
+            }
+            
+            .user-info {
+                display: none;
+            }
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% { 
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="#" class="sidebar-brand">
+                <i class="fas fa-cog"></i>
+                UTEScore
+            </a>
+        </div>
+        
+        <nav class="sidebar-nav">
+            
+            <div class="nav-section">Quản lý</div>
+            <div class="nav-item">
+                <a href="/admin/fields" class="nav-link active">
+                    <i class="fas fa-cog"></i>
+                    Quản lý sân
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="/admin/user-management" class="nav-link">
+                    <i class="fas fa-users"></i>
+                    Quản lý người dùng
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="/admin/live-cameras" class="nav-link">
+                    <i class="fas fa-video"></i>
+                    Xem camera sân
+                </a>
+            </div>
+            
+            <div class="nav-section">Tài chính</div>
+            <div class="nav-item">
+                <a href="/admin/payment-management" class="nav-link">
+                    <i class="fas fa-credit-card"></i>
+                    Quản lý thanh toán
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="/admin/refund-management" class="nav-link">
+                    <i class="fas fa-undo"></i>
+                    Duyệt hoàn tiền
+                </a>
+            </div>
+            
+            <div class="nav-section">Hệ thống</div>
+            <div class="nav-item">
+                <a href="/admin/system-config" class="nav-link">
+                    <i class="fas fa-cogs"></i>
+                    Cấu hình
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <div>
+                    <h1 class="page-title">Quản lý sân bóng</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin/dashboard">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a href="#">Quản lý</a></li>
+                            <li class="breadcrumb-item active">Sân bóng</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            
+            <div class="top-bar-right">
+                <!-- Notification Button -->
+                <div class="dropdown me-3">
+                    <button class="btn btn-light position-relative" type="button" data-bs-toggle="dropdown" style="width: 45px; height: 45px; border-radius: 8px; display: flex; align-items: center; justify-content: center; padding: 0;">
+                        <i class="fas fa-bell text-warning"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;">3</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" style="min-width: 350px; margin-top: 0.5rem;">
+                        <li><h6 class="dropdown-header">Thông báo</h6></li>
+                        <li><a class="dropdown-item" href="#">Đơn đặt sân mới #1234</a></li>
+                        <li><a class="dropdown-item" href="#">Thanh toán thành công #5678</a></li>
+                        <li><a class="dropdown-item" href="#">Yêu cầu hoàn tiền #9012</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-center" href="#">Xem tất cả thông báo</a></li>
+                    </ul>
+                </div>
+                
+                <!-- User Menu -->
+                <div class="user-menu" data-bs-toggle="dropdown">
+                    <div class="user-avatar">AD</div>
+                    <div class="user-info">
+                        <div class="user-name">Admin User</div>
+                        <div class="user-role">Quản trị viên</div>
+                    </div>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="dropdown-menu dropdown-menu-end" style="min-width: 200px;">
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Hồ sơ</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Cài đặt</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="/admin/login"><i class="fas fa-sign-out-alt me-2"></i>Đăng xuất</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="page-header-content">
+                    <div>
+                        <h2 class="header-title">Quản lý sân bóng</h2>
+                        <p class="header-subtitle">Quản lý thông tin sân bóng, giá cả và phân quyền nhân viên phụ trách</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addFieldModal">
+                            <i class="fas fa-plus me-2"></i>
+                            Thêm sân mới
+                        </button>
+                        <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#maintenanceModal">
+                            <i class="fas fa-tools me-2"></i>
+                            Đặt lịch bảo trì
+                        </button>
+                        <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#maintenanceScheduleModal">
+                            <i class="fas fa-calendar-alt me-2"></i>
+                            Lịch bảo trì
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Search and Filter Section -->
+            <div class="search-filter-section mb-4">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <input type="text" id="fieldSearch" class="form-control" placeholder="Tìm kiếm sân...">
+                    </div>
+                    <div class="col-md-2">
+                        <select id="statusFilter" class="form-select">
+                            <option value="">Tất cả trạng thái</option>
+                            <option value="Hoạt động">Hoạt động</option>
+                            <option value="Bảo trì">Bảo trì</option>
+                            <option value="Tạm đóng">Tạm đóng</option>
+                            <option value="Đóng vĩnh viễn">Đóng vĩnh viễn</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <select id="typeFilter" class="form-select">
+                            <option value="">Tất cả loại sân</option>
+                            <option value="Sân 5">Sân 5</option>
+                            <option value="Sân 7">Sân 7</option>
+                            <option value="Sân 11">Sân 11</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" id="areaFilter" class="form-control" placeholder="Khu vực...">
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary w-100" onclick="filterFields()">
+                            <i class="fas fa-search me-2"></i>Lọc
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fields Grid -->
+            <div class="fields-grid" id="fieldsGrid">
+                <!-- Loading message -->
+                <div class="text-center text-white py-5">
+                    <div class="spinner-border text-warning" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-3">Đang tải dữ liệu...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Field Modal -->
+    <div class="modal fade" id="addFieldModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-plus me-2"></i>
+                        Thêm sân bóng mới
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Tên sân</label>
+                                    <input type="text" name="tenSan" class="form-control" placeholder="Ví dụ: Sân A1" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Loại sân</label>
+                                    <select name="loaiSan" class="form-select" required>
+                                        <option value="">Chọn loại sân</option>
+                                        <option value="Sân 5">Sân 5 người</option>
+                                        <option value="Sân 7">Sân 7 người</option>
+                                        <option value="Sân 11">Sân 11 người</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Khu vực</label>
+                                    <input type="text" name="khuVuc" class="form-control" placeholder="Ví dụ: Khu vực A - Tầng 1" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Trạng thái</label>
+                                    <select name="trangThai" class="form-select" required>
+                                        <option value="Hoạt động">Hoạt động</option>
+                                        <option value="Bảo trì">Bảo trì</option>
+                                        <option value="Tạm đóng">Không hoạt động</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Giờ mở cửa</label>
+                                    <input type="time" name="gioMoCua" class="form-control" value="06:00" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Giờ đóng cửa</label>
+                                    <input type="time" name="gioDongCua" class="form-control" value="22:00" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Mô tả</label>
+                            <textarea name="moTa" class="form-control" rows="3" placeholder="Mô tả chi tiết về sân bóng..."></textarea>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Tính năng</label>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="feature1">
+                                        <label class="form-check-label" for="feature1">Cỏ nhân tạo</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="feature2">
+                                        <label class="form-check-label" for="feature2">Ánh sáng LED</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="feature3">
+                                        <label class="form-check-label" for="feature3">Thay đồ</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="feature4">
+                                        <label class="form-check-label" for="feature4">Vệ sinh</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="feature5">
+                                        <label class="form-check-label" for="feature5">Khán đài</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="feature6">
+                                        <label class="form-check-label" for="feature6">Âm thanh</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary">
+                        <i class="fas fa-save me-2"></i>
+                        Thêm sân
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Field Modal -->
+    <div class="modal fade" id="editFieldModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-edit me-2"></i>
+                        Chỉnh sửa sân bóng
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editFieldForm">
+                        <input type="hidden" id="editFieldId" name="fieldId">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Tên sân</label>
+                                    <input type="text" name="tenSan" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Loại sân</label>
+                                    <select name="loaiSan" class="form-select" required>
+                                        <option value="">Chọn loại sân</option>
+                                        <option value="Sân 5">Sân 5 người</option>
+                                        <option value="Sân 7">Sân 7 người</option>
+                                        <option value="Sân 11">Sân 11 người</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Khu vực</label>
+                                    <input type="text" name="khuVuc" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Trạng thái</label>
+                                    <select name="trangThai" class="form-select" required>
+                                        <option value="Hoạt động">Hoạt động</option>
+                                        <option value="Bảo trì">Bảo trì</option>
+                                        <option value="Tạm đóng">Tạm đóng</option>
+                                        <option value="Đóng vĩnh viễn">Đóng vĩnh viễn</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Giờ mở cửa</label>
+                                    <input type="time" name="gioMoCua" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Giờ đóng cửa</label>
+                                    <input type="time" name="gioDongCua" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Mô tả</label>
+                            <textarea name="moTa" class="form-control" rows="3" placeholder="Mô tả chi tiết về sân bóng..."></textarea>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Tính năng</label>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="editFeature1" checked>
+                                        <label class="form-check-label" for="editFeature1">Cỏ nhân tạo</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="editFeature2" checked>
+                                        <label class="form-check-label" for="editFeature2">Ánh sáng LED</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="editFeature3" checked>
+                                        <label class="form-check-label" for="editFeature3">Thay đồ</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="editFeature4" checked>
+                                        <label class="form-check-label" for="editFeature4">Vệ sinh</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="editFeature5">
+                                        <label class="form-check-label" for="editFeature5">Khán đài</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="editFeature6">
+                                        <label class="form-check-label" for="editFeature6">Âm thanh</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary">
+                        <i class="fas fa-save me-2"></i>
+                        Lưu thay đổi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Maintenance Schedule Modal -->
+    <div class="modal fade" id="maintenanceScheduleModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        Lịch bảo trì sân
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <select class="form-select" id="maintenanceFieldFilter">
+                                <option value="">Tất cả sân</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-select" id="maintenanceStatusFilter">
+                                <option value="">Tất cả trạng thái</option>
+                                <option value="Đã lên lịch">Đã lên lịch</option>
+                                <option value="Đang bảo trì">Đang bảo trì</option>
+                                <option value="Hoàn thành">Hoàn thành</option>
+                                <option value="Đã hủy">Đã hủy</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="month" class="form-control" id="maintenanceMonthFilter">
+                        </div>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="table" id="maintenanceTable">
+                            <thead>
+                                <tr>
+                                    <th>Sân</th>
+                                    <th>Ngày bảo trì</th>
+                                    <th>Thời gian</th>
+                                    <th>Nhân viên</th>
+                                    <th>Trạng thái</th>
+                                    <th>Lý do</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="maintenanceTableBody">
+                                <!-- Data will be loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary" onclick="showExportModal()">
+                        <i class="fas fa-download me-2"></i>
+                        Xuất báo cáo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Report Modal -->
+    <div class="modal fade" id="exportReportModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-file-export me-2"></i>
+                        Xuất báo cáo lịch bảo trì
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="exportReportForm">
+                        <div class="mb-3">
+                            <label class="form-label">Chọn loại báo cáo</label>
+                            <div class="btn-group w-100" role="group">
+                                <input type="radio" class="btn-check" name="reportType" id="monthReport" value="month" autocomplete="off" checked>
+                                <label class="btn btn-outline-primary" for="monthReport">Theo tháng</label>
+                                
+                                <input type="radio" class="btn-check" name="reportType" id="quarterReport" value="quarter" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="quarterReport">Theo quý</label>
+                                
+                                <input type="radio" class="btn-check" name="reportType" id="yearReport" value="year" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="yearReport">Theo năm</label>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3" id="monthSection">
+                            <label class="form-label">Chọn tháng</label>
+                            <input type="month" class="form-control" id="monthInput" required>
+                        </div>
+                        
+                        <div class="mb-3 d-none" id="quarterSection">
+                            <label class="form-label">Chọn quý</label>
+                            <select class="form-select" id="quarterSelect" required>
+                                <option value="">Chọn quý</option>
+                                <option value="1">Quý 1</option>
+                                <option value="2">Quý 2</option>
+                                <option value="3">Quý 3</option>
+                                <option value="4">Quý 4</option>
+                            </select>
+                            <label class="form-label mt-2">Năm</label>
+                            <input type="number" class="form-control" id="quarterYear" min="2020" max="2099" value="2024" required>
+                        </div>
+                        
+                        <div class="mb-3 d-none" id="yearSection">
+                            <label class="form-label">Chọn năm</label>
+                            <input type="number" class="form-control" id="yearInput" min="2020" max="2099" value="2024" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary" onclick="exportReport()">
+                        <i class="fas fa-download me-2"></i>
+                        Xuất báo cáo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Maintenance Scheduling Modal -->
+    <div class="modal fade" id="maintenanceModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-tools me-2"></i>
+                        Đặt lịch bảo trì sân
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="maintenanceForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Chọn sân</label>
+                                    <select class="form-select" id="fieldSelect" name="fieldSelect" required>
+                                        <option value="">Chọn sân cần bảo trì</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Loại bảo trì</label>
+                                    <select class="form-select" name="loaiBaoTri" required>
+                                        <option value="">Chọn loại bảo trì</option>
+                                        <option value="routine">Bảo trì định kỳ</option>
+                                        <option value="emergency">Bảo trì khẩn cấp</option>
+                                        <option value="upgrade">Nâng cấp hệ thống</option>
+                                        <option value="repair">Sửa chữa</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Ngày bắt đầu</label>
+                                    <input type="date" class="form-control" id="startDate" name="startDate" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Ngày kết thúc</label>
+                                    <input type="date" class="form-control" id="endDate" name="endDate" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Giờ bắt đầu</label>
+                                    <input type="time" class="form-control" id="startTime" name="startTime" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Giờ kết thúc</label>
+                                    <input type="time" class="form-control" id="endTime" name="endTime" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Nhân viên phụ trách</label>
+                            <select class="form-select" name="nhanVien" required>
+                                <option value="">Chọn nhân viên</option>
+                                <option value="1">Nguyễn Văn A</option>
+                                <option value="2">Trần Thị B</option>
+                                <option value="3">Lê Văn C</option>
+                                <option value="4">Phạm Văn D</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Lý do bảo trì</label>
+                            <textarea class="form-control" name="lyDo" rows="3" placeholder="Mô tả chi tiết lý do và công việc bảo trì..." required></textarea>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Ghi chú thêm</label>
+                            <textarea class="form-control" name="ghiChu" rows="2" placeholder="Thông tin bổ sung (nếu có)..."></textarea>
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Lưu ý:</strong> Hệ thống sẽ tự động kiểm tra và cảnh báo nếu thời gian bảo trì trùng với lịch thuê hiện có.
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary" id="saveMaintenance">
+                        <i class="fas fa-save me-2"></i>
+                        Đặt lịch bảo trì
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Field Status Change Modal -->
+    <div class="modal fade" id="statusChangeModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-exchange-alt me-2"></i>
+                        Thay đổi trạng thái sân
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="statusChangeForm">
+                        <div class="mb-3">
+                            <label class="form-label">Sân được chọn</label>
+                            <input type="text" class="form-control" id="selectedField" readonly>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Trạng thái hiện tại</label>
+                            <input type="text" class="form-control" id="currentStatus" readonly>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Trạng thái mới</label>
+                            <select class="form-select" id="newStatus" required>
+                                <option value="">Chọn trạng thái mới</option>
+                                <option value="active">Hoạt động</option>
+                                <option value="maintenance">Bảo trì</option>
+                                <option value="temporarily_closed">Tạm đóng</option>
+                                <option value="permanently_closed">Đóng vĩnh viễn</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Lý do thay đổi</label>
+                            <textarea class="form-control" rows="3" placeholder="Mô tả lý do thay đổi trạng thái..." required></textarea>
+                        </div>
+                        
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <strong>Cảnh báo:</strong> Thay đổi trạng thái sân sẽ ảnh hưởng đến khả năng đặt lịch thuê sân.
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-warning" id="confirmStatusChange">
+                        <i class="fas fa-check me-2"></i>
+                        Xác nhận thay đổi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sidebar toggle for mobile
+        document.getElementById('sidebarToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('show');
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(e) {
+            const sidebar = document.getElementById('sidebar');
+            const toggle = document.getElementById('sidebarToggle');
+            
+            if (window.innerWidth <= 768 && 
+                !sidebar.contains(e.target) && 
+                !toggle.contains(e.target)) {
+                sidebar.classList.remove('show');
+            }
+        });
+
+        // Field actions
+        document.querySelectorAll('.btn-outline-primary').forEach(btn => {
+            btn.addEventListener('click', function() {
+                console.log('Edit field clicked');
+            });
+        });
+
+        document.querySelectorAll('.btn-outline-success').forEach(btn => {
+            btn.addEventListener('click', function() {
+                console.log('Manage images clicked');
+            });
+        });
+
+        // Form submission
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                console.log('Form submitted');
+            });
+        });
+
+        // Connect buttons to functions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add Field Modal Submit Button
+            const addFieldBtn = document.querySelector('#addFieldModal .btn-primary');
+            if (addFieldBtn) {
+                addFieldBtn.addEventListener('click', function() {
+                    addField();
+                });
+            }
+
+            // Edit Field Modal Submit Button
+            const editFieldBtn = document.querySelector('#editFieldModal .btn-primary');
+            if (editFieldBtn) {
+                editFieldBtn.addEventListener('click', function() {
+                    if (currentEditingFieldId) {
+                        updateField(currentEditingFieldId);
+                    } else {
+                        alert('Không tìm thấy sân để cập nhật');
+                    }
+                });
+            }
+
+            // Maintenance Modal Submit Button
+            const maintenanceBtn = document.querySelector('#maintenanceModal .btn-primary');
+            if (maintenanceBtn) {
+                maintenanceBtn.addEventListener('click', function() {
+                    scheduleMaintenance();
+                });
+            }
+            
+        });
+
+        // Field status change functionality
+        function changeFieldStatus(fieldName, currentStatus) {
+            document.getElementById('selectedField').value = fieldName;
+            document.getElementById('currentStatus').value = getStatusText(currentStatus);
+            
+            const modal = new bootstrap.Modal(document.getElementById('statusChangeModal'));
+            modal.show();
+        }
+
+        function getStatusText(status) {
+            const statusMap = {
+                'active': 'Hoạt động',
+                'maintenance': 'Bảo trì',
+                'temporarily_closed': 'Tạm đóng',
+                'permanently_closed': 'Đóng vĩnh viễn'
+            };
+            return statusMap[status] || status;
+        }
+
+        // Maintenance scheduling functionality
+        // Removed duplicate event listener - using the one in DOMContentLoaded block that calls scheduleMaintenance()
+
+        // Status change confirmation
+        document.getElementById('confirmStatusChange').addEventListener('click', function() {
+            const form = document.getElementById('statusChangeForm');
+            const newStatus = document.getElementById('newStatus').value;
+            const currentStatus = document.getElementById('currentStatus').value;
+            
+            if (form.checkValidity()) {
+                if (newStatus === currentStatus.toLowerCase()) {
+                    alert('Trạng thái mới phải khác trạng thái hiện tại!');
+                    return;
+                }
+                
+                const btn = this;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Đang xử lý...';
+                btn.disabled = true;
+                
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-check me-2"></i>Xác nhận thay đổi';
+                    btn.disabled = false;
+                    bootstrap.Modal.getInstance(document.getElementById('statusChangeModal')).hide();
+                    alert('Thay đổi trạng thái sân thành công!');
+                    form.reset();
+                }, 2000);
+            } else {
+                form.reportValidity();
+            }
+        });
+
+        // Enhanced search and filter functionality
+        function filterFields() {
+            const searchTerm = document.getElementById('fieldSearch').value.toLowerCase();
+            const statusFilter = document.getElementById('statusFilter').value;
+            const typeFilter = document.getElementById('typeFilter').value;
+            const areaFilter = document.getElementById('areaFilter').value.toLowerCase();
+            
+            const fieldCards = document.querySelectorAll('.field-card');
+            
+            fieldCards.forEach(card => {
+                const fieldName = card.querySelector('.field-title')?.textContent.toLowerCase() || '';
+                const fieldType = card.querySelector('.field-type')?.textContent.toLowerCase() || '';
+                const fieldInfoItems = card.querySelectorAll('.field-info-item');
+                // Get khu vực from first field-info-item (index 0)
+                const fieldArea = fieldInfoItems.length > 0 ? fieldInfoItems[0].textContent.toLowerCase() : '';
+                const fieldStatus = card.querySelector('.field-image-overlay')?.textContent.toLowerCase() || '';
+                
+                let showCard = true;
+                
+                // Search by name
+                if (searchTerm && !fieldName.includes(searchTerm)) {
+                    showCard = false;
+                }
+                
+                // Filter by status
+                if (statusFilter && fieldStatus !== statusFilter.toLowerCase()) {
+                    showCard = false;
+                }
+                
+                // Filter by type
+                if (typeFilter && !fieldType.includes(typeFilter.toLowerCase())) {
+                    showCard = false;
+                }
+                
+                // Filter by area - remove icon text if present
+                if (areaFilter && areaFilter !== '') {
+                    const cleanAreaText = fieldArea.replace(/[\u0000-\u001F]/g, '').trim(); // Remove special characters
+                    if (!cleanAreaText.includes(areaFilter.toLowerCase())) {
+                        showCard = false;
+                    }
+                }
+                
+                card.style.display = showCard ? 'block' : 'none';
+            });
+            
+            // Update count
+            const visibleCount = document.querySelectorAll('.field-card[style="display: block;"]').length;
+            const totalCount = fieldCards.length;
+            console.log(`Hiển thị ${visibleCount}/${totalCount} sân`);
+        }
+        
+        // Auto filter on input
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('fieldSearch');
+            const statusSelect = document.getElementById('statusFilter');
+            const typeSelect = document.getElementById('typeFilter');
+            const areaInput = document.getElementById('areaFilter');
+            
+            if (searchInput) searchInput.addEventListener('input', filterFields);
+            if (statusSelect) statusSelect.addEventListener('change', filterFields);
+            if (typeSelect) typeSelect.addEventListener('change', filterFields);
+            if (areaInput) areaInput.addEventListener('input', filterFields);
+        });
+
+        // Initialize date inputs with current date and load fields
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            const startDateEl = document.getElementById('startDate');
+            const endDateEl = document.getElementById('endDate');
+            if (startDateEl) startDateEl.value = today;
+            if (endDateEl) endDateEl.value = today;
+            
+            // Load fields from database
+            loadFields();
+            
+            // Load fields for maintenance dropdown
+            loadFieldsForMaintenance();
+            
+            // Load maintenance schedule when modal opens
+            const maintenanceScheduleModal = document.getElementById('maintenanceScheduleModal');
+            if (maintenanceScheduleModal) {
+                maintenanceScheduleModal.addEventListener('show.bs.modal', function() {
+                    loadMaintenanceSchedule();
+                    loadMaintenanceFieldsForFilter();
+                });
+            }
+            
+            // Add event listeners for maintenance filters
+            const maintenanceFieldFilter = document.getElementById('maintenanceFieldFilter');
+            const maintenanceStatusFilter = document.getElementById('maintenanceStatusFilter');
+            const maintenanceMonthFilter = document.getElementById('maintenanceMonthFilter');
+            
+            if (maintenanceFieldFilter) {
+                maintenanceFieldFilter.addEventListener('change', loadMaintenanceSchedule);
+            }
+            if (maintenanceStatusFilter) {
+                maintenanceStatusFilter.addEventListener('change', loadMaintenanceSchedule);
+            }
+            if (maintenanceMonthFilter) {
+                maintenanceMonthFilter.addEventListener('change', loadMaintenanceSchedule);
+            }
+        });
+        
+        // Load fields from API
+        function loadFields() {
+            const fieldsGrid = document.getElementById('fieldsGrid');
+            
+            fetch('/admin/fields/list')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(result => {
+                    fieldsGrid.innerHTML = ''; // Clear existing cards
+                    
+                    console.log('Response from API:', result);
+                    console.log('Type of result:', typeof result);
+                    console.log('Is array?', Array.isArray(result));
+                    
+                    // Handle response - could be direct array or object with data field
+                    let fields = [];
+                    if (Array.isArray(result)) {
+                        fields = result;
+                    } else if (result && Array.isArray(result.data)) {
+                        fields = result.data;
+                    } else if (result && typeof result === 'object') {
+                        // Try to get data from object
+                        fields = Object.values(result);
+                    }
+                    
+                    if (fields.length === 0) {
+                        fieldsGrid.innerHTML = '<div class="col-12 text-center text-white p-5"><i class="fas fa-futbol fa-3x mb-3"></i><p>Chưa có sân nào. Hãy thêm sân mới!</p></div>';
+                        return;
+                    }
+                    
+                    fields.forEach((field, index) => {
+                        try {
+                            const card = createFieldCard(field);
+                            fieldsGrid.appendChild(card);
+                        } catch (error) {
+                            console.error(`Error creating card for field ${index}:`, error, field);
+                        }
+                    });
+                    
+                    const successCount = fieldsGrid.querySelectorAll('.field-card').length;
+                    console.log(`Đã load ${successCount}/${fields.length} sân từ database`);
+                })
+                .catch(error => {
+                    console.error('Error loading fields:', error);
+                    fieldsGrid.innerHTML = `
+                        <div class="col-12 text-center text-danger p-5">
+                            <i class="fas fa-exclamation-triangle fa-3x mb-3"></i>
+                            <p>Không thể tải danh sách sân</p>
+                            <p class="small">${error.message}</p>
+                            <button class="btn btn-primary mt-3" onclick="loadFields()">
+                                <i class="fas fa-redo me-2"></i>Thử lại
+                            </button>
+                        </div>
+                    `;
+                });
+        }
+        
+        // Load fields for maintenance dropdown
+        function loadFieldsForMaintenance() {
+            fetch('/admin/fields/list')
+                .then(response => response.json())
+                .then(result => {
+                    // Handle response - could be direct array or object with data field
+                    let fields = [];
+                    if (Array.isArray(result)) {
+                        fields = result;
+                    } else if (result && Array.isArray(result.data)) {
+                        fields = result.data;
+                    }
+                    
+                    const fieldSelect = document.getElementById('fieldSelect');
+                    if (fieldSelect && fields.length > 0) {
+                        // Clear existing options except the first one
+                        fieldSelect.innerHTML = '<option value="">Chọn sân cần bảo trì</option>';
+                        
+                        // Add fields from database
+                        fields.forEach(field => {
+                            const option = document.createElement('option');
+                            option.value = field.maSan;
+                            option.textContent = field.tenSan + ' - ' + field.loaiSan;
+                            fieldSelect.appendChild(option);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading fields for maintenance:', error);
+                });
+        }
+        
+        // Create field card HTML
+        function createFieldCard(field) {
+            const card = document.createElement('div');
+            card.className = 'field-card';
+            
+            // Format time
+            const openTime = field.gioMoCua ? formatTime(field.gioMoCua) : 'N/A';
+            const closeTime = field.gioDongCua ? formatTime(field.gioDongCua) : 'N/A';
+            
+            // Get status color
+            let statusColor = 'Hoạt động';
+            let statusClass = 'success';
+            if (field.trangThai === 'Bảo trì') {
+                statusColor = 'Bảo trì';
+                statusClass = 'warning';
+            } else if (field.trangThai === 'Tạm đóng') {
+                statusColor = 'Tạm đóng';
+                statusClass = 'danger';
+            } else if (field.trangThai === 'Đóng vĩnh viễn') {
+                statusColor = 'Đóng';
+                statusClass = 'secondary';
+            }
+            
+            card.innerHTML = `
+                <div class="field-image">
+                    <i class="fas fa-futbol"></i>
+                    <div class="field-image-overlay bg-${statusClass}">${statusColor}</div>
+                </div>
+                <div class="field-content">
+                    <div class="field-header">
+                        <div>
+                            <h3 class="field-title">${field.tenSan || ''}</h3>
+                            <div class="field-type">${field.loaiSan || ''}</div>
+                        </div>
+                    </div>
+                    <div class="field-info">
+                        <div class="field-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            ${field.khuVuc || 'Chưa cập nhật'}
+                        </div>
+                        <div class="field-info-item">
+                            <i class="fas fa-clock"></i>
+                            Mở cửa: ${openTime} - ${closeTime}
+                        </div>
+                    </div>
+                    ${field.moTa ? `<div class="field-description">${field.moTa}</div>` : ''}
+                    <div class="field-actions">
+                        <button class="btn btn-outline-primary btn-sm" onclick="editField(${field.maSan})">
+                            <i class="fas fa-edit me-1"></i>Sửa
+                        </button>
+                        <button class="btn btn-outline-warning btn-sm" onclick="changeFieldStatusUI('${(field.tenSan || '').replace(/'/g, "\\'")}', '${(field.trangThai || '').replace(/'/g, "\\'")}', ${field.maSan})">
+                            <i class="fas fa-exchange-alt me-1"></i>Đổi trạng thái
+                        </button>
+                    </div>
+                </div>
+            `;
+        return card;
+    }
+    
+    // Normalize and format time from various backend formats to HH:mm
+    function normalizeToHHmm(raw) {
+        if (!raw) return '';
+        const s = String(raw).trim();
+        // ISO or date-time string
+        if (s.includes('T')) {
+            const d = new Date(s);
+            if (!isNaN(d.getTime())) {
+                return String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+            }
+        }
+        // SQL time like HH:mm:ss[.SSS]
+        let m = s.match(/^(\d{1,2}):(\d{1,2})(?::\d{1,2}(?:\.\d+)?)?$/);
+        if (m) {
+            return m[1].padStart(2, '0') + ':' + m[2].padStart(2, '0');
+        }
+        // Variants with comma or single numbers like 6,0 / 6,00 / 6:0
+        m = s.match(/^(\d{1,2})[\.,:](\d{1,2})$/);
+        if (m) {
+            return m[1].padStart(2, '0') + ':' + m[2].padStart(2, '0');
+        }
+        // Only hour provided -> assume :00
+        m = s.match(/^(\d{1,2})$/);
+        if (m) {
+            return m[1].padStart(2, '0') + ':00';
+        }
+        return s; // fallback
+    }
+
+    // Format time helper for display cards
+    function formatTime(timeStr) {
+        const val = normalizeToHHmm(timeStr);
+        return val || 'N/A';
+    }
+    
+    // Current editing field ID
+    let currentEditingFieldId = null;
+    
+    // Edit field
+    function editField(fieldId) {
+        console.log('Edit field:', fieldId);
+        currentEditingFieldId = fieldId;
+        
+        // Load field data from API
+        fetch(`/admin/fields/${fieldId}`)
+            .then(response => response.json())
+            .then(field => {
+                // Fill form with field data
+                const modal = document.querySelector('#editFieldModal');
+                modal.querySelector('input[name="tenSan"]').value = field.tenSan || '';
+                modal.querySelector('select[name="loaiSan"]').value = field.loaiSan || '';
+                modal.querySelector('input[name="khuVuc"]').value = field.khuVuc || '';
+                modal.querySelector('input[name="gioMoCua"]').value = field.gioMoCua ? formatTimeForInput(field.gioMoCua) : '';
+                modal.querySelector('input[name="gioDongCua"]').value = field.gioDongCua ? formatTimeForInput(field.gioDongCua) : '';
+                modal.querySelector('textarea[name="moTa"]').value = field.moTa || '';
+                modal.querySelector('select[name="trangThai"]').value = field.trangThai || 'Hoạt động';
+                
+                // Show modal
+                const bsModal = new bootstrap.Modal(modal);
+                bsModal.show();
+            })
+            .catch(error => {
+                console.error('Error loading field:', error);
+                alert('Không thể tải dữ liệu sân');
+            });
+    }
+    
+    // Format time for input field
+    function formatTimeForInput(timeStr) {
+        return normalizeToHHmm(timeStr);
+    }
+    
+    // Change field status UI
+    function changeFieldStatusUI(fieldName, currentStatus, fieldId) {
+        document.getElementById('selectedField').value = fieldName;
+        document.getElementById('currentStatus').value = currentStatus;
+        document.getElementById('confirmStatusChange').setAttribute('data-field-id', fieldId);
+        const modal = new bootstrap.Modal(document.getElementById('statusChangeModal'));
+        modal.show();
+    }
+
+        // =============== BACKEND INTEGRATION ===============
+        
+        // Add new field
+        function addField() {
+            const form = document.querySelector('#addFieldModal form');
+            
+            // Collect form data
+            const fieldData = {
+                tenSan: form.querySelector('input[name="tenSan"]')?.value || '',
+                loaiSan: form.querySelector('select[name="loaiSan"]')?.value || '',
+                khuVuc: form.querySelector('input[name="khuVuc"]')?.value || '',
+                gioMoCua: form.querySelector('input[name="gioMoCua"]')?.value || '',
+                gioDongCua: form.querySelector('input[name="gioDongCua"]')?.value || '',
+                moTa: form.querySelector('textarea[name="moTa"]')?.value || '',
+                trangThai: form.querySelector('select[name="trangThai"]')?.value || 'Hoạt động'
+            };
+            
+            // Collect featureIds from checkboxes (map checkbox IDs to feature IDs)
+            const featureIds = [];
+            const featureMapping = {
+                'feature1': 1, // Cỏ nhân tạo
+                'feature2': 2, // Ánh sáng LED
+                'feature3': 3, // Thay đồ
+                'feature4': 4, // Vệ sinh
+                'feature5': 5, // Khán đài
+                'feature6': 6  // Âm thanh
+            };
+            
+            Object.keys(featureMapping).forEach(checkboxId => {
+                const checkbox = document.getElementById(checkboxId);
+                if (checkbox && checkbox.checked) {
+                    featureIds.push(featureMapping[checkboxId]);
+                }
+            });
+            fieldData.featureIds = featureIds;
+            
+            console.log('Field data:', fieldData);
+            
+            fetch('/admin/fields/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(fieldData)
+            })
+            .then(response => response.text())
+            .then(result => {
+                if (result === 'success' || result.includes('success')) {
+                    alert('Thêm sân thành công!');
+                    bootstrap.Modal.getInstance(document.getElementById('addFieldModal')).hide();
+                    form.reset();
+                    // Reload fields list instead of page reload
+                    loadFields();
+                } else {
+                    alert('Lỗi: ' + result);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Có lỗi xảy ra khi thêm sân: ' + error.message);
+            });
+        }
+
+        // Update field
+        function updateField(fieldId) {
+            if (!fieldId) {
+                alert('Không tìm thấy sân để cập nhật');
+                return;
+            }
+            
+            const form = document.querySelector('#editFieldModal form');
+            const fieldData = {
+                maSan: fieldId,
+                tenSan: form.querySelector('input[name="tenSan"]')?.value || '',
+                loaiSan: form.querySelector('select[name="loaiSan"]')?.value || '',
+                khuVuc: form.querySelector('input[name="khuVuc"]')?.value || '',
+                gioMoCua: form.querySelector('input[name="gioMoCua"]')?.value || '',
+                gioDongCua: form.querySelector('input[name="gioDongCua"]')?.value || '',
+                moTa: form.querySelector('textarea[name="moTa"]')?.value || '',
+                trangThai: form.querySelector('select[name="trangThai"]')?.value || 'Hoạt động'
+            };
+            
+            console.log('Updating field:', fieldData);
+            
+            fetch(`/admin/fields/${fieldId}/update`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(fieldData)
+            })
+            .then(response => response.text())
+            .then(result => {
+                if (result === 'success' || result.includes('success')) {
+                    alert('Cập nhật sân thành công!');
+                    bootstrap.Modal.getInstance(document.getElementById('editFieldModal')).hide();
+                    loadFields(); // Reload fields list
+                } else {
+                    alert('Lỗi: ' + result);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Có lỗi xảy ra khi cập nhật sân');
+            });
+        }
+
+
+
+        // Schedule maintenance
+        function scheduleMaintenance() {
+            const form = document.getElementById('maintenanceForm');
+            if (!form) {
+                alert('Không tìm thấy form bảo trì');
+                return;
+            }
+            
+            // Get field selection - extract ID from value like "1" or use the value directly
+            const fieldSelect = document.getElementById('fieldSelect');
+            const fieldValue = fieldSelect ? fieldSelect.value : '';
+            
+            // Try to parse as integer first
+            let maSan = parseInt(fieldValue);
+            if (isNaN(maSan)) {
+                // If not a number, try to extract number from beginning of value
+                // Values should be like "Sân A1" -> need to get actual field IDs
+                // For now, default to 1 if not found
+                alert('Vui lòng chọn sân cần bảo trì');
+                return;
+            }
+            
+            const nhanVienSelect = form.querySelector('select[name="nhanVien"]');
+            const nhanVienValue = nhanVienSelect ? nhanVienSelect.value : '1';
+            
+            // Create proper data structure
+            const data = {
+                maSan: maSan,
+                nhanVienId: parseInt(nhanVienValue),
+                ngayBaoTri: document.getElementById('startDate').value,
+                thoiGianBatDau: document.getElementById('startTime').value,
+                thoiGianKetThuc: document.getElementById('endTime').value,
+                lyDo: form.querySelector('textarea[name="lyDo"]').value || 'Bảo trì định kỳ'
+            };
+            
+            console.log('Sending maintenance data:', data);
+            
+            fetch('/admin/maintenance/schedule', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.text())
+            .then(result => {
+                if (result === 'success') {
+                    alert('Đặt lịch bảo trì thành công!');
+                    bootstrap.Modal.getInstance(document.getElementById('maintenanceModal')).hide();
+                    form.reset();
+                } else if (result === 'conflict') {
+                    alert('Có xung đột với lịch thuê hiện có. Vui lòng chọn thời gian khác.');
+                } else {
+                    alert('Lỗi: ' + result);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Có lỗi xảy ra khi đặt lịch bảo trì');
+            });
+        }
+
+        // Change field status
+        function changeFieldStatusBackend(fieldId, newStatus, reason) {
+            fetch(`/admin/fields/${fieldId}/status`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `status=${newStatus}&reason=${encodeURIComponent(reason)}`
+            })
+            .then(response => response.text())
+            .then(result => {
+                if (result === 'success') {
+                    alert('Thay đổi trạng thái sân thành công!');
+                    location.reload();
+                } else {
+                    alert('Lỗi: ' + result);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Có lỗi xảy ra khi thay đổi trạng thái sân');
+            });
+        }
+        
+        // Load maintenance schedule fields for filter
+        function loadMaintenanceFieldsForFilter() {
+            fetch('/admin/fields/list')
+                .then(response => response.json())
+                .then(result => {
+                    let fields = [];
+                    if (Array.isArray(result)) {
+                        fields = result;
+                    } else if (result && Array.isArray(result.data)) {
+                        fields = result.data;
+                    }
+                    
+                    const fieldFilter = document.getElementById('maintenanceFieldFilter');
+                    if (fieldFilter && fields.length > 0) {
+                        fieldFilter.innerHTML = '<option value="">Tất cả sân</option>';
+                        
+                        fields.forEach(field => {
+                            const option = document.createElement('option');
+                            option.value = field.maSan;
+                            option.textContent = field.tenSan + ' - ' + field.loaiSan;
+                            fieldFilter.appendChild(option);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading fields for filter:', error);
+                });
+        }
+        
+        // Load maintenance schedule
+        function loadMaintenanceSchedule() {
+            const tbody = document.getElementById('maintenanceTableBody');
+            if (!tbody) return;
+            
+            // Get filter values
+            const fieldFilter = document.getElementById('maintenanceFieldFilter')?.value || '';
+            const statusFilter = document.getElementById('maintenanceStatusFilter')?.value || '';
+            
+            // Build query string
+            let queryParams = '';
+            if (fieldFilter) queryParams += `fieldId=${fieldFilter}`;
+            if (statusFilter) {
+                queryParams += queryParams ? `&status=${statusFilter}` : `status=${statusFilter}`;
+            }
+            
+            fetch(`/admin/maintenance/list${queryParams ? '?' + queryParams : ''}`)
+                .then(response => response.json())
+                .then(data => {
+                    tbody.innerHTML = '';
+                    
+                    if (data.length === 0) {
+                        tbody.innerHTML = '<tr><td colspan="7" class="text-center">Không có lịch bảo trì nào</td></tr>';
+                        return;
+                    }
+                    
+                    data.forEach(maintenance => {
+                        const row = document.createElement('tr');
+                        
+                        // Format date
+                        const ngayBaoTri = maintenance.ngayBaoTri ? new Date(maintenance.ngayBaoTri).toLocaleDateString('vi-VN') : 'N/A';
+                        
+                        // Format time
+                        const startTime = maintenance.thoiGianBatDau ? formatTimeForDisplay(maintenance.thoiGianBatDau) : 'N/A';
+                        const endTime = maintenance.thoiGianKetThuc ? formatTimeForDisplay(maintenance.thoiGianKetThuc) : 'N/A';
+                        
+                        // Get status badge
+                        const statusBadge = getStatusBadge(maintenance.trangThai);
+                        
+                        row.innerHTML = `
+                            <td>
+                                <div class="fw-bold">${maintenance.tenSan || 'N/A'}</div>
+                                <small class="text-muted">${maintenance.loaiSan || ''}</small>
+                            </td>
+                            <td>${ngayBaoTri}</td>
+                            <td>
+                                <div>${startTime} - ${endTime}</div>
+                            </td>
+                            <td>${maintenance.fullName || 'N/A'}</td>
+                            <td>${statusBadge}</td>
+                            <td>${maintenance.lyDo || ''}</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm" onclick="cancelMaintenance(${maintenance.baoTriID})" title="Hủy">
+                                    <i class="fas fa-times-circle"></i> Hủy
+                                </button>
+                            </td>
+                        `;
+                        
+                        tbody.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading maintenance schedule:', error);
+                    tbody.innerHTML = '<tr><td colspan="7" class="text-center text-danger">Lỗi khi tải lịch bảo trì</td></tr>';
+                });
+        }
+        
+        // Format time for display
+        function formatTimeForDisplay(timeStr) {
+            if (!timeStr) return 'N/A';
+            if (typeof timeStr === 'string') {
+                return timeStr.substring(0, 5); // HH:MM
+            }
+            return timeStr;
+        }
+        
+        // Get status badge HTML
+        function getStatusBadge(status) {
+            const badges = {
+                'Đã lên lịch': '<span class="badge bg-warning">Đã lên lịch</span>',
+                'Đang bảo trì': '<span class="badge bg-info">Đang bảo trì</span>',
+                'Hoàn thành': '<span class="badge bg-success">Hoàn thành</span>',
+                'Đã hủy': '<span class="badge bg-danger">Đã hủy</span>'
+            };
+            return badges[status] || `<span class="badge bg-secondary">${status}</span>`;
+        }
+        
+        // Edit maintenance
+        function editMaintenance(maintenanceId) {
+            // TODO: Implement edit functionality
+            alert('Chức năng chỉnh sửa đang được phát triển');
+        }
+        
+        // Cancel maintenance
+        function cancelMaintenance(maintenanceId) {
+            if (confirm('Bạn có chắc chắn muốn hủy lịch bảo trì này?')) {
+                fetch(`/admin/maintenance/${maintenanceId}/cancel`, {
+                    method: 'POST'
+                })
+                .then(response => response.text())
+                .then(result => {
+                    if (result === 'success') {
+                        alert('Hủy lịch bảo trì thành công!');
+                        loadMaintenanceSchedule(); // Reload schedule
+                    } else {
+                        alert('Lỗi: ' + result);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Có lỗi xảy ra khi hủy lịch bảo trì');
+                });
+            }
+        }
+        
+        // Delete maintenance
+        function deleteMaintenance(maintenanceId) {
+            if (confirm('Bạn có chắc chắn muốn xóa lịch bảo trì này?')) {
+                fetch(`/admin/maintenance/${maintenanceId}`, {
+                    method: 'DELETE'
+                })
+                .then(response => response.text())
+                .then(result => {
+                    if (result === 'success') {
+                        alert('Xóa lịch bảo trì thành công!');
+                        loadMaintenanceSchedule(); // Reload schedule
+                    } else {
+                        alert('Lỗi: ' + result);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Có lỗi xảy ra khi xóa lịch bảo trì');
+                });
+            }
+        }
+        
+        // Show export modal
+        function showExportModal() {
+            const modal = new bootstrap.Modal(document.getElementById('exportReportModal'));
+            modal.show();
+            
+            // Reset to default (month)
+            document.getElementById('monthReport').checked = true;
+            document.getElementById('monthSection').classList.remove('d-none');
+            document.getElementById('quarterSection').classList.add('d-none');
+            document.getElementById('yearSection').classList.add('d-none');
+            
+            // Reset form
+            document.getElementById('exportReportForm').reset();
+            
+            // Set current month as default
+            const now = new Date();
+            const monthStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+            document.getElementById('monthInput').value = monthStr;
+        }
+        
+        // Handle report type change
+        document.addEventListener('DOMContentLoaded', function() {
+            const radioButtons = document.querySelectorAll('input[name="reportType"]');
+            radioButtons.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const type = this.value;
+                    
+                    // Hide all sections
+                    document.getElementById('monthSection').classList.add('d-none');
+                    document.getElementById('quarterSection').classList.add('d-none');
+                    document.getElementById('yearSection').classList.add('d-none');
+                    
+                    // Show selected section
+                    if (type === 'month') {
+                        document.getElementById('monthSection').classList.remove('d-none');
+                    } else if (type === 'quarter') {
+                        document.getElementById('quarterSection').classList.remove('d-none');
+                    } else if (type === 'year') {
+                        document.getElementById('yearSection').classList.remove('d-none');
+                    }
+                });
+            });
+        });
+        
+        // Export report
+        function exportReport() {
+            const reportType = document.querySelector('input[name="reportType"]:checked').value;
+            let url = '';
+            let filename = '';
+            
+            if (reportType === 'month') {
+                const monthValue = document.getElementById('monthInput').value;
+                if (!monthValue) {
+                    alert('Vui lòng chọn tháng');
+                    return;
+                }
+                const [year, month] = monthValue.split('-');
+                url = `/admin/maintenance/report/month?year=${year}&month=${month}`;
+                filename = `BaoCaoBaoTri_${year}_${month}.json`;
+            } else if (reportType === 'quarter') {
+                const quarter = document.getElementById('quarterSelect').value;
+                const year = document.getElementById('quarterYear').value;
+                if (!quarter || !year) {
+                    alert('Vui lòng chọn quý và năm');
+                    return;
+                }
+                url = `/admin/maintenance/report/quarter?year=${year}&quarter=${quarter}`;
+                filename = `BaoCaoBaoTri_${year}_Quy${quarter}.json`;
+            } else if (reportType === 'year') {
+                const year = document.getElementById('yearInput').value;
+                if (!year) {
+                    alert('Vui lòng chọn năm');
+                    return;
+                }
+                url = `/admin/maintenance/report/year?year=${year}`;
+                filename = `BaoCaoBaoTri_${year}.json`;
+            }
+            
+            // Fetch data and download
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    // Convert to JSON string
+                    const jsonStr = JSON.stringify(data, null, 2);
+                    
+                    // Create blob and download
+                    const blob = new Blob([jsonStr], { type: 'application/json' });
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = filename;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    // Close modal
+                    bootstrap.Modal.getInstance(document.getElementById('exportReportModal')).hide();
+                    
+                    alert('Xuất báo cáo thành công!');
+                })
+                .catch(error => {
+                    console.error('Error exporting report:', error);
+                    alert('Có lỗi xảy ra khi xuất báo cáo');
+                });
+        }
+    </script>
+</body>
+</html>

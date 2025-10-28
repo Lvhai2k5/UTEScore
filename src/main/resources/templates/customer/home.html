@@ -4,72 +4,298 @@
   <meta charset="UTF-8">
   <title>Trang chủ | UTEScore</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- ✅ Load Bootstrap & Custom CSS -->
+
+  <!-- ✅ Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" th:href="@{/css/customer-home.css}">
+
+  <style>
+    /* ===== TOÀN TRANG FADE-IN ===== */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #f1f5f9;
+      color: #1e293b;
+      animation: fadeInPage 1.2s ease-in-out;
+      overflow-x: hidden;
+    }
+
+    @keyframes fadeInPage {
+      from { opacity: 0; transform: scale(1.02); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* ===== HEADER / FOOTER ===== */
+    .navbar-gradient {
+      background: linear-gradient(90deg, rgba(34,197,94,0.95), rgba(59,130,246,0.95)) !important;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+      z-index: 1050;
+    }
+
+    .footer-app {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #16a34a, #3b82f6);
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 0.9rem;
+      z-index: 1040;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+    }
+
+    .main-content {
+      position: absolute;
+      top: 70px;
+      bottom: 55px;
+      left: 0;
+      right: 0;
+      overflow-y: auto;
+      background: #f8fafc;
+      scroll-behavior: smooth;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero-section {
+      position: relative;
+      height: 460px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+      animation: fadeInHero 1.2s ease-in-out forwards;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url([[ @{/uploads/CustomerHome.jpg} ]]) center/cover no-repeat;
+      transform: scale(1);
+      animation: zoomBgLoop 12s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes zoomBgLoop {
+      from { transform: scale(1); filter: brightness(100%) contrast(100%); }
+      to { transform: scale(1.12); filter: brightness(110%) contrast(115%); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(2px);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 1.4s ease;
+    }
+
+    .user-avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 5px solid #fff;
+      object-fit: cover;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 8px 20px rgba(255,255,255,0.5);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: popAvatar 1.4s ease;
+    }
+
+    @keyframes popAvatar {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .user-avatar:hover {
+      transform: scale(1.12);
+      box-shadow: 0 10px 25px rgba(255,255,255,0.8);
+    }
+
+    /* 👋 BÀN TAY VẪY */
+    .wave-hand {
+      display: inline-block;
+      animation: waveHand 1.8s infinite ease-in-out;
+      transform-origin: 70% 70%;
+    }
+
+    @keyframes waveHand {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(15deg); }
+      50% { transform: rotate(-12deg); }
+      75% { transform: rotate(10deg); }
+    }
+
+    .hero-content h1 {
+      font-size: 3.3rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+      background: linear-gradient(90deg, #ffffff, #dbeafe, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 25px rgba(255,255,255,0.8);
+      animation: shimmerText 4s infinite linear;
+    }
+
+    @keyframes shimmerText {
+      from { background-position: 200% center; }
+      to { background-position: -200% center; }
+    }
+
+    .hero-content p {
+      font-size: 1.45rem;
+      font-weight: 500;
+      opacity: 0.95;
+      text-shadow: 0 3px 8px rgba(0,0,0,0.6);
+      color: #f1f5f9;
+      animation: fadeInUp 2s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== BUTTON HIỆU ỨNG ÁNH SÁNG ===== */
+    .glow-btn {
+      background: linear-gradient(90deg, #16a34a, #3b82f6);
+      color: white;
+      border: none;
+      border-radius: 40px;
+      padding: 14px 34px;
+      font-size: 1.15rem;
+      font-weight: 600;
+      box-shadow: 0 6px 20px rgba(22,163,74,0.3);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .glow-btn::before {
+      content: "";
+      position: absolute;
+      top: 0; left: -75%;
+      width: 50%; height: 100%;
+      background: linear-gradient(120deg, rgba(255,255,255,0.6), rgba(255,255,255,0));
+      transform: skewX(-25deg);
+      transition: left 0.6s ease;
+    }
+
+    .glow-btn:hover::before { left: 120%; }
+    .glow-btn:hover { transform: scale(1.08); box-shadow: 0 8px 25px rgba(59,130,246,0.5); }
+
+    /* ===== CARD CHỨC NĂNG ===== */
+    .feature-card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      padding: 45px 25px;
+      text-align: center;
+      transition: all 0.3s ease;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 18px;
+      color: #16a34a;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover .feature-icon {
+      color: #3b82f6;
+      transform: scale(1.15);
+    }
+
+    .feature-card h5 {
+      font-weight: 700;
+      font-size: 1.45rem;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero-content h1 { font-size: 2.2rem; }
+      .hero-content p { font-size: 1.15rem; }
+      .feature-card { padding: 30px 18px; }
+      .feature-icon { font-size: 2.4rem; }
+    }
+  </style>
 </head>
 
 <body>
+  <div th:replace="fragments/header :: header"></div>
 
-  <!-- HEADER -->
-  <div th:replace="~{fragments/header :: header}"></div>
-  <!-- MAIN CONTENT -->
   <div class="main-content">
     <section class="hero-section">
+      <div class="hero-bg"></div>
       <div class="hero-overlay"></div>
+
       <div class="hero-content">
-        <img th:src="${anhBase64 != null} ? 
-             ${'data:image/jpeg;base64,' + anhBase64} : 
+        <img th:src="${anhBase64 != null} ? ${'data:image/jpeg;base64,' + anhBase64} :
              'https://cdn-icons-png.flaticon.com/512/1077/1077114.png'"
-     class="user-avatar"
-     alt="avatar">
-        <span th:text="${khachHang != null ? khachHang.HoTen : 'Khách hàng'}">Hoài Phương</span>
+             class="user-avatar" alt="avatar">
+        <h1>Chào mừng, 
+          <span th:text="${khachHang.HoTen}">Hoài Phương</span> 
+          <span class="wave-hand">👋</span>
+        </h1>
         <p>Hãy chọn chức năng bạn muốn thực hiện hôm nay</p>
+        <a th:href="@{/customer/pitch-list}" class="glow-btn mt-3">Bắt đầu ngay</a>
       </div>
     </section>
 
-    <!-- 3 THẺ CHỨC NĂNG -->
     <main class="container py-5">
       <div class="row g-4 justify-content-center">
-        
-        <!-- 🧑‍💼 Tài khoản -->
         <div class="col-12 col-md-4 d-flex">
           <div class="feature-card w-100">
             <div class="feature-icon">👤</div>
             <h5>Tài khoản</h5>
             <p>Xem và chỉnh sửa thông tin cá nhân của bạn.</p>
-            <a th:href="@{/customer/account}" class="btn btn-sm">Quản lý</a>
+            <a th:href="@{/customer/account}" class="glow-btn btn-sm">Quản lý</a>
           </div>
         </div>
 
-        <!-- ⚽ Đặt sân -->
         <div class="col-12 col-md-4 d-flex">
           <div class="feature-card w-100">
-            <div class="feature-icon">📝</div>
+            <div class="feature-icon">⚽</div>
             <h5>Đặt sân</h5>
             <p>Chọn sân, khung giờ và thanh toán cọc nhanh chóng.</p>
-            <a th:href="@{/customer/pitch-list}" class="btn btn-sm">Đặt ngay</a>
+            <a th:href="@{/customer/pitch-list}" class="glow-btn btn-sm">Đặt ngay</a>
           </div>
         </div>
 
-        <!-- 🗓️ Lịch sử đặt sân -->
         <div class="col-12 col-md-4 d-flex">
           <div class="feature-card w-100">
             <div class="feature-icon">📅</div>
             <h5>Lịch sử đặt sân</h5>
             <p>Xem lại lịch sử, trạng thái và điểm thưởng của bạn.</p>
-            <a th:href="@{/customer/history}" class="btn btn-sm">Xem lịch sử</a>
+            <a th:href="@{/customer/history}" class="glow-btn btn-sm">Xem lịch sử</a>
           </div>
         </div>
       </div>
     </main>
   </div>
 
-  <!-- FOOTER -->
   <div th:replace="fragments/footer :: footer"></div>
-
-  <!-- JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -9,6 +9,7 @@ import vn.ute.utescore.service.Guest_EmailService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -24,6 +25,9 @@ public class Guest_AuthServiceImpl implements Guest_AuthService {
 
     // ✅ Lưu OTP tạm trong RAM
     private final Map<String, String> otpStore = new HashMap<>();
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public void register(Guest_RegisterDTO dto) {
@@ -43,26 +47,33 @@ public class Guest_AuthServiceImpl implements Guest_AuthService {
         khRepo.save(kh);
 
         Roles role = roleRepo.findByRoleName("KhachHang");
+        if (role == null)
+            throw new RuntimeException("⚠️ Chưa có quyền 'KhachHang' trong bảng Roles!");
 
         TaiKhoan tk = new TaiKhoan();
         tk.setEmail(dto.getEmail());
         tk.setSoDienThoai(dto.getSoDienThoai());
-        tk.setMatKhau(BCrypt.hashpw(dto.getMatKhau(), BCrypt.gensalt()));
+        tk.setMatKhau(passwordEncoder.encode(dto.getMatKhau())); // ✅ Spring Security
         tk.setRole(role);
         tk.setTrangThai("HoatDong");
+
         tkRepo.save(tk);
+
+        System.out.println("✅ Tạo tài khoản thành công: " + dto.getEmail() + " | Role = " + role.getRoleName());
     }
+
 
     @Override
     public TaiKhoan login(Guest_LoginDTO dto) {
         TaiKhoan tk = tkRepo.findBySoDienThoai(dto.getSoDienThoai())
                 .orElseThrow(() -> new RuntimeException("❌ Số điện thoại không tồn tại!"));
 
-        if (!BCrypt.checkpw(dto.getMatKhau(), tk.getMatKhau()))
+        if (!passwordEncoder.matches(dto.getMatKhau(), tk.getMatKhau()))
             throw new RuntimeException("❌ Mật khẩu không chính xác!");
 
         return tk;
     }
+
 
     // ==================== QUÊN MẬT KHẨU ====================
 

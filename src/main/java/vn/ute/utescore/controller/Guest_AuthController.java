@@ -2,7 +2,10 @@ package vn.ute.utescore.controller;
 
 import vn.ute.utescore.dto.Guest_LoginDTO;
 import vn.ute.utescore.dto.Guest_RegisterDTO;
+import vn.ute.utescore.model.Roles;
+import vn.ute.utescore.model.TaiKhoan;
 import vn.ute.utescore.service.Guest_AuthService;
+import vn.ute.utescore.utils.SessionUtil;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,18 +52,23 @@ public class Guest_AuthController {
             return "guest/login";
         }
 
-        // ✅ Lưu session
-        session.setAttribute("user", user);
+        // ✅ Lưu session đúng chuẩn
+        SessionUtil.setCustomer(session, user.getEmail(), user.getRole().getRoleName());
+        System.out.println("✅ Đăng nhập thành công: " + user.getEmail() +
+                " | Role: " + user.getRole().getRoleName());
 
         // ✅ Chuyển hướng theo vai trò
         switch (user.getRole().getRoleName()) {
-            case "KhachHang": return "redirect:/customer/home";
-            case "NhanVien": return "redirect:/employee/employee";
-            case "QuanLy": return "redirect:/admin/dashboard";
-            default: return "redirect:/";
+            case "KhachHang":
+                return "redirect:/customer/home";
+            case "NhanVien":
+                return "redirect:/employee";
+            case "QuanLy":
+                return "redirect:/admin/dashboard";
+            default:
+                return "redirect:/";
         }
     }
-
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();

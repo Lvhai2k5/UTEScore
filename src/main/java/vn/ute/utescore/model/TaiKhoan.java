@@ -13,7 +13,7 @@ public class TaiKhoan {
     @Column(name = "SoDienThoai", columnDefinition = "NVARCHAR(11)")
     private String soDienThoai;
 
-    @Column(name = "MatKhau", columnDefinition = "NVARCHAR(100)")
+    @Column(name = "MatKhau", columnDefinition = "NVARCHAR(255)")
     private String matKhau;
 
     @ManyToOne
