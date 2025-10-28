@@ -9,93 +9,59 @@ public class KhuyenMai {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer KhuyenMaiID;
+    @Column(name = "KhuyenMaiID")
+    private Integer khuyenMaiID;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
-    private String TieuDe;
+    @Column(name = "TieuDe", columnDefinition = "NVARCHAR(255)")
+    private String tieuDe;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
-    private String NoiDung;
+    @Column(name = "NoiDung", columnDefinition = "NVARCHAR(255)")
+    private String noiDung;
 
-    @Lob
-    private byte[] HinhAnh;
+    @Column(name = "HinhAnh", columnDefinition = "NVARCHAR(500)")
+    private String hinhAnh;
 
-    private LocalDateTime NgayBatDau;
-    private LocalDateTime NgayKetThuc;
+    @Column(name = "NgayBatDau")
+    private LocalDateTime ngayBatDau;
 
-    @Column(columnDefinition = "NVARCHAR(50)")
-    private String TrangThai;
+    @Column(name = "NgayKetThuc")
+    private LocalDateTime ngayKetThuc;
 
-    // ===== Constructors =====
-    public KhuyenMai() {
-    }
+    @Column(name = "TrangThai", columnDefinition = "NVARCHAR(50)")
+    private String trangThai;
+
+    public KhuyenMai() {}
 
     public KhuyenMai(Integer khuyenMaiID, String tieuDe, String noiDung,
-                     byte[] hinhAnh, LocalDateTime ngayBatDau,
+                     String hinhAnh, LocalDateTime ngayBatDau,
                      LocalDateTime ngayKetThuc, String trangThai) {
-        this.KhuyenMaiID = khuyenMaiID;
-        this.TieuDe = tieuDe;
-        this.NoiDung = noiDung;
-        this.HinhAnh = hinhAnh;
-        this.NgayBatDau = ngayBatDau;
-        this.NgayKetThuc = ngayKetThuc;
-        this.TrangThai = trangThai;
+        this.khuyenMaiID = khuyenMaiID;
+        this.tieuDe = tieuDe;
+        this.noiDung = noiDung;
+        this.hinhAnh = hinhAnh;
+        this.ngayBatDau = ngayBatDau;
+        this.ngayKetThuc = ngayKetThuc;
+        this.trangThai = trangThai;
     }
 
-    // ===== Getters & Setters =====
-    public Integer getKhuyenMaiID() {
-        return KhuyenMaiID;
-    }
+    public Integer getKhuyenMaiID() { return khuyenMaiID; }
+    public void setKhuyenMaiID(Integer khuyenMaiID) { this.khuyenMaiID = khuyenMaiID; }
 
-    public void setKhuyenMaiID(Integer khuyenMaiID) {
-        this.KhuyenMaiID = khuyenMaiID;
-    }
+    public String getTieuDe() { return tieuDe; }
+    public void setTieuDe(String tieuDe) { this.tieuDe = tieuDe; }
 
-    public String getTieuDe() {
-        return TieuDe;
-    }
+    public String getNoiDung() { return noiDung; }
+    public void setNoiDung(String noiDung) { this.noiDung = noiDung; }
 
-    public void setTieuDe(String tieuDe) {
-        this.TieuDe = tieuDe;
-    }
+    public String getHinhAnh() { return hinhAnh; }
+    public void setHinhAnh(String hinhAnh) { this.hinhAnh = hinhAnh; }
 
-    public String getNoiDung() {
-        return NoiDung;
-    }
+    public LocalDateTime getNgayBatDau() { return ngayBatDau; }
+    public void setNgayBatDau(LocalDateTime ngayBatDau) { this.ngayBatDau = ngayBatDau; }
 
-    public void setNoiDung(String noiDung) {
-        this.NoiDung = noiDung;
-    }
+    public LocalDateTime getNgayKetThuc() { return ngayKetThuc; }
+    public void setNgayKetThuc(LocalDateTime ngayKetThuc) { this.ngayKetThuc = ngayKetThuc; }
 
-    public byte[] getHinhAnh() {
-        return HinhAnh;
-    }
-
-    public void setHinhAnh(byte[] hinhAnh) {
-        this.HinhAnh = hinhAnh;
-    }
-
-    public LocalDateTime getNgayBatDau() {
-        return NgayBatDau;
-    }
-
-    public void setNgayBatDau(LocalDateTime ngayBatDau) {
-        this.NgayBatDau = ngayBatDau;
-    }
-
-    public LocalDateTime getNgayKetThuc() {
-        return NgayKetThuc;
-    }
-
-    public void setNgayKetThuc(LocalDateTime ngayKetThuc) {
-        this.NgayKetThuc = ngayKetThuc;
-    }
-
-    public String getTrangThai() {
-        return TrangThai;
-    }
-
-    public void setTrangThai(String trangThai) {
-        this.TrangThai = trangThai;
-    }
+    public String getTrangThai() { return trangThai; }
+    public void setTrangThai(String trangThai) { this.trangThai = trangThai; }
 }

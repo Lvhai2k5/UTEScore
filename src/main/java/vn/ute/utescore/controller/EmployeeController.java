@@ -46,11 +46,6 @@ public class EmployeeController {
 
     
     
-    @GetMapping({"", "/"})
-    public String home() {
-        return "employee/employee";
-    }
-
     @GetMapping("/employee")
     public String employee() {
         return "employee/employee";

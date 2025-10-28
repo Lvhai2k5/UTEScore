@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>💬 Khách hàng – Trò chuyện</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+<style>
+  body{font-family:'Inter',sans-serif;background:#f0f9ff;margin:0;padding:24px;}
+  .box{max-width:860px;margin:auto;background:#fff;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.08);overflow:hidden}
+  header{background:#38b6ff;color:#fff;padding:16px 20px;font-weight:600}
+  #messages{height:460px;overflow-y:auto;padding:16px;background:#f8fafc}
+  .msg{margin-bottom:10px}
+  .mine{text-align:right}
+  .mine span{background:#38b6ff;color:#fff}
+  .theirs span{background:#e2e8f0;color:#111827}
+  span{display:inline-block;padding:10px 14px;border-radius:20px;max-width:70%;word-wrap:break-word}
+  .input{display:flex;padding:12px;border-top:1px solid #e5e7eb;background:#fff}
+  input{flex:1;padding:10px 14px;border-radius:20px;border:1px solid #cbd5e1}
+  button{margin-left:8px;padding:10px 16px;border:0;border-radius:20px;background:#38b6ff;color:#fff;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="box">
+  <header>💬 Trò chuyện với nhân viên</header>
+  <div id="messages"></div>
+  <div class="input">
+    <input id="msg" type="text" placeholder="Nhập tin nhắn...">
+    <button id="send">Gửi</button>
+  </div>
+</div>
+
+<script th:inline="javascript">
+  const sender = /*[[${sender}]]*/ "";
+  const receiver = /*[[${receiver}]]*/ "";
+  const sock = new SockJS('/ws-checkin');
+  const stomp = Stomp.over(sock);
+  const board = document.getElementById('messages');
+
+  function add(user, text, ts) {
+    const d=document.createElement('div');
+    d.className='msg ' + (user===sender?'mine':'theirs');
+    d.innerHTML = `<span>${text}</span>`;
+    board.appendChild(d); board.scrollTop=board.scrollHeight;
+  }
+
+  // Lịch sử
+  fetch(`/support/history?a=${encodeURIComponent(sender)}&b=${encodeURIComponent(receiver)}`)
+    .then(r=>r.json()).then(list=>list.forEach(m=>add(m.sender,m.content,m.timestamp)));
+
+  // WS
+  stomp.connect({}, ()=>{
+    stomp.subscribe(`/topic/chat/${sender}`, (frame)=>{
+      const m=JSON.parse(frame.body); add(m.sender,m.content,m.timestamp);
+    });
+  });
+
+  // Gửi
+  document.getElementById('send').onclick=()=>{
+    const t=document.getElementById('msg'); const v=t.value.trim();
+    if(!v) return;
+    stomp.send('/app/chat.send', {}, JSON.stringify({sender, receiver, content:v}));
+    t.value='';
+  };
+  document.getElementById('msg').addEventListener('keydown', e=>{ if(e.key==='Enter') document.getElementById('send').click(); });
+</script>
+</body>
+</html>

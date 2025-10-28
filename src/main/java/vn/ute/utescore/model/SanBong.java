@@ -35,9 +35,9 @@ public class SanBong {
     @Column(name = "MoTa", columnDefinition = "NVARCHAR(255)")
     private String moTa;
 
-    @Lob
-    @Column(name = "HinhAnh")
-    private byte[] hinhAnh;
+    // ✅ Lưu URL ảnh thay vì byte[]
+    @Column(name = "HinhAnh", columnDefinition = "NVARCHAR(500)")
+    private String hinhAnh;
 
     @Column(name = "TrangThai", columnDefinition = "NVARCHAR(50)")
     private String trangThai;
@@ -70,9 +70,11 @@ public class SanBong {
     // ========== CONSTRUCTORS ==========
     public SanBong() {}
 
-    public SanBong(Integer maSan, String tenSan, String loaiSan, String khuVuc, String duongDanGGMap,
-                   LocalTime gioMoCua, LocalTime gioDongCua, String moTa, byte[] hinhAnh,
-                   String trangThai, LocalDateTime ngayTao, LocalDateTime ngayCapNhat) {
+    public SanBong(Integer maSan, String tenSan, String loaiSan, String khuVuc,
+                   String duongDanGGMap, LocalTime gioMoCua, LocalTime gioDongCua,
+                   String moTa, String hinhAnh, String trangThai,
+                   LocalDateTime ngayTao, LocalDateTime ngayCapNhat) {
+
         this.maSan = maSan;
         this.tenSan = tenSan;
         this.loaiSan = loaiSan;
@@ -81,14 +83,13 @@ public class SanBong {
         this.gioMoCua = gioMoCua;
         this.gioDongCua = gioDongCua;
         this.moTa = moTa;
-        this.hinhAnh = hinhAnh;
+        this.hinhAnh = hinhAnh; // ✅ URL Cloudinary
         this.trangThai = trangThai;
         this.ngayTao = ngayTao;
         this.ngayCapNhat = ngayCapNhat;
     }
 
     // ========== GETTERS & SETTERS ==========
-
     public Integer getMaSan() { return maSan; }
     public void setMaSan(Integer maSan) { this.maSan = maSan; }
 
@@ -113,8 +114,8 @@ public class SanBong {
     public String getMoTa() { return moTa; }
     public void setMoTa(String moTa) { this.moTa = moTa; }
 
-    public byte[] getHinhAnh() { return hinhAnh; }
-    public void setHinhAnh(byte[] hinhAnh) { this.hinhAnh = hinhAnh; }
+    public String getHinhAnh() { return hinhAnh; }
+    public void setHinhAnh(String hinhAnh) { this.hinhAnh = hinhAnh; } // ✅ String setter
 
     public String getTrangThai() { return trangThai; }
     public void setTrangThai(String trangThai) { this.trangThai = trangThai; }

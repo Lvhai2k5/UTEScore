@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${pageTitle}">⚽ Danh sách sân | UTEScore</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<style>
+html, body {
+	height: 100%;
+	margin: 0;
+	overflow-x: hidden;
+	font-family: 'Segoe UI', Tahoma, sans-serif;
+	background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+/* Header & Footer */
+header, nav.navbar {
+	background: linear-gradient(90deg, #16a34a, #3b82f6);
+	color: white;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1050;
+	box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+	background: linear-gradient(90deg, #16a34a, #3b82f6);
+	color: white;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+	padding: 10px 0;
+	font-size: 0.9rem;
+	box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2);
+}
+
+main.container {
+	margin-top: 120px;
+	margin-bottom: 140px;
+	max-width: 1200px;
+	animation: fadeInUp 0.6s ease-in-out;
+}
+
+keyframes fadeInUp {from { opacity:0;
+	transform: translateY(20px);
+}
+
+to {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+}
+h3.page-title {
+	text-align: center;
+	font-weight: 800;
+	color: #1d4ed8;
+	margin-bottom: 35px;
+	letter-spacing: 0.5px;
+	text-shadow: 0 1px 4px rgba(37, 99, 235, 0.25);
+}
+
+/* Bộ lọc */
+.filter-box {
+	background: #fff;
+	border-radius: 20px;
+	padding: 30px 40px;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+	transition: all 0.3s ease;
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+.filter-box:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 10px 40px rgba(59, 130, 246, 0.2);
+}
+
+label.form-label {
+	font-weight: 600;
+	color: #1e3a8a;
+	font-size: 0.9rem;
+}
+
+input.form-control, select.form-select {
+	border-radius: 12px;
+	border: 1px solid #cbd5e1;
+	height: 45px;
+	transition: all 0.25s ease;
+	font-size: 0.95rem;
+}
+
+input.form-control:focus, select.form-select:focus {
+	border-color: #3b82f6;
+	box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.2);
+}
+
+.time-range {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	margin-top: 5px;
+}
+
+.time-range input {
+	width: 170px;
+	text-align: center;
+}
+
+.btn-search {
+	background: linear-gradient(135deg, #16a34a, #3b82f6);
+	border: none;
+	color: #fff;
+	font-weight: 600;
+	border-radius: 40px;
+	padding: 12px 50px;
+	box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+	transition: all 0.4s ease;
+	letter-spacing: 0.5px;
+}
+
+.btn-search:hover {
+	background: linear-gradient(135deg, #22c55e, #2563eb);
+	transform: translateY(-3px);
+	box-shadow: 0 10px 25px rgba(34, 197, 94, 0.35);
+}
+
+/* CARD */
+.pitch-card {
+	background: #fff;
+	border-radius: 18px;
+	overflow: hidden;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+	transition: all 0.35s ease;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.pitch-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.pitch-img {
+	height: 180px;
+	overflow: hidden;
+}
+
+.pitch-photo {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: all 0.4s ease;
+}
+
+.pitch-photo:hover {
+	transform: scale(1.05);
+}
+
+.pitch-body {
+	flex-grow: 1;
+	padding: 15px;
+	text-align: center;
+}
+
+.pitch-body h5 {
+	font-weight: 700;
+	color: #1e293b;
+	margin-bottom: 5px;
+}
+
+.pitch-body p {
+	color: #64748b;
+	font-size: 0.9rem;
+	margin-bottom: 3px;
+}
+
+.price-box {
+	color: #059669;
+	font-weight: 600;
+	font-size: 0.85rem;
+	margin-top: 5px;
+}
+
+/* Tính năng nhiều màu */
+.feature-badge {
+	font-size: 0.8rem;
+	padding: 6px 12px;
+	border-radius: 15px;
+	color: #fff;
+	font-weight: 600;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+	transition: all 0.3s ease;
+}
+
+.feature-badge:nth-child(1) {
+	background: #3b82f6;
+}
+
+.feature-badge:nth-child(2) {
+	background: #10b981;
+}
+
+.feature-badge:nth-child(3) {
+	background: #f59e0b;
+}
+
+.feature-badge:nth-child(4) {
+	background: #ec4899;
+}
+
+.feature-badge:nth-child(5) {
+	background: #8b5cf6;
+}
+
+/* Nút hành động */
+.btn-group-pitch {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	margin-top: 15px;
+}
+
+.btn-group-pitch a, .btn-group-pitch button {
+	flex: 1;
+	max-width: 130px;
+	border-radius: 30px;
+	font-weight: 600;
+	font-size: 0.9rem;
+	padding: 10px 0;
+	transition: all 0.3s ease;
+}
+
+.btn-detail {
+	background: #e2e8f0;
+	color: #1e293b;
+	border: none;
+}
+
+.btn-detail:hover {
+	background: #cbd5e1;
+}
+
+.btn-book {
+	background: linear-gradient(90deg, #3b82f6, #16a34a);
+	color: white;
+	border: none;
+	box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn-book:hover {
+	background: linear-gradient(90deg, #22c55e, #2563eb);
+	transform: translateY(-2px);
+}
+
+.btn-disabled {
+	background: #e5e7eb;
+	color: #6b7280;
+	border: none;
+	cursor: not-allowed;
+}
+</style>
+</head>
+<form id="bookingForm" th:action="@{/customer/booking}" method="post">
+  <input type="hidden" name="pitchId" id="pitchId">
+</form>
+<body>
+	<header th:replace="~{fragments/header :: header}"></header>
+
+	<main class="container">
+		<h3 class="page-title">⚽ Danh sách Sân Bóng</h3>
+
+		<!-- Bộ lọc -->
+		<form class="filter-box" th:action="@{/customer/pitch-list}"
+			method="post">
+			<div
+				class="row g-3 align-items-end justify-content-center text-center">
+				<div class="col-lg-3 col-md-6">
+					<label class="form-label">Từ khóa</label> <input type="text"
+						name="keyword" class="form-control"
+						placeholder="Tên sân hoặc khu vực" th:value="${keyword}">
+				</div>
+				<div class="col-lg-2 col-md-6">
+					<label class="form-label">Loại sân</label> <select
+						class="form-select" name="loaiSan">
+						<option value="">Tất cả</option>
+						<option value="5 người" th:selected="${loaiSan == '5 người'}">5
+							người</option>
+						<option value="7 người" th:selected="${loaiSan == '7 người'}">7
+							người</option>
+						<option value="11 người" th:selected="${loaiSan == '11 người'}">11
+							người</option>
+					</select>
+				</div>
+				<div class="col-lg-2 col-md-6">
+					<label class="form-label">Trạng thái</label> <select
+						class="form-select" name="trangThai">
+						<option value="">Tất cả</option>
+						<option value="Hoạt động"
+							th:selected="${trangThai == 'Hoạt động'}">Hoạt động</option>
+						<option value="Bảo trì" th:selected="${trangThai == 'Bảo trì'}">Bảo
+							trì</option>
+						<option value="Ngưng sử dụng"
+							th:selected="${trangThai == 'Ngưng sử dụng'}">Ngưng sử
+							dụng</option>
+					</select>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<label class="form-label">Tính năng</label> <select
+						class="form-select" name="maTinhNang">
+						<option value="">Tất cả</option>
+						<option th:each="tn : ${dsTinhNang}" th:value="${tn.maTinhNang}"
+							th:text="${tn.tenTinhNang}"
+							th:selected="${maTinhNang == tn.maTinhNang}"></option>
+					</select>
+				</div>
+			</div>
+
+			<!-- Giờ đá -->
+			<div class="text-center mt-4">
+				<label class="form-label d-block mb-1 fw-semibold text-primary">Giờ
+					đá</label>
+				<div class="time-range justify-content-center">
+					<input type="time" name="gioBatDau"
+						class="form-control w-auto text-center" th:value="${gioBatDau}">
+					<span class="mx-2">⟶</span> <input type="time" name="gioKetThuc"
+						class="form-control w-auto text-center" th:value="${gioKetThuc}">
+				</div>
+			</div>
+
+			<div class="text-center mt-4">
+				<button type="submit" class="btn-search">🔍 Tìm kiếm</button>
+			</div>
+		</form>
+
+		<!-- Danh sách sân -->
+		<div class="row g-4 mt-4" th:if="${!#lists.isEmpty(pitchList)}">
+			<div class="col-12 col-sm-6 col-md-4 col-lg-3"
+				th:each="p : ${pitchList}">
+				<div class="pitch-card">
+					<div class="pitch-img">
+						<img th:src="${p.imageUrl}" alt="Ảnh sân" class="pitch-photo">
+					</div>
+					<div class="pitch-body">
+						<h5 th:text="${p.name}">Sân 5A</h5>
+						<p>
+							📍 <span th:text="${p.area}">Khu A</span>
+						</p>
+						<p>
+							👥 Loại sân: <span th:text="${p.type}">5 người</span>
+						</p>
+
+						<div class="price-box" th:utext="${p.priceFormatted}">
+							<span style="color: gray">Chưa cập nhật giá</span>
+						</div>
+
+						<div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
+							<span th:each="f : ${p.features}" th:text="${f}"
+								class="feature-badge"></span>
+						</div>
+
+						<div class="btn-group-pitch">
+							<a th:href="@{/customer/pitch-detail/{id}(id=${p.id})}"
+								class="btn-detail">🔍 Chi tiết</a>
+
+							<!-- Nếu sân hoạt động thì hiển thị nút đặt -->
+							<button class="btn btn-success btn-book" th:if="${p.active}"
+								th:attr="data-pitch-id=${p.id}" onclick="redirectPitch(this)">
+								⚽ Đặt sân ngay</button>
+
+							<!-- Nếu sân tạm ngưng thì hiển thị nút bị vô hiệu -->
+							<button class="btn-disabled" th:unless="${p.active}" disabled>
+								🛑 Tạm ngưng</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div th:if="${#lists.isEmpty(pitchList)}"
+			class="text-center text-muted mt-5">
+			<p>Không tìm thấy sân phù hợp với tiêu chí của bạn.</p>
+		</div>
+	</main>
+
+	<footer th:replace="~{fragments/footer :: footer}"></footer>
+
+	<script>
+		function redirectPitch(button) {
+			const pitchId = button.getAttribute("data-pitch-id");
+			if (pitchId && pitchId !== "null") {
+				document.getElementById("pitchId").value = pitchId;
+				document.getElementById("bookingForm").submit(); // gửi POST
+			} else {
+				alert("Không thể xác định sân cần đặt!");
+			}
+		}
+	</script>
+</body>
+</html>

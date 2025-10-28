@@ -9,24 +9,24 @@ import java.time.LocalTime;
 @Table(name = "GiaThue")
 public class GiaThue {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer MaBangGia;
+	 	@Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    private Integer maBangGia;
 
-    @Column(columnDefinition = "NVARCHAR(20)")
-    private String LoaiSan;
+	    @Column(name = "LoaiSan", columnDefinition = "NVARCHAR(20)")
+	    private String loaiSan;
 
-    private LocalTime KhungGioBatDau;
-    private LocalTime KhungGioKetThuc;
+	    private LocalTime khungGioBatDau;
+	    private LocalTime khungGioKetThuc;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
-    private String MoTa;
+	    @Column(columnDefinition = "NVARCHAR(255)")
+	    private String moTa;
 
-    private BigDecimal GiaThue;
-    private LocalDateTime NgayApDung;
+	    private BigDecimal giaThue;
+	    private LocalDateTime ngayApDung;
 
-    @Column(columnDefinition = "NVARCHAR(50)")
-    private String TrangThai;
+	    @Column(columnDefinition = "NVARCHAR(50)")
+	    private String trangThai;
 
     // ===== Constructors =====
     public GiaThue() {
@@ -35,78 +35,78 @@ public class GiaThue {
     public GiaThue(Integer maBangGia, String loaiSan, LocalTime khungGioBatDau,
                    LocalTime khungGioKetThuc, String moTa, BigDecimal giaThue,
                    LocalDateTime ngayApDung, String trangThai) {
-        this.MaBangGia = maBangGia;
-        this.LoaiSan = loaiSan;
-        this.KhungGioBatDau = khungGioBatDau;
-        this.KhungGioKetThuc = khungGioKetThuc;
-        this.MoTa = moTa;
-        this.GiaThue = giaThue;
-        this.NgayApDung = ngayApDung;
-        this.TrangThai = trangThai;
+        this.maBangGia = maBangGia;
+        this.loaiSan = loaiSan;
+        this.khungGioBatDau = khungGioBatDau;
+        this.khungGioKetThuc = khungGioKetThuc;
+        this.moTa = moTa;
+        this.giaThue = giaThue;
+        this.ngayApDung = ngayApDung;
+        this.trangThai = trangThai;
     }
 
     // ===== Getters & Setters =====
     public Integer getMaBangGia() {
-        return MaBangGia;
+        return maBangGia;
     }
 
     public void setMaBangGia(Integer maBangGia) {
-        this.MaBangGia = maBangGia;
+        this.maBangGia = maBangGia;
     }
 
     public String getLoaiSan() {
-        return LoaiSan;
+        return loaiSan;
     }
 
     public void setLoaiSan(String loaiSan) {
-        this.LoaiSan = loaiSan;
+        this.loaiSan = loaiSan;
     }
 
     public LocalTime getKhungGioBatDau() {
-        return KhungGioBatDau;
+        return khungGioBatDau;
     }
 
     public void setKhungGioBatDau(LocalTime khungGioBatDau) {
-        this.KhungGioBatDau = khungGioBatDau;
+        this.khungGioBatDau = khungGioBatDau;
     }
 
     public LocalTime getKhungGioKetThuc() {
-        return KhungGioKetThuc;
+        return khungGioKetThuc;
     }
 
     public void setKhungGioKetThuc(LocalTime khungGioKetThuc) {
-        this.KhungGioKetThuc = khungGioKetThuc;
+        this.khungGioKetThuc = khungGioKetThuc;
     }
 
     public String getMoTa() {
-        return MoTa;
+        return moTa;
     }
 
     public void setMoTa(String moTa) {
-        this.MoTa = moTa;
+        this.moTa = moTa;
     }
 
     public BigDecimal getGiaThue() {
-        return GiaThue;
+        return giaThue;
     }
 
     public void setGiaThue(BigDecimal giaThue) {
-        this.GiaThue = giaThue;
+        this.giaThue = giaThue;
     }
 
     public LocalDateTime getNgayApDung() {
-        return NgayApDung;
+        return ngayApDung;
     }
 
     public void setNgayApDung(LocalDateTime ngayApDung) {
-        this.NgayApDung = ngayApDung;
+        this.ngayApDung = ngayApDung;
     }
 
     public String getTrangThai() {
-        return TrangThai;
+        return trangThai;
     }
 
     public void setTrangThai(String trangThai) {
-        this.TrangThai = trangThai;
+        this.trangThai = trangThai;
     }
 }

@@ -7,57 +7,57 @@ import jakarta.persistence.*;
 public class TaiKhoan {
 
     @Id
-    @Column(columnDefinition = "NVARCHAR(100)")
-    private String Email;
+    @Column(name = "Email", columnDefinition = "NVARCHAR(100)")
+    private String email;
 
-    @Column(columnDefinition = "NVARCHAR(11)")
-    private String SoDienThoai;
+    @Column(name = "SoDienThoai", columnDefinition = "NVARCHAR(11)")
+    private String soDienThoai;
 
-    @Column(columnDefinition = "NVARCHAR(100)")
-    private String MatKhau;
+    @Column(name = "MatKhau", columnDefinition = "NVARCHAR(100)")
+    private String matKhau;
 
     @ManyToOne
     @JoinColumn(name = "RoleID")
     private Roles role;
 
-    @Column(columnDefinition = "NVARCHAR(20)")
-    private String TrangThai;
+    @Column(name = "TrangThai", columnDefinition = "NVARCHAR(20)")
+    private String trangThai;
 
     // ===== Constructors =====
     public TaiKhoan() {
     }
 
     public TaiKhoan(String email, String soDienThoai, String matKhau, Roles role, String trangThai) {
-        this.Email = email;
-        this.SoDienThoai = soDienThoai;
-        this.MatKhau = matKhau;
+        this.email = email;
+        this.soDienThoai = soDienThoai;
+        this.matKhau = matKhau;
         this.role = role;
-        this.TrangThai = trangThai;
+        this.trangThai = trangThai;
     }
 
     // ===== Getters & Setters =====
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        this.Email = email;
+        this.email = email;
     }
 
     public String getSoDienThoai() {
-        return SoDienThoai;
+        return soDienThoai;
     }
 
     public void setSoDienThoai(String soDienThoai) {
-        this.SoDienThoai = soDienThoai;
+        this.soDienThoai = soDienThoai;
     }
 
     public String getMatKhau() {
-        return MatKhau;
+        return matKhau;
     }
 
     public void setMatKhau(String matKhau) {
-        this.MatKhau = matKhau;
+        this.matKhau = matKhau;
     }
 
     public Roles getRole() {
@@ -69,10 +69,10 @@ public class TaiKhoan {
     }
 
     public String getTrangThai() {
-        return TrangThai;
+        return trangThai;
     }
 
     public void setTrangThai(String trangThai) {
-        this.TrangThai = trangThai;
+        this.trangThai = trangThai;
     }
 }

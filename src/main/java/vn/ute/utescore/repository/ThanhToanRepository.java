@@ -5,15 +5,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import vn.ute.utescore.model.ThanhToan;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
 public interface ThanhToanRepository extends JpaRepository<ThanhToan, Integer> {
 
-    // ✅ Query chính xác theo mapping: CheckinLog có thuộc tính thueSan
     @Query("""
         SELECT t
         FROM ThanhToan t

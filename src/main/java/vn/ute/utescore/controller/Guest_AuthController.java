@@ -1,0 +1,69 @@
+package vn.ute.utescore.controller;
+
+import vn.ute.utescore.dto.Guest_LoginDTO;
+import vn.ute.utescore.dto.Guest_RegisterDTO;
+import vn.ute.utescore.service.Guest_AuthService;
+import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+@Controller
+public class Guest_AuthController {
+
+    @Autowired
+    private Guest_AuthService authService;
+
+    // ✅ Trang đăng ký
+    @GetMapping("/register")
+    public String showRegisterForm(Model model) {
+        model.addAttribute("dto", new Guest_RegisterDTO());
+        return "guest/register";
+    }
+
+    @PostMapping("/register")
+    public String register(@ModelAttribute("dto") Guest_RegisterDTO dto, Model model) {
+        try {
+            authService.register(dto);
+            return "redirect:/login?success";
+        } catch (RuntimeException e) {
+            model.addAttribute("error", e.getMessage());
+            return "guest/register";
+        }
+    }
+
+    // ✅ Trang đăng nhập
+    @GetMapping("/login")
+    public String showLoginForm(Model model) {
+        model.addAttribute("dto", new Guest_LoginDTO());
+        return "guest/login";
+    }
+
+    @PostMapping("/login")
+    public String login(@ModelAttribute("dto") Guest_LoginDTO dto, HttpSession session, Model model) {
+        var user = authService.login(dto);
+
+        if (user == null) {
+            model.addAttribute("error", "Sai thông tin đăng nhập!");
+            return "guest/login";
+        }
+
+        // ✅ Lưu session
+        session.setAttribute("user", user);
+
+        // ✅ Chuyển hướng theo vai trò
+        switch (user.getRole().getRoleName()) {
+            case "KhachHang": return "redirect:/customer/home";
+            case "NhanVien": return "redirect:/employee/employee";
+            case "QuanLy": return "redirect:/admin/dashboard";
+            default: return "redirect:/";
+        }
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/";
+    }
+}

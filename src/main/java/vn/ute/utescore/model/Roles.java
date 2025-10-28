@@ -10,13 +10,14 @@ public class Roles {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer RoleID;
+    @Column(name = "RoleID")
+    private Integer roleID;
 
-    @Column(columnDefinition = "NVARCHAR(50)")
-    private String RoleName;
+    @Column(name = "RoleName", columnDefinition = "NVARCHAR(50)")
+    private String roleName;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
-    private String MoTa;
+    @Column(name = "MoTa", columnDefinition = "NVARCHAR(255)")
+    private String moTa;
 
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
     private List<NhanVien> nhanViens;
@@ -27,94 +28,48 @@ public class Roles {
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
     private List<RolePermission> rolePermissions;
 
-    // ===== Constructors =====
-    public Roles() {
+    public Roles() {}
+
+    public Roles(Integer roleID, String roleName, String moTa) {
+        this.roleID = roleID;
+        this.roleName = roleName;
+        this.moTa = moTa;
     }
 
-    public Roles(Integer roleID, String roleName, String moTa,
-                 List<NhanVien> nhanViens, List<TaiKhoan> taiKhoans,
-                 List<RolePermission> rolePermissions) {
-        this.RoleID = roleID;
-        this.RoleName = roleName;
-        this.MoTa = moTa;
-        this.nhanViens = nhanViens;
-        this.taiKhoans = taiKhoans;
-        this.rolePermissions = rolePermissions;
-    }
-
-    // ===== Getters & Setters =====
     public Integer getRoleID() {
-        return RoleID;
+        return roleID;
     }
 
     public void setRoleID(Integer roleID) {
-        this.RoleID = roleID;
+        this.roleID = roleID;
     }
 
     public String getRoleName() {
-        return RoleName;
+        return roleName;
     }
 
     public void setRoleName(String roleName) {
-        this.RoleName = roleName;
+        this.roleName = roleName;
     }
 
     public String getMoTa() {
-        return MoTa;
+        return moTa;
     }
 
     public void setMoTa(String moTa) {
-        this.MoTa = moTa;
+        this.moTa = moTa;
     }
 
-    public List<NhanVien> getNhanViens() {
-        return nhanViens;
-    }
-
-    public void setNhanViens(List<NhanVien> nhanViens) {
-        this.nhanViens = nhanViens;
-    }
-
-    public List<TaiKhoan> getTaiKhoans() {
-        return taiKhoans;
-    }
-
-    public void setTaiKhoans(List<TaiKhoan> taiKhoans) {
-        this.taiKhoans = taiKhoans;
-    }
-
-    public List<RolePermission> getRolePermissions() {
-        return rolePermissions;
-    }
-
-    public void setRolePermissions(List<RolePermission> rolePermissions) {
-        this.rolePermissions = rolePermissions;
-    }
-
-    // ===== equals & hashCode =====
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Roles)) return false;
         Roles roles = (Roles) o;
-        return Objects.equals(RoleID, roles.RoleID);
+        return Objects.equals(roleID, roles.roleID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(RoleID);
-    }
-
-    // ===== toString =====
-    @Override
-    public String toString() {
-        return "Roles{" +
-                "RoleID=" + RoleID +
-                ", RoleName='" + RoleName + '\'' +
-                ", MoTa='" + MoTa + '\'' +
-                ", nhanViens=" + (nhanViens != null ? nhanViens.size() : 0) +
-                ", taiKhoans=" + (taiKhoans != null ? taiKhoans.size() : 0) +
-                ", rolePermissions=" + (rolePermissions != null ? rolePermissions.size() : 0) +
-                '}';
+        return Objects.hash(roleID);
     }
 }

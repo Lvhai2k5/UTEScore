@@ -9,82 +9,51 @@ public class TinTuc {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer TinID;
+    @Column(name = "TinID")
+    private Integer tinID;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
-    private String TieuDe;
+    @Column(name = "TieuDe", columnDefinition = "NVARCHAR(255)")
+    private String tieuDe;
 
-    @Column(columnDefinition = "NVARCHAR(255)")
-    private String NoiDung;
+    @Column(name = "NoiDung", columnDefinition = "NVARCHAR(255)")
+    private String noiDung;
 
-    @Lob
-    private byte[] HinhAnh;
+    @Column(name = "HinhAnh", columnDefinition = "NVARCHAR(500)")
+    private String hinhAnh;
 
-    private LocalDateTime NgayDang;
+    @Column(name = "NgayDang")
+    private LocalDateTime ngayDang;
 
-    @Column(columnDefinition = "NVARCHAR(50)")
-    private String TrangThai;
+    @Column(name = "TrangThai", columnDefinition = "NVARCHAR(50)")
+    private String trangThai;
 
-    // ===== Constructors =====
-    public TinTuc() {
-    }
+    public TinTuc() {}
 
     public TinTuc(Integer tinID, String tieuDe, String noiDung,
-                  byte[] hinhAnh, LocalDateTime ngayDang, String trangThai) {
-        this.TinID = tinID;
-        this.TieuDe = tieuDe;
-        this.NoiDung = noiDung;
-        this.HinhAnh = hinhAnh;
-        this.NgayDang = ngayDang;
-        this.TrangThai = trangThai;
+                  String hinhAnh, LocalDateTime ngayDang, String trangThai) {
+        this.tinID = tinID;
+        this.tieuDe = tieuDe;
+        this.noiDung = noiDung;
+        this.hinhAnh = hinhAnh;
+        this.ngayDang = ngayDang;
+        this.trangThai = trangThai;
     }
 
-    // ===== Getters & Setters =====
-    public Integer getTinID() {
-        return TinID;
-    }
+    public Integer getTinID() { return tinID; }
+    public void setTinID(Integer tinID) { this.tinID = tinID; }
 
-    public void setTinID(Integer tinID) {
-        this.TinID = tinID;
-    }
+    public String getTieuDe() { return tieuDe; }
+    public void setTieuDe(String tieuDe) { this.tieuDe = tieuDe; }
 
-    public String getTieuDe() {
-        return TieuDe;
-    }
+    public String getNoiDung() { return noiDung; }
+    public void setNoiDung(String noiDung) { this.noiDung = noiDung; }
 
-    public void setTieuDe(String tieuDe) {
-        this.TieuDe = tieuDe;
-    }
+    public String getHinhAnh() { return hinhAnh; }
+    public void setHinhAnh(String hinhAnh) { this.hinhAnh = hinhAnh; }
 
-    public String getNoiDung() {
-        return NoiDung;
-    }
+    public LocalDateTime getNgayDang() { return ngayDang; }
+    public void setNgayDang(LocalDateTime ngayDang) { this.ngayDang = ngayDang; }
 
-    public void setNoiDung(String noiDung) {
-        this.NoiDung = noiDung;
-    }
-
-    public byte[] getHinhAnh() {
-        return HinhAnh;
-    }
-
-    public void setHinhAnh(byte[] hinhAnh) {
-        this.HinhAnh = hinhAnh;
-    }
-
-    public LocalDateTime getNgayDang() {
-        return NgayDang;
-    }
-
-    public void setNgayDang(LocalDateTime ngayDang) {
-        this.NgayDang = ngayDang;
-    }
-
-    public String getTrangThai() {
-        return TrangThai;
-    }
-
-    public void setTrangThai(String trangThai) {
-        this.TrangThai = trangThai;
-    }
+    public String getTrangThai() { return trangThai; }
+    public void setTrangThai(String trangThai) { this.trangThai = trangThai; }
 }

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Tài khoản cá nhân | UTEScore</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" th:href="@{/css/customer-home.css}">
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(180deg, #f1f5f9 0%, #e0f2fe 100%);
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    main {
+      padding-top: 110px;
+      padding-bottom: 80px;
+      min-height: calc(100vh - 150px);
+    }
+
+    .account-container {
+      max-width: 850px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+      padding: 40px;
+      animation: fadeIn .6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .avatar {
+      display: block;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #3b82f6;
+      margin: 0 auto 20px;
+    }
+
+    .btn-action {
+      border: none;
+      border-radius: 10px;
+      padding: 10px 24px;
+      font-weight: 600;
+      color: #fff;
+      transition: 0.3s;
+    }
+    .btn-edit { background: #0ea5e9; }
+    .btn-save {
+      background: linear-gradient(90deg, #2563eb, #16a34a);
+      box-shadow: 0 4px 10px rgba(37,99,235,0.3);
+    }
+    .btn-edit:hover, .btn-save:hover { transform: scale(1.05); }
+    input[readonly], input:disabled { background-color: #f1f5f9; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ✅ HEADER DÙNG CHUNG -->
+  <div th:replace="fragments/header :: header"></div>
+
+  <!-- ✅ BODY -->
+  <main>
+    <div class="account-container mb-5">
+      <h3 class="text-center fw-bold text-primary mb-4">👤 Thông tin tài khoản</h3>
+
+      <div class="text-center mb-3">
+        <img id="previewAvatar"
+             th:if="${anhBase64 != null}"
+             th:src="@{'data:image/png;base64,' + ${anhBase64}}"
+             class="avatar"/>
+        <img th:if="${anhBase64 == null}"
+             src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png"
+             id="previewAvatar"
+             class="avatar"/>
+      </div>
+
+      <div class="text-end mb-3">
+        <button type="button" id="btnEditInfo" class="btn btn-edit btn-action">✏️ Cập nhật thông tin</button>
+      </div>
+
+      <!-- ✅ FORM CẬP NHẬT THÔNG TIN -->
+      <form th:action="@{/customer/account/update}" method="post" enctype="multipart/form-data" id="formInfo">
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Họ và tên</label>
+          <input type="text" name="HoTen" th:value="${khachHang.hoTen}" class="form-control" readonly>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Email</label>
+          <input type="email" name="Email" th:value="${khachHang.email}" class="form-control" readonly>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Số điện thoại</label>
+          <input type="text" name="SoDienThoai" th:value="${khachHang.soDienThoai}" class="form-control" maxlength="11" readonly>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Ảnh đại diện</label>
+          <input type="file" name="anhDaiDienFile" id="anhDaiDienFile" class="form-control" disabled>
+        </div>
+
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-save btn-action d-none" id="btnSaveInfo">💾 Lưu thay đổi</button>
+        </div>
+
+        <p th:if="${errorMessage}" th:text="${errorMessage}" class="text-danger text-center mt-2"></p>
+        <p th:if="${successMessage}" th:text="${successMessage}" class="text-success text-center mt-2"></p>
+      </form>
+
+      <hr class="my-4">
+
+      <!-- ✅ FORM ĐỔI MẬT KHẨU -->
+      <h3 class="text-center fw-bold text-primary mb-4">🔑 Đổi mật khẩu</h3>
+      <div class="text-end mb-3">
+        <button type="button" id="btnEditPass" class="btn btn-edit btn-action">🔐 Cập nhật mật khẩu</button>
+      </div>
+
+      <form th:action="@{/customer/account/change-password}" method="post" id="formPass">
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Mật khẩu hiện tại</label>
+          <input type="password" name="oldPassword" class="form-control" readonly required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Mật khẩu mới</label>
+          <input type="password" name="newPassword" class="form-control" readonly required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Xác nhận mật khẩu mới</label>
+          <input type="password" name="confirmPassword" class="form-control" readonly required>
+        </div>
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-save btn-action d-none" id="btnSavePass">💾 Cập nhật mật khẩu</button>
+        </div>
+
+        <p th:if="${errorMessage}" th:text="${errorMessage}" class="text-danger text-center mt-2"></p>
+        <p th:if="${successMessage}" th:text="${successMessage}" class="text-success text-center mt-2"></p>
+      </form>
+    </div>
+  </main>
+
+  <!-- ✅ FOOTER -->
+  <div th:replace="fragments/footer :: footer"></div>
+
+  <!-- JS -->
+  <script>
+    // Bật chế độ chỉnh sửa thông tin
+    document.getElementById('btnEditInfo').addEventListener('click', () => {
+      document.querySelectorAll('#formInfo input').forEach(inp => inp.removeAttribute('readonly'));
+      document.getElementById('anhDaiDienFile').removeAttribute('disabled');
+      document.getElementById('btnSaveInfo').classList.remove('d-none');
+    });
+
+    // Bật chế độ đổi mật khẩu
+    document.getElementById('btnEditPass').addEventListener('click', () => {
+      document.querySelectorAll('#formPass input').forEach(inp => inp.removeAttribute('readonly'));
+      document.getElementById('btnSavePass').classList.remove('d-none');
+    });
+
+    // Xem trước ảnh đại diện
+    document.getElementById('anhDaiDienFile').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (ev) => document.getElementById('previewAvatar').src = ev.target.result;
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
