@@ -1876,6 +1876,22 @@
                 });
         }
         
+        // Random Cloud images for fallback when a field has no image
+        const RANDOM_PITCH_IMAGES = [
+            'https://res.cloudinary.com/demo/image/upload/c_fill,g_center,w_1200,h_800/soccer-field-1.jpg',
+            'https://res.cloudinary.com/demo/image/upload/c_fill,g_center,w_1200,h_800/soccer-field-2.jpg',
+            'https://res.cloudinary.com/demo/image/upload/c_fill,g_center,w_1200,h_800/soccer-field-3.jpg',
+            'https://res.cloudinary.com/demo/image/upload/c_fill,g_center,w_1200,h_800/soccer-field-4.jpg',
+            'https://res.cloudinary.com/demo/image/upload/c_fill,g_center,w_1200,h_800/soccer-field-5.jpg'
+        ];
+
+        function getRandomPitchImage() {
+            const n = RANDOM_PITCH_IMAGES.length;
+            if (!n) return 'https://res.cloudinary.com/demo/image/upload/c_fill,g_center,w_1200,h_800/samples/landscapes/nature.jpg';
+            const idx = Math.floor(Math.random() * n);
+            return RANDOM_PITCH_IMAGES[idx];
+        }
+
         // Create field card HTML
         function createFieldCard(field) {
             const card = document.createElement('div');
@@ -1899,9 +1915,11 @@
                 statusClass = 'secondary';
             }
             
+            const imageUrl = (field.hinhAnh && String(field.hinhAnh).trim()) ? field.hinhAnh : getRandomPitchImage();
+
             card.innerHTML = `
                 <div class="field-image">
-                    <i class="fas fa-futbol"></i>
+                    <img src="${imageUrl}" alt="Field image" loading="lazy"/>
                     <div class="field-image-overlay bg-${statusClass}">${statusColor}</div>
                 </div>
                 <div class="field-content">
@@ -2032,6 +2050,10 @@
                 moTa: form.querySelector('textarea[name="moTa"]')?.value || '',
                 trangThai: form.querySelector('select[name="trangThai"]')?.value || 'Hoạt động'
             };
+
+            // Default image URL if none provided at creation time
+            const DEFAULT_FIELD_IMAGE = 'https://res.cloudinary.com/du6x32par/image/upload/v1761412326/banner_qdgjqr.jpg';
+            fieldData.hinhAnh = DEFAULT_FIELD_IMAGE;
             
             // Collect featureIds from checkboxes (map checkbox IDs to feature IDs)
             const featureIds = [];
