@@ -1,4 +1,5 @@
 package vn.ute.utescore.service;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -197,6 +198,9 @@ public class AdminService {
     // Thêm sân mới với tính năng
     public SanBong addField(SanBong field, List<Integer> featureIds) {
         // Lưu sân
+        if (field.getHinhAnh() == null || field.getHinhAnh().trim().isEmpty()) {
+            field.setHinhAnh("https://res.cloudinary.com/du6x32par/image/upload/v1761412326/banner_qdgjqr.jpg");
+        }
         field.setNgayTao(LocalDateTime.now());
         field.setNgayCapNhat(LocalDateTime.now());
         if (field.getTrangThai() == null || field.getTrangThai().isEmpty()) {
