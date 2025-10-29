@@ -5,9 +5,10 @@
   <title>Tài khoản cá nhân | UTEScore</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" th:href="@{/css/customer-home.css}">
+  <!-- ✅ Bootstrap + Icons + SweetAlert -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <style>
     html, body {
@@ -15,14 +16,11 @@
       margin: 0;
       font-family: 'Segoe UI', Tahoma, sans-serif;
       background: linear-gradient(180deg, #f1f5f9 0%, #e0f2fe 100%);
-      overflow-x: hidden;
-      overflow-y: auto;
     }
 
     main {
       padding-top: 110px;
       padding-bottom: 80px;
-      min-height: calc(100vh - 150px);
     }
 
     .account-container {
@@ -41,41 +39,60 @@
     }
 
     .avatar {
-      display: block;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #3b82f6;
-      margin: 0 auto 20px;
+      width: 120px; height: 120px; border-radius: 50%;
+      border: 4px solid #3b82f6; object-fit: cover;
+      margin: 0 auto 20px; display: block;
     }
 
     .btn-action {
-      border: none;
-      border-radius: 10px;
-      padding: 10px 24px;
-      font-weight: 600;
-      color: #fff;
-      transition: 0.3s;
+      border: none; border-radius: 10px;
+      padding: 10px 24px; font-weight: 600;
+      color: #fff; transition: 0.3s;
     }
+
     .btn-edit { background: #0ea5e9; }
-    .btn-save {
-      background: linear-gradient(90deg, #2563eb, #16a34a);
-      box-shadow: 0 4px 10px rgba(37,99,235,0.3);
-    }
-    .btn-edit:hover, .btn-save:hover { transform: scale(1.05); }
+    .btn-save { background: linear-gradient(90deg, #2563eb, #16a34a); box-shadow: 0 4px 10px rgba(37,99,235,0.3); }
+    .btn-cancel { background: #ef4444; box-shadow: 0 4px 10px rgba(239,68,68,0.3); }
+
+    .btn-edit:hover, .btn-save:hover, .btn-cancel:hover { transform: scale(1.05); }
+
     input[readonly], input:disabled { background-color: #f1f5f9; }
+
+    /* ===== ⚠️ Cảnh báo ===== */
+    .is-invalid {
+      border-color: #dc2626 !important;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/1828/1828843.png');
+      background-repeat: no-repeat;
+      background-size: 20px;
+      background-position: right 10px center;
+      animation: shake 0.3s ease;
+    }
+
+    .invalid-feedback {
+      display: block;
+      color: #dc2626;
+      font-weight: 500;
+      margin-top: 4px;
+      font-size: 0.9rem;
+    }
+
+    .btn-save:disabled { background: gray !important; cursor: not-allowed; box-shadow: none !important; }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      50% { transform: translateX(4px); }
+      75% { transform: translateX(-4px); }
+    }
   </style>
 </head>
 
 <body>
-
-  <!-- ✅ HEADER DÙNG CHUNG -->
   <div th:replace="fragments/header :: header"></div>
 
-  <!-- ✅ BODY -->
   <main>
-    <div class="account-container mb-5">
+    <div class="account-container">
+      <!-- ================= THÔNG TIN CÁ NHÂN ================= -->
       <h3 class="text-center fw-bold text-primary mb-4">👤 Thông tin tài khoản</h3>
 
       <div class="text-center mb-3">
@@ -85,104 +102,246 @@
              class="avatar"/>
         <img th:if="${anhBase64 == null}"
              src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png"
-             id="previewAvatar"
-             class="avatar"/>
+             id="previewAvatar" class="avatar"/>
       </div>
 
       <div class="text-end mb-3">
         <button type="button" id="btnEditInfo" class="btn btn-edit btn-action">✏️ Cập nhật thông tin</button>
       </div>
 
-      <!-- ✅ FORM CẬP NHẬT THÔNG TIN -->
-      <form th:action="@{/customer/account/update}" method="post" enctype="multipart/form-data" id="formInfo">
+      <form id="formInfo" enctype="multipart/form-data" novalidate>
         <div class="mb-3">
           <label class="form-label fw-semibold">Họ và tên</label>
-          <input type="text" name="HoTen" th:value="${khachHang.hoTen}" class="form-control" readonly>
+          <input type="text" name="HoTen" th:value="${khachHang.hoTen}" class="form-control" readonly required>
+          <div class="invalid-feedback"></div>
         </div>
 
         <div class="mb-3">
           <label class="form-label fw-semibold">Email</label>
-          <input type="email" name="Email" th:value="${khachHang.email}" class="form-control" readonly>
+          <input type="email" name="Email" th:value="${khachHang.email}"
+                 class="form-control" readonly tabindex="-1"
+                 style="pointer-events:none;user-select:none;background:#f1f5f9;">
         </div>
 
         <div class="mb-3">
           <label class="form-label fw-semibold">Số điện thoại</label>
-          <input type="text" name="SoDienThoai" th:value="${khachHang.soDienThoai}" class="form-control" maxlength="11" readonly>
+          <input type="text" name="SoDienThoai" th:value="${khachHang.soDienThoai}" class="form-control" maxlength="11" readonly required>
+          <div class="invalid-feedback"></div>
         </div>
 
         <div class="mb-3">
           <label class="form-label fw-semibold">Ảnh đại diện</label>
           <input type="file" name="anhDaiDienFile" id="anhDaiDienFile" class="form-control" disabled>
+          <div class="invalid-feedback"></div>
         </div>
 
-        <div class="text-center mt-4">
-          <button type="submit" class="btn btn-save btn-action d-none" id="btnSaveInfo">💾 Lưu thay đổi</button>
+        <div class="text-center mt-4 d-flex justify-content-center gap-3">
+          <button type="submit" class="btn btn-save btn-action d-none" id="btnSaveInfo" disabled>💾 Lưu thay đổi</button>
+          <button type="button" class="btn btn-cancel btn-action d-none" id="btnCancelInfo">❌ Hủy</button>
         </div>
-
-        <p th:if="${errorMessage}" th:text="${errorMessage}" class="text-danger text-center mt-2"></p>
-        <p th:if="${successMessage}" th:text="${successMessage}" class="text-success text-center mt-2"></p>
       </form>
 
-      <hr class="my-4">
+      <hr class="my-5">
 
-      <!-- ✅ FORM ĐỔI MẬT KHẨU -->
+      <!-- ================= ĐỔI MẬT KHẨU ================= -->
       <h3 class="text-center fw-bold text-primary mb-4">🔑 Đổi mật khẩu</h3>
       <div class="text-end mb-3">
         <button type="button" id="btnEditPass" class="btn btn-edit btn-action">🔐 Cập nhật mật khẩu</button>
       </div>
 
-      <form th:action="@{/customer/account/change-password}" method="post" id="formPass">
+      <form id="formPass" novalidate>
         <div class="mb-3">
           <label class="form-label fw-semibold">Mật khẩu hiện tại</label>
           <input type="password" name="oldPassword" class="form-control" readonly required>
+          <div class="invalid-feedback"></div>
         </div>
         <div class="mb-3">
           <label class="form-label fw-semibold">Mật khẩu mới</label>
-          <input type="password" name="newPassword" class="form-control" readonly required>
+          <input type="password" name="newPassword" class="form-control" readonly required minlength="6">
+          <div class="invalid-feedback"></div>
         </div>
         <div class="mb-3">
           <label class="form-label fw-semibold">Xác nhận mật khẩu mới</label>
           <input type="password" name="confirmPassword" class="form-control" readonly required>
+          <div class="invalid-feedback"></div>
         </div>
-        <div class="text-center mt-4">
-          <button type="submit" class="btn btn-save btn-action d-none" id="btnSavePass">💾 Cập nhật mật khẩu</button>
+        <div class="text-center mt-4 d-flex justify-content-center gap-3">
+          <button type="submit" class="btn btn-save btn-action d-none" id="btnSavePass" disabled>💾 Cập nhật mật khẩu</button>
+          <button type="button" class="btn btn-cancel btn-action d-none" id="btnCancelPass">❌ Hủy</button>
         </div>
-
-        <p th:if="${errorMessage}" th:text="${errorMessage}" class="text-danger text-center mt-2"></p>
-        <p th:if="${successMessage}" th:text="${successMessage}" class="text-success text-center mt-2"></p>
       </form>
     </div>
   </main>
 
-  <!-- ✅ FOOTER -->
   <div th:replace="fragments/footer :: footer"></div>
 
-  <!-- JS -->
+  <!-- ✅ SCRIPT -->
   <script>
-    // Bật chế độ chỉnh sửa thông tin
+    // ====== Biến form ======
+    const nameInput = document.querySelector('[name="HoTen"]');
+    const phoneInput = document.querySelector('[name="SoDienThoai"]');
+    const fileInput = document.querySelector('[name="anhDaiDienFile"]');
+    const formInfo = document.getElementById('formInfo');
+    const saveInfoBtn = document.getElementById('btnSaveInfo');
+    const cancelInfoBtn = document.getElementById('btnCancelInfo');
+
+    const passForm = document.getElementById('formPass');
+    const oldPass = passForm.oldPassword;
+    const newPass = passForm.newPassword;
+    const confirmPass = passForm.confirmPassword;
+    const savePassBtn = document.getElementById('btnSavePass');
+    const cancelPassBtn = document.getElementById('btnCancelPass');
+
+    // Regex kiểm tra
+    const nameRegex = /^[A-Za-zÀ-Ỹà-ỹĂăÂâÊêÔôƠơƯưĐđ\s]{2,50}$/;
+    const phoneRegex = /^0\d{9,10}$/;
+
+    // ====== Hàm xử lý lỗi ======
+    function setInvalid(input, msg) {
+      input.classList.add('is-invalid');
+      input.nextElementSibling.textContent = msg;
+    }
+    function clearInvalid(input) {
+      input.classList.remove('is-invalid');
+      input.nextElementSibling.textContent = '';
+    }
+
+    // ====== Validate thông tin cá nhân ======
+    function validateInfo() {
+      let valid = true;
+      clearInvalid(nameInput); clearInvalid(phoneInput); clearInvalid(fileInput);
+      if (!nameRegex.test(nameInput.value.trim())) {
+        setInvalid(nameInput, "⚠️ Họ tên không hợp lệ! (Không chứa số hoặc ký tự đặc biệt)");
+        valid = false;
+      }
+      if (!phoneRegex.test(phoneInput.value.trim())) {
+        setInvalid(phoneInput, "⚠️ Số điện thoại không hợp lệ! (Bắt đầu bằng 0 và có 10–11 số)");
+        valid = false;
+      }
+      if (fileInput.files.length > 0 && !['image/png', 'image/jpeg'].includes(fileInput.files[0].type)) {
+        setInvalid(fileInput, "⚠️ Ảnh đại diện chỉ chấp nhận JPG hoặc PNG!");
+        valid = false;
+      }
+      saveInfoBtn.disabled = !valid;
+      return valid;
+    }
+
+    [nameInput, phoneInput, fileInput].forEach(inp => inp.addEventListener('input', validateInfo));
+
+    // ====== Validate mật khẩu ======
+    function validatePass() {
+      let valid = true;
+      [oldPass, newPass, confirmPass].forEach(clearInvalid);
+
+      if (!oldPass.value.trim()) {
+        setInvalid(oldPass, "⚠️ Vui lòng nhập mật khẩu hiện tại!");
+        valid = false;
+      }
+      if (newPass.value.trim().length < 6) {
+        setInvalid(newPass, "⚠️ Mật khẩu mới phải có ít nhất 6 ký tự!");
+        valid = false;
+      }
+      if (confirmPass.value.trim() !== newPass.value.trim()) {
+        setInvalid(confirmPass, "⚠️ Mật khẩu xác nhận không khớp với mật khẩu mới!");
+        valid = false;
+      }
+      savePassBtn.disabled = !valid;
+      return valid;
+    }
+
+    [oldPass, newPass, confirmPass].forEach(inp => inp.addEventListener('input', validatePass));
+
+    // ====== Nút chỉnh sửa / hủy ======
     document.getElementById('btnEditInfo').addEventListener('click', () => {
-      document.querySelectorAll('#formInfo input').forEach(inp => inp.removeAttribute('readonly'));
-      document.getElementById('anhDaiDienFile').removeAttribute('disabled');
-      document.getElementById('btnSaveInfo').classList.remove('d-none');
+      [nameInput, phoneInput, fileInput].forEach(inp => inp.removeAttribute('readonly'));
+      fileInput.removeAttribute('disabled');
+      saveInfoBtn.classList.remove('d-none');
+      cancelInfoBtn.classList.remove('d-none');
+      validateInfo();
     });
 
-    // Bật chế độ đổi mật khẩu
+    cancelInfoBtn.addEventListener('click', () => location.reload());
+
     document.getElementById('btnEditPass').addEventListener('click', () => {
-      document.querySelectorAll('#formPass input').forEach(inp => inp.removeAttribute('readonly'));
-      document.getElementById('btnSavePass').classList.remove('d-none');
+      [oldPass, newPass, confirmPass].forEach(inp => inp.removeAttribute('readonly'));
+      savePassBtn.classList.remove('d-none');
+      cancelPassBtn.classList.remove('d-none');
+      validatePass();
     });
 
-    // Xem trước ảnh đại diện
-    document.getElementById('anhDaiDienFile').addEventListener('change', (e) => {
+    cancelPassBtn.addEventListener('click', () => location.reload());
+
+    // ====== Xem trước ảnh ======
+    fileInput.addEventListener('change', e => {
       const file = e.target.files[0];
       if (file) {
         const reader = new FileReader();
-        reader.onload = (ev) => document.getElementById('previewAvatar').src = ev.target.result;
+        reader.onload = ev => document.getElementById('previewAvatar').src = ev.target.result;
         reader.readAsDataURL(file);
       }
     });
-  </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    // ====== Gửi form thông tin cá nhân ======
+    formInfo.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (!validateInfo()) {
+        Swal.fire({
+          icon: 'warning',
+          title: '⚠️ Cảnh báo',
+          html: `
+            <p>Bạn nhập không đúng định dạng!</p><hr>
+            <p style="text-align:left;font-size:14px">
+              <b>Lưu ý:</b><br>
+              • Họ tên không được chứa số hoặc ký tự đặc biệt.<br>
+              • Số điện thoại phải bắt đầu bằng 0 và có 10–11 chữ số.<br>
+              • Ảnh chỉ chấp nhận JPG hoặc PNG.
+            </p>`,
+          confirmButtonColor: '#f59e0b'
+        });
+        return;
+      }
+
+      const formData = new FormData(formInfo);
+      const res = await fetch('/customer/account/update-ajax', { method: 'POST', body: formData });
+      const data = await res.json();
+      Swal.fire({
+        icon: data.status === 'success' ? 'success' : 'error',
+        title: data.status === 'success' ? '✅ Thành công' : '⚠️ Cảnh báo',
+        text: data.message,
+        timer: 2000, showConfirmButton: false
+      });
+    });
+
+    // ====== Gửi form đổi mật khẩu ======
+    passForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (!validatePass()) {
+        Swal.fire({
+          icon: 'warning',
+          title: '⚠️ Cảnh báo',
+          html: `
+            <p>Bạn nhập mật khẩu không hợp lệ!</p><hr>
+            <p style="text-align:left;font-size:14px">
+              <b>Lưu ý:</b><br>
+              • Mật khẩu mới phải có ít nhất 6 ký tự.<br>
+              • Mật khẩu xác nhận phải trùng với mật khẩu mới.
+            </p>`,
+          confirmButtonColor: '#f59e0b'
+        });
+        return;
+      }
+
+      const formData = new FormData(passForm);
+      const res = await fetch('/customer/account/change-password-ajax', { method: 'POST', body: formData });
+      const data = await res.json();
+      Swal.fire({
+        icon: data.status === 'success' ? 'success' : 'error',
+        title: data.status === 'success' ? '✅ Thành công' : '⚠️ Cảnh báo',
+        text: data.message,
+        timer: 2000, showConfirmButton: false
+      });
+      if (data.status === 'success') passForm.reset();
+    });
+  </script>
 </body>
 </html>

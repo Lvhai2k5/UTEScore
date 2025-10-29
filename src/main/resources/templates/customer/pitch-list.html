@@ -7,7 +7,7 @@
 
 <!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 <style>
 html, body {
   height: 100%;
@@ -26,16 +26,80 @@ header, nav.navbar {
   z-index: 1050;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.25);
 }
-
-footer {
+/* ================= CHATBOT ================= */
+.chat-icon {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
   background: linear-gradient(90deg, #16a34a, #3b82f6);
   color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 9999;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+.chat-icon:hover {
+  transform: scale(1.1);
+}
+
+.chat-box {
   position: fixed;
-  bottom: 0; left: 0; right: 0;
-  text-align: center;
-  padding: 10px 0;
-  font-size: 0.9rem;
-  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.25);
+  bottom: 100px;
+  right: 25px;
+  width: 320px;
+  max-height: 450px;
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  z-index: 10000;
+}
+
+.chat-header {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  font-weight: 600;
+}
+
+.chat-body {
+  overflow-y: auto;
+  max-height: 340px;
+  font-size: 15px;
+}
+
+.chat-body::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-body::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.user-msg, .bot-msg {
+  border-radius: 12px;
+  padding: 10px 14px;
+  max-width: 80%;
+  line-height: 1.4;
+}
+
+.user-msg {
+  background: #3b82f6;
+  color: white;
+  margin-left: auto;
+  text-align: right;
+}
+
+.bot-msg {
+  background: #f1f5f9;
+  color: #111827;
+  margin-right: auto;
 }
 
 main.container {
@@ -303,9 +367,7 @@ input.form-control:focus, select.form-select:focus {
     <div class="col-12 col-sm-6 col-md-4 col-lg-3" th:each="p : ${pitchList}">
       <div class="pitch-card">
         <div class="pitch-img">
-         <img th:src="${p.imageUrl}" alt="Ảnh sân" class="pitch-photo">
-
-
+          <img th:src="${p.imageUrl}" alt="Ảnh sân" class="pitch-photo">
         </div>
         <div class="pitch-body">
           <h5 th:text="${p.name}">Sân 5A</h5>
@@ -351,6 +413,110 @@ function redirectPitch(button) {
     alert("Không thể xác định sân cần đặt!");
   }
 }
+</script>
+  <!-- 💬 Nút Chat nổi -->
+<div id="chatIcon" class="chat-icon">
+  <i class="bi bi-chat-dots-fill"></i>
+</div>
+
+<!-- 💬 Hộp Chatbot -->
+<div id="chatBox" class="chat-box card shadow-lg">
+  <div class="chat-header bg-success text-white d-flex justify-content-between align-items-center p-2 rounded-top">
+    <span>🤖 UTEScore Chatbot</span>
+    <button class="btn btn-sm btn-light" id="closeChat"><i class="bi bi-x"></i></button>
+  </div>
+  <div class="chat-body p-3" id="chatMessages">
+    <div class="bot-msg mb-3">
+      Xin chào 👋! Tôi là trợ lý ảo UTEScore.<br>Hãy hỏi tôi về <b>giá sân, lịch sử đặt sân</b> hoặc thông tin khuyến mãi nhé!
+    </div>
+  </div>
+  <div class="chat-footer p-2 d-flex border-top">
+    <input type="text" id="chatInput" class="form-control me-2" placeholder="Nhập tin nhắn...">
+    <button class="btn btn-success" id="sendChat"><i class="bi bi-send-fill"></i></button>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const chatIcon = document.getElementById("chatIcon");
+  const chatBox = document.getElementById("chatBox");
+  const closeChat = document.getElementById("closeChat");
+  const sendChat = document.getElementById("sendChat");
+  const chatInput = document.getElementById("chatInput");
+  const chatMessages = document.getElementById("chatMessages");
+
+  // 🟢 Hiển thị / Ẩn khung chat
+  chatIcon.addEventListener("click", () => {
+    chatBox.style.display = "flex";
+    chatIcon.style.display = "none";
+  });
+
+  closeChat.addEventListener("click", () => {
+    chatBox.style.display = "none";
+    chatIcon.style.display = "flex";
+  });
+
+  // ⚙️ Gửi tin nhắn
+  async function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    // 🟢 Thêm tin nhắn người dùng
+    const userDiv = document.createElement("div");
+    userDiv.className = "user-msg mb-2";
+    userDiv.textContent = text;
+    chatMessages.appendChild(userDiv);
+    chatInput.value = "";
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    // 🟡 Tạo khung phản hồi tạm
+    const botDiv = document.createElement("div");
+    botDiv.className = "bot-msg mb-2";
+    botDiv.innerHTML = "⏳ Đang trả lời...";
+    chatMessages.appendChild(botDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    // 🔄 Gửi request đến server
+    try {
+      const response = await fetch("/customer/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text })
+      });
+
+      if (!response.ok) {
+        throw new Error("HTTP " + response.status);
+      }
+
+      const data = await response.json();
+      botDiv.innerHTML = sanitizeText(data.answer || "❌ Không có phản hồi từ chatbot.");
+    } catch (error) {
+      console.error("Chatbot error:", error);
+      botDiv.innerHTML = "⚠️ Lỗi khi kết nối đến chatbot. Vui lòng thử lại sau.";
+    }
+
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  // ✅ Gửi khi bấm nút
+  sendChat.addEventListener("click", sendMessage);
+
+  // ✅ Gửi khi nhấn Enter
+  chatInput.addEventListener("keypress", e => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+
+  // 🧹 Chống lỗi XSS cơ bản khi hiển thị
+  function sanitizeText(text) {
+    if (!text) return "";
+    return text
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/\n/g, "<br>");
+  }
+});
 </script>
 </body>
 </html>

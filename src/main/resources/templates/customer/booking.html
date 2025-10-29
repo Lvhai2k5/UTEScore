@@ -8,26 +8,27 @@
   <!-- ✅ Bootstrap & CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
   <link rel="stylesheet" th:href="@{/css/customer-home.css}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <style>
     html, body {
-      height: 100%;
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      background: linear-gradient(180deg, #f8fafc, #e2e8f0);
-      overflow: hidden;
-    }
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: linear-gradient(180deg, #f8fafc, #e2e8f0);
+  overflow-x: hidden;  /* ❌ ẩn ngang */
+  overflow-y: auto;    /* ✅ cho phép cuộn dọc để thấy footer */
+}
 
     .main-content {
-      position: absolute;
-      top: 70px;
-      bottom: 60px;
-      left: 0;
-      right: 0;
-      overflow-y: auto;
-      padding: 40px 0;
-    }
+  background: #f8fafc;
+  padding-top: 90px;     /* chừa chỗ cho header */
+  padding-bottom: 120px; /* tránh footer che nội dung */
+  min-height: calc(100vh - 150px);
+  position: relative;
+  overflow: visible;
+}
 
     .booking-wrapper {
       background: #fff;
@@ -76,6 +77,80 @@
     }
     .table td { font-size: 15px; color: #374151; vertical-align: middle; }
     .table-hover tbody tr:hover { background-color: #f1f5f9; }
+    .chat-icon {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: linear-gradient(90deg, #16a34a, #3b82f6);
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 9999;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+.chat-icon:hover {
+  transform: scale(1.1);
+}
+
+.chat-box {
+  position: fixed;
+  bottom: 100px;
+  right: 25px;
+  width: 320px;
+  max-height: 450px;
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  z-index: 10000;
+}
+
+.chat-header {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  font-weight: 600;
+}
+
+.chat-body {
+  overflow-y: auto;
+  max-height: 340px;
+  font-size: 15px;
+}
+
+.chat-body::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-body::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.user-msg, .bot-msg {
+  border-radius: 12px;
+  padding: 10px 14px;
+  max-width: 80%;
+  line-height: 1.4;
+}
+
+.user-msg {
+  background: #3b82f6;
+  color: white;
+  margin-left: auto;
+  text-align: right;
+}
+
+.bot-msg {
+  background: #f1f5f9;
+  color: #111827;
+  margin-right: auto;
+}
   </style>
 </head>
 
@@ -90,9 +165,7 @@
       <div class="booking-wrapper">
 
         <!-- Ảnh sân -->
-        
-         <img th:src="${pitchImg}" alt="Sân bóng" class="pitch-img mb-4">
-     
+        <img th:src="${pitchImg}" alt="Sân bóng" class="pitch-img mb-4">
         <h3 class="text-success fw-bold mb-3" th:text="${pitchName}">Sân 5A</h3>
 
         <!-- Thông tin sân -->
@@ -205,6 +278,7 @@
     confirmButtonColor: '#3085d6',
     confirmButtonText: 'Đã hiểu'
   });
+  
 </script>
   <script th:inline="javascript">
   /*<![CDATA[*/
@@ -369,7 +443,114 @@
 
     confirmPayBtn.onclick = () => bookingForm.submit();
   });
+  
   /*]]>*/
   </script>
+  
+  <!-- 💬 Nút Chat nổi -->
+<div id="chatIcon" class="chat-icon">
+  <i class="bi bi-chat-dots-fill"></i>
+</div>
+
+<!-- 💬 Hộp Chatbot -->
+<div id="chatBox" class="chat-box card shadow-lg">
+  <div class="chat-header bg-success text-white d-flex justify-content-between align-items-center p-2 rounded-top">
+    <span>🤖 UTEScore Chatbot</span>
+    <button class="btn btn-sm btn-light" id="closeChat"><i class="bi bi-x"></i></button>
+  </div>
+  <div class="chat-body p-3" id="chatMessages">
+    <div class="bot-msg mb-3">
+      Xin chào 👋! Tôi là trợ lý ảo UTEScore.<br>Hãy hỏi tôi về <b>giá sân, lịch sử đặt sân</b> hoặc thông tin khuyến mãi nhé!
+    </div>
+  </div>
+  <div class="chat-footer p-2 d-flex border-top">
+    <input type="text" id="chatInput" class="form-control me-2" placeholder="Nhập tin nhắn...">
+    <button class="btn btn-success" id="sendChat"><i class="bi bi-send-fill"></i></button>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const chatIcon = document.getElementById("chatIcon");
+  const chatBox = document.getElementById("chatBox");
+  const closeChat = document.getElementById("closeChat");
+  const sendChat = document.getElementById("sendChat");
+  const chatInput = document.getElementById("chatInput");
+  const chatMessages = document.getElementById("chatMessages");
+
+  // 🟢 Hiển thị / Ẩn khung chat
+  chatIcon.addEventListener("click", () => {
+    chatBox.style.display = "flex";
+    chatIcon.style.display = "none";
+  });
+
+  closeChat.addEventListener("click", () => {
+    chatBox.style.display = "none";
+    chatIcon.style.display = "flex";
+  });
+
+  // ⚙️ Gửi tin nhắn
+  async function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    // 🟢 Thêm tin nhắn người dùng
+    const userDiv = document.createElement("div");
+    userDiv.className = "user-msg mb-2";
+    userDiv.textContent = text;
+    chatMessages.appendChild(userDiv);
+    chatInput.value = "";
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    // 🟡 Tạo khung phản hồi tạm
+    const botDiv = document.createElement("div");
+    botDiv.className = "bot-msg mb-2";
+    botDiv.innerHTML = "⏳ Đang trả lời...";
+    chatMessages.appendChild(botDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    // 🔄 Gửi request đến server
+    try {
+      const response = await fetch("/customer/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text })
+      });
+
+      if (!response.ok) {
+        throw new Error("HTTP " + response.status);
+      }
+
+      const data = await response.json();
+      botDiv.innerHTML = sanitizeText(data.answer || "❌ Không có phản hồi từ chatbot.");
+    } catch (error) {
+      console.error("Chatbot error:", error);
+      botDiv.innerHTML = "⚠️ Lỗi khi kết nối đến chatbot. Vui lòng thử lại sau.";
+    }
+
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  // ✅ Gửi khi bấm nút
+  sendChat.addEventListener("click", sendMessage);
+
+  // ✅ Gửi khi nhấn Enter
+  chatInput.addEventListener("keypress", e => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+
+  // 🧹 Chống lỗi XSS cơ bản khi hiển thị
+  function sanitizeText(text) {
+    if (!text) return "";
+    return text
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/\n/g, "<br>");
+  }
+});
+</script>
+
 </body>
 </html>

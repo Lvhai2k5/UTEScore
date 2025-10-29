@@ -10,7 +10,7 @@
         <span style="font-size:1.6rem; letter-spacing:0.5px;">UTEScore</span>
       </a>
 
-      <!-- 🔹 Nút 3 gạch cho mobile -->
+      <!-- 🔹 Nút mobile -->
       <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -21,19 +21,17 @@
 
           <!-- 🏠 Trang chủ -->
           <li class="nav-item mx-3">
-            <a class="nav-link fw-semibold fs-5" th:href="@{/customer/home}">
-              🏠 Trang chủ
-            </a>
+            <a class="nav-link fw-semibold fs-5" th:href="@{/customer/home}">🏠 Trang chủ</a>
           </li>
 
           <!-- ⚙️ Dịch vụ -->
           <li class="nav-item dropdown mx-3 position-relative">
-            <a class="nav-link dropdown-toggle fw-semibold fs-5" href="#" id="serviceDropdown"
-               role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle fw-semibold fs-5" href="#" id="serviceDropdown">
               ⚙️ Dịch vụ
             </a>
-            <ul class="dropdown-menu shadow animate__animated animate__fadeInDown"
-                aria-labelledby="serviceDropdown" style="margin-top:15px; margin-left:-40px;">
+            <ul class="dropdown-menu shadow-sm"
+                aria-labelledby="serviceDropdown"
+                style="margin-top:12px; margin-left:-40px;">
               <li><a class="dropdown-item fs-6" th:href="@{/customer/pitch-list}">📝 Đặt sân</a></li>
               <li><a class="dropdown-item fs-6" th:href="@{/customer/history}">📅 Lịch sử đặt sân</a></li>
               <li><a class="dropdown-item fs-6" th:href="@{/customer/feedback}">⭐ Góp ý & Đánh giá</a></li>
@@ -42,92 +40,62 @@
               <li><a href="#" class="dropdown-item text-danger fw-semibold fs-6" data-logout>🚪 Đăng xuất</a></li>
             </ul>
           </li>
+
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- 🎨 STYLE -->
+  <!-- 🌈 STYLE -->
   <style>
-    /* ===== 🌈 Nền gradient ===== */
     .header-gradient {
       background: linear-gradient(90deg, #16a34a, #3b82f6);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-      transition: background 0.8s ease, box-shadow 0.4s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: background 0.8s ease;
     }
-
     .header-gradient:hover {
       background: linear-gradient(90deg, #10b981, #2563eb);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
     }
 
-    /* ===== 🧩 Logo ===== */
-    .navbar-brand img:hover {
-      transform: scale(1.1) rotate(-2deg);
-      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
-    }
-
-    /* ===== 🔗 Liên kết menu ===== */
     .nav-link {
       color: #fff !important;
-      transition: all 0.4s ease;
+      transition: all 0.3s ease;
       position: relative;
-      letter-spacing: 0.3px;
-      text-transform: capitalize;
     }
-
     .nav-link:hover {
       color: #ffeb3b !important;
-      transform: scale(1.15) translateY(-2px);
-      text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+      transform: scale(1.1);
+      text-shadow: 0 0 8px rgba(255,255,255,0.7);
     }
 
-    /* ===== 📋 Dropdown menu ===== */
     .dropdown-menu {
-      border-radius: 14px;
+      border-radius: 12px;
       border: none;
+      background: #fff;
       padding: 0.6rem;
-      transform-origin: top center;
-      background: #ffffff;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.25s ease, opacity 0.25s ease;
       opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
     }
-
     .dropdown-menu.show {
-      display: block;
+      transform: scaleY(1);
       opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
     }
 
     .dropdown-item {
-      font-weight: 500;
       color: #374151;
-      border-radius: 10px;
+      border-radius: 8px;
       transition: all 0.3s ease;
       padding: 10px 16px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
-
     .dropdown-item:hover {
       background: linear-gradient(90deg, #e0f2fe, #dbeafe);
       color: #2563eb;
-      transform: translateX(8px) scale(1.05);
-      box-shadow: 0 2px 10px rgba(37,99,235,0.15);
+      transform: translateX(6px);
     }
 
-    /* Giữ menu khi rê chuột gần biên */
-    .nav-item.dropdown {
-      position: relative;
-      padding-bottom: 10px;
-    }
-
-    /* ===== 📱 Responsive ===== */
     @media (max-width: 991px) {
       .navbar-collapse {
         background: linear-gradient(180deg, #16a34a, #3b82f6);
@@ -141,60 +109,52 @@
     }
   </style>
 
-  <!-- ✅ Bootstrap + Animate.css -->
+  <!-- ✅ Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  <!-- ✅ Giữ menu hiển thị mượt mà hơn -->
+  <!-- ✅ JS: chỉ mở khi click -->
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const dropdowns = document.querySelectorAll(".nav-item.dropdown");
-      dropdowns.forEach(dropdown => {
-        let timer;
+    document.addEventListener("DOMContentLoaded", () => {
+      const dropdownToggles = document.querySelectorAll('.nav-item.dropdown .nav-link');
+      dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          const menu = toggle.nextElementSibling;
+          const isShown = menu.classList.contains('show');
 
-        dropdown.addEventListener("mouseenter", function() {
-          clearTimeout(timer);
-          const menu = this.querySelector(".dropdown-menu");
-          menu.classList.add("show");
+          document.querySelectorAll('.dropdown-menu.show').forEach(m => m.classList.remove('show'));
+          if (!isShown) menu.classList.add('show');
         });
+      });
 
-        dropdown.addEventListener("mouseleave", function() {
-          const menu = this.querySelector(".dropdown-menu");
-          timer = setTimeout(() => menu.classList.remove("show"), 400); // ⏳ Delay 0.4s
-        });
-
-        // Giữ menu khi rê chuột qua lại
-        const menu = dropdown.querySelector(".dropdown-menu");
-        menu.addEventListener("mouseenter", () => clearTimeout(timer));
-        menu.addEventListener("mouseleave", () => {
-          timer = setTimeout(() => menu.classList.remove("show"), 400);
-        });
+      // Ẩn menu khi click ra ngoài
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.nav-item.dropdown')) {
+          document.querySelectorAll('.dropdown-menu.show').forEach(m => m.classList.remove('show'));
+        }
       });
     });
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<!-- Cho Thymeleaf resolve URL đúng -->
-<script th:inline="javascript">
-  document.addEventListener('click', function (e) {
-    const btn = e.target.closest('[data-logout]');
-    if (!btn) return;
-
-    e.preventDefault();
-
-    Swal.fire({
-      title: 'Bạn có chắc muốn đăng xuất?',
-      text: 'Phiên làm việc hiện tại sẽ kết thúc.',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Đăng xuất',
-      cancelButtonText: 'Hủy'
-    }).then((r) => {
-      if (r.isConfirmed) {
-        // ✅ Gọi endpoint logout
-        window.location.href = /*[[ @{/customer/logout} ]]*/ '/customer/logout';
-      }
+  <!-- ✅ Đăng xuất -->
+  <script th:inline="javascript">
+    document.addEventListener('click', function (e) {
+      const btn = e.target.closest('[data-logout]');
+      if (!btn) return;
+      e.preventDefault();
+      Swal.fire({
+        title: 'Bạn có chắc muốn đăng xuất?',
+        text: 'Phiên làm việc hiện tại sẽ kết thúc.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Đăng xuất',
+        cancelButtonText: 'Hủy'
+      }).then((r) => {
+        if (r.isConfirmed) {
+          window.location.href = /*[[ @{/customer/logout} ]]*/ '/customer/logout';
+        }
+      });
     });
-  });
-</script>
+  </script>
 </header>
