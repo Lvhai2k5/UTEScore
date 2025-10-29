@@ -1171,6 +1171,32 @@ public class AdminController {
     public String liveCameras() {
         return "admin/live-cameras";
     }
+
+    // ====== CAMERA APIs for live-cameras.html ======
+    @GetMapping("/cameras/list")
+    @ResponseBody
+    public java.util.List<java.util.Map<String, Object>> listCameras() {
+        return adminService.getAllCamerasAsMap();
+    }
+
+    @PostMapping("/cameras/add")
+    @ResponseBody
+    public String addCamera(@RequestBody java.util.Map<String, Object> payload) {
+        try {
+            String tenCamera = (String) payload.get("TenCamera");
+            Integer sanId = payload.get("SanID") != null ? Integer.valueOf(payload.get("SanID").toString()) : null;
+            String ip = (String) payload.get("IP");
+            String trangThai = (String) payload.get("TrangThai");
+            Integer nhanVienId = payload.get("NhanVienPhuTrach") != null ? Integer.valueOf(payload.get("NhanVienPhuTrach").toString()) : null;
+            String ghiChu = (String) payload.get("GhiChu");
+            String fileMoPhong = (String) payload.get("FileMoPhong");
+
+            adminService.addCamera(tenCamera, sanId, ip, trangThai, nhanVienId, ghiChu, fileMoPhong);
+            return "success";
+        } catch (Exception e) {
+            return "error: " + e.getMessage();
+        }
+    }
     
     // =============== USER MANAGEMENT APIs ===============
     
