@@ -1,4 +1,5 @@
 package vn.ute.utescore.controller;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -129,6 +130,12 @@ public class AdminController {
             field.setDuongDanGGMap((String) request.get("duongDanGGMap"));
             field.setMoTa((String) request.get("moTa"));
             field.setTrangThai((String) request.get("trangThai"));
+            // Set default image if none provided
+            String hinhAnh = (String) request.get("hinhAnh");
+            if (hinhAnh == null || hinhAnh.trim().isEmpty()) {
+                hinhAnh = "https://res.cloudinary.com/du6x32par/image/upload/v1761412326/banner_qdgjqr.jpg";
+            }
+            field.setHinhAnh(hinhAnh);
             
             // Parse time fields - handle both formats
             if (request.get("gioMoCua") != null && !((String) request.get("gioMoCua")).isEmpty()) {
