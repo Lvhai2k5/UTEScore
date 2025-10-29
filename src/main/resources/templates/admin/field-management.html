@@ -916,7 +916,7 @@
                     <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Hồ sơ</a></li>
                     <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Cài đặt</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="/admin/login"><i class="fas fa-sign-out-alt me-2"></i>Đăng xuất</a></li>
+                    <li><a class="dropdown-item" href="/logout?redirect=/guest/index.html"><i class="fas fa-sign-out-alt me-2"></i>Đăng xuất</a></li>
                 </ul>
             </div>
         </div>
@@ -1445,10 +1445,6 @@
                             <label class="form-label">Nhân viên phụ trách</label>
                             <select class="form-select" name="nhanVien" required>
                                 <option value="">Chọn nhân viên</option>
-                                <option value="1">Nguyễn Văn A</option>
-                                <option value="2">Trần Thị B</option>
-                                <option value="3">Lê Văn C</option>
-                                <option value="4">Phạm Văn D</option>
                             </select>
                         </div>
                         
@@ -1733,6 +1729,8 @@
             
             // Load fields for maintenance dropdown
             loadFieldsForMaintenance();
+            // Load employees for maintenance dropdown
+            loadEmployeesForMaintenance();
             
             // Load maintenance schedule when modal opens
             const maintenanceScheduleModal = document.getElementById('maintenanceScheduleModal');
@@ -1740,6 +1738,7 @@
                 maintenanceScheduleModal.addEventListener('show.bs.modal', function() {
                     loadMaintenanceSchedule();
                     loadMaintenanceFieldsForFilter();
+                    loadEmployeesForMaintenance();
                 });
             }
             
@@ -1849,6 +1848,31 @@
                 })
                 .catch(error => {
                     console.error('Error loading fields for maintenance:', error);
+                });
+        }
+
+        // Load employees for maintenance dropdown from backend
+        function loadEmployeesForMaintenance() {
+            fetch('/admin/employees/list')
+                .then(response => response.json())
+                .then(employees => {
+                    const select = document.querySelector('#maintenanceForm select[name="nhanVien"]');
+                    if (!select) return;
+                    const current = select.value;
+                    select.innerHTML = '<option value="">Chọn nhân viên</option>';
+                    (employees || []).forEach(emp => {
+                        const option = document.createElement('option');
+                        option.value = emp.userID ?? emp.nhanVienID ?? emp.id ?? '';
+                        option.textContent = emp.fullName || emp.hoTen || emp.email || ('NV ' + option.value);
+                        select.appendChild(option);
+                    });
+                    // keep previous selection if still exists
+                    if (current) {
+                        select.value = current;
+                    }
+                })
+                .catch(err => {
+                    console.error('Error loading employees:', err);
                 });
         }
         
@@ -2216,6 +2240,38 @@
                 });
         }
         
+        // Flexible date parser for LocalDate/LocalDateTime from backend
+        function parseDateFlexible(raw) {
+            if (!raw && raw !== 0) return null;
+            // If already Date
+            if (raw instanceof Date) return isNaN(raw.getTime()) ? null : raw;
+            // If Jackson array: [yyyy, MM, dd, HH, mm, ss]
+            if (Array.isArray(raw)) {
+                const y = raw[0];
+                const m = (raw[1] || 1) - 1;
+                const d = raw[2] || 1;
+                const hh = raw[3] || 0;
+                const mm = raw[4] || 0;
+                const ss = raw[5] || 0;
+                const dt = new Date(y, m, d, hh, mm, ss);
+                return isNaN(dt.getTime()) ? null : dt;
+            }
+            // If string
+            const s = String(raw).trim();
+            if (!s) return null;
+            // Replace space between date and time with T for ISO parsing
+            let iso = s.replace(' ', 'T');
+            let d = new Date(iso);
+            if (!isNaN(d.getTime())) return d;
+            // Try date-only yyyy-MM-dd
+            const m1 = s.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+            if (m1) {
+                d = new Date(parseInt(m1[1],10), parseInt(m1[2],10)-1, parseInt(m1[3],10));
+                return isNaN(d.getTime()) ? null : d;
+            }
+            return null;
+        }
+
         // Load maintenance schedule
         function loadMaintenanceSchedule() {
             const tbody = document.getElementById('maintenanceTableBody');
@@ -2245,8 +2301,9 @@
                     data.forEach(maintenance => {
                         const row = document.createElement('tr');
                         
-                        // Format date
-                        const ngayBaoTri = maintenance.ngayBaoTri ? new Date(maintenance.ngayBaoTri).toLocaleDateString('vi-VN') : 'N/A';
+                    // Format date (handle ISO string, space-separated, or Jackson array)
+                    const d = parseDateFlexible(maintenance.ngayBaoTri);
+                    const ngayBaoTri = d ? d.toLocaleDateString('vi-VN') : 'N/A';
                         
                         // Format time
                         const startTime = maintenance.thoiGianBatDau ? formatTimeForDisplay(maintenance.thoiGianBatDau) : 'N/A';
@@ -2286,10 +2343,21 @@
         // Format time for display
         function formatTimeForDisplay(timeStr) {
             if (!timeStr) return 'N/A';
-            if (typeof timeStr === 'string') {
-                return timeStr.substring(0, 5); // HH:MM
+            // Jackson array: [HH, mm, ss]
+            if (Array.isArray(timeStr)) {
+                const hh = String(timeStr[0] ?? 0).padStart(2, '0');
+                const mm = String(timeStr[1] ?? 0).padStart(2, '0');
+                return `${hh}:${mm}`;
             }
-            return timeStr;
+            if (typeof timeStr === 'string') {
+                const s = timeStr.replace(/,/g, ':');
+                // If has seconds, cut to HH:MM
+                const m = s.match(/^(\d{1,2}):(\d{2})/);
+                if (m) return `${m[1].padStart(2,'0')}:${m[2]}`;
+                // fallback
+                return s.substring(0,5);
+            }
+            return String(timeStr);
         }
         
         // Get status badge HTML
