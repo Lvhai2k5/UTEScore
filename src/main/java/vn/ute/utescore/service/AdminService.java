@@ -1,5 +1,4 @@
 package vn.ute.utescore.service;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -85,6 +84,10 @@ public class AdminService {
     
     @Autowired
     private EmailService emailService;
+
+    // Dùng chung PasswordEncoder để mã hoá/kiểm tra mật khẩu theo cơ chế của hệ thống (BCrypt)
+    @Autowired
+    private org.springframework.security.crypto.password.PasswordEncoder passwordEncoder;
 
     // =============== DASHBOARD STATISTICS ===============
     
@@ -798,7 +801,8 @@ public class AdminService {
         TaiKhoan taiKhoan = new TaiKhoan();
         taiKhoan.setEmail(employee.getEmail());
         taiKhoan.setSoDienThoai(employee.getPhone());
-        taiKhoan.setMatKhau(finalPassword);
+        // LƯU Ý: luôn mã hoá mật khẩu trước khi lưu DB để đồng nhất với luồng đăng nhập guest
+        taiKhoan.setMatKhau(passwordEncoder.encode(finalPassword));
         taiKhoan.setRole(employee.getRole());
         
         // Set status to "1" (Active) or "0" (Blocked) based on employee status
@@ -929,9 +933,9 @@ public class AdminService {
             System.out.println("=== Found existing TaiKhoan: " + taiKhoan.getEmail());
         }
         
-        // Tạo mật khẩu mới ngẫu nhiên
+        // Tạo mật khẩu mới ngẫu nhiên (gửi plain qua email, lưu DB dưới dạng mã hoá)
         String newPassword = generateRandomPassword();
-        taiKhoan.setMatKhau(newPassword);
+        taiKhoan.setMatKhau(passwordEncoder.encode(newPassword));
         
         taiKhoanRepository.save(taiKhoan);
         
