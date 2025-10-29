@@ -5,12 +5,22 @@ html, body {
   font-family: 'Segoe UI', Tahoma, sans-serif;
   background: #f1f5f9;
   color: #1e293b;
-  overflow-x: hidden;   /* ❌ chỉ ẩn ngang, không ẩn dọc */
+  overflow-x: hidden;   /* ❌ chỉ ẩn ngang */
   overflow-y: auto;     /* ✅ cho phép cuộn trang */
 }
 
-/* FOOTER KHÔNG CỐ ĐỊNH */
-.footer-app {
+/* ================= MAIN CONTENT ================= */
+.main-content {
+  background: #f8fafc;
+  padding-top: 90px;        /* chừa chỗ cho header cố định */
+  padding-bottom: 100px;    /* tránh footer che nội dung */
+  min-height: calc(100vh - 120px);
+  overflow: visible;
+  position: relative;
+}
+
+/* ================= FOOTER CHUNG (nếu KHÔNG dùng fragment) ================= */
+.page-footer {
   width: 100%;
   background: linear-gradient(90deg, #16a34a, #3b82f6);
   color: white;
@@ -18,16 +28,15 @@ html, body {
   padding: 14px 0;
   font-size: 0.95rem;
   box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
-  margin-top: 40px; /* tạo khoảng cách nhẹ với nội dung */
-  position: relative; /* ✅ để footer theo luồng bình thường */
+  margin-top: 40px;          /* tạo khoảng cách nhẹ với nội dung */
+  position: relative;        /* ✅ để footer theo luồng bình thường */
+  z-index: 10;
 }
 
-/* KHU VỰC NỘI DUNG */
-.main-content {
-  background: #f8fafc;
-  padding-top: 90px;   /* chừa chỗ cho header cố định */
-  padding-bottom: 100px;
-  min-height: calc(100vh - 120px);
-  overflow: visible;   /* ✅ để footer không bị che */
-  position: relative;  /* ✅ bỏ absolute */
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: 75px;
+    padding-bottom: 80px;
+  }
 }

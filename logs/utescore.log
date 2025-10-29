@@ -14703,3 +14703,758 @@ This generated password is for development use only. Your security configuration
 2025-10-29T18:11:44.875+07:00  INFO 46544 --- [UTEScore] [RMI TCP Connection(18)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-10-29T18:11:44.878+07:00  INFO 46544 --- [UTEScore] [RMI TCP Connection(18)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-10-29T18:11:44.888+07:00  INFO 46544 --- [UTEScore] [RMI TCP Connection(18)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-29T19:36:08.231+07:00  INFO 12612 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Starting UteScoreApplication using Java 22 with PID 12612 (D:\LTW\UTEScore\target\classes started by 84344 in D:\LTW\UTEScore)
+2025-10-29T19:36:08.233+07:00 DEBUG 12612 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Running with Spring Boot v3.5.6, Spring v6.2.11
+2025-10-29T19:36:08.235+07:00  INFO 12612 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-10-29T19:36:09.800+07:00  INFO 12612 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-29T19:36:10.128+07:00  INFO 12612 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 313 ms. Found 42 JPA repository interfaces.
+2025-10-29T19:36:11.357+07:00  INFO 12612 --- [UTEScore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-29T19:36:11.390+07:00  INFO 12612 --- [UTEScore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-29T19:36:11.392+07:00  INFO 12612 --- [UTEScore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-29T19:36:11.522+07:00  INFO 12612 --- [UTEScore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-29T19:36:11.522+07:00  INFO 12612 --- [UTEScore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3214 ms
+2025-10-29T19:36:12.047+07:00  INFO 12612 --- [UTEScore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-29T19:36:12.163+07:00  INFO 12612 --- [UTEScore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-10-29T19:36:12.248+07:00  INFO 12612 --- [UTEScore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-29T19:36:12.872+07:00  INFO 12612 --- [UTEScore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-29T19:36:12.948+07:00  INFO 12612 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-29T19:36:21.410+07:00  WARN 12612 --- [UTEScore] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 08S01
+2025-10-29T19:36:21.411+07:00 ERROR 12612 --- [UTEScore] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : The TCP/IP connection to the host LAPTOP-TNT38BSB, port 1433 has failed. Error: "No such host is known (LAPTOP-TNT38BSB). Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".
+2025-10-29T19:36:21.413+07:00  WARN 12612 --- [UTEScore] [main] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
+
+org.hibernate.exception.JDBCConnectionException: unable to obtain isolated JDBC connection [The TCP/IP connection to the host LAPTOP-TNT38BSB, port 1433 has failed. Error: "No such host is known (LAPTOP-TNT38BSB). Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:100) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:334) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:129) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:81) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:226) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:194) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1442) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1513) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:419) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:400) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-6.2.11.jar:6.2.11]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970) ~[spring-context-6.2.11.jar:6.2.11]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.11.jar:6.2.11]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.6.jar:3.5.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.6.jar:3.5.6]
+	at vn.ute.utescore.UteScoreApplication.main(UteScoreApplication.java:10) ~[classes/:na]
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: The TCP/IP connection to the host LAPTOP-TNT38BSB, port 1433 has failed. Error: "No such host is known (LAPTOP-TNT38BSB). Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:250) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerException.convertConnectExceptionToSQLServerException(SQLServerException.java:316) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SocketFinder.findSocket(IOBuffer.java:2593) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.TDSChannel.open(IOBuffer.java:721) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:4079) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:3695) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:3504) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:2212) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1320) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:144) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:370) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:207) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:488) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:576) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:97) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111) ~[HikariCP-6.3.3.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:126) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:485) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	... 35 common frames omitted
+
+2025-10-29T19:36:21.465+07:00  WARN 12612 --- [UTEScore] [main] org.hibernate.orm.deprecation            : HHH90000025: SQLServerDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-29T19:36:21.492+07:00  INFO 12612 --- [UTEScore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (null)']
+	Database driver: undefined/unknown
+	Database version: 11.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-29T19:36:22.380+07:00  WARN 12612 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.TinhNangSanId
+2025-10-29T19:36:22.381+07:00  WARN 12612 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.TinhNangSanId
+2025-10-29T19:36:22.384+07:00  WARN 12612 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T19:36:22.385+07:00  WARN 12612 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T19:36:22.386+07:00  WARN 12612 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T19:36:22.388+07:00  WARN 12612 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T19:36:23.959+07:00  INFO 12612 --- [UTEScore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-29T19:36:23.964+07:00  INFO 12612 --- [UTEScore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-29T19:36:24.528+07:00  INFO 12612 --- [UTEScore] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-29T19:36:32.100+07:00  WARN 12612 --- [UTEScore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-29T19:36:32.509+07:00  WARN 12612 --- [UTEScore] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: a41607f4-1b46-499b-8185-bdd2a5278786
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-10-29T19:36:32.521+07:00  INFO 12612 --- [UTEScore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-10-29T19:36:33.314+07:00  INFO 12612 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2025-10-29T19:36:33.315+07:00  INFO 12612 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@6e206b5c]]
+2025-10-29T19:36:33.316+07:00  INFO 12612 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2025-10-29T19:36:33.359+07:00  INFO 12612 --- [UTEScore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-10-29T19:36:33.378+07:00  INFO 12612 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Started UteScoreApplication in 25.93 seconds (process running for 27.088)
+2025-10-29T19:36:36.658+07:00  INFO 12612 --- [UTEScore] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-29T19:36:36.658+07:00  INFO 12612 --- [UTEScore] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-29T19:36:36.658+07:00  INFO 12612 --- [UTEScore] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-10-29T19:36:36.830+07:00  INFO 12612 --- [UTEScore] [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-29T19:36:45.088+07:00  WARN 12612 --- [UTEScore] [http-nio-8080-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 08S01
+2025-10-29T19:36:45.088+07:00 ERROR 12612 --- [UTEScore] [http-nio-8080-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : The TCP/IP connection to the host LAPTOP-TNT38BSB, port 1433 has failed. Error: "No such host is known (LAPTOP-TNT38BSB). Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".
+2025-10-29T19:36:45.112+07:00 ERROR 12612 --- [UTEScore] [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.dao.DataAccessResourceFailureException: Unable to acquire JDBC Connection [The TCP/IP connection to the host LAPTOP-TNT38BSB, port 1433 has failed. Error: "No such host is known (LAPTOP-TNT38BSB). Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".] [n/a]] with root cause
+
+com.microsoft.sqlserver.jdbc.SQLServerException: The TCP/IP connection to the host LAPTOP-TNT38BSB, port 1433 has failed. Error: "No such host is known (LAPTOP-TNT38BSB). Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:250) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerException.convertConnectExceptionToSQLServerException(SQLServerException.java:316) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SocketFinder.findSocket(IOBuffer.java:2593) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.TDSChannel.open(IOBuffer.java:721) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:4079) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:3695) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:3504) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:2212) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1320) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:144) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:370) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:207) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:488) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:576) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:97) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111) ~[HikariCP-6.3.3.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:126) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.internal.NonContextualJdbcConnectionAccess.obtainConnection(NonContextualJdbcConnectionAccess.java:46) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.acquireConnectionIfNeeded(LogicalConnectionManagedImpl.java:126) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.getPhysicalConnection(LogicalConnectionManagedImpl.java:156) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl.connection(StatementPreparerImpl.java:56) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$4.doPrepare(StatementPreparerImpl.java:151) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:180) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl.prepareQueryStatement(StatementPreparerImpl.java:153) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.sql.exec.internal.StandardStatementCreator.createStatement(StandardStatementCreator.java:49) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.executeQuery(DeferredResultSetAccess.java:236) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.getResultSet(DeferredResultSetAccess.java:172) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesResultSetImpl.<init>(JdbcValuesResultSetImpl.java:74) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.resolveJdbcValuesSource(JdbcSelectExecutorStandardImpl.java:355) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:137) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:102) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.executeQuery(JdbcSelectExecutor.java:91) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:165) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$1(ConcreteSqmSelectQueryPlan.java:149) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:439) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:359) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:380) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:143) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:120) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:132) ~[spring-data-jpa-3.5.4.jar:3.5.4]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:95) ~[spring-data-jpa-3.5.4.jar:3.5.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:160) ~[spring-data-jpa-3.5.4.jar:3.5.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:148) ~[spring-data-jpa-3.5.4.jar:3.5.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170) ~[spring-data-commons-3.5.4.jar:3.5.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158) ~[spring-data-commons-3.5.4.jar:3.5.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:170) ~[spring-data-commons-3.5.4.jar:3.5.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:149) ~[spring-data-commons-3.5.4.jar:3.5.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.11.jar:6.2.11]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:69) ~[spring-data-commons-3.5.4.jar:3.5.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.11.jar:6.2.11]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380) ~[spring-tx-6.2.11.jar:6.2.11]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.2.11.jar:6.2.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.11.jar:6.2.11]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138) ~[spring-tx-6.2.11.jar:6.2.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.11.jar:6.2.11]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:136) ~[spring-data-jpa-3.5.4.jar:3.5.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.11.jar:6.2.11]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.2.11.jar:6.2.11]
+	at jdk.proxy2/jdk.proxy2.$Proxy177.findTop3ByTrangThaiIgnoreCaseOrderByTenSanAsc(Unknown Source) ~[na:na]
+	at vn.ute.utescore.service.impl.Guest_PitchServiceImpl.getTop3Featured(Guest_PitchServiceImpl.java:39) ~[classes/:na]
+	at vn.ute.utescore.controller.Guest_HomeController.home(Guest_HomeController.java:20) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.46.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.46.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319) ~[spring-security-config-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240) ~[spring-security-config-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+
+2025-10-29T19:37:00.021+07:00  INFO 12612 --- [UTEScore] [MessageBroker-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-29T19:37:08.302+07:00  WARN 12612 --- [UTEScore] [MessageBroker-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 08S01
+2025-10-29T19:37:08.302+07:00 ERROR 12612 --- [UTEScore] [MessageBroker-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : The TCP/IP connection to the host LAPTOP-TNT38BSB, port 1433 has failed. Error: "No such host is known (LAPTOP-TNT38BSB). Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".
+2025-10-29T19:37:08.304+07:00 ERROR 12612 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ❌ Lỗi khi chạy job nhắc sân: Could not open JPA EntityManager for transaction
+
+org.springframework.transaction.CannotCreateTransactionException: Could not open JPA EntityManager for transaction
+	at org.springframework.orm.jpa.JpaTransactionManager.doBegin(JpaTransactionManager.java:467) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.startTransaction(AbstractPlatformTransactionManager.java:532) ~[spring-tx-6.2.11.jar:6.2.11]
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.getTransaction(AbstractPlatformTransactionManager.java:405) ~[spring-tx-6.2.11.jar:6.2.11]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.createTransactionIfNecessary(TransactionAspectSupport.java:639) ~[spring-tx-6.2.11.jar:6.2.11]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:374) ~[spring-tx-6.2.11.jar:6.2.11]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.2.11.jar:6.2.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.11.jar:6.2.11]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728) ~[spring-aop-6.2.11.jar:6.2.11]
+	at vn.ute.utescore.service.impl.CustomerEmailServiceImpl$$SpringCGLIB$$0.sendUpcomingBookingReminders(<generated>) ~[classes/:na]
+	at vn.ute.utescore.config.CustomerReminderScheduler.checkAndSendReminders(CustomerReminderScheduler.java:31) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.runInternal(ScheduledMethodRunnable.java:130) ~[spring-context-6.2.11.jar:6.2.11]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.lambda$run$2(ScheduledMethodRunnable.java:124) ~[spring-context-6.2.11.jar:6.2.11]
+	at io.micrometer.observation.Observation.observe(Observation.java:498) ~[micrometer-observation-1.15.4.jar:1.15.4]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:124) ~[spring-context-6.2.11.jar:6.2.11]
+	at org.springframework.scheduling.config.Task$OutcomeTrackingRunnable.run(Task.java:85) ~[spring-context-6.2.11.jar:6.2.11]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) ~[spring-context-6.2.11.jar:6.2.11]
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:96) ~[spring-context-6.2.11.jar:6.2.11]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+Caused by: org.hibernate.exception.JDBCConnectionException: Unable to acquire JDBC Connection [The TCP/IP connection to the host LAPTOP-TNT38BSB, port 1433 has failed. Error: "No such host is known (LAPTOP-TNT38BSB). Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:100) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.acquireConnectionIfNeeded(LogicalConnectionManagedImpl.java:129) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.getPhysicalConnection(LogicalConnectionManagedImpl.java:156) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.beginTransaction(HibernateJpaDialect.java:164) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.JpaTransactionManager.doBegin(JpaTransactionManager.java:421) ~[spring-orm-6.2.11.jar:6.2.11]
+	... 24 common frames omitted
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: The TCP/IP connection to the host LAPTOP-TNT38BSB, port 1433 has failed. Error: "No such host is known (LAPTOP-TNT38BSB). Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:250) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerException.convertConnectExceptionToSQLServerException(SQLServerException.java:316) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SocketFinder.findSocket(IOBuffer.java:2593) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.TDSChannel.open(IOBuffer.java:721) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:4079) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:3695) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:3504) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:2212) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1320) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:144) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:370) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:207) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:488) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:576) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:97) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111) ~[HikariCP-6.3.3.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:126) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.internal.NonContextualJdbcConnectionAccess.obtainConnection(NonContextualJdbcConnectionAccess.java:46) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.acquireConnectionIfNeeded(LogicalConnectionManagedImpl.java:126) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	... 27 common frames omitted
+
+2025-10-29T19:37:33.305+07:00  INFO 12612 --- [UTEScore] [MessageBroker-2] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 1, completed tasks = 1]
+2025-10-29T19:38:00.022+07:00  INFO 12612 --- [UTEScore] [MessageBroker-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-29T19:38:08.286+07:00  WARN 12612 --- [UTEScore] [MessageBroker-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 08S01
+2025-10-29T19:38:08.287+07:00 ERROR 12612 --- [UTEScore] [MessageBroker-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : The TCP/IP connection to the host LAPTOP-TNT38BSB, port 1433 has failed. Error: "No such host is known (LAPTOP-TNT38BSB). Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".
+2025-10-29T19:38:08.287+07:00 ERROR 12612 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ❌ Lỗi khi chạy job nhắc sân: Could not open JPA EntityManager for transaction
+
+org.springframework.transaction.CannotCreateTransactionException: Could not open JPA EntityManager for transaction
+	at org.springframework.orm.jpa.JpaTransactionManager.doBegin(JpaTransactionManager.java:467) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.startTransaction(AbstractPlatformTransactionManager.java:532) ~[spring-tx-6.2.11.jar:6.2.11]
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.getTransaction(AbstractPlatformTransactionManager.java:405) ~[spring-tx-6.2.11.jar:6.2.11]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.createTransactionIfNecessary(TransactionAspectSupport.java:639) ~[spring-tx-6.2.11.jar:6.2.11]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:374) ~[spring-tx-6.2.11.jar:6.2.11]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.2.11.jar:6.2.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.11.jar:6.2.11]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728) ~[spring-aop-6.2.11.jar:6.2.11]
+	at vn.ute.utescore.service.impl.CustomerEmailServiceImpl$$SpringCGLIB$$0.sendUpcomingBookingReminders(<generated>) ~[classes/:na]
+	at vn.ute.utescore.config.CustomerReminderScheduler.checkAndSendReminders(CustomerReminderScheduler.java:31) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.runInternal(ScheduledMethodRunnable.java:130) ~[spring-context-6.2.11.jar:6.2.11]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.lambda$run$2(ScheduledMethodRunnable.java:124) ~[spring-context-6.2.11.jar:6.2.11]
+	at io.micrometer.observation.Observation.observe(Observation.java:498) ~[micrometer-observation-1.15.4.jar:1.15.4]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:124) ~[spring-context-6.2.11.jar:6.2.11]
+	at org.springframework.scheduling.config.Task$OutcomeTrackingRunnable.run(Task.java:85) ~[spring-context-6.2.11.jar:6.2.11]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) ~[spring-context-6.2.11.jar:6.2.11]
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:96) ~[spring-context-6.2.11.jar:6.2.11]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+Caused by: org.hibernate.exception.JDBCConnectionException: Unable to acquire JDBC Connection [The TCP/IP connection to the host LAPTOP-TNT38BSB, port 1433 has failed. Error: "No such host is known (LAPTOP-TNT38BSB). Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:100) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.acquireConnectionIfNeeded(LogicalConnectionManagedImpl.java:129) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.getPhysicalConnection(LogicalConnectionManagedImpl.java:156) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.beginTransaction(HibernateJpaDialect.java:164) ~[spring-orm-6.2.11.jar:6.2.11]
+	at org.springframework.orm.jpa.JpaTransactionManager.doBegin(JpaTransactionManager.java:421) ~[spring-orm-6.2.11.jar:6.2.11]
+	... 24 common frames omitted
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: The TCP/IP connection to the host LAPTOP-TNT38BSB, port 1433 has failed. Error: "No such host is known (LAPTOP-TNT38BSB). Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:250) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerException.convertConnectExceptionToSQLServerException(SQLServerException.java:316) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SocketFinder.findSocket(IOBuffer.java:2593) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.TDSChannel.open(IOBuffer.java:721) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:4079) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:3695) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:3504) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:2212) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1320) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:144) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:370) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:207) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:488) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:576) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:97) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111) ~[HikariCP-6.3.3.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:126) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.internal.NonContextualJdbcConnectionAccess.obtainConnection(NonContextualJdbcConnectionAccess.java:46) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.acquireConnectionIfNeeded(LogicalConnectionManagedImpl.java:126) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	... 27 common frames omitted
+
+2025-10-29T19:38:11.988+07:00  INFO 12612 --- [UTEScore] [http-nio-8080-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-29T19:38:12.998+07:00  WARN 12612 --- [UTEScore] [http-nio-8080-exec-4] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 08S01
+2025-10-29T19:38:12.998+07:00 ERROR 12612 --- [UTEScore] [http-nio-8080-exec-4] o.h.engine.jdbc.spi.SqlExceptionHelper   : The TCP/IP connection to the host LAPTOP-TNT38BSB, port 1433 has failed. Error: "LAPTOP-TNT38BSB. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".
+2025-10-29T19:38:12.998+07:00 ERROR 12612 --- [UTEScore] [http-nio-8080-exec-4] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.dao.DataAccessResourceFailureException: Unable to acquire JDBC Connection [The TCP/IP connection to the host LAPTOP-TNT38BSB, port 1433 has failed. Error: "LAPTOP-TNT38BSB. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".] [n/a]] with root cause
+
+com.microsoft.sqlserver.jdbc.SQLServerException: The TCP/IP connection to the host LAPTOP-TNT38BSB, port 1433 has failed. Error: "LAPTOP-TNT38BSB. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:250) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerException.convertConnectExceptionToSQLServerException(SQLServerException.java:316) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SocketFinder.findSocket(IOBuffer.java:2593) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.TDSChannel.open(IOBuffer.java:721) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:4079) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:3695) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:3504) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:2212) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1320) ~[mssql-jdbc-12.10.1.jre11.jar:na]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:144) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:370) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:207) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:488) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:576) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:97) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111) ~[HikariCP-6.3.3.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:126) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.internal.NonContextualJdbcConnectionAccess.obtainConnection(NonContextualJdbcConnectionAccess.java:46) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.acquireConnectionIfNeeded(LogicalConnectionManagedImpl.java:126) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.getPhysicalConnection(LogicalConnectionManagedImpl.java:156) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl.connection(StatementPreparerImpl.java:56) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$4.doPrepare(StatementPreparerImpl.java:151) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:180) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl.prepareQueryStatement(StatementPreparerImpl.java:153) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.sql.exec.internal.StandardStatementCreator.createStatement(StandardStatementCreator.java:49) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.executeQuery(DeferredResultSetAccess.java:236) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.getResultSet(DeferredResultSetAccess.java:172) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesResultSetImpl.<init>(JdbcValuesResultSetImpl.java:74) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.resolveJdbcValuesSource(JdbcSelectExecutorStandardImpl.java:355) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:137) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:102) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.executeQuery(JdbcSelectExecutor.java:91) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:165) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$1(ConcreteSqmSelectQueryPlan.java:149) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:439) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:359) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:380) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:143) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:120) ~[hibernate-core-6.6.29.Final.jar:6.6.29.Final]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:132) ~[spring-data-jpa-3.5.4.jar:3.5.4]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:95) ~[spring-data-jpa-3.5.4.jar:3.5.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:160) ~[spring-data-jpa-3.5.4.jar:3.5.4]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:148) ~[spring-data-jpa-3.5.4.jar:3.5.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170) ~[spring-data-commons-3.5.4.jar:3.5.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158) ~[spring-data-commons-3.5.4.jar:3.5.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:170) ~[spring-data-commons-3.5.4.jar:3.5.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:149) ~[spring-data-commons-3.5.4.jar:3.5.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.11.jar:6.2.11]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:69) ~[spring-data-commons-3.5.4.jar:3.5.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.11.jar:6.2.11]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380) ~[spring-tx-6.2.11.jar:6.2.11]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.2.11.jar:6.2.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.11.jar:6.2.11]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138) ~[spring-tx-6.2.11.jar:6.2.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.11.jar:6.2.11]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:136) ~[spring-data-jpa-3.5.4.jar:3.5.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.11.jar:6.2.11]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.2.11.jar:6.2.11]
+	at jdk.proxy2/jdk.proxy2.$Proxy177.findTop3ByTrangThaiIgnoreCaseOrderByTenSanAsc(Unknown Source) ~[na:na]
+	at vn.ute.utescore.service.impl.Guest_PitchServiceImpl.getTop3Featured(Guest_PitchServiceImpl.java:39) ~[classes/:na]
+	at vn.ute.utescore.controller.Guest_HomeController.home(Guest_HomeController.java:20) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.46.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.46.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319) ~[spring-security-config-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240) ~[spring-security-config-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+
+2025-10-29T19:38:20.960+07:00  INFO 12612 --- [UTEScore] [RMI TCP Connection(10)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2025-10-29T19:38:20.966+07:00  INFO 12612 --- [UTEScore] [RMI TCP Connection(10)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-29T19:38:20.983+07:00  INFO 12612 --- [UTEScore] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-29T19:38:20.987+07:00  INFO 12612 --- [UTEScore] [RMI TCP Connection(10)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2025-10-29T19:38:20.987+07:00  INFO 12612 --- [UTEScore] [RMI TCP Connection(10)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@6e206b5c]]
+2025-10-29T19:38:20.987+07:00  INFO 12612 --- [UTEScore] [RMI TCP Connection(10)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2025-10-29T19:38:21.003+07:00  INFO 12612 --- [UTEScore] [RMI TCP Connection(10)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-29T19:38:24.843+07:00  INFO 1896 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Starting UteScoreApplication using Java 22 with PID 1896 (D:\LTW\UTEScore\target\classes started by 84344 in D:\LTW\UTEScore)
+2025-10-29T19:38:24.846+07:00 DEBUG 1896 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Running with Spring Boot v3.5.6, Spring v6.2.11
+2025-10-29T19:38:24.847+07:00  INFO 1896 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-10-29T19:38:26.176+07:00  INFO 1896 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-29T19:38:26.470+07:00  INFO 1896 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 280 ms. Found 42 JPA repository interfaces.
+2025-10-29T19:38:27.358+07:00  INFO 1896 --- [UTEScore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-29T19:38:27.382+07:00  INFO 1896 --- [UTEScore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-29T19:38:27.384+07:00  INFO 1896 --- [UTEScore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-29T19:38:27.483+07:00  INFO 1896 --- [UTEScore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-29T19:38:27.484+07:00  INFO 1896 --- [UTEScore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2568 ms
+2025-10-29T19:38:27.841+07:00  INFO 1896 --- [UTEScore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-29T19:38:27.916+07:00  INFO 1896 --- [UTEScore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-10-29T19:38:27.967+07:00  INFO 1896 --- [UTEScore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-29T19:38:28.408+07:00  INFO 1896 --- [UTEScore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-29T19:38:28.454+07:00  INFO 1896 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-29T19:38:29.135+07:00  INFO 1896 --- [UTEScore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: f7b8be40-03df-4b17-b529-88c10c4d0926
+2025-10-29T19:38:29.139+07:00  INFO 1896 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-29T19:38:29.277+07:00  WARN 1896 --- [UTEScore] [main] org.hibernate.orm.deprecation            : HHH90000025: SQLServerDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-29T19:38:29.310+07:00  INFO 1896 --- [UTEScore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-29T19:38:30.026+07:00  WARN 1896 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.TinhNangSanId
+2025-10-29T19:38:30.026+07:00  WARN 1896 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.TinhNangSanId
+2025-10-29T19:38:30.028+07:00  WARN 1896 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T19:38:30.029+07:00  WARN 1896 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T19:38:30.029+07:00  WARN 1896 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T19:38:30.029+07:00  WARN 1896 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T19:38:31.448+07:00  INFO 1896 --- [UTEScore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-29T19:38:31.453+07:00  INFO 1896 --- [UTEScore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-29T19:38:31.945+07:00  INFO 1896 --- [UTEScore] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-29T19:38:39.395+07:00  WARN 1896 --- [UTEScore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-29T19:38:39.781+07:00  WARN 1896 --- [UTEScore] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 829af489-923a-4305-8ea7-8f4ec7206f9c
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-10-29T19:38:39.795+07:00  INFO 1896 --- [UTEScore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-10-29T19:38:40.519+07:00  INFO 1896 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2025-10-29T19:38:40.520+07:00  INFO 1896 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@6f3ba7d4]]
+2025-10-29T19:38:40.522+07:00  INFO 1896 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2025-10-29T19:38:40.556+07:00  INFO 1896 --- [UTEScore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-10-29T19:38:40.575+07:00  INFO 1896 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Started UteScoreApplication in 16.512 seconds (process running for 17.564)
+2025-10-29T19:38:44.541+07:00  INFO 1896 --- [UTEScore] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-29T19:38:44.541+07:00  INFO 1896 --- [UTEScore] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-29T19:38:44.547+07:00  INFO 1896 --- [UTEScore] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2025-10-29T19:38:55.043+07:00  WARN 1896 --- [UTEScore] [http-nio-8080-exec-5] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8080-exec-5][customer/home] Deprecated unwrapped fragment expression "fragments/header :: header" found in template customer/home, line 231, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T19:38:55.151+07:00  WARN 1896 --- [UTEScore] [http-nio-8080-exec-5] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8080-exec-5][customer/home] Deprecated unwrapped fragment expression "fragments/footer :: footer" found in template customer/home, line 283, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T19:39:00.025+07:00 DEBUG 1896 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T19:39:00.034+07:00  INFO 1896 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 19:39:00.034419600
+2025-10-29T19:39:39.995+07:00  WARN 1896 --- [UTEScore] [http-nio-8080-exec-7] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8080-exec-7][customer/booking] Deprecated unwrapped fragment expression "fragments/header :: header" found in template customer/booking, line 160, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T19:39:40.019+07:00  WARN 1896 --- [UTEScore] [http-nio-8080-exec-7] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8080-exec-7][customer/booking] Deprecated unwrapped fragment expression "fragments/footer :: footer" found in template customer/booking, line 269, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T19:39:40.510+07:00  INFO 1896 --- [UTEScore] [MessageBroker-2] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 1, completed tasks = 1]
+2025-10-29T19:40:00.030+07:00 DEBUG 1896 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T19:40:00.030+07:00  INFO 1896 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 19:40:00.030462100
+2025-10-29T19:41:00.039+07:00 DEBUG 1896 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T19:41:00.042+07:00  INFO 1896 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 19:41:00.042402600
+2025-10-29T19:41:28.835+07:00  WARN 1896 --- [UTEScore] [http-nio-8080-exec-4] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8080-exec-4][customer/booking] Deprecated unwrapped fragment expression "fragments/header :: header" found in template customer/booking, line 160, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T19:41:28.835+07:00  WARN 1896 --- [UTEScore] [http-nio-8080-exec-4] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8080-exec-4][customer/booking] Deprecated unwrapped fragment expression "fragments/footer :: footer" found in template customer/booking, line 269, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T19:42:00.020+07:00 DEBUG 1896 --- [UTEScore] [MessageBroker-3] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T19:42:00.025+07:00  INFO 1896 --- [UTEScore] [MessageBroker-3] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 19:42:00.025687200
+2025-10-29T19:42:14.622+07:00  WARN 1896 --- [UTEScore] [http-nio-8080-exec-2] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8080-exec-2][customer/history] Deprecated unwrapped fragment expression "fragments/footer :: footer" found in template customer/history, line 309, col 7. Please use the complete syntax of fragment expressions instead ("~{fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T19:42:24.396+07:00  WARN 1896 --- [UTEScore] [http-nio-8080-exec-8] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8080-exec-8][customer/booking] Deprecated unwrapped fragment expression "fragments/header :: header" found in template customer/booking, line 160, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T19:42:24.400+07:00  WARN 1896 --- [UTEScore] [http-nio-8080-exec-8] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8080-exec-8][customer/booking] Deprecated unwrapped fragment expression "fragments/footer :: footer" found in template customer/booking, line 269, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T19:42:39.006+07:00  WARN 1896 --- [UTEScore] [http-nio-8080-exec-6] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8080-exec-6][customer/booking] Deprecated unwrapped fragment expression "fragments/header :: header" found in template customer/booking, line 160, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T19:42:39.010+07:00  WARN 1896 --- [UTEScore] [http-nio-8080-exec-6] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8080-exec-6][customer/booking] Deprecated unwrapped fragment expression "fragments/footer :: footer" found in template customer/booking, line 269, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T19:43:00.029+07:00 DEBUG 1896 --- [UTEScore] [MessageBroker-5] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T19:43:00.037+07:00  INFO 1896 --- [UTEScore] [MessageBroker-5] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 19:43:00.037152
+2025-10-29T19:44:00.028+07:00 DEBUG 1896 --- [UTEScore] [MessageBroker-5] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T19:44:00.036+07:00  INFO 1896 --- [UTEScore] [MessageBroker-5] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 19:44:00.036016200
+2025-10-29T19:44:44.995+07:00  WARN 1896 --- [UTEScore] [http-nio-8080-exec-3] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8080-exec-3][customer/history] Deprecated unwrapped fragment expression "fragments/footer :: footer" found in template customer/history, line 309, col 7. Please use the complete syntax of fragment expressions instead ("~{fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T19:44:51.577+07:00  WARN 1896 --- [UTEScore] [http-nio-8080-exec-10] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8080-exec-10][customer/history] Deprecated unwrapped fragment expression "fragments/footer :: footer" found in template customer/history, line 309, col 7. Please use the complete syntax of fragment expressions instead ("~{fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T19:44:54.675+07:00  WARN 1896 --- [UTEScore] [http-nio-8080-exec-9] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8080-exec-9][customer/history] Deprecated unwrapped fragment expression "fragments/footer :: footer" found in template customer/history, line 309, col 7. Please use the complete syntax of fragment expressions instead ("~{fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T19:45:00.034+07:00 DEBUG 1896 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T19:45:00.036+07:00  INFO 1896 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 19:45:00.036628
+2025-10-29T19:46:00.030+07:00 DEBUG 1896 --- [UTEScore] [MessageBroker-7] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T19:46:00.033+07:00  INFO 1896 --- [UTEScore] [MessageBroker-7] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 19:46:00.033387600
+2025-10-29T19:47:00.037+07:00 DEBUG 1896 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T19:47:00.039+07:00  INFO 1896 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 19:47:00.039630200
+2025-10-29T19:48:00.040+07:00 DEBUG 1896 --- [UTEScore] [MessageBroker-6] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T19:48:00.048+07:00  INFO 1896 --- [UTEScore] [MessageBroker-6] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 19:48:00.048058
+2025-10-29T19:49:00.025+07:00 DEBUG 1896 --- [UTEScore] [MessageBroker-6] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T19:49:00.034+07:00  INFO 1896 --- [UTEScore] [MessageBroker-6] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 19:49:00.034384700
+2025-10-29T19:50:00.033+07:00 DEBUG 1896 --- [UTEScore] [MessageBroker-6] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T19:50:00.041+07:00  INFO 1896 --- [UTEScore] [MessageBroker-6] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 19:50:00.041200700
+2025-10-29T19:50:12.106+07:00  WARN 1896 --- [UTEScore] [http-nio-8080-exec-5] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8080-exec-5][customer/history] Deprecated unwrapped fragment expression "fragments/footer :: footer" found in template customer/history, line 309, col 7. Please use the complete syntax of fragment expressions instead ("~{fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T19:50:36.800+07:00  INFO 1896 --- [UTEScore] [RMI TCP Connection(21)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2025-10-29T19:50:36.807+07:00  INFO 1896 --- [UTEScore] [RMI TCP Connection(21)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-29T19:50:36.818+07:00  INFO 1896 --- [UTEScore] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-29T19:50:36.824+07:00  INFO 1896 --- [UTEScore] [RMI TCP Connection(21)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2025-10-29T19:50:36.832+07:00  INFO 1896 --- [UTEScore] [RMI TCP Connection(21)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@6f3ba7d4]]
+2025-10-29T19:50:36.832+07:00  INFO 1896 --- [UTEScore] [RMI TCP Connection(21)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2025-10-29T19:50:36.847+07:00  INFO 1896 --- [UTEScore] [RMI TCP Connection(21)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-29T19:50:36.851+07:00  INFO 1896 --- [UTEScore] [RMI TCP Connection(21)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-29T19:50:36.854+07:00  INFO 1896 --- [UTEScore] [RMI TCP Connection(21)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-29T19:50:40.804+07:00  INFO 7272 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Starting UteScoreApplication using Java 22 with PID 7272 (D:\LTW\UTEScore\target\classes started by 84344 in D:\LTW\UTEScore)
+2025-10-29T19:50:40.808+07:00 DEBUG 7272 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Running with Spring Boot v3.5.6, Spring v6.2.11
+2025-10-29T19:50:40.809+07:00  INFO 7272 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-10-29T19:50:42.138+07:00  INFO 7272 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-29T19:50:42.444+07:00  INFO 7272 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 292 ms. Found 42 JPA repository interfaces.
+2025-10-29T19:50:43.466+07:00  INFO 7272 --- [UTEScore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-29T19:50:43.496+07:00  INFO 7272 --- [UTEScore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-29T19:50:43.496+07:00  INFO 7272 --- [UTEScore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-29T19:50:43.606+07:00  INFO 7272 --- [UTEScore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-29T19:50:43.608+07:00  INFO 7272 --- [UTEScore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2731 ms
+2025-10-29T19:50:44.016+07:00  INFO 7272 --- [UTEScore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-29T19:50:44.133+07:00  INFO 7272 --- [UTEScore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-10-29T19:50:44.199+07:00  INFO 7272 --- [UTEScore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-29T19:50:44.694+07:00  INFO 7272 --- [UTEScore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-29T19:50:44.745+07:00  INFO 7272 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-29T19:50:45.248+07:00  INFO 7272 --- [UTEScore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: 39003c3e-1304-4be2-a023-c5ed4978973f
+2025-10-29T19:50:45.248+07:00  INFO 7272 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-29T19:50:45.364+07:00  WARN 7272 --- [UTEScore] [main] org.hibernate.orm.deprecation            : HHH90000025: SQLServerDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-29T19:50:45.404+07:00  INFO 7272 --- [UTEScore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-29T19:50:46.218+07:00  WARN 7272 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.TinhNangSanId
+2025-10-29T19:50:46.218+07:00  WARN 7272 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.TinhNangSanId
+2025-10-29T19:50:46.222+07:00  WARN 7272 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T19:50:46.223+07:00  WARN 7272 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T19:50:46.223+07:00  WARN 7272 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T19:50:46.223+07:00  WARN 7272 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T19:50:47.740+07:00  INFO 7272 --- [UTEScore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-29T19:50:47.740+07:00  INFO 7272 --- [UTEScore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-29T19:50:48.267+07:00  INFO 7272 --- [UTEScore] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-29T19:50:55.677+07:00  WARN 7272 --- [UTEScore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-29T19:50:56.021+07:00  WARN 7272 --- [UTEScore] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: fa1fe69d-34f5-4a20-a3d7-56ad0715969a
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-10-29T19:50:56.034+07:00  INFO 7272 --- [UTEScore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-10-29T19:50:56.730+07:00  INFO 7272 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2025-10-29T19:50:56.731+07:00  INFO 7272 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@5c43fa5e]]
+2025-10-29T19:50:56.734+07:00  INFO 7272 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2025-10-29T19:50:56.766+07:00  INFO 7272 --- [UTEScore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-10-29T19:50:56.786+07:00  INFO 7272 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Started UteScoreApplication in 16.771 seconds (process running for 17.826)
+2025-10-29T19:50:59.772+07:00  INFO 7272 --- [UTEScore] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-29T19:50:59.772+07:00  INFO 7272 --- [UTEScore] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-29T19:50:59.772+07:00  INFO 7272 --- [UTEScore] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-10-29T19:51:00.091+07:00 DEBUG 7272 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T19:51:00.099+07:00  INFO 7272 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 19:51:00.099476200
+2025-10-29T19:51:11.950+07:00  WARN 7272 --- [UTEScore] [http-nio-8080-exec-5] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8080-exec-5][customer/home] Deprecated unwrapped fragment expression "fragments/header :: header" found in template customer/home, line 231, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T19:51:12.008+07:00  WARN 7272 --- [UTEScore] [http-nio-8080-exec-5] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8080-exec-5][customer/home] Deprecated unwrapped fragment expression "fragments/footer :: footer" found in template customer/home, line 283, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T19:51:56.727+07:00  INFO 7272 --- [UTEScore] [MessageBroker-2] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 1, completed tasks = 1]
+2025-10-29T19:52:00.049+07:00 DEBUG 7272 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T19:52:00.051+07:00  INFO 7272 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 19:52:00.051354400
+2025-10-29T19:53:00.039+07:00 DEBUG 7272 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T19:53:00.041+07:00  INFO 7272 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 19:53:00.041560400
+2025-10-29T19:53:36.457+07:00  WARN 7272 --- [UTEScore] [http-nio-8080-exec-1] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8080-exec-1][customer/home] Deprecated unwrapped fragment expression "fragments/header :: header" found in template customer/home, line 231, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T19:53:36.457+07:00  WARN 7272 --- [UTEScore] [http-nio-8080-exec-1] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8080-exec-1][customer/home] Deprecated unwrapped fragment expression "fragments/footer :: footer" found in template customer/home, line 283, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T19:54:00.024+07:00 DEBUG 7272 --- [UTEScore] [MessageBroker-3] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T19:54:00.027+07:00  INFO 7272 --- [UTEScore] [MessageBroker-3] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 19:54:00.027493100
+2025-10-29T19:55:00.028+07:00 DEBUG 7272 --- [UTEScore] [MessageBroker-5] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T19:55:00.031+07:00  INFO 7272 --- [UTEScore] [MessageBroker-5] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 19:55:00.031081100
+2025-10-29T19:56:00.033+07:00 DEBUG 7272 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T19:56:00.036+07:00  INFO 7272 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 19:56:00.036015300
+2025-10-29T19:57:00.037+07:00 DEBUG 7272 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T19:57:00.039+07:00  INFO 7272 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 19:57:00.039881700
+2025-10-29T19:58:00.038+07:00 DEBUG 7272 --- [UTEScore] [MessageBroker-7] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T19:58:00.040+07:00  INFO 7272 --- [UTEScore] [MessageBroker-7] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 19:58:00.040738600
+2025-10-29T19:59:00.058+07:00 DEBUG 7272 --- [UTEScore] [MessageBroker-5] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T19:59:00.061+07:00  INFO 7272 --- [UTEScore] [MessageBroker-5] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 19:59:00.061713100
+2025-10-29T20:00:00.033+07:00 DEBUG 7272 --- [UTEScore] [MessageBroker-6] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T20:00:00.033+07:00  INFO 7272 --- [UTEScore] [MessageBroker-6] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 20:00:00.033230600
+2025-10-29T20:00:41.792+07:00  INFO 7272 --- [UTEScore] [RMI TCP Connection(19)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2025-10-29T20:00:41.800+07:00  INFO 7272 --- [UTEScore] [RMI TCP Connection(19)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-29T20:00:41.809+07:00  INFO 7272 --- [UTEScore] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-29T20:00:41.815+07:00  INFO 7272 --- [UTEScore] [RMI TCP Connection(19)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2025-10-29T20:00:41.815+07:00  INFO 7272 --- [UTEScore] [RMI TCP Connection(19)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@5c43fa5e]]
+2025-10-29T20:00:41.816+07:00  INFO 7272 --- [UTEScore] [RMI TCP Connection(19)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2025-10-29T20:00:41.833+07:00  INFO 7272 --- [UTEScore] [RMI TCP Connection(19)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-29T20:00:41.838+07:00  INFO 7272 --- [UTEScore] [RMI TCP Connection(19)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-29T20:00:41.843+07:00  INFO 7272 --- [UTEScore] [RMI TCP Connection(19)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
