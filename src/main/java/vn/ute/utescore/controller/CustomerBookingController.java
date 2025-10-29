@@ -260,7 +260,26 @@ public class CustomerBookingController {
         }
     }
 
+    /* ===========================================================
+     * 💳 [GET] Thanh toán cọc lại qua VNPay cho đơn chưa thanh toán
+     * =========================================================== */
+    @GetMapping("/payment/deposit")
+    public String payDeposit(@RequestParam("maDonDat") Integer maDonDat, HttpSession session) {
+        String email = SessionUtil.getCustomerEmail(session);
+        if (email == null) return "redirect:/login";
 
+        Optional<ThueSan> opt = thueSanRepository.findById(maDonDat);
+        if (opt.isEmpty()) return "redirect:/customer/history";
+
+        ThueSan ts = opt.get();
+        ts.setGhiChu("Chờ thanh toán VNPay");
+        ts.setHanGiuCho(LocalDateTime.now().plusMinutes(10));
+        thueSanRepository.save(ts);
+
+        String orderInfo = ts.getKhachHang().getSoDienThoai() + "_" + ts.getMaDonDat();
+        long amount = ts.getTienCocBatBuoc() != null ? ts.getTienCocBatBuoc().longValue() : 0;
+        return "redirect:/api/vnpay/create-payment?amount=" + amount + "&orderInfo=" + orderInfo;
+    }
     /* ===========================================================
      * ❌ [GET] Hủy đơn chưa thanh toán
      * =========================================================== */

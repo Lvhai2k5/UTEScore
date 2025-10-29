@@ -12,6 +12,11 @@ import java.util.List;
 @Repository
 public interface CustomerSanBongRepository extends JpaRepository<SanBong, Integer> {
 
+	@Query("SELECT s FROM SanBong s " +
+	           "WHERE (:loaiSan IS NULL OR s.loaiSan LIKE %:loaiSan%) " +
+	           "AND (:khuVuc IS NULL OR s.khuVuc LIKE %:khuVuc%) " +
+	           "AND (s.trangThai IS NULL OR LOWER(s.trangThai) LIKE '%hoạt động%')")
+	    List<SanBong> timSanTheoDieuKien(String loaiSan, String khuVuc);
     /** 🏟️ Lọc sân theo loại, trạng thái và khung giờ hoạt động */
     @Query("""
         SELECT s FROM SanBong s

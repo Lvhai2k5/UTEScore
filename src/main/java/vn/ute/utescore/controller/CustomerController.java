@@ -1,7 +1,6 @@
 package vn.ute.utescore.controller;
 
 import jakarta.servlet.http.HttpSession;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,12 +14,14 @@ import vn.ute.utescore.utils.SessionUtil;
 
 import java.io.IOException;
 import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
 
-	private final CustomerKhachHangRepository khachHangRepository;
+    private final CustomerKhachHangRepository khachHangRepository;
     private final CustomerTaiKhoanRepository taiKhoanRepository;
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -38,19 +39,22 @@ public class CustomerController {
 
         KhachHang kh = khachHangRepository.findByEmail(email).orElse(null);
         if (kh == null) return "redirect:/login";
+
         if (kh.getAnhDaiDien() != null) {
-            model.addAttribute("anhBase64",
-                    Base64.getEncoder().encodeToString(kh.getAnhDaiDien()));
+            model.addAttribute("anhBase64", Base64.getEncoder().encodeToString(kh.getAnhDaiDien()));
         }
+
         model.addAttribute("khachHang", kh);
         model.addAttribute("pageTitle", "Trang chủ khách hàng");
         return "customer/home";
     }
+
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "guest/index"; // về trang index khách
+        return "guest/index";
     }
+
     // 👤 Trang tài khoản cá nhân
     @GetMapping("/account")
     public String account(Model model, HttpSession session) {
@@ -61,8 +65,7 @@ public class CustomerController {
         if (kh == null) return "redirect:/login";
 
         if (kh.getAnhDaiDien() != null) {
-            model.addAttribute("anhBase64",
-                    Base64.getEncoder().encodeToString(kh.getAnhDaiDien()));
+            model.addAttribute("anhBase64", Base64.getEncoder().encodeToString(kh.getAnhDaiDien()));
         }
 
         model.addAttribute("khachHang", kh);
@@ -70,7 +73,7 @@ public class CustomerController {
         return "customer/account";
     }
 
-    // 💾 Cập nhật thông tin cá nhân
+    // 💾 Cập nhật thông tin cá nhân (form thường)
     @PostMapping("/account/update")
     public String updateAccount(@RequestParam("HoTen") String hoTen,
                                 @RequestParam("SoDienThoai") String soDienThoai,
@@ -83,56 +86,47 @@ public class CustomerController {
         KhachHang kh = khachHangRepository.findByEmail(email).orElse(null);
         if (kh == null) return "redirect:/login";
 
-        // 🧠 Regex kiểm tra họ tên tiếng Việt: chỉ cho phép chữ, dấu, khoảng trắng
         String hoTenPattern = "^[A-Za-zÀ-Ỹà-ỹĂăÂâÊêÔôƠơƯưĐđ\\s]{2,50}$";
 
-        // 🧩 Kiểm tra dữ liệu đầu vào
         if (hoTen == null || hoTen.trim().isEmpty()) {
             model.addAttribute("errorMessage", "⚠️ Họ tên không được để trống!");
         } else if (!hoTen.trim().matches(hoTenPattern)) {
-            model.addAttribute("errorMessage", "⚠️ Họ tên không hợp lệ! (Chỉ chứa chữ cái, có thể có dấu và khoảng trắng)");
+            model.addAttribute("errorMessage", "⚠️ Họ tên không hợp lệ (chỉ chứa chữ cái và khoảng trắng)!");
         } else if (soDienThoai == null || soDienThoai.trim().isEmpty()) {
             model.addAttribute("errorMessage", "⚠️ Số điện thoại không được để trống!");
         } else if (!soDienThoai.matches("^0\\d{9,10}$")) {
-            model.addAttribute("errorMessage", "⚠️ Số điện thoại không hợp lệ! (Phải bắt đầu bằng 0 và có 10–11 số)");
+            model.addAttribute("errorMessage", "⚠️ Số điện thoại không hợp lệ (bắt đầu bằng 0 và có 10–11 số)!");
         } else {
             try {
                 kh.setHoTen(hoTen.trim());
                 kh.setSoDienThoai(soDienThoai.trim());
 
-                // 🖼️ Kiểm tra file ảnh (nếu có)
                 if (file != null && !file.isEmpty()) {
-                    String contentType = file.getContentType();
-                    if (contentType == null || 
-                        !(contentType.equals("image/jpeg") || contentType.equals("image/png"))) {
-                        model.addAttribute("errorMessage", "⚠️ Ảnh đại diện chỉ chấp nhận định dạng JPG hoặc PNG!");
-                    } else {
+                    String type = file.getContentType();
+                    if (type != null && (type.equals("image/jpeg") || type.equals("image/png"))) {
                         kh.setAnhDaiDien(file.getBytes());
-                        model.addAttribute("successMessage", "✅ Cập nhật thông tin và ảnh đại diện thành công!");
+                    } else {
+                        model.addAttribute("errorMessage", "⚠️ Ảnh đại diện chỉ chấp nhận định dạng JPG hoặc PNG!");
                     }
-                } else {
-                    model.addAttribute("successMessage", "✅ Cập nhật thông tin thành công!");
                 }
 
                 khachHangRepository.save(kh);
+                model.addAttribute("successMessage", "✅ Cập nhật thông tin thành công!");
 
             } catch (IOException e) {
-                model.addAttribute("errorMessage", "⚠️ Lỗi khi tải ảnh: " + e.getMessage());
+                model.addAttribute("errorMessage", "❌ Lỗi khi tải ảnh: " + e.getMessage());
             }
         }
 
-        // 📸 Gửi lại ảnh để hiển thị
-        if (kh.getAnhDaiDien() != null) {
-            model.addAttribute("anhBase64",
-                    Base64.getEncoder().encodeToString(kh.getAnhDaiDien()));
-        }
+        if (kh.getAnhDaiDien() != null)
+            model.addAttribute("anhBase64", Base64.getEncoder().encodeToString(kh.getAnhDaiDien()));
 
         model.addAttribute("khachHang", kh);
         model.addAttribute("pageTitle", "Tài khoản cá nhân");
         return "customer/account";
     }
 
-    // 🔒 Đổi mật khẩu
+    // 🔒 Đổi mật khẩu (form thường)
     @PostMapping("/account/change-password")
     public String changePassword(@RequestParam("oldPassword") String oldPassword,
                                  @RequestParam("newPassword") String newPassword,
@@ -147,8 +141,10 @@ public class CustomerController {
             model.addAttribute("errorMessage", "❌ Không tìm thấy tài khoản!");
         } else if (!passwordEncoder.matches(oldPassword, tk.getMatKhau())) {
             model.addAttribute("errorMessage", "❌ Mật khẩu cũ không chính xác!");
+        } else if (newPassword.length() < 6) {
+            model.addAttribute("errorMessage", "⚠️ Mật khẩu mới phải ít nhất 6 ký tự!");
         } else if (!newPassword.equals(confirmPassword)) {
-            model.addAttribute("errorMessage", "⚠️ Mật khẩu mới và xác nhận không trùng khớp!");
+            model.addAttribute("errorMessage", "⚠️ Mật khẩu xác nhận không khớp!");
         } else {
             tk.setMatKhau(passwordEncoder.encode(newPassword));
             taiKhoanRepository.save(tk);
@@ -157,11 +153,85 @@ public class CustomerController {
 
         KhachHang kh = khachHangRepository.findByEmail(email).orElse(null);
         if (kh != null && kh.getAnhDaiDien() != null)
-            model.addAttribute("anhBase64",
-                    Base64.getEncoder().encodeToString(kh.getAnhDaiDien()));
+            model.addAttribute("anhBase64", Base64.getEncoder().encodeToString(kh.getAnhDaiDien()));
 
         model.addAttribute("khachHang", kh);
         model.addAttribute("pageTitle", "Tài khoản cá nhân");
         return "customer/account";
+    }
+
+    // =========================== AJAX ===========================
+
+    // 💾 Cập nhật thông tin cá nhân (AJAX)
+    @PostMapping("/account/update-ajax")
+    @ResponseBody
+    public Map<String, String> updateAccountAjax(
+            @RequestParam("HoTen") String hoTen,
+            @RequestParam("SoDienThoai") String soDienThoai,
+            @RequestParam(value = "anhDaiDienFile", required = false) MultipartFile file,
+            HttpSession session) {
+
+        Map<String, String> res = new HashMap<>();
+        String email = SessionUtil.getCustomerEmail(session);
+        if (email == null)
+            return Map.of("status", "error", "message", "⚠️ Phiên đăng nhập đã hết hạn!");
+
+        KhachHang kh = khachHangRepository.findByEmail(email).orElse(null);
+        if (kh == null)
+            return Map.of("status", "error", "message", "❌ Không tìm thấy khách hàng!");
+
+        String nameRegex = "^[A-Za-zÀ-Ỹà-ỹĂăÂâÊêÔôƠơƯưĐđ\\s]{2,50}$";
+        if (!hoTen.matches(nameRegex))
+            return Map.of("status", "error", "message", "⚠️ Họ tên chỉ được chứa chữ cái và khoảng trắng!");
+        if (!soDienThoai.matches("^0\\d{9,10}$"))
+            return Map.of("status", "error", "message", "⚠️ Số điện thoại không hợp lệ!");
+
+        try {
+            kh.setHoTen(hoTen.trim());
+            kh.setSoDienThoai(soDienThoai.trim());
+            if (file != null && !file.isEmpty()) {
+                String ct = file.getContentType();
+                if (ct != null && (ct.equals("image/png") || ct.equals("image/jpeg"))) {
+                    kh.setAnhDaiDien(file.getBytes());
+                } else {
+                    return Map.of("status", "error", "message", "⚠️ Ảnh chỉ chấp nhận PNG hoặc JPG!");
+                }
+            }
+            khachHangRepository.save(kh);
+            res.put("status", "success");
+            res.put("message", "✅ Cập nhật thông tin thành công!");
+        } catch (IOException e) {
+            res.put("status", "error");
+            res.put("message", "❌ Lỗi khi tải ảnh: " + e.getMessage());
+        }
+        return res;
+    }
+
+    // 🔒 Đổi mật khẩu (AJAX)
+    @PostMapping("/account/change-password-ajax")
+    @ResponseBody
+    public Map<String, String> changePasswordAjax(
+            @RequestParam("oldPassword") String oldPassword,
+            @RequestParam("newPassword") String newPassword,
+            @RequestParam("confirmPassword") String confirmPassword,
+            HttpSession session) {
+
+        String email = SessionUtil.getCustomerEmail(session);
+        if (email == null)
+            return Map.of("status", "error", "message", "⚠️ Phiên đăng nhập đã hết hạn!");
+
+        TaiKhoan tk = taiKhoanRepository.findById(email).orElse(null);
+        if (tk == null)
+            return Map.of("status", "error", "message", "❌ Không tìm thấy tài khoản!");
+        if (!passwordEncoder.matches(oldPassword, tk.getMatKhau()))
+            return Map.of("status", "error", "message", "❌ Mật khẩu cũ không chính xác!");
+        if (newPassword.length() < 6)
+            return Map.of("status", "error", "message", "⚠️ Mật khẩu mới phải ít nhất 6 ký tự!");
+        if (!newPassword.equals(confirmPassword))
+            return Map.of("status", "error", "message", "⚠️ Mật khẩu xác nhận không khớp!");
+
+        tk.setMatKhau(passwordEncoder.encode(newPassword));
+        taiKhoanRepository.save(tk);
+        return Map.of("status", "success", "message", "🔑 Đổi mật khẩu thành công!");
     }
 }
