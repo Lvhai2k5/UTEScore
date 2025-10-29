@@ -1,102 +1,280 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Danh sách sân bóng</title>
-  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <title>⚽ Danh sách Sân Bóng | UTEScore</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
       font-family: "Segoe UI", sans-serif;
-      background-color: #f8f9fa;
+      background: linear-gradient(180deg, #f9fafb 0%, #e2e8f0 100%);
       margin: 0;
       padding: 0;
     }
+
     header {
-      background-color: #1aa34a;
+      background: linear-gradient(90deg, #16a34a, #3b82f6);
       color: white;
       padding: 10px 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
+
+    header h2 {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      opacity: 0.8;
+    }
+
+    /* ===== FILTER BOX ===== */
+    .filter-box {
+      background: #ffffff;
+      border-radius: 25px;
+      padding: 40px 60px;
+      box-shadow: 0 10px 45px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
+      max-width: 1300px;
+      margin: 40px auto 20px;
+      transform: scale(1);
+    }
+
+    .filter-box:hover {
+      transform: scale(1.02);
+      box-shadow: 0 15px 60px rgba(37, 99, 235, 0.25);
+    }
+
+    label.form-label {
+      font-weight: 600;
+      color: #1e3a8a;
+      font-size: 0.95rem;
+    }
+
+    input.form-control, select.form-select {
+      border-radius: 14px;
+      border: 1px solid #cbd5e1;
+      height: 46px;
+      font-size: 0.95rem;
+      transition: all 0.25s ease;
+    }
+
+    input.form-control:focus, select.form-select:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 0.2rem rgba(59,130,246,0.25);
+    }
+
+    .time-range {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .btn-search {
+      background: linear-gradient(135deg, #16a34a, #3b82f6);
+      border: none;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 40px;
+      padding: 14px 60px;
+      box-shadow: 0 6px 25px rgba(59,130,246,0.4);
+      transition: all 0.4s ease;
+    }
+
+    .btn-search:hover {
+      background: linear-gradient(135deg, #22c55e, #2563eb);
+      transform: scale(1.05);
+      box-shadow: 0 12px 35px rgba(34,197,94,0.35);
+    }
+
+    /* ===== PITCH GRID ===== */
     .pitch-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
-      padding: 30px;
+      gap: 25px;
+      padding: 30px 50px;
     }
+
     .pitch-card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: 0.3s;
-      padding: 15px;
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
     }
-    .pitch-card:hover { transform: scale(1.02); }
+
+    .pitch-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
     .pitch-card img {
       width: 100%;
       height: 220px;
-      border-radius: 10px;
       object-fit: cover;
     }
-    .btn-book {
-      background-color: #007bff;
-      color: white;
+
+    .pitch-card h3 {
+      margin: 10px 0 5px;
+      font-weight: 700;
+      color: #1e3a8a;
+      text-align: center;
+    }
+
+    .pitch-card p {
+      font-size: 0.9rem;
+      color: #475569;
+      margin: 2px 0;
+      text-align: center;
+    }
+
+    .pitch-card .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 15px 0 10px;
+    }
+
+    .btn-detail {
+      background: #e2e8f0;
+      color: #1e293b;
       border: none;
-      border-radius: 5px;
-      padding: 10px 15px;
-      cursor: pointer;
+      border-radius: 20px;
+      padding: 8px 18px;
+      font-weight: 600;
       transition: 0.3s;
     }
-    .btn-book:hover { background-color: #0056b3; }
+
+    .btn-detail:hover {
+      background: #cbd5e1;
+    }
+
+    .btn-book {
+      background: linear-gradient(90deg, #3b82f6, #16a34a);
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 18px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn-book:hover {
+      transform: scale(1.05);
+      background: linear-gradient(90deg, #22c55e, #2563eb);
+    }
+
+    .btn-disabled {
+      background: #e5e7eb;
+      color: #6b7280;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 18px;
+      cursor: not-allowed;
+    }
   </style>
 </head>
+
 <body>
+  <!-- HEADER -->
   <header>
-  <div style="display:flex;align-items:center;gap:10px;">
-    <img th:src="@{https://res.cloudinary.com/du6x32par/image/upload/v1761411547/logo_kbhaey.jpg}" alt="Logo" style="height:50px;border-radius:5px;">
-    <h2 style="margin:0;">⚽ UTEScore</h2>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <img th:src="@{https://res.cloudinary.com/du6x32par/image/upload/v1761411547/logo_kbhaey.jpg}" 
+           alt="Logo" style="height:50px;border-radius:5px;">
+      <h2>UTEScore</h2>
+    </div>
+    <nav>
+      <a th:href="@{/}">🏠 Trang chủ</a>
+      <a th:href="@{/login}" style="background:white;color:#1aa34a;padding:6px 14px;border-radius:6px;">
+        🔑 Đăng nhập
+      </a>
+    </nav>
+  </header>
+
+  <!-- BỘ LỌC -->
+  <form class="filter-box" th:action="@{/pitches}" method="post">
+    <div class="row g-4 justify-content-center text-center">
+      <div class="col-lg-3 col-md-6">
+        <label class="form-label">Từ khóa</label>
+        <input type="text" name="keyword" class="form-control" placeholder="Tên sân hoặc khu vực" th:value="${keyword}">
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <label class="form-label">Loại sân</label>
+        <select class="form-select" name="loaiSan">
+          <option value="">Tất cả</option>
+          <option value="5 người" th:selected="${loaiSan == '5 người'}">5 người</option>
+          <option value="7 người" th:selected="${loaiSan == '7 người'}">7 người</option>
+          <option value="11 người" th:selected="${loaiSan == '11 người'}">11 người</option>
+        </select>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <label class="form-label">Trạng thái</label>
+        <select class="form-select" name="trangThai">
+          <option value="">Tất cả</option>
+          <option value="HoatDong" th:selected="${trangThai == 'HoatDong'}">Hoạt động</option>
+          <option value="Bảo trì" th:selected="${trangThai == 'Bảo trì'}">Bảo trì</option>
+          <option value="Ngưng sử dụng" th:selected="${trangThai == 'Ngưng sử dụng'}">Ngưng sử dụng</option>
+        </select>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <label class="form-label">Giờ đá</label>
+        <div class="time-range">
+          <input type="time" name="gioBatDau" class="form-control w-auto text-center" th:value="${gioBatDau}">
+          <span class="mx-2">⟶</span>
+          <input type="time" name="gioKetThuc" class="form-control w-auto text-center" th:value="${gioKetThuc}">
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <button type="submit" class="btn-search">🔍 Tìm kiếm</button>
+    </div>
+  </form>
+
+  <!-- DANH SÁCH SÂN -->
+  <div class="pitch-grid" th:if="${!#lists.isEmpty(pitches)}">
+    <div th:each="p : ${pitches}" class="pitch-card">
+      <img th:src="${p.hinhAnh}" alt="Ảnh sân">
+      <h3 th:text="${p.tenSan}">Sân A1</h3>
+      <p>📍 <b>Khu vực:</b> <span th:text="${p.diaChi}">Khu vực A</span></p>
+      <p>👥 <b>Loại sân:</b> <span th:text="${p.loaiSan}">5 người</span></p>
+      <p>🕒 <b>Khung giờ trống:</b> <span th:text="${p.khungGioConTrong}">06:00 - 22:00</span></p>
+
+      <div class="btn-group">
+        <a th:href="@{'/pitches/' + ${p.sanId}}" class="btn-detail">🔍 Chi tiết</a>
+        <a th:href="@{'/pitches/' + ${p.sanId} + '/reviews'}" class="btn-detail">⭐ Đánh giá</a>
+        <button class="btn-book" onclick="redirectToLogin()">⚽ Đặt sân</button>
+      </div>
+    </div>
   </div>
 
-  <nav style="display:flex;gap:25px;">
-    <a th:href="@{/}" style="color:white;text-decoration:none;">🏠 Trang chủ</a>
-   
-    <a th:href="@{/login}" style="background:white;color:#1aa34a;padding:6px 14px;border-radius:6px;text-decoration:none;">🔑 Đăng nhập</a>
-  </nav>
-</header>
-
-<!-- ✅ Hiển thị danh sách sân -->
-<div class="pitch-grid">
-  <div th:each="p : ${pitches}" class="pitch-card">
-    
-    <img th:src="@{${p.hinhAnh}}" class="card-img-top" alt="Sân bóng" style="height:220px;object-fit:cover;">
-    <h3 th:text="${p.tenSan}"></h3>
-    <p><b>Địa chỉ:</b> <span th:text="${p.diaChi}"></span></p>
-    <p><b>Loại sân:</b> <span th:text="${p.loaiSan}"></span></p>
-    
-    <p><b>Khung giờ trống:</b> <span th:text="${p.khungGioConTrong}"></span></p>
-
-    <div style="margin-top:10px; display:flex; gap:10px;">
-  
-  <a th:href="@{'/pitches/' + ${p.sanId}}" class="btn btn-outline-primary">
-      🔍 Chi tiết
-  </a>
-
-  <a th:href="@{'/pitches/' + ${p.sanId} + '/reviews'}" class="btn btn-link">
-      ⭐ Xem đánh giá
-  </a>
-
-  <button class="btn-book" onclick="redirectToLogin()">Đặt sân</button>
-
-</div>
-
+  <div th:if="${#lists.isEmpty(pitches)}" class="text-center text-muted mt-5">
+    <p>Không tìm thấy sân bóng phù hợp với tiêu chí tìm kiếm.</p>
   </div>
-</div>
 
-<script>
-  function redirectToLogin() {
-    window.location.href = "/login";
-  }
-</script>
+  <script>
+    function redirectToLogin() {
+      window.location.href = "/login";
+    }
+  </script>
 </body>
 </html>

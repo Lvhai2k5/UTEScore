@@ -10,7 +10,13 @@ public interface Guest_PitchService {
 
     // Thêm để dùng ở detail (tránh stream.filter ở controller)
     Guest_PitchDTO getById(Integer id);
-    
+ // Tìm kiếm / lọc sân bóng theo điều kiện
+    List<Guest_PitchDTO> searchPitches(String keyword,
+                                       String loaiSan,
+                                       String trangThai,
+                                       String gioBatDau,
+                                       String gioKetThuc);
+
    
 
 }

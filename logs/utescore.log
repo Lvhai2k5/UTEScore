@@ -13657,3 +13657,1049 @@ This generated password is for development use only. Your security configuration
 2025-10-28T22:45:00.035+07:00  INFO 19016 --- [UTEScore] [MessageBroker-5] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 22:45:00.035744200
 2025-10-28T22:46:00.033+07:00 DEBUG 19016 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
 2025-10-28T22:46:00.034+07:00  INFO 19016 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 22:46:00.034058
+2025-10-29T14:14:27.196+07:00  INFO 13648 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Starting UteScoreApplication using Java 22.0.2 with PID 13648 (C:\Users\HP\UTEScore\target\classes started by HP in C:\Users\HP\UTEScore)
+2025-10-29T14:14:27.198+07:00 DEBUG 13648 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Running with Spring Boot v3.5.6, Spring v6.2.11
+2025-10-29T14:14:27.200+07:00  INFO 13648 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-10-29T14:14:28.088+07:00  INFO 13648 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-29T14:14:28.280+07:00  INFO 13648 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 182 ms. Found 41 JPA repository interfaces.
+2025-10-29T14:14:28.858+07:00  INFO 13648 --- [UTEScore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8089 (http)
+2025-10-29T14:14:28.869+07:00  INFO 13648 --- [UTEScore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-29T14:14:28.870+07:00  INFO 13648 --- [UTEScore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-29T14:14:28.924+07:00  INFO 13648 --- [UTEScore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-29T14:14:28.925+07:00  INFO 13648 --- [UTEScore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1679 ms
+2025-10-29T14:14:29.122+07:00  INFO 13648 --- [UTEScore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-29T14:14:29.168+07:00  INFO 13648 --- [UTEScore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-10-29T14:14:29.198+07:00  INFO 13648 --- [UTEScore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-29T14:14:29.443+07:00  INFO 13648 --- [UTEScore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-29T14:14:29.473+07:00  INFO 13648 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-29T14:14:29.806+07:00  INFO 13648 --- [UTEScore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: e89d2a7f-cdb8-4067-a283-cfbb8401565c
+2025-10-29T14:14:29.809+07:00  INFO 13648 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-29T14:14:29.927+07:00  WARN 13648 --- [UTEScore] [main] org.hibernate.orm.deprecation            : HHH90000025: SQLServerDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-29T14:14:29.946+07:00  INFO 13648 --- [UTEScore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-29T14:14:30.393+07:00  WARN 13648 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.TinhNangSanId
+2025-10-29T14:14:30.394+07:00  WARN 13648 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.TinhNangSanId
+2025-10-29T14:14:30.397+07:00  WARN 13648 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T14:14:30.397+07:00  WARN 13648 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T14:14:30.398+07:00  WARN 13648 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T14:14:30.399+07:00  WARN 13648 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T14:14:31.279+07:00  INFO 13648 --- [UTEScore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-29T14:14:31.282+07:00  INFO 13648 --- [UTEScore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-29T14:14:31.559+07:00  INFO 13648 --- [UTEScore] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-29T14:14:35.273+07:00  WARN 13648 --- [UTEScore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-29T14:14:35.535+07:00  WARN 13648 --- [UTEScore] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 5d48e5f9-4077-4e42-b2cd-2e89341020fd
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-10-29T14:14:35.541+07:00  INFO 13648 --- [UTEScore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-10-29T14:14:35.873+07:00  INFO 13648 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2025-10-29T14:14:35.873+07:00  INFO 13648 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@366d7033]]
+2025-10-29T14:14:35.874+07:00  INFO 13648 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2025-10-29T14:14:35.890+07:00  INFO 13648 --- [UTEScore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8089 (http) with context path '/'
+2025-10-29T14:14:35.901+07:00  INFO 13648 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Started UteScoreApplication in 9.163 seconds (process running for 9.824)
+2025-10-29T14:14:39.410+07:00  INFO 13648 --- [UTEScore] [http-nio-8089-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-29T14:14:39.410+07:00  INFO 13648 --- [UTEScore] [http-nio-8089-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-29T14:14:39.422+07:00  INFO 13648 --- [UTEScore] [http-nio-8089-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 12 ms
+2025-10-29T14:14:43.942+07:00  INFO 13648 --- [UTEScore] [http-nio-8089-exec-5] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-29T14:14:43.972+07:00  INFO 13648 --- [UTEScore] [http-nio-8089-exec-5] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 5
+2025-10-29T14:15:00.108+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:15:00.112+07:00  INFO 13648 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:15:00.112360100
+2025-10-29T14:15:35.905+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 1, completed tasks = 1]
+2025-10-29T14:16:00.050+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:16:00.056+07:00  INFO 13648 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:16:00.056047700
+2025-10-29T14:17:00.052+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:17:00.055+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:17:00.055281900
+2025-10-29T14:18:00.066+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-3] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:18:00.072+07:00  INFO 13648 --- [UTEScore] [MessageBroker-3] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:18:00.072749100
+2025-10-29T14:19:00.040+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-5] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:19:00.041+07:00  INFO 13648 --- [UTEScore] [MessageBroker-5] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:19:00.041104
+2025-10-29T14:20:00.037+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:20:00.040+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:20:00.040653400
+2025-10-29T14:21:00.041+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:21:00.041+07:00  INFO 13648 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:21:00.041541700
+2025-10-29T14:22:00.143+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-7] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:22:00.152+07:00  INFO 13648 --- [UTEScore] [MessageBroker-7] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:22:00.152274800
+2025-10-29T14:23:00.145+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-5] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:23:00.149+07:00  INFO 13648 --- [UTEScore] [MessageBroker-5] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:23:00.149566700
+2025-10-29T14:24:00.032+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-6] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:24:00.035+07:00  INFO 13648 --- [UTEScore] [MessageBroker-6] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:24:00.035419400
+2025-10-29T14:25:00.069+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:25:00.069+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:25:00.069131600
+2025-10-29T14:26:00.059+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:26:00.064+07:00  INFO 13648 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:26:00.064245500
+2025-10-29T14:27:00.053+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-4] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:27:00.057+07:00  INFO 13648 --- [UTEScore] [MessageBroker-4] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:27:00.057243800
+2025-10-29T14:28:00.061+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:28:00.061+07:00  INFO 13648 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:28:00.061314100
+2025-10-29T14:29:00.069+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:29:00.073+07:00  INFO 13648 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:29:00.073805300
+2025-10-29T14:30:00.048+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:30:00.050+07:00  INFO 13648 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:30:00.050140100
+2025-10-29T14:31:00.050+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:31:00.053+07:00  INFO 13648 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:31:00.053889500
+2025-10-29T14:32:00.043+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:32:00.045+07:00  INFO 13648 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:32:00.045683400
+2025-10-29T14:33:00.046+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:33:00.048+07:00  INFO 13648 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:33:00.048836800
+2025-10-29T14:34:00.048+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-15] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:34:00.060+07:00  INFO 13648 --- [UTEScore] [MessageBroker-15] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:34:00.060116300
+2025-10-29T14:35:00.063+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-15] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:35:00.063+07:00  INFO 13648 --- [UTEScore] [MessageBroker-15] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:35:00.063578800
+2025-10-29T14:36:00.067+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-15] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:36:00.067+07:00  INFO 13648 --- [UTEScore] [MessageBroker-15] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:36:00.067948900
+2025-10-29T14:37:00.061+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-15] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:37:00.061+07:00  INFO 13648 --- [UTEScore] [MessageBroker-15] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:37:00.061184900
+2025-10-29T14:38:00.059+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-15] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:38:00.059+07:00  INFO 13648 --- [UTEScore] [MessageBroker-15] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:38:00.059586400
+2025-10-29T14:39:00.062+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-15] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:39:00.065+07:00  INFO 13648 --- [UTEScore] [MessageBroker-15] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:39:00.065843200
+2025-10-29T14:40:00.037+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-15] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:40:00.041+07:00  INFO 13648 --- [UTEScore] [MessageBroker-15] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:40:00.041629500
+2025-10-29T14:41:00.054+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-15] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:41:00.056+07:00  INFO 13648 --- [UTEScore] [MessageBroker-15] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:41:00.056228800
+2025-10-29T14:42:00.046+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-15] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:42:00.049+07:00  INFO 13648 --- [UTEScore] [MessageBroker-15] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:42:00.049292900
+2025-10-29T14:43:00.052+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-15] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:43:00.055+07:00  INFO 13648 --- [UTEScore] [MessageBroker-15] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:43:00.055104
+2025-10-29T14:44:00.052+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-15] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:44:00.054+07:00  INFO 13648 --- [UTEScore] [MessageBroker-15] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:44:00.054737400
+2025-10-29T14:45:00.055+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-15] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:45:00.060+07:00  INFO 13648 --- [UTEScore] [MessageBroker-15] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:45:00.060201300
+2025-10-29T14:45:35.926+07:00  INFO 13648 --- [UTEScore] [MessageBroker-11] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 16, active threads = 1, queued tasks = 1, completed tasks = 32]
+2025-10-29T14:46:00.047+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-6] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:46:00.051+07:00  INFO 13648 --- [UTEScore] [MessageBroker-6] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:46:00.051735100
+2025-10-29T14:47:00.056+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-14] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:47:00.060+07:00  INFO 13648 --- [UTEScore] [MessageBroker-14] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:47:00.060667800
+2025-10-29T14:48:00.049+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-14] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:48:00.056+07:00  INFO 13648 --- [UTEScore] [MessageBroker-14] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:48:00.056019500
+2025-10-29T14:49:00.050+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-14] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:49:00.054+07:00  INFO 13648 --- [UTEScore] [MessageBroker-14] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:49:00.054377100
+2025-10-29T14:50:00.043+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-14] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:50:00.047+07:00  INFO 13648 --- [UTEScore] [MessageBroker-14] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:50:00.045914500
+2025-10-29T14:51:00.022+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-14] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:51:00.025+07:00  INFO 13648 --- [UTEScore] [MessageBroker-14] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:51:00.025779500
+2025-10-29T14:52:00.038+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-14] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:52:00.041+07:00  INFO 13648 --- [UTEScore] [MessageBroker-14] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:52:00.041493100
+2025-10-29T14:53:00.017+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-14] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:53:00.020+07:00  INFO 13648 --- [UTEScore] [MessageBroker-14] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:53:00.020068600
+2025-10-29T14:54:00.045+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-14] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:54:00.047+07:00  INFO 13648 --- [UTEScore] [MessageBroker-14] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:54:00.047720300
+2025-10-29T14:55:00.042+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:55:00.045+07:00  INFO 13648 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:55:00.045565800
+2025-10-29T14:56:00.050+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:56:00.054+07:00  INFO 13648 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:56:00.054771500
+2025-10-29T14:57:00.039+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:57:00.042+07:00  INFO 13648 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:57:00.042894400
+2025-10-29T14:58:00.038+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:58:00.038+07:00  INFO 13648 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:58:00.038135300
+2025-10-29T14:59:00.046+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T14:59:00.049+07:00  INFO 13648 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 14:59:00.049011600
+2025-10-29T15:00:00.051+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:00:00.062+07:00  INFO 13648 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:00:00.062415600
+2025-10-29T15:01:00.033+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:01:00.037+07:00  INFO 13648 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:01:00.037458800
+2025-10-29T15:02:00.051+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:02:00.053+07:00  INFO 13648 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:02:00.053531600
+2025-10-29T15:03:00.059+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-7] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:03:00.059+07:00  INFO 13648 --- [UTEScore] [MessageBroker-7] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:03:00.059366300
+2025-10-29T15:04:00.058+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-7] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:04:00.058+07:00  INFO 13648 --- [UTEScore] [MessageBroker-7] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:04:00.058484500
+2025-10-29T15:05:00.030+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-7] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:05:00.032+07:00  INFO 13648 --- [UTEScore] [MessageBroker-7] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:05:00.032012300
+2025-10-29T15:06:00.032+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-4] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:06:00.034+07:00  INFO 13648 --- [UTEScore] [MessageBroker-4] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:06:00.034993700
+2025-10-29T15:07:00.053+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-4] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:07:00.055+07:00  INFO 13648 --- [UTEScore] [MessageBroker-4] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:07:00.055054
+2025-10-29T15:08:00.042+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-4] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:08:00.045+07:00  INFO 13648 --- [UTEScore] [MessageBroker-4] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:08:00.045181500
+2025-10-29T15:09:00.025+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-4] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:09:00.028+07:00  INFO 13648 --- [UTEScore] [MessageBroker-4] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:09:00.028503900
+2025-10-29T15:10:00.034+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-4] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:10:00.037+07:00  INFO 13648 --- [UTEScore] [MessageBroker-4] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:10:00.037540400
+2025-10-29T15:11:00.050+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-4] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:11:00.050+07:00  INFO 13648 --- [UTEScore] [MessageBroker-4] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:11:00.050694100
+2025-10-29T15:12:00.057+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-4] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:12:00.069+07:00  INFO 13648 --- [UTEScore] [MessageBroker-4] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:12:00.069367300
+2025-10-29T15:13:00.060+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-4] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:13:00.062+07:00  INFO 13648 --- [UTEScore] [MessageBroker-4] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:13:00.062102
+2025-10-29T15:14:00.053+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-4] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:14:00.053+07:00  INFO 13648 --- [UTEScore] [MessageBroker-4] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:14:00.053972100
+2025-10-29T15:15:00.034+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-4] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:15:00.036+07:00  INFO 13648 --- [UTEScore] [MessageBroker-4] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:15:00.036815300
+2025-10-29T15:15:35.940+07:00  INFO 13648 --- [UTEScore] [MessageBroker-12] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 16, active threads = 1, queued tasks = 1, completed tasks = 63]
+2025-10-29T15:16:00.048+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:16:00.048+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:16:00.048297200
+2025-10-29T15:16:29.796+07:00  INFO 13648 --- [UTEScore] [http-nio-8089-exec-5] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-29T15:16:29.818+07:00  INFO 13648 --- [UTEScore] [http-nio-8089-exec-5] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 5
+2025-10-29T15:17:00.046+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:17:00.050+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:17:00.050366
+2025-10-29T15:18:00.035+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:18:00.037+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:18:00.037805200
+2025-10-29T15:19:00.051+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:19:00.053+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:19:00.053971
+2025-10-29T15:20:00.032+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:20:00.036+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:20:00.036142600
+2025-10-29T15:21:00.060+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:21:00.064+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:21:00.064420300
+2025-10-29T15:22:00.058+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:22:00.063+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:22:00.063852800
+2025-10-29T15:23:00.041+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:23:00.043+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:23:00.043721500
+2025-10-29T15:24:00.047+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:24:00.048+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:24:00.048981300
+2025-10-29T15:25:00.063+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:25:00.066+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:25:00.066729
+2025-10-29T15:26:00.053+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:26:00.055+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:26:00.055687400
+2025-10-29T15:27:00.023+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:27:00.023+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:27:00.023251300
+2025-10-29T15:28:00.049+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:28:00.053+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:28:00.053122900
+2025-10-29T15:29:00.030+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:29:00.032+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:29:00.032428100
+2025-10-29T15:30:00.042+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:30:00.042+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:30:00.042380500
+2025-10-29T15:31:00.055+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:31:00.058+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:31:00.058705600
+2025-10-29T15:32:00.043+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:32:00.046+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:32:00.046244400
+2025-10-29T15:33:00.034+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:33:00.037+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:33:00.037042900
+2025-10-29T15:34:00.041+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:34:00.044+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:34:00.044620700
+2025-10-29T15:35:00.034+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:35:00.034+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:35:00.034359700
+2025-10-29T15:36:00.058+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:36:00.058+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:36:00.058671500
+2025-10-29T15:37:00.057+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:37:00.058+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:37:00.058145200
+2025-10-29T15:38:00.047+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:38:00.050+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:38:00.050415300
+2025-10-29T15:39:00.021+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:39:00.023+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:39:00.023487700
+2025-10-29T15:40:00.046+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:40:00.048+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:40:00.048359800
+2025-10-29T15:41:00.041+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:41:00.046+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:41:00.046251100
+2025-10-29T15:42:00.057+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:42:00.057+07:00  INFO 13648 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:42:00.057684600
+2025-10-29T15:43:00.045+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-7] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:43:00.047+07:00  INFO 13648 --- [UTEScore] [MessageBroker-7] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:43:00.047889700
+2025-10-29T15:44:00.027+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-7] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:44:00.028+07:00  INFO 13648 --- [UTEScore] [MessageBroker-7] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:44:00.028438500
+2025-10-29T15:45:00.035+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-7] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:45:00.037+07:00  INFO 13648 --- [UTEScore] [MessageBroker-7] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:45:00.037604
+2025-10-29T15:45:35.943+07:00  INFO 13648 --- [UTEScore] [MessageBroker-14] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 16, active threads = 1, queued tasks = 1, completed tasks = 94]
+2025-10-29T15:46:00.042+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:46:00.044+07:00  INFO 13648 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:46:00.044945200
+2025-10-29T15:47:00.042+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:47:00.057+07:00  INFO 13648 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:47:00.057474100
+2025-10-29T15:48:00.045+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:48:00.047+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:48:00.047545100
+2025-10-29T15:49:00.021+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:49:00.024+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:49:00.024476100
+2025-10-29T15:50:00.024+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:50:00.025+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:50:00.025936500
+2025-10-29T15:51:00.025+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:51:00.041+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:51:00.041870900
+2025-10-29T15:52:00.041+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:52:00.044+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:52:00.044332800
+2025-10-29T15:53:00.032+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:53:00.032+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:53:00.032246500
+2025-10-29T15:54:00.040+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:54:00.042+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:54:00.042786800
+2025-10-29T15:55:00.037+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:55:00.039+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:55:00.039714900
+2025-10-29T15:56:00.039+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:56:00.041+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:56:00.041967100
+2025-10-29T15:57:00.048+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:57:00.051+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:57:00.051374700
+2025-10-29T15:58:00.046+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:58:00.048+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:58:00.048455100
+2025-10-29T15:59:00.033+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T15:59:00.034+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 15:59:00.034853200
+2025-10-29T16:00:00.054+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:00:00.058+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:00:00.058159900
+2025-10-29T16:01:00.046+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:01:00.048+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:01:00.048440300
+2025-10-29T16:02:00.034+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:02:00.042+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:02:00.042192900
+2025-10-29T16:03:00.031+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:03:00.034+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:03:00.034583900
+2025-10-29T16:04:00.045+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:04:00.047+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:04:00.047456100
+2025-10-29T16:05:00.032+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:05:00.037+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:05:00.036861900
+2025-10-29T16:06:00.045+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:06:00.047+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:06:00.047206
+2025-10-29T16:07:00.034+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:07:00.036+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:07:00.036284600
+2025-10-29T16:08:00.019+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:08:00.023+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:08:00.023352300
+2025-10-29T16:09:00.024+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:09:00.029+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:09:00.029004600
+2025-10-29T16:10:00.029+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:10:00.034+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:10:00.034174
+2025-10-29T16:11:00.040+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:11:00.040+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:11:00.040315400
+2025-10-29T16:12:00.026+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:12:00.042+07:00  INFO 13648 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:12:00.042634600
+2025-10-29T16:13:00.047+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:13:00.051+07:00  INFO 13648 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:13:00.051509700
+2025-10-29T16:14:00.036+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:14:00.038+07:00  INFO 13648 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:14:00.038449
+2025-10-29T16:15:00.021+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:15:00.026+07:00  INFO 13648 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:15:00.026384400
+2025-10-29T16:15:35.957+07:00  INFO 13648 --- [UTEScore] [MessageBroker-6] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 16, active threads = 1, queued tasks = 1, completed tasks = 125]
+2025-10-29T16:16:00.040+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:16:00.040+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:16:00.040102500
+2025-10-29T16:17:00.043+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:17:00.045+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:17:00.045995700
+2025-10-29T16:18:00.035+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:18:00.038+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:18:00.038390500
+2025-10-29T16:19:00.036+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:19:00.039+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:19:00.039640300
+2025-10-29T16:20:00.037+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:20:00.039+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:20:00.039225400
+2025-10-29T16:21:00.037+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:21:00.039+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:21:00.039401
+2025-10-29T16:22:00.038+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:22:00.041+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:22:00.041334600
+2025-10-29T16:23:00.093+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:23:00.096+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:23:00.096065300
+2025-10-29T16:24:00.030+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:24:00.035+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:24:00.035032
+2025-10-29T16:25:00.043+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:25:00.046+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:25:00.046388
+2025-10-29T16:26:00.035+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:26:00.043+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:26:00.043182500
+2025-10-29T16:27:00.045+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:27:00.048+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:27:00.048203400
+2025-10-29T16:28:00.037+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:28:00.041+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:28:00.041660800
+2025-10-29T16:29:00.059+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:29:00.059+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:29:00.059034800
+2025-10-29T16:30:00.042+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:30:00.045+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:30:00.045197900
+2025-10-29T16:31:00.043+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:31:00.045+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:31:00.045925
+2025-10-29T16:32:00.036+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:32:00.039+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:32:00.039068100
+2025-10-29T16:33:00.037+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:33:00.039+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:33:00.039995500
+2025-10-29T16:34:00.031+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:34:00.033+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:34:00.033049900
+2025-10-29T16:35:00.036+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:35:00.039+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:35:00.039075800
+2025-10-29T16:36:00.031+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:36:00.034+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:36:00.034989300
+2025-10-29T16:37:00.041+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:37:00.041+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:37:00.041287700
+2025-10-29T16:38:00.042+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:38:00.044+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:38:00.044999700
+2025-10-29T16:39:00.035+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:39:00.046+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:39:00.046124700
+2025-10-29T16:40:00.037+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:40:00.039+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:40:00.039810800
+2025-10-29T16:41:00.021+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:41:00.021+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:41:00.021352200
+2025-10-29T16:42:00.042+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:42:00.042+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:42:00.042650400
+2025-10-29T16:43:00.036+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:43:00.043+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:43:00.043724300
+2025-10-29T16:44:00.043+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:44:00.043+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:44:00.043843600
+2025-10-29T16:45:00.027+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:45:00.027+07:00  INFO 13648 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:45:00.027793400
+2025-10-29T16:45:35.962+07:00  INFO 13648 --- [UTEScore] [MessageBroker-8] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 16, active threads = 1, queued tasks = 1, completed tasks = 156]
+2025-10-29T16:46:00.053+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-14] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:46:00.053+07:00  INFO 13648 --- [UTEScore] [MessageBroker-14] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:46:00.053895200
+2025-10-29T16:47:00.041+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-14] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:47:00.045+07:00  INFO 13648 --- [UTEScore] [MessageBroker-14] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:47:00.045785600
+2025-10-29T16:48:00.046+07:00 DEBUG 13648 --- [UTEScore] [MessageBroker-14] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T16:48:00.046+07:00  INFO 13648 --- [UTEScore] [MessageBroker-14] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 16:48:00.046684900
+2025-10-29T16:48:29.503+07:00  INFO 13648 --- [UTEScore] [RMI TCP Connection(162)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2025-10-29T16:48:29.507+07:00  INFO 13648 --- [UTEScore] [RMI TCP Connection(162)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-29T16:48:29.535+07:00  INFO 13648 --- [UTEScore] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-29T16:48:29.543+07:00  INFO 13648 --- [UTEScore] [RMI TCP Connection(162)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2025-10-29T16:48:29.543+07:00  INFO 13648 --- [UTEScore] [RMI TCP Connection(162)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@366d7033]]
+2025-10-29T16:48:29.544+07:00  INFO 13648 --- [UTEScore] [RMI TCP Connection(162)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2025-10-29T16:48:29.570+07:00  INFO 13648 --- [UTEScore] [RMI TCP Connection(162)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-29T16:48:29.578+07:00  INFO 13648 --- [UTEScore] [RMI TCP Connection(162)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-29T16:48:29.590+07:00  INFO 13648 --- [UTEScore] [RMI TCP Connection(162)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-29T17:17:35.177+07:00  INFO 29364 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Starting UteScoreApplication using Java 22.0.2 with PID 29364 (C:\Users\HP\UTEScore\target\classes started by HP in C:\Users\HP\UTEScore)
+2025-10-29T17:17:35.179+07:00 DEBUG 29364 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Running with Spring Boot v3.5.6, Spring v6.2.11
+2025-10-29T17:17:35.180+07:00  INFO 29364 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-10-29T17:17:35.890+07:00  INFO 29364 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-29T17:17:36.007+07:00  INFO 29364 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 109 ms. Found 41 JPA repository interfaces.
+2025-10-29T17:17:36.633+07:00  INFO 29364 --- [UTEScore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8089 (http)
+2025-10-29T17:17:36.645+07:00  INFO 29364 --- [UTEScore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-29T17:17:36.646+07:00  INFO 29364 --- [UTEScore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-29T17:17:36.695+07:00  INFO 29364 --- [UTEScore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-29T17:17:36.695+07:00  INFO 29364 --- [UTEScore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1474 ms
+2025-10-29T17:17:36.893+07:00  INFO 29364 --- [UTEScore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-29T17:17:36.930+07:00  INFO 29364 --- [UTEScore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-10-29T17:17:36.955+07:00  INFO 29364 --- [UTEScore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-29T17:17:37.204+07:00  INFO 29364 --- [UTEScore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-29T17:17:37.229+07:00  INFO 29364 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-29T17:17:37.490+07:00  INFO 29364 --- [UTEScore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: 1f546552-07d8-48b3-b668-1b50631604f4
+2025-10-29T17:17:37.492+07:00  INFO 29364 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-29T17:17:37.572+07:00  WARN 29364 --- [UTEScore] [main] org.hibernate.orm.deprecation            : HHH90000025: SQLServerDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-29T17:17:37.592+07:00  INFO 29364 --- [UTEScore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-29T17:17:37.980+07:00  WARN 29364 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.TinhNangSanId
+2025-10-29T17:17:37.980+07:00  WARN 29364 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.TinhNangSanId
+2025-10-29T17:17:37.982+07:00  WARN 29364 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T17:17:37.982+07:00  WARN 29364 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T17:17:37.983+07:00  WARN 29364 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T17:17:37.983+07:00  WARN 29364 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T17:17:38.735+07:00  INFO 29364 --- [UTEScore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-29T17:17:38.738+07:00  INFO 29364 --- [UTEScore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-29T17:17:39.018+07:00  INFO 29364 --- [UTEScore] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-29T17:17:42.468+07:00  WARN 29364 --- [UTEScore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-29T17:17:42.685+07:00  WARN 29364 --- [UTEScore] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: a7e3adb8-46a5-4167-b82d-1a5c2c25aedd
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-10-29T17:17:42.690+07:00  INFO 29364 --- [UTEScore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-10-29T17:17:43.027+07:00  INFO 29364 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2025-10-29T17:17:43.028+07:00  INFO 29364 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@5d95aeb9]]
+2025-10-29T17:17:43.028+07:00  INFO 29364 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2025-10-29T17:17:43.042+07:00  INFO 29364 --- [UTEScore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8089 (http) with context path '/'
+2025-10-29T17:17:43.050+07:00  INFO 29364 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Started UteScoreApplication in 8.264 seconds (process running for 8.803)
+2025-10-29T17:17:45.443+07:00  INFO 29364 --- [UTEScore] [http-nio-8089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-29T17:17:45.443+07:00  INFO 29364 --- [UTEScore] [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-29T17:17:45.447+07:00  INFO 29364 --- [UTEScore] [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2025-10-29T17:17:47.328+07:00  INFO 29364 --- [UTEScore] [http-nio-8089-exec-4] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-29T17:17:47.342+07:00  INFO 29364 --- [UTEScore] [http-nio-8089-exec-4] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 0
+2025-10-29T17:18:00.141+07:00 DEBUG 29364 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:18:00.141+07:00  INFO 29364 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:18:00.141590900
+2025-10-29T17:18:05.199+07:00  INFO 29364 --- [UTEScore] [http-nio-8089-exec-4] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-29T17:18:05.209+07:00  INFO 29364 --- [UTEScore] [http-nio-8089-exec-4] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 0
+2025-10-29T17:18:43.020+07:00  INFO 29364 --- [UTEScore] [MessageBroker-2] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 1, completed tasks = 1]
+2025-10-29T17:18:58.826+07:00  INFO 29364 --- [UTEScore] [http-nio-8089-exec-6] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-29T17:18:58.854+07:00  INFO 29364 --- [UTEScore] [http-nio-8089-exec-6] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 0
+2025-10-29T17:18:59.525+07:00  INFO 29364 --- [UTEScore] [http-nio-8089-exec-8] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-29T17:18:59.525+07:00  INFO 29364 --- [UTEScore] [http-nio-8089-exec-8] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 0
+2025-10-29T17:18:59.671+07:00  INFO 29364 --- [UTEScore] [http-nio-8089-exec-10] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-29T17:18:59.673+07:00  INFO 29364 --- [UTEScore] [http-nio-8089-exec-10] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 0
+2025-10-29T17:19:00.042+07:00 DEBUG 29364 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:19:00.042+07:00  INFO 29364 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:19:00.042228700
+2025-10-29T17:20:00.056+07:00 DEBUG 29364 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:20:00.059+07:00  INFO 29364 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:20:00.059024700
+2025-10-29T17:21:00.056+07:00 DEBUG 29364 --- [UTEScore] [MessageBroker-3] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:21:00.058+07:00  INFO 29364 --- [UTEScore] [MessageBroker-3] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:21:00.058358700
+2025-10-29T17:21:11.430+07:00  INFO 29364 --- [UTEScore] [RMI TCP Connection(13)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2025-10-29T17:21:11.435+07:00  INFO 29364 --- [UTEScore] [RMI TCP Connection(13)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-29T17:21:11.448+07:00  INFO 29364 --- [UTEScore] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-29T17:21:11.451+07:00  INFO 29364 --- [UTEScore] [RMI TCP Connection(13)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2025-10-29T17:21:11.451+07:00  INFO 29364 --- [UTEScore] [RMI TCP Connection(13)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@5d95aeb9]]
+2025-10-29T17:21:11.451+07:00  INFO 29364 --- [UTEScore] [RMI TCP Connection(13)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2025-10-29T17:21:11.457+07:00  INFO 29364 --- [UTEScore] [RMI TCP Connection(13)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-29T17:21:11.460+07:00  INFO 29364 --- [UTEScore] [RMI TCP Connection(13)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-29T17:21:11.464+07:00  INFO 29364 --- [UTEScore] [RMI TCP Connection(13)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-29T17:21:13.659+07:00  INFO 24524 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Starting UteScoreApplication using Java 22.0.2 with PID 24524 (C:\Users\HP\UTEScore\target\classes started by HP in C:\Users\HP\UTEScore)
+2025-10-29T17:21:13.660+07:00 DEBUG 24524 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Running with Spring Boot v3.5.6, Spring v6.2.11
+2025-10-29T17:21:13.661+07:00  INFO 24524 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-10-29T17:21:14.467+07:00  INFO 24524 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-29T17:21:14.636+07:00  INFO 24524 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 159 ms. Found 41 JPA repository interfaces.
+2025-10-29T17:21:15.142+07:00  INFO 24524 --- [UTEScore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8089 (http)
+2025-10-29T17:21:15.156+07:00  INFO 24524 --- [UTEScore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-29T17:21:15.157+07:00  INFO 24524 --- [UTEScore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-29T17:21:15.204+07:00  INFO 24524 --- [UTEScore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-29T17:21:15.205+07:00  INFO 24524 --- [UTEScore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1508 ms
+2025-10-29T17:21:15.384+07:00  INFO 24524 --- [UTEScore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-29T17:21:15.426+07:00  INFO 24524 --- [UTEScore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-10-29T17:21:15.449+07:00  INFO 24524 --- [UTEScore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-29T17:21:15.699+07:00  INFO 24524 --- [UTEScore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-29T17:21:15.727+07:00  INFO 24524 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-29T17:21:16.046+07:00  INFO 24524 --- [UTEScore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: 5721f373-a549-49a6-a60d-d6995a39b44e
+2025-10-29T17:21:16.049+07:00  INFO 24524 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-29T17:21:16.168+07:00  WARN 24524 --- [UTEScore] [main] org.hibernate.orm.deprecation            : HHH90000025: SQLServerDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-29T17:21:16.191+07:00  INFO 24524 --- [UTEScore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-29T17:21:16.593+07:00  WARN 24524 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.TinhNangSanId
+2025-10-29T17:21:16.593+07:00  WARN 24524 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.TinhNangSanId
+2025-10-29T17:21:16.594+07:00  WARN 24524 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T17:21:16.594+07:00  WARN 24524 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T17:21:16.595+07:00  WARN 24524 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T17:21:16.595+07:00  WARN 24524 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T17:21:17.307+07:00  INFO 24524 --- [UTEScore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-29T17:21:17.309+07:00  INFO 24524 --- [UTEScore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-29T17:21:17.517+07:00  INFO 24524 --- [UTEScore] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-29T17:21:21.665+07:00  WARN 24524 --- [UTEScore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-29T17:21:22.015+07:00  WARN 24524 --- [UTEScore] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 9bbc2f54-ea26-44d6-a9fb-67d0e3e18a02
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-10-29T17:21:22.015+07:00  INFO 24524 --- [UTEScore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-10-29T17:21:22.642+07:00  INFO 24524 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2025-10-29T17:21:22.644+07:00  INFO 24524 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@366d7033]]
+2025-10-29T17:21:22.646+07:00  INFO 24524 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2025-10-29T17:21:22.677+07:00  INFO 24524 --- [UTEScore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8089 (http) with context path '/'
+2025-10-29T17:21:22.680+07:00  INFO 24524 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Started UteScoreApplication in 9.412 seconds (process running for 9.94)
+2025-10-29T17:21:30.057+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-29T17:21:30.057+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-29T17:21:30.059+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-10-29T17:21:31.819+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-4] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-29T17:21:31.835+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-4] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 0
+2025-10-29T17:22:00.100+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:22:00.100+07:00  INFO 24524 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:22:00.100190
+2025-10-29T17:22:22.627+07:00  INFO 24524 --- [UTEScore] [MessageBroker-2] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 1, completed tasks = 1]
+2025-10-29T17:22:22.893+07:00  WARN 24524 --- [UTEScore] [http-nio-8089-exec-1] o.s.s.c.bcrypt.BCryptPasswordEncoder     : Encoded password does not look like BCrypt
+2025-10-29T17:22:22.898+07:00 ERROR 24524 --- [UTEScore] [http-nio-8089-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: ❌ Mật khẩu không chính xác!] with root cause
+
+java.lang.RuntimeException: ❌ Mật khẩu không chính xác!
+	at vn.ute.utescore.service.impl.Guest_AuthServiceImpl.login(Guest_AuthServiceImpl.java:72) ~[classes/:na]
+	at vn.ute.utescore.controller.Guest_AuthController.login(Guest_AuthController.java:48) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.46.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.46.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319) ~[spring-security-config-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240) ~[spring-security-config-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+
+2025-10-29T17:23:00.033+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:23:00.036+07:00  INFO 24524 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:23:00.036396900
+2025-10-29T17:24:00.037+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:24:00.037+07:00  INFO 24524 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:24:00.037789700
+2025-10-29T17:24:19.662+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-3] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-29T17:24:19.674+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-3] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 0
+2025-10-29T17:25:00.065+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-3] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:25:00.069+07:00  INFO 24524 --- [UTEScore] [MessageBroker-3] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:25:00.069815300
+2025-10-29T17:25:03.348+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-4] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-29T17:25:03.372+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-4] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 1
+2025-10-29T17:25:10.942+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-8] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-29T17:25:10.951+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-8] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 1
+2025-10-29T17:25:12.990+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-3] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-29T17:25:12.995+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-3] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 1
+2025-10-29T17:25:19.575+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-5] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-29T17:25:19.584+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-5] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 1
+2025-10-29T17:26:00.042+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-5] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:26:00.042+07:00  INFO 24524 --- [UTEScore] [MessageBroker-5] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:26:00.042917800
+2025-10-29T17:26:21.453+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-10] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-29T17:26:21.483+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-10] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 12
+2025-10-29T17:27:00.064+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:27:00.064+07:00  INFO 24524 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:27:00.064113800
+2025-10-29T17:27:42.148+07:00 ERROR 24524 --- [UTEScore] [http-nio-8089-exec-6] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: ❌ Mật khẩu không chính xác!] with root cause
+
+java.lang.RuntimeException: ❌ Mật khẩu không chính xác!
+	at vn.ute.utescore.service.impl.Guest_AuthServiceImpl.login(Guest_AuthServiceImpl.java:72) ~[classes/:na]
+	at vn.ute.utescore.controller.Guest_AuthController.login(Guest_AuthController.java:48) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.46.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.46.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319) ~[spring-security-config-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240) ~[spring-security-config-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+
+2025-10-29T17:28:00.050+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:28:00.052+07:00  INFO 24524 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:28:00.052738500
+2025-10-29T17:29:00.041+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-7] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:29:00.046+07:00  INFO 24524 --- [UTEScore] [MessageBroker-7] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:29:00.046947700
+2025-10-29T17:30:00.049+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-5] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:30:00.049+07:00  INFO 24524 --- [UTEScore] [MessageBroker-5] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:30:00.049158
+2025-10-29T17:30:06.078+07:00 ERROR 24524 --- [UTEScore] [http-nio-8089-exec-10] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: ❌ Mật khẩu không chính xác!] with root cause
+
+java.lang.RuntimeException: ❌ Mật khẩu không chính xác!
+	at vn.ute.utescore.service.impl.Guest_AuthServiceImpl.login(Guest_AuthServiceImpl.java:72) ~[classes/:na]
+	at vn.ute.utescore.controller.Guest_AuthController.login(Guest_AuthController.java:48) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.46.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.46.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319) ~[spring-security-config-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267) ~[spring-webmvc-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240) ~[spring-security-config-6.5.5.jar:6.5.5]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.11.jar:6.2.11]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1776) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:975) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:493) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.46.jar:10.1.46]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+
+2025-10-29T17:31:00.027+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-6] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:31:00.042+07:00  INFO 24524 --- [UTEScore] [MessageBroker-6] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:31:00.042886500
+2025-10-29T17:31:31.915+07:00  WARN 24524 --- [UTEScore] [http-nio-8089-exec-6] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8089-exec-6][customer/home] Deprecated unwrapped fragment expression "fragments/header :: header" found in template customer/home, line 244, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T17:31:31.992+07:00  WARN 24524 --- [UTEScore] [http-nio-8089-exec-6] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8089-exec-6][customer/home] Deprecated unwrapped fragment expression "fragments/footer :: footer" found in template customer/home, line 296, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T17:32:00.039+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:32:00.039+07:00  INFO 24524 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:32:00.039451400
+2025-10-29T17:33:00.049+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:33:00.053+07:00  INFO 24524 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:33:00.053039
+2025-10-29T17:33:20.299+07:00  WARN 24524 --- [UTEScore] [http-nio-8089-exec-4] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8089-exec-4][customer/home] Deprecated unwrapped fragment expression "fragments/header :: header" found in template customer/home, line 244, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T17:33:20.303+07:00  WARN 24524 --- [UTEScore] [http-nio-8089-exec-4] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8089-exec-4][customer/home] Deprecated unwrapped fragment expression "fragments/footer :: footer" found in template customer/home, line 296, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T17:33:25.730+07:00  WARN 24524 --- [UTEScore] [http-nio-8089-exec-6] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8089-exec-6][customer/account] Deprecated unwrapped fragment expression "fragments/header :: header" found in template customer/account, line 74, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T17:33:25.743+07:00  WARN 24524 --- [UTEScore] [http-nio-8089-exec-6] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8089-exec-6][customer/account] Deprecated unwrapped fragment expression "fragments/footer :: footer" found in template customer/account, line 158, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T17:33:30.461+07:00  WARN 24524 --- [UTEScore] [http-nio-8089-exec-10] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8089-exec-10][customer/home] Deprecated unwrapped fragment expression "fragments/header :: header" found in template customer/home, line 244, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T17:33:30.464+07:00  WARN 24524 --- [UTEScore] [http-nio-8089-exec-10] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8089-exec-10][customer/home] Deprecated unwrapped fragment expression "fragments/footer :: footer" found in template customer/home, line 296, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T17:33:34.955+07:00  WARN 24524 --- [UTEScore] [http-nio-8089-exec-4] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8089-exec-4][customer/account] Deprecated unwrapped fragment expression "fragments/header :: header" found in template customer/account, line 74, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T17:33:34.964+07:00  WARN 24524 --- [UTEScore] [http-nio-8089-exec-4] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8089-exec-4][customer/account] Deprecated unwrapped fragment expression "fragments/footer :: footer" found in template customer/account, line 158, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T17:33:36.595+07:00  WARN 24524 --- [UTEScore] [http-nio-8089-exec-9] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8089-exec-9][customer/home] Deprecated unwrapped fragment expression "fragments/header :: header" found in template customer/home, line 244, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T17:33:36.600+07:00  WARN 24524 --- [UTEScore] [http-nio-8089-exec-9] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8089-exec-9][customer/home] Deprecated unwrapped fragment expression "fragments/footer :: footer" found in template customer/home, line 296, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T17:34:00.040+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-4] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:34:00.043+07:00  INFO 24524 --- [UTEScore] [MessageBroker-4] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:34:00.043014600
+2025-10-29T17:34:42.668+07:00  WARN 24524 --- [UTEScore] [http-nio-8089-exec-10] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8089-exec-10][customer/home] Deprecated unwrapped fragment expression "fragments/header :: header" found in template customer/home, line 244, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/header :: header}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T17:34:42.674+07:00  WARN 24524 --- [UTEScore] [http-nio-8089-exec-10] actStandardFragmentInsertionTagProcessor : [THYMELEAF][http-nio-8089-exec-10][customer/home] Deprecated unwrapped fragment expression "fragments/footer :: footer" found in template customer/home, line 296, col 8. Please use the complete syntax of fragment expressions instead ("~{fragments/footer :: footer}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2025-10-29T17:35:00.057+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:35:00.057+07:00  INFO 24524 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:35:00.057795100
+2025-10-29T17:36:00.053+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:36:00.057+07:00  INFO 24524 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:36:00.057679300
+2025-10-29T17:37:00.043+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:37:00.046+07:00  INFO 24524 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:37:00.046831900
+2025-10-29T17:38:00.023+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:38:00.032+07:00  INFO 24524 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:38:00.032419600
+2025-10-29T17:39:00.026+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:39:00.029+07:00  INFO 24524 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:39:00.029667900
+2025-10-29T17:40:00.028+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-8] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:40:00.028+07:00  INFO 24524 --- [UTEScore] [MessageBroker-8] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:40:00.028272300
+2025-10-29T17:41:00.031+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-12] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:41:00.034+07:00  INFO 24524 --- [UTEScore] [MessageBroker-12] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:41:00.034569900
+2025-10-29T17:42:00.028+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:42:00.028+07:00  INFO 24524 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:42:00.028990800
+2025-10-29T17:42:05.837+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-10] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-29T17:42:05.845+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-10] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 12
+2025-10-29T17:43:00.052+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-4] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:43:00.052+07:00  INFO 24524 --- [UTEScore] [MessageBroker-4] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:43:00.052902800
+2025-10-29T17:44:00.059+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-8] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:44:00.065+07:00  INFO 24524 --- [UTEScore] [MessageBroker-8] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:44:00.065508100
+2025-10-29T17:45:00.062+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-12] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:45:00.065+07:00  INFO 24524 --- [UTEScore] [MessageBroker-12] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:45:00.065129100
+2025-10-29T17:46:00.053+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-14] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:46:00.060+07:00  INFO 24524 --- [UTEScore] [MessageBroker-14] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:46:00.053708700
+2025-10-29T17:47:00.053+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-6] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:47:00.056+07:00  INFO 24524 --- [UTEScore] [MessageBroker-6] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:47:00.056430600
+2025-10-29T17:48:00.060+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-8] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:48:00.064+07:00  INFO 24524 --- [UTEScore] [MessageBroker-8] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:48:00.064710200
+2025-10-29T17:49:00.055+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:49:00.057+07:00  INFO 24524 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:49:00.057919800
+2025-10-29T17:50:00.062+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-6] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:50:00.064+07:00  INFO 24524 --- [UTEScore] [MessageBroker-6] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:50:00.064306500
+2025-10-29T17:51:00.034+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:51:00.038+07:00  INFO 24524 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:51:00.038480200
+2025-10-29T17:52:00.051+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-6] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:52:00.053+07:00  INFO 24524 --- [UTEScore] [MessageBroker-6] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:52:00.053518200
+2025-10-29T17:52:22.643+07:00  INFO 24524 --- [UTEScore] [MessageBroker-4] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 13 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(13)-CONNECTED(13)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 117], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 26], sockJsScheduler[pool size = 16, active threads = 1, queued tasks = 2, completed tasks = 205]
+2025-10-29T17:53:00.056+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:53:00.058+07:00  INFO 24524 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:53:00.058361500
+2025-10-29T17:54:00.043+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-13] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:54:00.043+07:00  INFO 24524 --- [UTEScore] [MessageBroker-13] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:54:00.043379800
+2025-10-29T17:55:00.069+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-3] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:55:00.070+07:00  INFO 24524 --- [UTEScore] [MessageBroker-3] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:55:00.070981500
+2025-10-29T17:56:00.028+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-12] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:56:00.038+07:00  INFO 24524 --- [UTEScore] [MessageBroker-12] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:56:00.038719800
+2025-10-29T17:57:00.064+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-12] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:57:00.064+07:00  INFO 24524 --- [UTEScore] [MessageBroker-12] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:57:00.064942200
+2025-10-29T17:58:00.066+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:58:00.068+07:00  INFO 24524 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:58:00.068136200
+2025-10-29T17:58:16.367+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-2] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-29T17:58:16.375+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-2] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 11
+2025-10-29T17:58:20.005+07:00  WARN 24524 --- [UTEScore] [http-nio-8089-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported]
+2025-10-29T17:58:21.416+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-1] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-29T17:58:21.420+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-1] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 11
+2025-10-29T17:59:00.051+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-15] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T17:59:00.052+07:00  INFO 24524 --- [UTEScore] [MessageBroker-15] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 17:59:00.052836600
+2025-10-29T18:00:00.059+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-9] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T18:00:00.059+07:00  INFO 24524 --- [UTEScore] [MessageBroker-9] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:00:00.059832400
+2025-10-29T18:01:00.046+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-11] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T18:01:00.048+07:00  INFO 24524 --- [UTEScore] [MessageBroker-11] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:01:00.048527
+2025-10-29T18:02:00.051+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-10] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T18:02:00.053+07:00  INFO 24524 --- [UTEScore] [MessageBroker-10] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:02:00.053290800
+2025-10-29T18:03:00.042+07:00 DEBUG 24524 --- [UTEScore] [MessageBroker-7] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T18:03:00.059+07:00  INFO 24524 --- [UTEScore] [MessageBroker-7] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:03:00.059158400
+2025-10-29T18:03:38.803+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-7] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-29T18:03:38.829+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-7] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 11
+2025-10-29T18:03:41.606+07:00  WARN 24524 --- [UTEScore] [http-nio-8089-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported]
+2025-10-29T18:03:43.961+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-9] v.u.u.controller.Guest_PitchController   : ⚙️ PitchController.showPitches() được gọi!
+2025-10-29T18:03:43.984+07:00  INFO 24524 --- [UTEScore] [http-nio-8089-exec-9] v.u.u.controller.Guest_PitchController   : 🎯 Tổng số sân đang hoạt động: 11
+2025-10-29T18:03:49.544+07:00  INFO 24524 --- [UTEScore] [RMI TCP Connection(50)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2025-10-29T18:03:49.549+07:00  INFO 24524 --- [UTEScore] [RMI TCP Connection(50)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-29T18:03:49.557+07:00  INFO 24524 --- [UTEScore] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-29T18:03:49.559+07:00  INFO 24524 --- [UTEScore] [RMI TCP Connection(50)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2025-10-29T18:03:49.560+07:00  INFO 24524 --- [UTEScore] [RMI TCP Connection(50)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@366d7033]]
+2025-10-29T18:03:49.560+07:00  INFO 24524 --- [UTEScore] [RMI TCP Connection(50)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2025-10-29T18:03:49.566+07:00  INFO 24524 --- [UTEScore] [RMI TCP Connection(50)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-29T18:03:49.568+07:00  INFO 24524 --- [UTEScore] [RMI TCP Connection(50)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-29T18:03:49.571+07:00  INFO 24524 --- [UTEScore] [RMI TCP Connection(50)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-29T18:03:52.037+07:00  INFO 46544 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Starting UteScoreApplication using Java 22.0.2 with PID 46544 (C:\Users\HP\UTEScore\target\classes started by HP in C:\Users\HP\UTEScore)
+2025-10-29T18:03:52.038+07:00 DEBUG 46544 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Running with Spring Boot v3.5.6, Spring v6.2.11
+2025-10-29T18:03:52.039+07:00  INFO 46544 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-10-29T18:03:52.812+07:00  INFO 46544 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-29T18:03:53.016+07:00  INFO 46544 --- [UTEScore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 197 ms. Found 41 JPA repository interfaces.
+2025-10-29T18:03:53.475+07:00  INFO 46544 --- [UTEScore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8089 (http)
+2025-10-29T18:03:53.485+07:00  INFO 46544 --- [UTEScore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-29T18:03:53.486+07:00  INFO 46544 --- [UTEScore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-29T18:03:53.529+07:00  INFO 46544 --- [UTEScore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-29T18:03:53.530+07:00  INFO 46544 --- [UTEScore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1457 ms
+2025-10-29T18:03:53.732+07:00  INFO 46544 --- [UTEScore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-29T18:03:53.769+07:00  INFO 46544 --- [UTEScore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-10-29T18:03:53.790+07:00  INFO 46544 --- [UTEScore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-29T18:03:53.971+07:00  INFO 46544 --- [UTEScore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-29T18:03:53.993+07:00  INFO 46544 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-29T18:03:54.328+07:00  INFO 46544 --- [UTEScore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: f5ddfacf-24bc-4001-8f15-8affcc7187d3
+2025-10-29T18:03:54.331+07:00  INFO 46544 --- [UTEScore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-29T18:03:54.419+07:00  WARN 46544 --- [UTEScore] [main] org.hibernate.orm.deprecation            : HHH90000025: SQLServerDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-29T18:03:54.435+07:00  INFO 46544 --- [UTEScore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-29T18:03:54.852+07:00  WARN 46544 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.TinhNangSanId
+2025-10-29T18:03:54.852+07:00  WARN 46544 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.TinhNangSanId
+2025-10-29T18:03:54.854+07:00  WARN 46544 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T18:03:54.854+07:00  WARN 46544 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T18:03:54.854+07:00  WARN 46544 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T18:03:54.855+07:00  WARN 46544 --- [UTEScore] [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): vn.ute.utescore.model.RolesPermissionId
+2025-10-29T18:03:55.577+07:00  INFO 46544 --- [UTEScore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-29T18:03:55.580+07:00  INFO 46544 --- [UTEScore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-29T18:03:55.811+07:00  INFO 46544 --- [UTEScore] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-29T18:03:59.269+07:00  WARN 46544 --- [UTEScore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-29T18:03:59.479+07:00  WARN 46544 --- [UTEScore] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 1c131377-04f5-41ba-9d59-76a8ba9e99a8
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-10-29T18:03:59.485+07:00  INFO 46544 --- [UTEScore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-10-29T18:03:59.841+07:00  INFO 46544 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2025-10-29T18:03:59.842+07:00  INFO 46544 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@247cc879]]
+2025-10-29T18:03:59.843+07:00  INFO 46544 --- [UTEScore] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2025-10-29T18:03:59.859+07:00  INFO 46544 --- [UTEScore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8089 (http) with context path '/'
+2025-10-29T18:03:59.867+07:00  INFO 46544 --- [UTEScore] [main] vn.ute.utescore.UteScoreApplication      : Started UteScoreApplication in 8.218 seconds (process running for 8.699)
+2025-10-29T18:04:00.173+07:00 DEBUG 46544 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T18:04:00.181+07:00  INFO 46544 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:04:00.181743500
+2025-10-29T18:04:05.348+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-29T18:04:05.351+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-29T18:04:05.354+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-10-29T18:04:07.416+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-3] v.u.u.controller.Guest_PitchController   : ⚙️ Guest_PitchController.showPitches() được gọi
+2025-10-29T18:04:10.231+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-4] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='Sân A1', loaiSan='', trangThai='', gioBatDau='', gioKetThuc=''
+2025-10-29T18:04:15.396+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-6] v.u.u.controller.Guest_PitchController   : ⚙️ Guest_PitchController.showPitches() được gọi
+2025-10-29T18:04:19.037+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-7] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='', loaiSan='5 người', trangThai='', gioBatDau='', gioKetThuc=''
+2025-10-29T18:04:22.222+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-9] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='', loaiSan='7 người', trangThai='', gioBatDau='', gioKetThuc=''
+2025-10-29T18:04:26.704+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-10] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='', loaiSan='11 người', trangThai='', gioBatDau='', gioKetThuc=''
+2025-10-29T18:04:32.321+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-8] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='', loaiSan='11 người', trangThai='Hoạt động', gioBatDau='', gioKetThuc=''
+2025-10-29T18:04:37.403+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-1] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='', loaiSan='11 người', trangThai='Bảo trì', gioBatDau='', gioKetThuc=''
+2025-10-29T18:04:38.986+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-2] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='', loaiSan='11 người', trangThai='', gioBatDau='', gioKetThuc=''
+2025-10-29T18:04:49.789+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-3] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='', loaiSan='11 người', trangThai='Hoạt động', gioBatDau='', gioKetThuc=''
+2025-10-29T18:04:59.840+07:00  INFO 46544 --- [UTEScore] [MessageBroker-2] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 1, completed tasks = 1]
+2025-10-29T18:05:00.041+07:00 DEBUG 46544 --- [UTEScore] [MessageBroker-1] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T18:05:00.043+07:00  INFO 46544 --- [UTEScore] [MessageBroker-1] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:05:00.043426900
+2025-10-29T18:05:44.261+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-5] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='', loaiSan='11 người', trangThai='Hoạt động', gioBatDau='', gioKetThuc=''
+2025-10-29T18:05:46.630+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-6] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='', loaiSan='11 người', trangThai='Hoạt động', gioBatDau='', gioKetThuc=''
+2025-10-29T18:05:48.439+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-7] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='', loaiSan='11 người', trangThai='Hoạt động', gioBatDau='', gioKetThuc=''
+2025-10-29T18:05:57.978+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-2] v.u.u.controller.Guest_PitchController   : ⚙️ Guest_PitchController.showPitches() được gọi
+2025-10-29T18:06:00.023+07:00 DEBUG 46544 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T18:06:00.023+07:00  INFO 46544 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:06:00.023592400
+2025-10-29T18:06:00.123+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-3] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='', loaiSan='', trangThai='Hoạt động', gioBatDau='', gioKetThuc=''
+2025-10-29T18:06:02.682+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-4] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='', loaiSan='', trangThai='Bảo trì', gioBatDau='', gioKetThuc=''
+2025-10-29T18:06:36.313+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-5] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='Sân A1', loaiSan='', trangThai='Bảo trì', gioBatDau='', gioKetThuc=''
+2025-10-29T18:06:37.229+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-6] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='Sân A1', loaiSan='', trangThai='Bảo trì', gioBatDau='', gioKetThuc=''
+2025-10-29T18:06:42.017+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-10] v.u.u.controller.Guest_PitchController   : ⚙️ Guest_PitchController.showPitches() được gọi
+2025-10-29T18:06:49.759+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-8] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='sân A3', loaiSan='', trangThai='', gioBatDau='', gioKetThuc=''
+2025-10-29T18:06:53.173+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-1] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='sân A3', loaiSan='', trangThai='', gioBatDau='', gioKetThuc=''
+2025-10-29T18:07:00.036+07:00 DEBUG 46544 --- [UTEScore] [MessageBroker-3] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T18:07:00.040+07:00  INFO 46544 --- [UTEScore] [MessageBroker-3] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:07:00.040027200
+2025-10-29T18:07:03.408+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-2] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='sân A3', loaiSan='', trangThai='', gioBatDau='', gioKetThuc=''
+2025-10-29T18:07:06.047+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-3] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='sân A3', loaiSan='', trangThai='', gioBatDau='', gioKetThuc=''
+2025-10-29T18:07:09.999+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-4] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='', loaiSan='', trangThai='', gioBatDau='', gioKetThuc=''
+2025-10-29T18:07:14.910+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-5] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='', loaiSan='', trangThai='Hoạt động', gioBatDau='', gioKetThuc=''
+2025-10-29T18:07:18.199+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-6] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='', loaiSan='', trangThai='', gioBatDau='', gioKetThuc=''
+2025-10-29T18:07:28.430+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-7] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='', loaiSan='', trangThai='Ngưng sử dụng', gioBatDau='', gioKetThuc=''
+2025-10-29T18:07:31.079+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-9] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='', loaiSan='', trangThai='Hoạt động', gioBatDau='', gioKetThuc=''
+2025-10-29T18:08:00.046+07:00 DEBUG 46544 --- [UTEScore] [MessageBroker-5] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T18:08:00.046+07:00  INFO 46544 --- [UTEScore] [MessageBroker-5] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:08:00.046999500
+2025-10-29T18:08:44.533+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-1] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='', loaiSan='', trangThai='Hoạt động', gioBatDau='', gioKetThuc=''
+2025-10-29T18:09:00.056+07:00 DEBUG 46544 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T18:09:00.058+07:00  INFO 46544 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:09:00.058443900
+2025-10-29T18:10:00.063+07:00 DEBUG 46544 --- [UTEScore] [MessageBroker-2] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T18:10:00.063+07:00  INFO 46544 --- [UTEScore] [MessageBroker-2] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:10:00.063810900
+2025-10-29T18:11:00.045+07:00 DEBUG 46544 --- [UTEScore] [MessageBroker-7] v.u.u.s.impl.CustomerEmailServiceImpl    : 📭 Không có đơn nào cần gửi nhắc lịch.
+2025-10-29T18:11:00.049+07:00  INFO 46544 --- [UTEScore] [MessageBroker-7] v.u.u.config.CustomerReminderScheduler   : ✅ Job nhắc sân đã chạy thành công lúc 18:11:00.049912400
+2025-10-29T18:11:27.849+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-9] v.u.u.controller.Guest_PitchController   : ⚙️ Guest_PitchController.showPitches() được gọi
+2025-10-29T18:11:29.812+07:00  INFO 46544 --- [UTEScore] [http-nio-8089-exec-10] v.u.u.controller.Guest_PitchController   : 🔍 Đang lọc sân bóng với: keyword='', loaiSan='', trangThai='HoatDong', gioBatDau='', gioKetThuc=''
+2025-10-29T18:11:44.823+07:00  INFO 46544 --- [UTEScore] [RMI TCP Connection(18)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2025-10-29T18:11:44.829+07:00  INFO 46544 --- [UTEScore] [RMI TCP Connection(18)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-29T18:11:44.854+07:00  INFO 46544 --- [UTEScore] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-29T18:11:44.858+07:00  INFO 46544 --- [UTEScore] [RMI TCP Connection(18)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2025-10-29T18:11:44.858+07:00  INFO 46544 --- [UTEScore] [RMI TCP Connection(18)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@247cc879]]
+2025-10-29T18:11:44.858+07:00  INFO 46544 --- [UTEScore] [RMI TCP Connection(18)-127.0.0.1] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2025-10-29T18:11:44.875+07:00  INFO 46544 --- [UTEScore] [RMI TCP Connection(18)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-29T18:11:44.878+07:00  INFO 46544 --- [UTEScore] [RMI TCP Connection(18)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-29T18:11:44.888+07:00  INFO 46544 --- [UTEScore] [RMI TCP Connection(18)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

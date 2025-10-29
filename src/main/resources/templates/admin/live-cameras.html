@@ -2985,7 +2985,46 @@
             const modal = new bootstrap.Modal(document.getElementById('cameraViewModal'));
             modal.show();
         }
+        
+        // Tải video camera
+        function loadCameraVideo(cameraData) {
+            const container = document.getElementById('cameraVideoContainer');
+            container.innerHTML = ''; // Xóa nội dung cũ
 
+            let videoHTML = '';
+
+            // Nếu là YouTube
+            if (cameraData.videoType === 'youtube') {
+                videoHTML = `
+                    <iframe width="100%" height="400"
+                        src="${cameraData.videoUrl}"
+                        title="${cameraData.name}"
+                        frameborder="0"
+                        allowfullscreen>
+                    </iframe>`;
+            }
+
+            // Nếu là Cloudinary (file .mp4)
+            else if (cameraData.videoType === 'cloudinary') {
+                videoHTML = `
+                    <video width="100%" height="400" controls autoplay muted loop>
+                        <source src="${cameraData.videoUrl}" type="video/mp4">
+                        Trình duyệt của bạn không hỗ trợ video.
+                    </video>`;
+            }
+
+            // Nếu không có loại, tự động nhận dạng Cloudinary
+            else if (cameraData.videoUrl.includes('cloudinary.com')) {
+                videoHTML = `
+                    <video width="100%" height="400" controls autoplay muted loop>
+                        <source src="${cameraData.videoUrl}" type="video/mp4">
+                    </video>`;
+            }
+
+            container.innerHTML = videoHTML;
+        }
+        
+        
         function getCameraData(cameraId) {
             // Mock data - in real app, this would come from API
             const mockData = {
@@ -2999,7 +3038,7 @@
                     description: 'Camera góc sân A1, góc nhìn rộng',
                     status: 'active',
                     statusText: 'Hoạt động',
-                    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                    videoUrl: 'https://res.cloudinary.com/du6x32par/video/upload/v1761724882/7167554656220_kwr69q.mp4',
                     videoType: 'youtube'
                 },
                 'CAM002': {
