@@ -1183,7 +1183,7 @@
                     <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Hồ sơ</a></li>
                     <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Cài đặt</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="/admin/login"><i class="fas fa-sign-out-alt me-2"></i>Đăng xuất</a></li>
+                    <li><a class="dropdown-item" href="/logout?redirect=/guest/index.html"><i class="fas fa-sign-out-alt me-2"></i>Đăng xuất</a></li>
                 </ul>
             </div>
         </div>
@@ -1198,7 +1198,66 @@
                         <p class="header-subtitle">Theo dõi và quản lý toàn bộ giao dịch thanh toán trong hệ thống</p>
                     </div>
                     <div class="header-actions">
-                        <button class="btn btn-primary">
+                        <script>
+                        (function(){
+                            if (!window.exportPaymentsCSV) {
+                                window.exportPaymentsCSV = function(){
+                                    try {
+                                        console.log('[Export][inline] fetching /admin/payments/list');
+                                        fetch('/admin/payments/list')
+                                            .then(r => r.json())
+                                            .then(list => {
+                                                const headers = [
+                                                    'MaThanhToan','MaDonDat','MaGiaoDich','SoTienNhan','PhuongThuc',
+                                                    'LoaiThanhToan','TrangThaiThanhToan','NgayThanhToan','SoDiemSuDung',
+                                                    'GiaTriDiemGiam','SoDiemCongThem','GhiChu'
+                                                ];
+                                                const lines = [headers.join(',')];
+                                                const fmtDate = (raw) => {
+                                                    if (!raw) return '';
+                                                    const dt = new Date(raw);
+                                                    if (isNaN(dt.getTime())) return String(raw);
+                                                    const pad = n => String(n).padStart(2,'0');
+                                                    return `${pad(dt.getDate())}/${pad(dt.getMonth()+1)}/${dt.getFullYear()} ${pad(dt.getHours())}:${pad(dt.getMinutes())}`;
+                                                };
+                                                (list||[]).forEach(p => {
+                                                    const row = [
+                                                        p.maThanhToan,
+                                                        p.maDonDat,
+                                                        p.maGiaoDich,
+                                                        p.soTienNhan != null ? Number(p.soTienNhan).toString() : '',
+                                                        p.phuongThuc,
+                                                        p.loaiThanhToan,
+                                                        p.trangThaiThanhToan,
+                                                        fmtDate(p.ngayThanhToan),
+                                                        p.soDiemSuDung,
+                                                        p.giaTriDiemGiam,
+                                                        p.soDiemCongThem,
+                                                        p.ghiChu
+                                                    ].map(v => '"' + String(v ?? '').replace(/"/g, '""') + '"').join(',');
+                                                    lines.push(row);
+                                                });
+                                                const blob = new Blob(["\uFEFF" + lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+                                                const url = URL.createObjectURL(blob);
+                                                const a = document.createElement('a');
+                                                const now = new Date();
+                                                a.href = url;
+                                                a.download = `bao-cao-thanh-toan_${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}.csv`;
+                                                document.body.appendChild(a);
+                                                a.click();
+                                                document.body.removeChild(a);
+                                                URL.revokeObjectURL(url);
+                                            })
+                                            .catch(e => { console.error('[Export][inline] API error', e); alert('Không thể xuất báo cáo'); });
+                                    } catch (e) {
+                                        console.error('[Export][inline] error', e);
+                                        alert('Không thể xuất báo cáo');
+                                    }
+                                };
+                            }
+                        })();
+                        </script>
+                        <button class="btn btn-primary" id="exportReportBtn" type="button" onclick="console.log('Export button inline click'); if(window.exportPaymentsCSV){window.exportPaymentsCSV();}else{console.error('exportPaymentsCSV not available')}">
                             <i class="fas fa-download me-2"></i>
                             Xuất báo cáo
                         </button>
@@ -1206,11 +1265,6 @@
                 </div>
             </div>
 
-            
-
-            
-
-            
 
             <!-- Filters -->
             <div class="filters-card">
@@ -2124,6 +2178,106 @@
                 });
         }
 
+        // ===== Export payments to CSV (using current visible table or refetch) =====
+        function onExportClick() {
+            console.log('[Export] Button clicked (handler)');
+            if (typeof exportPaymentsCSV === 'function') {
+                exportPaymentsCSV();
+            } else if (window.exportPaymentsCSV) {
+                window.exportPaymentsCSV();
+            } else {
+                console.error('exportPaymentsCSV NOT FOUND in handler');
+            }
+        }
+
+        function exportPaymentsCSV() {
+            console.log('[Export] Button clicked');
+            try {
+                console.log('[Export] Fetching data from /admin/payments/list ...');
+                fetch('/admin/payments/list')
+                    .then(r => r.json())
+                    .then(list => {
+                        console.log('[Export] API returned', (list||[]).length, 'items');
+                        const headers = [
+                            'MaThanhToan','MaDonDat','MaGiaoDich','SoTienNhan','PhuongThuc',
+                            'LoaiThanhToan','TrangThaiThanhToan','NgayThanhToan','SoDiemSuDung',
+                            'GiaTriDiemGiam','SoDiemCongThem','GhiChu'
+                        ];
+                        const lines = [headers.join(',')];
+                        const fmtDate = (raw) => {
+                            if (!raw) return '';
+                            const dt = new Date(raw);
+                            if (isNaN(dt.getTime())) return String(raw);
+                            const pad = n => String(n).padStart(2,'0');
+                            return `${pad(dt.getDate())}/${pad(dt.getMonth()+1)}/${dt.getFullYear()} ${pad(dt.getHours())}:${pad(dt.getMinutes())}`;
+                        };
+                        (list||[]).forEach(p => {
+                            const row = [
+                                p.maThanhToan,
+                                p.maDonDat,
+                                p.maGiaoDich,
+                                p.soTienNhan != null ? Number(p.soTienNhan).toString() : '',
+                                p.phuongThuc,
+                                p.loaiThanhToan,
+                                p.trangThaiThanhToan,
+                                fmtDate(p.ngayThanhToan),
+                                p.soDiemSuDung,
+                                p.giaTriDiemGiam,
+                                p.soDiemCongThem,
+                                p.ghiChu
+                            ].map(v => '"' + String(v ?? '').replace(/"/g, '""') + '"').join(',');
+                            lines.push(row);
+                        });
+                        const blob = new Blob(["\uFEFF" + lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        const now = new Date();
+                        a.href = url;
+                        a.download = `bao-cao-thanh-toan_${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}.csv`;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                        console.log('[Export] CSV download triggered.');
+                    })
+                    .catch(err => {
+                        console.error('[Export] API error', err);
+                        alert('Không thể xuất báo cáo: ' + err.message);
+                    });
+            } catch (e) {
+                console.error('exportPaymentsCSV error:', e);
+                alert('Không thể xuất báo cáo');
+            }
+        }
+
+        function downloadPaymentsCSVFromData(list) {
+            console.log('[Export] Preparing CSV for', (list||[]).length, 'rows');
+            const headers = ['Mã giao dịch','Ngày thanh toán','Phương thức','Số tiền nhận'];
+            const lines = [headers.join(',')];
+            (list || []).forEach(item => {
+                const row = [item.maGiaoDich, item.ngayThanhToan || formatDate(item.ngayThanhToan), item.phuongThuc, item.soTienNhan]
+                    .map(v => '"' + String(v ?? '').replace(/"/g, '""') + '"')
+                    .join(',');
+                lines.push(row);
+            });
+            const blob = new Blob(["\uFEFF" + lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            const now = new Date();
+            const name = `bao-cao-thanh-toan_${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}.csv`;
+            a.download = name;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            console.log('[Export] CSV download triggered:', name);
+        }
+
+        // Expose to global for inline onclick fallback
+        window.onExportClick = onExportClick;
+        window.exportPaymentsCSV = exportPaymentsCSV;
+
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', function() {
             console.log('=== DOMContentLoaded - Payment Management ===');
@@ -2217,15 +2371,19 @@
             updateAnalyticsData('week');
             
             // Sidebar toggle for mobile
-            document.getElementById('sidebarToggle').addEventListener('click', function() {
-                document.getElementById('sidebar').classList.toggle('show');
-            });
+            const sidebarToggleEl = document.getElementById('sidebarToggle');
+            if (sidebarToggleEl) {
+                sidebarToggleEl.addEventListener('click', function() {
+                    const sidebar = document.getElementById('sidebar');
+                    if (sidebar) sidebar.classList.toggle('show');
+                });
+            }
 
             // Close sidebar when clicking outside on mobile
             document.addEventListener('click', function(e) {
                 const sidebar = document.getElementById('sidebar');
                 const toggle = document.getElementById('sidebarToggle');
-                
+                if (!sidebar || !toggle) return;
                 if (window.innerWidth <= 768 && 
                     !sidebar.contains(e.target) && 
                     !toggle.contains(e.target)) {
@@ -2234,6 +2392,22 @@
             });
 
             // Counters already set in buildRowIndex
+            const exportBtn = document.getElementById('exportReportBtn');
+            if (exportBtn) {
+                console.log('[Init] Found exportReportBtn, attaching click listener');
+                exportBtn.addEventListener('click', onExportClick);
+            } else {
+                console.warn('[Init] exportReportBtn not found at DOMContentLoaded');
+            }
+
+            // Delegated listener as a hard fallback (in case of dynamic re-render)
+            document.addEventListener('click', function(e) {
+                const btn = e.target.closest('#exportReportBtn');
+                if (btn) {
+                    console.log('[Delegated] exportReportBtn click');
+                    onExportClick();
+                }
+            });
         });
 
         // Load payments from database
