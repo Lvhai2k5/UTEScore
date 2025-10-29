@@ -35,6 +35,7 @@ import vn.ute.utescore.repository.LichSuTrangThaiSanRepository;
 import vn.ute.utescore.repository.NhanVienRepository;
 import vn.ute.utescore.repository.RolesRepository;
 import vn.ute.utescore.repository.SanBongRepository;
+import vn.ute.utescore.repository.CameraRepository;
 import vn.ute.utescore.repository.TaiKhoanRepository;
 import vn.ute.utescore.repository.ThanhToanRepository;
 import vn.ute.utescore.repository.ThueSanRepository;
@@ -89,6 +90,53 @@ public class AdminService {
     // Dùng chung PasswordEncoder để mã hoá/kiểm tra mật khẩu theo cơ chế của hệ thống (BCrypt)
     @Autowired
     private org.springframework.security.crypto.password.PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private CameraRepository cameraRepository;
+
+    // ================== CAMERA MANAGEMENT ==================
+    public java.util.List<java.util.Map<String, Object>> getAllCamerasAsMap() {
+        return cameraRepository.findAllWithRelations().stream().map(c -> {
+            java.util.Map<String, Object> m = new java.util.HashMap<>();
+            m.put("CameraID", c.getCameraID());
+            m.put("TenCamera", c.getTenCamera());
+            m.put("SanID", c.getSanBong() != null ? c.getSanBong().getMaSan() : null);
+            m.put("SanTen", c.getSanBong() != null ? c.getSanBong().getTenSan() : null);
+            m.put("IP", c.getIP());
+            m.put("TrangThai", c.getTrangThai());
+            m.put("NhanVienPhuTrach", c.getNhanVienPhuTrach() != null ? c.getNhanVienPhuTrach().getUserID() : null);
+            m.put("NhanVienTen", c.getNhanVienPhuTrach() != null ? c.getNhanVienPhuTrach().getFullName() : null);
+            m.put("FileMoPhong", c.getFileMoPhong());
+            m.put("GhiChu", c.getGhiChu());
+            m.put("NgayTao", c.getNgayTao());
+            m.put("NgayCapNhat", c.getNgayCapNhat());
+            return m;
+        }).collect(java.util.stream.Collectors.toList());
+    }
+
+    public Camera addCamera(String tenCamera,
+                            Integer sanId,
+                            String ip,
+                            String trangThai,
+                            Integer nhanVienId,
+                            String ghiChu,
+                            String fileMoPhong) {
+        Camera c = new Camera();
+        c.setTenCamera(tenCamera);
+        if (sanId != null) {
+            sanBongRepository.findById(sanId).ifPresent(c::setSanBong);
+        }
+        c.setIP(ip);
+        c.setTrangThai(trangThai == null || trangThai.isBlank() ? "online" : trangThai);
+        if (nhanVienId != null) {
+            nhanVienRepository.findById(nhanVienId).ifPresent(c::setNhanVienPhuTrach);
+        }
+        c.setGhiChu(ghiChu);
+        c.setFileMoPhong(fileMoPhong);
+        c.setNgayTao(LocalDateTime.now());
+        c.setNgayCapNhat(LocalDateTime.now());
+        return cameraRepository.save(c);
+    }
 
     // =============== DASHBOARD STATISTICS ===============
     
