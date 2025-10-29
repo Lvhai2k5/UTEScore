@@ -138,6 +138,38 @@ public class AdminService {
         return cameraRepository.save(c);
     }
 
+    public Camera updateCamera(Integer cameraId,
+                               String tenCamera,
+                               Integer sanId,
+                               String ip,
+                               String trangThai,
+                               Integer nhanVienId,
+                               String ghiChu,
+                               String fileMoPhong) {
+        Camera c = cameraRepository.findById(cameraId)
+            .orElseThrow(() -> new RuntimeException("Không tìm thấy camera với ID: " + cameraId));
+        
+        c.setTenCamera(tenCamera);
+        if (sanId != null) {
+            sanBongRepository.findById(sanId).ifPresent(c::setSanBong);
+        } else {
+            c.setSanBong(null);
+        }
+        c.setIP(ip);
+        c.setTrangThai(trangThai == null || trangThai.isBlank() ? "online" : trangThai);
+        if (nhanVienId != null) {
+            nhanVienRepository.findById(nhanVienId).ifPresent(c::setNhanVienPhuTrach);
+        } else {
+            c.setNhanVienPhuTrach(null);
+        }
+        c.setGhiChu(ghiChu);
+        if (fileMoPhong != null && !fileMoPhong.isBlank()) {
+            c.setFileMoPhong(fileMoPhong);
+        }
+        c.setNgayCapNhat(LocalDateTime.now());
+        return cameraRepository.save(c);
+    }
+
     // =============== DASHBOARD STATISTICS ===============
     
     public long getTotalFields() {
