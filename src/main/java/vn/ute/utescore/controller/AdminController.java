@@ -1197,6 +1197,30 @@ public class AdminController {
             return "error: " + e.getMessage();
         }
     }
+
+    @PostMapping("/cameras/update")
+    @ResponseBody
+    public String updateCamera(@RequestBody java.util.Map<String, Object> payload) {
+        try {
+            Integer cameraId = payload.get("CameraID") != null ? Integer.valueOf(payload.get("CameraID").toString()) : null;
+            if (cameraId == null) {
+                return "error: CameraID is required";
+            }
+            
+            String tenCamera = (String) payload.get("TenCamera");
+            Integer sanId = payload.get("SanID") != null ? Integer.valueOf(payload.get("SanID").toString()) : null;
+            String ip = (String) payload.get("IP");
+            String trangThai = (String) payload.get("TrangThai");
+            Integer nhanVienId = payload.get("NhanVienPhuTrach") != null ? Integer.valueOf(payload.get("NhanVienPhuTrach").toString()) : null;
+            String ghiChu = (String) payload.get("GhiChu");
+            String fileMoPhong = (String) payload.get("FileMoPhong");
+
+            adminService.updateCamera(cameraId, tenCamera, sanId, ip, trangThai, nhanVienId, ghiChu, fileMoPhong);
+            return "success";
+        } catch (Exception e) {
+            return "error: " + e.getMessage();
+        }
+    }
     
     // =============== USER MANAGEMENT APIs ===============
     
