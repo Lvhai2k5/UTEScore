@@ -522,21 +522,53 @@ public class AdminController {
         }
     }
     
-    // Lấy chi tiết sân
+    // Lấy chi tiết sân (trả về JSON an toàn, tránh vòng lặp quan hệ)
     @GetMapping("/fields/{id}")
     @ResponseBody
-    public SanBong getFieldDetails(@PathVariable Integer id) {
-        return adminService.getFieldById(id);
+    public java.util.Map<String, Object> getFieldDetails(@PathVariable Integer id) {
+        SanBong f = adminService.getFieldById(id);
+        if (f == null) return new java.util.HashMap<>();
+        java.util.Map<String, Object> m = new java.util.HashMap<>();
+        m.put("maSan", f.getMaSan());
+        m.put("tenSan", f.getTenSan());
+        m.put("loaiSan", f.getLoaiSan());
+        m.put("khuVuc", f.getKhuVuc());
+        m.put("duongDanGGMap", f.getDuongDanGGMap());
+        m.put("gioMoCua", f.getGioMoCua() != null ? f.getGioMoCua().toString() : null);
+        m.put("gioDongCua", f.getGioDongCua() != null ? f.getGioDongCua().toString() : null);
+        m.put("moTa", f.getMoTa());
+        m.put("hinhAnh", f.getHinhAnh());
+        m.put("trangThai", f.getTrangThai());
+        m.put("ngayTao", f.getNgayTao());
+        m.put("ngayCapNhat", f.getNgayCapNhat());
+        return m;
     }
     
-    // API lấy danh sách sân (JSON)
+    // API lấy danh sách sân (JSON an toàn)
     @GetMapping("/fields/list")
     @ResponseBody
-    public List<SanBong> getAllFieldsJson() {
+    public java.util.List<java.util.Map<String, Object>> getAllFieldsJson() {
         System.out.println("Getting all fields...");
         List<SanBong> fields = adminService.getAllFields();
         System.out.println("Found " + fields.size() + " fields");
-        return fields;
+        java.util.List<java.util.Map<String, Object>> result = new java.util.ArrayList<>();
+        for (SanBong f : fields) {
+            java.util.Map<String, Object> m = new java.util.HashMap<>();
+            m.put("maSan", f.getMaSan());
+            m.put("tenSan", f.getTenSan());
+            m.put("loaiSan", f.getLoaiSan());
+            m.put("khuVuc", f.getKhuVuc());
+            m.put("duongDanGGMap", f.getDuongDanGGMap());
+            m.put("gioMoCua", f.getGioMoCua() != null ? f.getGioMoCua().toString() : null);
+            m.put("gioDongCua", f.getGioDongCua() != null ? f.getGioDongCua().toString() : null);
+            m.put("moTa", f.getMoTa());
+            m.put("hinhAnh", f.getHinhAnh());
+            m.put("trangThai", f.getTrangThai());
+            m.put("ngayTao", f.getNgayTao());
+            m.put("ngayCapNhat", f.getNgayCapNhat());
+            result.add(m);
+        }
+        return result;
     }
 
     // Quản lý giá thuê
