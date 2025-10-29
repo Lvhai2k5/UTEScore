@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    
+    hihi
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xem sân bóng live - UTEScore</title>
@@ -2242,9 +2242,6 @@
                             <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCameraModal">
                                 <i class="fas fa-plus me-2"></i>Thêm camera
                             </button>
-                            <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#cameraSettingsModal">
-                                <i class="fas fa-cog me-2"></i>Cài đặt
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -2255,428 +2252,11 @@
                 <p class="page-subtitle">Theo dõi tình trạng sân bóng trực tiếp qua hệ thống camera HD</p>
             </div>
 
-            <!-- Cameras Grid -->
-            <div class="cameras-grid">
-                <!-- Camera 1 -->
-                <div class="camera-card" data-field="A1" data-status="online" data-staff="Nguyễn Văn A" data-camera-id="CAM001">
-                    <div class="camera-header">
-                        <div class="camera-info">
-                            <h3 class="camera-name">Sân A1 - Góc chính</h3>
-                            <div class="camera-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                Khu vực A - Tầng 1
-                            </div>
-                            <div class="camera-details">
-                                <small><i class="fas fa-network-wired me-1"></i>IP: 192.168.1.101</small>
-                                <small><i class="fas fa-user me-1"></i>NV: Nguyễn Văn A</small>
-                            </div>
-                        </div>
-                        <div class="camera-status">
-                            <div class="status-indicator status-online"></div>
-                            <span class="status-text">LIVE</span>
-                        </div>
-                        <div class="camera-actions">
-                            <button class="btn btn-outline-primary btn-sm" onclick="editCamera('CAM001', 'Sân A1 - Góc chính', 'A1', 'online', 'Nguyễn Văn A', '192.168.1.101')">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button class="btn btn-outline-warning btn-sm" onclick="lockCamera('CAM001', 'Sân A1 - Góc chính')">
-                                <i class="fas fa-lock"></i>
-                            </button>
-                            <button class="btn btn-outline-danger btn-sm" onclick="deleteCamera('CAM001', 'Sân A1 - Góc chính')">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="video-container">
-                        <div class="live-indicator">
-                            <span>LIVE</span>
-                        </div>
-                        <div class="real-surveillance-view">
-                            <div class="camera-feed">
-                                <div class="football-field-background">
-                                    <div class="field-grass"></div>
-                                    <div class="field-lines"></div>
-                                    <div class="field-goals"></div>
-                                    <div class="field-center-circle"></div>
-                                    <div class="players-on-field">
-                                        <div class="player player-1"></div>
-                                        <div class="player player-2"></div>
-                                        <div class="player player-3"></div>
-                                        <div class="player player-4"></div>
-                                        <div class="ball"></div>
-                                    </div>
-                                </div>
-                                <div class="video-static-overlay"></div>
-                                <div class="timestamp-overlay">
-                                    <span class="date-time">25/10/2025 15:48:32</span>
-                                </div>
-                                <div class="camera-info-overlay">
-                                    <div class="camera-id">CAM001</div>
-                                    <div class="resolution">1920x1080</div>
-                                    <div class="fps">30 FPS</div>
-                                </div>
-                                <div class="motion-detection-box">
-                                    <div class="detection-area"></div>
-                                </div>
-                                <div class="recording-indicator">
-                                    <div class="rec-dot"></div>
-                                    <span>REC</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="video-overlay">
-                            <button class="btn btn-primary btn-sm" onclick="viewCamera('CAM001', 'Sân A1 - Góc chính')">
-                                <i class="fas fa-expand"></i> Xem chi tiết
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="camera-controls">
-                        <div class="control-buttons">
-                            <button class="control-btn active" data-action="play" title="Phát">
-                                <i class="fas fa-play"></i>
-                            </button>
-                            <button class="control-btn" data-action="pause" title="Tạm dừng">
-                                <i class="fas fa-pause"></i>
-                            </button>
-                            <button class="control-btn" data-action="fullscreen" title="Toàn màn hình">
-                                <i class="fas fa-expand"></i>
-                            </button>
-                            <button class="control-btn" data-action="record" title="Ghi hình">
-                                <i class="fas fa-record-vinyl"></i>
-                            </button>
-                            <button class="control-btn" data-action="sound" title="Âm thanh">
-                                <i class="fas fa-volume-up"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="camera-info-footer">
-                            <div class="info-item">
-                                <i class="fas fa-eye"></i>
-                                <span>1,234 lượt xem</span>
-                            </div>
-                            <div class="info-item">
-                                <i class="fas fa-clock"></i>
-                                <span>24/7</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Camera 2 -->
-                <div class="camera-card" data-field="A1" data-status="online" data-staff="Nguyễn Văn A" data-camera-id="CAM002">
-                    <div class="camera-header">
-                        <div class="camera-info">
-                            <h3 class="camera-name">Sân A1 - Góc phụ</h3>
-                            <div class="camera-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                Khu vực A - Tầng 1
-                            </div>
-                            <div class="camera-details">
-                                <small><i class="fas fa-network-wired me-1"></i>IP: 192.168.1.102</small>
-                                <small><i class="fas fa-user me-1"></i>NV: Nguyễn Văn A</small>
-                            </div>
-                        </div>
-                        <div class="camera-status">
-                            <div class="status-indicator status-online"></div>
-                            <span class="status-text">LIVE</span>
-                        </div>
-                        <div class="camera-actions">
-                            <button class="btn btn-outline-primary btn-sm" onclick="editCamera('CAM002', 'Sân A1 - Góc phụ', 'A1', 'online', 'Nguyễn Văn A', '192.168.1.102')">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button class="btn btn-outline-warning btn-sm" onclick="lockCamera('CAM002', 'Sân A1 - Góc phụ')">
-                                <i class="fas fa-lock"></i>
-                            </button>
-                            <button class="btn btn-outline-danger btn-sm" onclick="deleteCamera('CAM002', 'Sân A1 - Góc phụ')">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="video-container">
-                        <div class="live-indicator">
-                            <span>LIVE</span>
-                        </div>
-                        <div class="real-surveillance-view">
-                            <div class="camera-feed">
-                                <div class="football-field-background">
-                                    <div class="field-grass"></div>
-                                    <div class="field-lines"></div>
-                                    <div class="field-goals"></div>
-                                    <div class="field-center-circle"></div>
-                                    <div class="players-on-field">
-                                        <div class="player player-1"></div>
-                                        <div class="player player-2"></div>
-                                        <div class="player player-3"></div>
-                                        <div class="player player-4"></div>
-                                        <div class="ball"></div>
-                                    </div>
-                                </div>
-                                <div class="video-static-overlay"></div>
-                                <div class="timestamp-overlay">
-                                    <span class="date-time">25/10/2025 15:48:35</span>
-                                </div>
-                                <div class="camera-info-overlay">
-                                    <div class="camera-id">CAM002</div>
-                                    <div class="resolution">1280x720</div>
-                                    <div class="fps">25 FPS</div>
-                                </div>
-                                <div class="motion-detection-box">
-                                    <div class="detection-area"></div>
-                                </div>
-                                <div class="recording-indicator">
-                                    <div class="rec-dot"></div>
-                                    <span>REC</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="video-overlay">
-                            <button class="btn btn-primary btn-sm" onclick="viewCamera('CAM002', 'Sân A1 - Góc phụ')">
-                                <i class="fas fa-expand"></i> Xem chi tiết
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="camera-controls">
-                        <div class="control-buttons">
-                            <button class="control-btn active" data-action="play" title="Phát">
-                                <i class="fas fa-play"></i>
-                            </button>
-                            <button class="control-btn" data-action="pause" title="Tạm dừng">
-                                <i class="fas fa-pause"></i>
-                            </button>
-                            <button class="control-btn" data-action="fullscreen" title="Toàn màn hình">
-                                <i class="fas fa-expand"></i>
-                            </button>
-                            <button class="control-btn" data-action="record" title="Ghi hình">
-                                <i class="fas fa-record-vinyl"></i>
-                            </button>
-                            <button class="control-btn" data-action="sound" title="Âm thanh">
-                                <i class="fas fa-volume-up"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="camera-info-footer">
-                            <div class="info-item">
-                                <i class="fas fa-eye"></i>
-                                <span>856 lượt xem</span>
-                            </div>
-                            <div class="info-item">
-                                <i class="fas fa-clock"></i>
-                                <span>24/7</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Camera 3 -->
-                <div class="camera-card" data-field="B1" data-status="maintenance" data-staff="Trần Thị B" data-camera-id="CAM003">
-                    <div class="camera-header">
-                        <div class="camera-info">
-                            <h3 class="camera-name">Sân B1 - Góc chính</h3>
-                            <div class="camera-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                Khu vực B - Tầng 2
-                            </div>
-                            <div class="camera-details">
-                                <small><i class="fas fa-network-wired me-1"></i>IP: 192.168.1.201</small>
-                                <small><i class="fas fa-user me-1"></i>NV: Trần Thị B</small>
-                            </div>
-                        </div>
-                        <div class="camera-status">
-                            <div class="status-indicator status-maintenance"></div>
-                            <span class="status-text">BẢO TRÌ</span>
-                        </div>
-                        <div class="camera-actions">
-                            <button class="btn btn-outline-primary btn-sm" onclick="editCamera('CAM003', 'Sân B1 - Góc chính', 'B1', 'maintenance', 'Trần Thị B', '192.168.1.201')">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button class="btn btn-outline-success btn-sm" onclick="unlockCamera('CAM003', 'Sân B1 - Góc chính')">
-                                <i class="fas fa-unlock"></i>
-                            </button>
-                            <button class="btn btn-outline-danger btn-sm" onclick="deleteCamera('CAM003', 'Sân B1 - Góc chính')">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="video-container">
-                        <div class="live-indicator">
-                            <span>LIVE</span>
-                        </div>
-                        <div class="real-surveillance-view">
-                            <div class="camera-feed">
-                                <div class="football-field-background">
-                                    <div class="field-grass"></div>
-                                    <div class="field-lines"></div>
-                                    <div class="field-goals"></div>
-                                    <div class="field-center-circle"></div>
-                                    <div class="players-on-field">
-                                        <div class="player player-1"></div>
-                                        <div class="player player-2"></div>
-                                        <div class="player player-3"></div>
-                                        <div class="player player-4"></div>
-                                        <div class="ball"></div>
-                                    </div>
-                                </div>
-                                <div class="video-static-overlay"></div>
-                                <div class="timestamp-overlay">
-                                    <span class="date-time">25/10/2025 15:48:38</span>
-                                </div>
-                                <div class="camera-info-overlay">
-                                    <div class="camera-id">CAM003</div>
-                                    <div class="resolution">1920x1080</div>
-                                    <div class="fps">60 FPS</div>
-                                </div>
-                                <div class="motion-detection-box">
-                                    <div class="detection-area"></div>
-                                </div>
-                                <div class="recording-indicator">
-                                    <div class="rec-dot"></div>
-                                    <span>REC</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="video-overlay">
-                            <button class="btn btn-primary btn-sm" onclick="viewCamera('CAM003', 'Sân B1 - Góc chính')">
-                                <i class="fas fa-expand"></i> Xem chi tiết
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="camera-controls">
-                        <div class="control-buttons">
-                            <button class="control-btn active" data-action="play" title="Phát">
-                                <i class="fas fa-play"></i>
-                            </button>
-                            <button class="control-btn" data-action="pause" title="Tạm dừng">
-                                <i class="fas fa-pause"></i>
-                            </button>
-                            <button class="control-btn" data-action="fullscreen" title="Toàn màn hình">
-                                <i class="fas fa-expand"></i>
-                            </button>
-                            <button class="control-btn" data-action="record" title="Ghi hình">
-                                <i class="fas fa-record-vinyl"></i>
-                            </button>
-                            <button class="control-btn" data-action="sound" title="Âm thanh">
-                                <i class="fas fa-volume-up"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="camera-info-footer">
-                            <div class="info-item">
-                                <i class="fas fa-eye"></i>
-                                <span>2,145 lượt xem</span>
-                            </div>
-                            <div class="info-item">
-                                <i class="fas fa-clock"></i>
-                                <span>24/7</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Camera 4 -->
-                <div class="camera-card" data-field="C1" data-status="offline" data-staff="Lê Văn C" data-camera-id="CAM004">
-                    <div class="camera-header">
-                        <div class="camera-info">
-                            <h3 class="camera-name">Sân C1 - Góc chính</h3>
-                            <div class="camera-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                Khu vực C - Tầng 3
-                            </div>
-                            <div class="camera-details">
-                                <small><i class="fas fa-network-wired me-1"></i>IP: 192.168.1.301</small>
-                                <small><i class="fas fa-user me-1"></i>NV: Lê Văn C</small>
-                            </div>
-                        </div>
-                        <div class="camera-status">
-                            <div class="status-indicator status-offline"></div>
-                            <span class="status-text">OFFLINE</span>
-                        </div>
-                        <div class="camera-actions">
-                            <button class="btn btn-outline-primary btn-sm" onclick="editCamera('CAM004', 'Sân C1 - Góc chính', 'C1', 'offline', 'Lê Văn C', '192.168.1.301')">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button class="btn btn-outline-success btn-sm" onclick="unlockCamera('CAM004', 'Sân C1 - Góc chính')">
-                                <i class="fas fa-unlock"></i>
-                            </button>
-                            <button class="btn btn-outline-danger btn-sm" onclick="deleteCamera('CAM004', 'Sân C1 - Góc chính')">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="video-container">
-                        <div class="live-indicator offline">
-                            <span>OFFLINE</span>
-                        </div>
-                        <div class="real-surveillance-view offline-feed" style="opacity: 0.5;">
-                            <div class="camera-feed">
-                                <div class="football-field-background offline-field">
-                                    <div class="field-grass"></div>
-                                    <div class="field-lines"></div>
-                                    <div class="field-goals"></div>
-                                    <div class="field-center-circle"></div>
-                                </div>
-                                <div class="video-static-overlay offline-static"></div>
-                                <div class="timestamp-overlay">
-                                    <span class="date-time">25/10/2025 15:48:41</span>
-                                </div>
-                                <div class="camera-info-overlay">
-                                    <div class="camera-id">CAM004</div>
-                                    <div class="resolution">1920x1080</div>
-                                    <div class="fps">-- FPS</div>
-                                </div>
-                                <div class="offline-message">
-                                    <i class="fas fa-wifi-slash"></i>
-                                    <span>Không có tín hiệu</span>
-                                </div>
-                                <div class="recording-indicator offline-rec">
-                                    <div class="rec-dot"></div>
-                                    <span>OFF</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="video-overlay">
-                            <button class="btn btn-secondary btn-sm" onclick="viewCamera('CAM004', 'Sân C1 - Góc chính')" disabled>
-                                <i class="fas fa-exclamation-triangle"></i> Camera offline
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="camera-controls">
-                        <div class="control-buttons">
-                            <button class="control-btn" data-action="play" title="Phát" disabled>
-                                <i class="fas fa-play"></i>
-                            </button>
-                            <button class="control-btn" data-action="pause" title="Tạm dừng" disabled>
-                                <i class="fas fa-pause"></i>
-                            </button>
-                            <button class="control-btn" data-action="fullscreen" title="Toàn màn hình" disabled>
-                                <i class="fas fa-expand"></i>
-                            </button>
-                            <button class="control-btn" data-action="record" title="Ghi hình" disabled>
-                                <i class="fas fa-record-vinyl"></i>
-                            </button>
-                            <button class="control-btn" data-action="sound" title="Âm thanh" disabled>
-                                <i class="fas fa-volume-up"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="camera-info-footer">
-                            <div class="info-item">
-                                <i class="fas fa-tools"></i>
-                                <span>Đang bảo trì</span>
-                            </div>
-                            <div class="info-item">
-                                <i class="fas fa-clock"></i>
-                                <span>Dự kiến: 2h</span>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Cameras Grid (data from DB) -->
+            <div class="cameras-grid" id="camerasGrid">
+                <div class="text-center text-white py-5">
+                    <div class="spinner-border text-warning" role="status"><span class="visually-hidden">Loading...</span></div>
+                    <p class="mt-3">Đang tải danh sách camera từ hệ thống...</p>
                 </div>
             </div>
         </div>
@@ -2739,11 +2319,6 @@
                                     <label class="form-label">Sân gắn camera</label>
                                     <select class="form-select" id="cameraField" required>
                                         <option value="">Chọn sân</option>
-                                        <option value="A1">Sân A1</option>
-                                        <option value="A2">Sân A2</option>
-                                        <option value="B1">Sân B1</option>
-                                        <option value="B2">Sân B2</option>
-                                        <option value="C1">Sân C1</option>
                                     </select>
                                 </div>
                             </div>
@@ -2761,10 +2336,6 @@
                                     <label class="form-label">Nhân viên phụ trách</label>
                                     <select class="form-select" id="cameraStaff" required>
                                         <option value="">Chọn nhân viên</option>
-                                        <option value="Nguyễn Văn A">Nguyễn Văn A</option>
-                                        <option value="Trần Thị B">Trần Thị B</option>
-                                        <option value="Lê Văn C">Lê Văn C</option>
-                                        <option value="Phạm Thị D">Phạm Thị D</option>
                                     </select>
                                 </div>
                             </div>
@@ -2799,9 +2370,14 @@
                         </div>
                         
                         <div class="mb-3">
-                            <label class="form-label">File video/hình ảnh mô phỏng</label>
-                            <input type="file" class="form-control" id="cameraFile" accept="image/*,video/*">
-                            <div class="form-text">Tùy chọn: Upload file để mô phỏng camera</div>
+                            <label class="form-label">Chọn video mô phỏng (Cloud)</label>
+                            <select class="form-select" id="cameraFileUrl">
+                                <option value="">-- Chọn video --</option>
+                                <option value="https://res.cloudinary.com/du6x32par/video/upload/v1761732654/Bong_da_3_srvj0e.mp4">Bóng đá 3</option>
+                                <option value="https://res.cloudinary.com/du6x32par/video/upload/v1761732358/Bong_da_1_hyhasj.mp4">Bóng đá 1</option>
+                                <option value="https://res.cloudinary.com/du6x32par/video/upload/v1761732297/Bong_da_2_epfuoj.mp4">Bóng đá 2</option>
+                            </select>
+                            <div class="form-text">Nguồn: Cloudinary. Dùng một trong các URL có sẵn.</div>
                         </div>
                         
                         <div class="mb-3">
@@ -2856,11 +2432,7 @@
                                 <div class="mb-3">
                                     <label class="form-label">Sân gắn camera</label>
                                     <select class="form-select" id="editCameraField" required>
-                                        <option value="A1">Sân A1</option>
-                                        <option value="A2">Sân A2</option>
-                                        <option value="B1">Sân B1</option>
-                                        <option value="B2">Sân B2</option>
-                                        <option value="C1">Sân C1</option>
+                                        <option value="">Chọn sân</option>
                                     </select>
                                 </div>
                             </div>
@@ -2877,10 +2449,7 @@
                                 <div class="mb-3">
                                     <label class="form-label">Nhân viên phụ trách</label>
                                     <select class="form-select" id="editCameraStaff" required>
-                                        <option value="Nguyễn Văn A">Nguyễn Văn A</option>
-                                        <option value="Trần Thị B">Trần Thị B</option>
-                                        <option value="Lê Văn C">Lê Văn C</option>
-                                        <option value="Phạm Thị D">Phạm Thị D</option>
+                                        <option value="">Chọn nhân viên</option>
                                     </select>
                                 </div>
                             </div>
@@ -2912,6 +2481,17 @@
                         <div class="mb-3">
                             <label class="form-label">Mô tả vị trí</label>
                             <textarea class="form-control" rows="3" id="editCameraDescription"></textarea>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Chọn video mô phỏng (Cloud)</label>
+                            <select class="form-select" id="editCameraFileUrl">
+                                <option value="">-- Giữ nguyên --</option>
+                                <option value="https://res.cloudinary.com/du6x32par/video/upload/v1761732654/Bong_da_3_srvj0e.mp4">Bóng đá 3</option>
+                                <option value="https://res.cloudinary.com/du6x32par/video/upload/v1761732358/Bong_da_1_hyhasj.mp4">Bóng đá 1</option>
+                                <option value="https://res.cloudinary.com/du6x32par/video/upload/v1761732297/Bong_da_2_epfuoj.mp4">Bóng đá 2</option>
+                            </select>
+                            <div class="form-text">Để trống nếu không muốn thay đổi video hiện tại.</div>
                         </div>
                         
                         <div class="mb-3">
@@ -3720,6 +3300,69 @@
             }
         }
 
+        // Load dynamic options (fields, employees) from backend
+        async function loadFieldsForCameraSelects() {
+            try {
+                const res = await fetch('/admin/fields/list');
+                const list = await res.json();
+                const fieldSelect = document.getElementById('cameraField');
+                const editFieldSelect = document.getElementById('editCameraField');
+                const filterSelect = document.getElementById('fieldFilter');
+                
+                if (fieldSelect) {
+                    fieldSelect.innerHTML = '<option value="">Chọn sân</option>';
+                }
+                if (editFieldSelect) {
+                    editFieldSelect.innerHTML = '<option value="">Chọn sân</option>';
+                }
+                if (filterSelect) {
+                    filterSelect.innerHTML = '<option value="">Tất cả sân</option>';
+                }
+                
+                (list || []).forEach(f => {
+                    const option = document.createElement('option');
+                    option.value = f.maSan;
+                    option.textContent = `${f.tenSan}`;
+                    if (fieldSelect) fieldSelect.appendChild(option.cloneNode(true));
+                    if (editFieldSelect) editFieldSelect.appendChild(option.cloneNode(true));
+                    if (filterSelect) filterSelect.appendChild(option.cloneNode(true));
+                });
+            } catch (e) {
+                console.error('Error loading fields:', e);
+            }
+        }
+
+        async function loadEmployeesForCameraSelect() {
+            try {
+                const res = await fetch('/admin/employees/list');
+                const list = await res.json();
+                const staffSelect = document.getElementById('cameraStaff');
+                const editStaffSelect = document.getElementById('editCameraStaff');
+                
+                if (staffSelect) {
+                    staffSelect.innerHTML = '<option value="">Chọn nhân viên</option>';
+                    (list || []).forEach(emp => {
+                        const option = document.createElement('option');
+                        option.value = emp.userID;
+                        option.textContent = emp.fullName;
+                        staffSelect.appendChild(option);
+                    });
+                }
+                
+                if (editStaffSelect) {
+                    editStaffSelect.innerHTML = '<option value="">Chọn nhân viên</option>';
+                    (list || []).forEach(emp => {
+                        const option = document.createElement('option');
+                        option.value = emp.userID;
+                        option.textContent = emp.fullName;
+                        editStaffSelect.appendChild(option);
+                    });
+                }
+            } catch (e) {
+                console.error('Error loading employees:', e);
+            }
+        }
+
         // Add Camera Functions - save to backend
         document.getElementById('confirmAddCamera').addEventListener('click', async function() {
             const form = document.getElementById('addCameraForm');
@@ -3728,8 +3371,8 @@
             btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Đang thêm...';
             btn.disabled = true;
             try {
-                const fileInput = document.getElementById('cameraFile');
-                const fileName = fileInput && fileInput.files && fileInput.files[0] ? fileInput.files[0].name : null;
+                const fileUrlSelect = document.getElementById('cameraFileUrl');
+                const fileUrl = fileUrlSelect ? (fileUrlSelect.value || null) : null;
                 const sanVal = document.getElementById('cameraField').value;
                 const staffVal = document.getElementById('cameraStaff').value;
                 // Map to DB columns
@@ -3740,7 +3383,7 @@
                     NhanVienPhuTrach: isNaN(parseInt(staffVal)) ? null : parseInt(staffVal),
                     TrangThai: document.getElementById('cameraStatus').value, // online|maintenance|offline (text NVARCHAR)
                     GhiChu: document.getElementById('cameraDescription').value.trim(),
-                    FileMoPhong: fileName
+                    FileMoPhong: fileUrl
                 };
                 const res = await fetch('/admin/cameras/add', {
                     method: 'POST',
@@ -3772,19 +3415,102 @@
                 (list || []).forEach(cam => {
                     const card = document.createElement('div');
                     card.className = 'camera-card';
-                    const status = cam.TrangThai || cam.trangThai || 'online';
-                    const sanText = cam.SanTen || cam.san || (cam.SanID ? ('Sân ' + cam.SanID) : '');
+                    const status = (cam.TrangThai || cam.trangThai || 'online').toLowerCase();
+                    const sanText = cam.SanTen || (cam.SanID ? ('Sân ' + cam.SanID) : '');
+                    const name = cam.TenCamera || '';
+                    const ip = cam.IP || '';
+                    const staff = cam.NhanVienTen || '';
+                    const videoUrl = cam.FileMoPhong || '';
                     card.dataset.field = sanText;
                     card.dataset.status = status;
-                    card.setAttribute('data-camera-id', cam.CameraID || cam.maCamera || cam.id || '');
+                    card.setAttribute('data-camera-id', cam.CameraID || '');
+
+                    const hasVideo = !!videoUrl;
+                    const isYoutube = hasVideo && /youtube\.com|youtu\.be/i.test(videoUrl);
+                    const isMp4 = hasVideo && /\.mp4(\?|$)/i.test(videoUrl);
+                    const isImage = hasVideo && /\.(png|jpg|jpeg|webp)(\?|$)/i.test(videoUrl);
+
+                    let mediaHtml = `
+                        <div class="video-container">
+                            <div class="${status === 'online' ? 'live-indicator' : 'live-indicator offline'}">
+                                <span>${status === 'online' ? 'LIVE' : status.toUpperCase()}</span>
+                            </div>
+                            <div class="real-surveillance-view${status !== 'online' ? ' offline-feed' : ''}"${status !== 'online' ? ' style="opacity:.6;"' : ''}>
+                                <div class="camera-feed">
+                    `;
+
+                    if (hasVideo) {
+                        if (isMp4) {
+                            mediaHtml += `<video class="camera-video" src="${videoUrl}" controls autoplay muted playsinline></video>`;
+                        } else if (isYoutube) {
+                            const vid = videoUrl.split('/').pop().split('?')[0];
+                            mediaHtml += `<iframe class="video-embed" src="https://www.youtube.com/embed/${vid}?autoplay=0&controls=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                        } else if (isImage) {
+                            mediaHtml += `<img class="camera-video" src="${videoUrl}" alt="preview"/>`;
+                        } else {
+                            mediaHtml += `<div class="video-placeholder"><i class="fas fa-video"></i><div class="video-placeholder-text">Không hỗ trợ định dạng: ${videoUrl}</div></div>`;
+                        }
+                    } else {
+                        mediaHtml += `
+                            <div class="football-field-background${status !== 'online' ? ' offline-field' : ''}">
+                                <div class="field-grass"></div>
+                                <div class="field-lines"></div>
+                                <div class="field-goals"></div>
+                                <div class="field-center-circle"></div>
+                            </div>
+                        `;
+                    }
+
+                    mediaHtml += `
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
                     card.innerHTML = `
                         <div class="camera-header">
-                            <div class="camera-title">
-                                <h5 class="camera-name">${cam.TenCamera || cam.tenCamera || ''}</h5>
-                                <span class="camera-field">${sanText}</span>
+                            <div class="camera-info">
+                                <h3 class="camera-name">${name}</h3>
+                                <div class="camera-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    ${sanText || 'Chưa gán sân'}
+                                </div>
+                                <div class="camera-details">
+                                    ${ip ? `<small><i class=\"fas fa-network-wired me-1\"></i>IP: ${ip}</small>` : ''}
+                                    ${staff ? `<small><i class=\"fas fa-user me-1\"></i>NV: ${staff}</small>` : ''}
+                                </div>
                             </div>
-                            <span class="status-badge status-${status}">${status}</span>
-                        </div>`;
+                            <div class="camera-status">
+                                <div class="status-indicator status-${status === 'online' ? 'online' : (status === 'maintenance' ? 'maintenance' : 'offline')}"></div>
+                                <span class="status-text">${status === 'online' ? 'LIVE' : status}</span>
+                            </div>
+                        </div>
+                        ${mediaHtml}
+                        <div class="camera-actions" style="position:absolute;top:1rem;right:1rem;opacity:0;transition:opacity.3s;z-index:10;">
+                            <button class="btn btn-outline-primary btn-sm" onclick="openEditCameraModal(${cam.CameraID || ''})" title="Sửa">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-outline-danger btn-sm" onclick="deleteCamera(${cam.CameraID || ''}, '${name}')" title="Xóa">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                        <div class="camera-controls">
+                            <div class="control-buttons">
+                                <button class="control-btn active" data-action="play" title="Phát"><i class="fas fa-play"></i></button>
+                                <button class="control-btn" data-action="pause" title="Tạm dừng"><i class="fas fa-pause"></i></button>
+                                <button class="control-btn" data-action="fullscreen" title="Toàn màn hình"><i class="fas fa-expand"></i></button>
+                                <button class="control-btn" data-action="record" title="Ghi hình"><i class="fas fa-record-vinyl"></i></button>
+                                <button class="control-btn" data-action="sound" title="Âm thanh"><i class="fas fa-volume-up"></i></button>
+                            </div>
+                            <div class="camera-info-footer">
+                                <div class="info-item"><i class="fas fa-eye"></i><span>—</span></div>
+                                <div class="info-item"><i class="fas fa-clock"></i><span>24/7</span></div>
+                            </div>
+                        </div>
+                        <style>
+                            .camera-card:hover .camera-actions { opacity:1 !important; }
+                        </style>
+                    `;
                     grid.appendChild(card);
                 });
                 filterCameras();
@@ -3793,34 +3519,100 @@
         }
 
         // Edit Camera Functions
-        function editCamera(id, name, field, status, staff, ip) {
-            document.getElementById('editCameraId').value = id;
-            document.getElementById('editCameraName').value = name;
-            document.getElementById('editCameraField').value = field;
-            document.getElementById('editCameraStatus').value = status;
-            document.getElementById('editCameraStaff').value = staff;
-            document.getElementById('editCameraIP').value = ip;
-            
-            const modal = new bootstrap.Modal(document.getElementById('editCameraModal'));
-            modal.show();
+        let currentCameraData = null;
+        
+        async function openEditCameraModal(cameraId) {
+            try {
+                const res = await fetch('/admin/cameras/list');
+                const list = await res.json();
+                const cam = (list || []).find(c => c.CameraID == cameraId);
+                if (!cam) {
+                    alert('Không tìm thấy camera!');
+                    return;
+                }
+                
+                currentCameraData = cam;
+                
+                // Load dropdowns if not already loaded
+                await Promise.all([
+                    loadFieldsForCameraSelects(),
+                    loadEmployeesForCameraSelect()
+                ]);
+                
+                // Fill form with camera data
+                document.getElementById('editCameraId').value = cam.CameraID || '';
+                document.getElementById('editCameraName').value = cam.TenCamera || '';
+                document.getElementById('editCameraIP').value = cam.IP || '';
+                document.getElementById('editCameraStatus').value = (cam.TrangThai || 'online').toLowerCase();
+                document.getElementById('editCameraDescription').value = cam.GhiChu || '';
+                document.getElementById('editCameraFileUrl').value = '';
+                
+                // Set field
+                const fieldSelect = document.getElementById('editCameraField');
+                if (cam.SanID && fieldSelect) {
+                    fieldSelect.value = cam.SanID;
+                }
+                
+                // Set staff
+                const staffSelect = document.getElementById('editCameraStaff');
+                if (cam.NhanVienPhuTrach && staffSelect) {
+                    staffSelect.value = cam.NhanVienPhuTrach;
+                }
+                
+                const modal = new bootstrap.Modal(document.getElementById('editCameraModal'));
+                modal.show();
+            } catch (e) {
+                console.error('Error loading camera data:', e);
+                alert('Không thể tải dữ liệu camera: ' + e.message);
+            }
         }
 
-        document.getElementById('confirmEditCamera').addEventListener('click', function() {
+        document.getElementById('confirmEditCamera').addEventListener('click', async function() {
             const form = document.getElementById('editCameraForm');
-            if (form.checkValidity()) {
-                const btn = this;
-                btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Đang lưu...';
-                btn.disabled = true;
+            if (!form.checkValidity()) { form.reportValidity(); return; }
+            
+            const btn = this;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Đang lưu...';
+            btn.disabled = true;
+            
+            try {
+                const cameraId = document.getElementById('editCameraId').value;
+                const sanVal = document.getElementById('editCameraField').value;
+                const staffVal = document.getElementById('editCameraStaff').value;
+                const fileUrl = document.getElementById('editCameraFileUrl').value;
                 
-                setTimeout(() => {
-                    btn.innerHTML = '<i class="fas fa-save me-2"></i>Lưu thay đổi';
-                    btn.disabled = false;
-                    bootstrap.Modal.getInstance(document.getElementById('editCameraModal')).hide();
-                    alert('Thông tin camera đã được cập nhật!');
-                    form.reset();
-                }, 2000);
-            } else {
-                form.reportValidity();
+                const payload = {
+                    CameraID: parseInt(cameraId),
+                    TenCamera: document.getElementById('editCameraName').value.trim(),
+                    SanID: isNaN(parseInt(sanVal)) || !sanVal ? null : parseInt(sanVal),
+                    IP: document.getElementById('editCameraIP').value.trim(),
+                    NhanVienPhuTrach: isNaN(parseInt(staffVal)) || !staffVal ? null : parseInt(staffVal),
+                    TrangThai: document.getElementById('editCameraStatus').value,
+                    GhiChu: document.getElementById('editCameraDescription').value.trim(),
+                    FileMoPhong: fileUrl || (currentCameraData && currentCameraData.FileMoPhong) || null
+                };
+                
+                const res = await fetch('/admin/cameras/update', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const txt = await res.text();
+                if (!res.ok || (txt && txt !== 'success' && !txt.includes('success'))) {
+                    throw new Error(txt || 'HTTP ' + res.status);
+                }
+                
+                bootstrap.Modal.getInstance(document.getElementById('editCameraModal')).hide();
+                alert('Camera đã được cập nhật thành công!');
+                form.reset();
+                await reloadCameras();
+            } catch (e) {
+                console.error('Update camera error:', e);
+                alert('Không thể cập nhật camera: ' + e.message);
+            } finally {
+                btn.innerHTML = '<i class="fas fa-save me-2"></i>Lưu thay đổi';
+                btn.disabled = false;
             }
         });
 
@@ -3897,24 +3689,19 @@
         });
 
         // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
             updateCameraStats();
             setupVideoControls();
+            await Promise.all([
+                loadFieldsForCameraSelects(),
+                loadEmployeesForCameraSelect()
+            ]);
+            await reloadCameras();
             
             // Add search event listeners
             document.getElementById('cameraSearch').addEventListener('input', filterCameras);
             document.getElementById('fieldFilter').addEventListener('change', filterCameras);
             document.getElementById('statusFilter').addEventListener('change', filterCameras);
-            
-            // Add event listeners for camera cards
-            document.querySelectorAll('.camera-card').forEach(card => {
-                card.addEventListener('click', function() {
-                    const cameraId = this.getAttribute('data-camera-id');
-                    if (cameraId) {
-                        viewCamera(cameraId);
-                    }
-                });
-            });
         });
         // Simulate loading cameras
         document.addEventListener('DOMContentLoaded', function() {
