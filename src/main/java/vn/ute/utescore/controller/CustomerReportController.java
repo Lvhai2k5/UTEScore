@@ -100,14 +100,14 @@ this.sanBongRepo = sanBongRepo;
                 // ✅ Kiểm tra loại thanh toán
                 List<String> types = pays.stream()
                         .filter(tt -> "Thành công".equalsIgnoreCase(tt.getTrangThaiThanhToan())
-                                   || "Chờ".equalsIgnoreCase(tt.getTrangThaiThanhToan()))
+                                   || "Chờ duyệt".equalsIgnoreCase(tt.getTrangThaiThanhToan()))
                         .map(tt -> tt.getLoaiThanhToan().trim())
                         .distinct()
                         .collect(Collectors.toList());
 
                 boolean hasRefundPending = pays.stream()
                         .anyMatch(tt -> "Hoàn tiền".equalsIgnoreCase(tt.getLoaiThanhToan())
-                                     && "Chờ".equalsIgnoreCase(tt.getTrangThaiThanhToan()));
+                                     && "Chờ duyệt".equalsIgnoreCase(tt.getTrangThaiThanhToan()));
 
                 boolean hasRefundDone = pays.stream()
                         .anyMatch(tt -> "Hoàn tiền".equalsIgnoreCase(tt.getLoaiThanhToan())
@@ -330,61 +330,58 @@ this.sanBongRepo = sanBongRepo;
             @RequestBody Map<String, Object> body
     ) {
         try {
+            // 🔹 1. Kiểm tra đơn thuê sân tồn tại
             ThueSan ts = thueSanRepo.findById(maDonDat).orElse(null);
             if (ts == null)
                 return Map.of("success", false, "message", "Không tìm thấy đơn thuê sân #" + maDonDat);
 
+            // 🔹 2. Chặn nếu đã yêu cầu hoàn trước đó
             if (ts.getGhiChu() != null && ts.getGhiChu().toLowerCase().contains("hoàn"))
                 return Map.of("success", false, "message", "Đơn này đã được hoàn hoặc đang chờ xử lý!");
 
-            ThanhToan latestPay = thanhToanRepo.findLatestByThueSan(ts)
-                    .stream().findFirst().orElse(null);
-            if (latestPay == null)
-                return Map.of("success", false, "message", "Không tìm thấy giao dịch hợp lệ để hoàn tiền.");
+            // 🔹 3. Lấy giao dịch ĐẶT CỌC thành công
+            ThanhToan depositPay = thanhToanRepo.findByThueSanAndLoaiThanhToanAndTrangThaiThanhToan(
+                    ts, "Đặt cọc", "Thành công"
+            ).stream().findFirst().orElse(null);
 
-            if ("Còn lại".equalsIgnoreCase(latestPay.getLoaiThanhToan())
-                    && "Thành công".equalsIgnoreCase(latestPay.getTrangThaiThanhToan())) {
-                return Map.of("success", false, "message", "Đơn này đã thanh toán đầy đủ, không thể hoàn đơn!");
-            }
+            if (depositPay == null)
+                return Map.of("success", false, "message", "Không tìm thấy giao dịch đặt cọc hợp lệ để hoàn tiền.");
 
-            // 🟢 Tạo bản ghi ThanhToan loại "Hoàn đơn"
+            // ✅ Lấy số tiền đặt cọc
+            BigDecimal soTienHoan = depositPay.getSoTienNhan();
+
+            // 🔹 4. Tạo bản ghi ThanhToan loại "Hoàn tiền"
             ThanhToan refundTrans = new ThanhToan();
             refundTrans.setThueSan(ts);
             refundTrans.setLoaiThanhToan("Hoàn tiền");
-            refundTrans.setTrangThaiThanhToan("Chờ");
+            refundTrans.setTrangThaiThanhToan("Chờ duyệt");
             refundTrans.setPhuongThuc("Chuyển khoản");
-            refundTrans.setSoTienNhan(BigDecimal.ZERO);
+            refundTrans.setSoTienNhan(soTienHoan); // 💰 Hoàn đúng số tiền đã đặt cọc
             refundTrans.setNgayThanhToan(LocalDateTime.now());
-            refundTrans.setGhiChu("Khách hàng yêu cầu hoàn đơn #" + ts.getMaDonDat()
-                    + " | Ghi chú: " + body.getOrDefault("ghiChu", ""));
+            refundTrans.setGhiChu("Hoàn lại tiền đặt cọc #" + depositPay.getMaThanhToan() +
+                    " của đơn #" + ts.getMaDonDat());
             thanhToanRepo.save(refundTrans);
 
-            // 🟢 Tạo bản ghi HoanTien
+            // 🔹 5. Tạo bản ghi HoanTien
             HoanTien hoanTien = new HoanTien();
             hoanTien.setThanhToan(refundTrans);
-            hoanTien.setSoTienHoan(BigDecimal.ZERO);
+            hoanTien.setSoTienHoan(soTienHoan); // 💰 Hoàn cùng số tiền đặt cọc
             hoanTien.setPhuongThucHoan("Chuyển khoản");
             hoanTien.setNganHang((String) body.getOrDefault("nganHang", "Không rõ"));
             hoanTien.setSoTaiKhoan((String) body.getOrDefault("soTaiKhoan", "Không rõ"));
             hoanTien.setLyDoHoan((String) body.getOrDefault("lyDoHoan", ""));
             hoanTien.setNgayYeuCau(LocalDateTime.now());
-            hoanTien.setTrangThaiHoan("Chờ xác nhận");
+            hoanTien.setTrangThaiHoan("Chờ duyệt");
             hoanTienRepo.save(hoanTien);
 
-            // 🟢 Cập nhật ghi chú đơn thuê sân
+            // 🔹 6. Cập nhật đơn thuê sân
             ts.setGhiChu("Đã yêu cầu hoàn đơn (Ngày: " + LocalDateTime.now() + ")");
+            ts.setHanGiuCho(null);
             thueSanRepo.save(ts);
-
-            // 🟢 Giải phóng sân
-            if (ts.getSanBong() != null) {
-                SanBong san = ts.getSanBong();
-                san.setTrangThai("Trống");
-                sanBongRepo.save(san);
-            }
 
             return Map.of(
                     "success", true,
-                    "message", "Yêu cầu hoàn đơn đã được ghi nhận. Sân đã được trả lại, vui lòng chờ quản lý xác nhận."
+                    "message", "Yêu cầu hoàn tiền " + soTienHoan + " VNĐ đã được ghi nhận. Sân đã được trả lại, vui lòng chờ xác nhận."
             );
 
         } catch (Exception e) {
@@ -392,4 +389,5 @@ this.sanBongRepo = sanBongRepo;
             return Map.of("success", false, "message", "Lỗi khi xử lý hoàn đơn: " + e.getMessage());
         }
     }
+
 }
