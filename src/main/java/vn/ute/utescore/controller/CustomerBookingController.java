@@ -41,7 +41,7 @@ public class CustomerBookingController {
         this.thueSanRepository = thueSanRepository;
     }
 
-
+    
     /* ===========================================================
      * 🏟️ [GET] Trang đặt sân
      * =========================================================== */
@@ -138,10 +138,27 @@ public class CustomerBookingController {
                         && t.getHanGiuCho() != null && t.getHanGiuCho().isAfter(now);
 
                 boolean isConfirmed = t.getThanhToans() != null && t.getThanhToans().stream().anyMatch(
-                        tt -> {
-                            String status = tt.getTrangThaiThanhToan();
-                            return status != null && (status.equalsIgnoreCase("Đã thanh toán") || status.equalsIgnoreCase("Thành công"));
-                        });
+                	    tt -> {
+                	        String loai = tt.getLoaiThanhToan();
+                	        String status = tt.getTrangThaiThanhToan();
+
+                	        // 🟢 Kiểm tra xem đây là giao dịch đặt cọc thành công
+                	        boolean isDeposit = loai != null && loai.equalsIgnoreCase("Đặt cọc")
+                	                && status != null && status.equalsIgnoreCase("Thành công");
+
+                	        // 🔴 Kiểm tra xem đơn này có giao dịch hoàn tiền không
+                	        boolean hasRefund = t.getThanhToans().stream().anyMatch(
+                	                r -> {
+                	                    String loaiR = r.getLoaiThanhToan();
+                	                    String statusR = r.getTrangThaiThanhToan();
+                	                    return loaiR != null && loaiR.equalsIgnoreCase("Hoàn tiền")
+                	                            && (statusR != null && (statusR.equalsIgnoreCase("Chờ duyệt")
+                	                            || statusR.equalsIgnoreCase("Thành công")));
+                	                });
+
+                	        // 👉 Nếu là đặt cọc thành công và chưa hoàn tiền => giữ chỗ
+                	        return isDeposit && !hasRefund;
+                	    });
 
                 if (isPending || isConfirmed) {
                     result.add(t.getKhungGioBatDau() + "-" + t.getKhungGioKetThuc());
@@ -209,22 +226,59 @@ public class CustomerBookingController {
         List<ThueSan> overlapBookings = thueSanRepository.findOverlappingBookings(
                 pitchId,
                 ngayThue,
-                start + ":00", // thêm giây để tương thích TIME SQL Server
-                end + ":00"
+                start + ":00", // ví dụ "08:00:00"
+                end + ":00"    // ví dụ "09:00:00"
         );
+
 
         // ❗ Nếu có ít nhất 1 đơn còn hiệu lực (thanh toán thành công hoặc đang giữ chỗ)
         boolean isOverlapping = overlapBookings.stream().anyMatch(t -> {
-            // ✅ Đơn đã thanh toán
+            LocalDateTime now = LocalDateTime.now();
+
+            // 🔹 Có giao dịch thanh toán thành công (đủ tiền / hoàn tất)
             boolean isPaid = t.getThanhToans() != null && t.getThanhToans().stream()
-                .anyMatch(tt -> tt.getTrangThaiThanhToan() != null &&
-                        (tt.getTrangThaiThanhToan().equalsIgnoreCase("Đã thanh toán") ||
-                         tt.getTrangThaiThanhToan().equalsIgnoreCase("Thành công")));
-            // ✅ Đơn đang giữ chỗ (chờ thanh toán)
+                .anyMatch(tt -> {
+                    String loai = tt.getLoaiThanhToan() != null ? tt.getLoaiThanhToan().trim() : "";
+                    String status = tt.getTrangThaiThanhToan() != null ? tt.getTrangThaiThanhToan().trim() : "";
+                    return !loai.equalsIgnoreCase("Hoàn tiền")
+                            && (status.equalsIgnoreCase("Đã thanh toán") || status.equalsIgnoreCase("Thành công"));
+                });
+
+            // 🔹 Kiểm tra có hoàn tiền nào không
+            boolean hasRefund = t.getThanhToans() != null && t.getThanhToans().stream()
+                .anyMatch(r -> {
+                    String loaiR = r.getLoaiThanhToan() != null ? r.getLoaiThanhToan().trim() : "";
+                    String statusR = r.getTrangThaiThanhToan() != null ? r.getTrangThaiThanhToan().trim() : "";
+                    return loaiR.equalsIgnoreCase("Hoàn tiền")
+                            && (statusR.equalsIgnoreCase("Chờ duyệt") || statusR.equalsIgnoreCase("Thành công"));
+                });
+
+            // 🔹 Đơn giữ chỗ VNPay (chưa thanh toán)
             boolean isHolding = t.getGhiChu() != null && t.getGhiChu().contains("Chờ thanh toán VNPay")
-                && t.getHanGiuCho() != null && t.getHanGiuCho().isAfter(LocalDateTime.now());
-            return isPaid || isHolding;
+                    && t.getHanGiuCho() != null && t.getHanGiuCho().isAfter(now);
+
+            // 🔹 Đơn đặt cọc thành công mà chưa hoàn
+            boolean hasDepositWithoutRefund = t.getThanhToans() != null && t.getThanhToans().stream()
+                .anyMatch(tt -> {
+                    String loai = tt.getLoaiThanhToan() != null ? tt.getLoaiThanhToan().trim() : "";
+                    String status = tt.getTrangThaiThanhToan() != null ? tt.getTrangThaiThanhToan().trim() : "";
+                    return loai.equalsIgnoreCase("Đặt cọc") && status.equalsIgnoreCase("Thành công") && !hasRefund;
+                });
+
+            // 🧠 Nếu Paid nhưng đã hoàn thì không tính là trùng
+            boolean isReallyPaid = isPaid && !hasRefund;
+
+            System.out.println("🎯 Booking #" + t.getMaDonDat()
+                    + " | Paid=" + isPaid
+                    + " | Holding=" + isHolding
+                    + " | DepositNoRefund=" + hasDepositWithoutRefund
+                    + " | HasRefund=" + hasRefund);
+
+            return isReallyPaid || isHolding || hasDepositWithoutRefund;
         });
+
+
+        
 
         if (isOverlapping) {
             model.addAttribute("errorMessage", "⚠️ Khung giờ này đã có người đặt trước. Vui lòng chọn thời gian khác!");
@@ -249,7 +303,7 @@ public class CustomerBookingController {
             thueSan.setGhiChu("Chờ thanh toán VNPay");
             thueSanRepository.save(thueSan);
 
-            String orderInfo = kh.getSoDienThoai() + "_" + thueSan.getMaDonDat();
+            String orderInfo = kh.getSoDienThoai() + "_" + thueSan.getMaDonDat() + "_" + System.currentTimeMillis();
             return "redirect:/api/vnpay/create-payment?amount=" + cocAmount + "&orderInfo=" + orderInfo;
 
         } catch (Exception e) {
@@ -316,7 +370,7 @@ public class CustomerBookingController {
      * =========================================================== */
     private double getDepositRate() {
         try {
-            String val = systemConfigRepo.findValueByKey("DEPOSIT_PERCENTAGE");
+            String val = systemConfigRepo.findValueByKey("deposit_rate");
             if (val != null && !val.isBlank()) {
                 double parsed = Double.parseDouble(val.trim());
                 return parsed > 1 ? parsed / 100 : parsed;
@@ -330,9 +384,9 @@ public class CustomerBookingController {
     private String getPitchSize(String loaiSan) {
         if (loaiSan == null) return "";
         return switch (loaiSan.trim().toLowerCase()) {
-            case "5 người" -> "20 × 40 m";
-            case "7 người" -> "30 × 50 m";
-            case "11 người" -> "105 × 68 m";
+            case "Sân 5" -> "20 × 40 m";
+            case "Sân 7" -> "30 × 50 m";
+            case "Sân 11" -> "105 × 68 m";
             default -> "";
         };
     }
