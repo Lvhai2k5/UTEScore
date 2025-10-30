@@ -61,7 +61,70 @@ Quản lý vận hành sân bóng đá phát sinh nhiều quy trình phức tạ
 - JDK 17+
 - Maven 3.9 hoặc mới hơn
 - SQL Server (khuyến nghị bản Developer)
-- Tài khoản Cloudinary, VNPay sandbox (tùy mục thanh toán)
+- Tài khoản Cloudinary, VNPay sandbox (tùy mục thanh toán), Chat bot(Gemeni AIBÁO CÁO CUỐI KỲ  
+# XÂY DỰNG WEBSITE QUẢN LÝ SÂN BÓNG ĐÁ UTESCORE
+
+## THÔNG TIN ĐỒ ÁN
+- **Tên đồ án:** Xây dựng website quản lý sân bóng đá UTEScore
+- **Môn học:** Lập trình Web (Web Programming)
+- **Học kỳ:** 2 - Năm học 2024-2025
+- **Giảng viên hướng dẫn:** ThS. Nguyễn Hữu Trung
+- **Lớp học phần:** WEPR330479_03
+- **Nhóm thực hiện:** Nhóm 10  
+  - Lê Vũ Hải – 23110209  
+  - Phạm Võ Nhất Kha – 23110235  
+  - Huỳnh Hoài Phương – 23110289  
+  - Lê Thị Thảo – 23110321
+
+---
+
+## MỤC LỤC
+1. [Đặt vấn đề](#đặt-vấn-đề)
+2. [Kiến trúc & công nghệ](#kiến-trúc--công-nghệ)
+3. [Yêu cầu hệ thống](#yêu-cầu-hệ-thống)
+4. [Cài đặt & sử dụng](#cài-đặt--sử-dụng)
+    - [Cấu hình](#cấu-hình)
+    - [Chạy ứng dụng](#chạy-ứng-dụng)
+5. [Chi tiết chức năng & sơ đồ luồng](#chi-tiết-chức-năng--sơ-đồ-luồng)
+    - [Khách hàng](#khách-hàng)
+    - [Nhân viên](#nhân-viên)
+    - [Quản trị](#quản-trị)
+6. [Tài khoản mẫu](#tài-khoản-mẫu)
+7. [Cấu trúc thư mục dự án](#cấu-trúc-thư-mục-dự-án)
+8. [Tích hợp bên thứ ba](#tích-hợp-bên-thứ-ba)
+9. [Bảo mật & phân quyền](#bảo-mật--phân-quyền)
+10. [Kiểm thử nhanh](#kiểm-thử-nhanh)
+11. [Khắc phục sự cố](#khắc-phục-sự-cố)
+12. [Đánh giá – Hướng phát triển](#đánh-giá--hướng-phát-triển)
+13. [Tài liệu tham khảo](#tài-liệu-tham-khảo)
+
+---
+
+## 1. ĐẶT VẤN ĐỀ
+Quản lý vận hành sân bóng đá phát sinh nhiều quy trình phức tạp: từ đặt sân, thanh toán, đến check-in thực tế, phân quyền đa vai trò (khách hàng, nhân viên, quản trị viên). UTEScore số hóa toàn bộ nghiệp vụ đặt – thanh toán – vận hành – báo cáo sân bóng cho cơ sở thể thao hiện đại.
+
+**Mục tiêu:**  
+- Tự động hóa nghiệp vụ đặt sân, thanh toán không tiền mặt, xuất hóa đơn, quản lý tiện ích & lịch bảo trì.
+- Đảm bảo bảo mật, phân quyền chặt chẽ.
+- Hỗ trợ thống kê, báo cáo, nâng cao hiệu quả vận hành.
+
+---
+
+## 2. KIẾN TRÚC & CÔNG NGHỆ
+- **Backend:** Spring Boot 3 (MVC, Security, JWT, JPA/Hibernate)
+- **Frontend:** Thymeleaf, Bootstrap 5, Javascript (ở admin/customer/employee)
+- **Realtime/Chat:** Spring WebSocket
+- **Media:** Cloudinary
+- **Báo cáo/Excel:** Apache POI
+- **Database:** SQL Server (MSSQL)
+
+---
+
+## 3. YÊU CẦU HỆ THỐNG
+- JDK 17+
+- Maven 3.9 hoặc mới hơn
+- SQL Server (khuyến nghị bản Developer)
+- Tài khoản Cloudinary, VNPay sandbox (tùy mục thanh toán), Chat bot(Gemeni AI)
 
 ---
 
@@ -72,6 +135,7 @@ Bổ sung/sửa `src/main/resources/application.properties`:
 - Cloudinary: `cloudinary.cloud_name`, `cloudinary.api_key`...
 - VNPay: `vnpay.tmn_code`, `vnpay.hash_secret`, ...
 - Email: `spring.mail.*` nếu cần gửi OTP
+- Chat bot: `gemini.api.key`,`gemini.api.url`
 
 ### Chạy ứng dụng
 - **Trực tiếp:**
@@ -167,6 +231,7 @@ UTEScore-main/
 - **VNPay:** Dùng API tích hợp thanh toán, cập nhật trạng thái đơn
 - **Cloudinary:** Lưu & lấy link ảnh, upload online
 - **Email:** Gửi OTP/khôi phục — sử dụng smtp cấu hình trong app
+- **Google Chat API:** Dùng API tích hợp chat bot hỗ trợ người dùngdùng
 
 ---
 
@@ -206,4 +271,4 @@ UTEScore-main/
 1. Sách Spring in Action, Manning
 2. Java Brains (YouTube) — Spring Boot & Security
 3. Tài liệu [Spring Boot](https://spring.io/projects/spring-boot), [Thymeleaf](https://www.thymeleaf.org/)
-4. Docs: API VNPay, Cloudinary, SQL Server 
+4. Docs: API VNPay, Cloudinary, SQL Server, Google Chat API 
