@@ -46,23 +46,4 @@ public class Guest_PitchDetailController {
 //        model.addAttribute("avgRating", avg);
 //        return "guest/pitch-detail"; // view hiển thị chi tiết
 //    }
-    
-    @GetMapping("/pitches/{id}")
-    public String showPitchDetail(@PathVariable("id") Integer id, Model model) {
-        Guest_PitchDTO pitch = pitchService.getById(id);
-        if (pitch == null) return "redirect:/pitches";
-
-        // ⭐ Đánh giá
-        List<Guest_ReviewDTO> reviews = reviewService.getByPitchId(pitch.getSanId());
-        double avg = reviewService.averageRating(reviews);
-
-        // 💰 Bảng giá theo loại sân
-        List<GiaThue> prices = priceService.getActivePricesByLoaiSan(pitch.getLoaiSan());
-
-        model.addAttribute("pitch", pitch);
-        model.addAttribute("reviews", reviews);
-        model.addAttribute("avgRating", avg);
-        model.addAttribute("prices", prices);
-        return "guest/pitch-detail";
-    }
 }
