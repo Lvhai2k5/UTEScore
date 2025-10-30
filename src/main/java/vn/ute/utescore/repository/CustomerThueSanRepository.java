@@ -117,9 +117,8 @@ public interface CustomerThueSanRepository extends JpaRepository<ThueSan, Intege
     	    SELECT * FROM ThueSan
     	    WHERE MaSan = :pitchId
     	      AND CAST(NgayThue AS date) = CAST(:ngayThue AS date)
-    	      AND (
-    	            (KhungGioBatDau < :endTime AND KhungGioKetThuc > :startTime)
-    	          )
+    	      AND (CAST(KhungGioBatDau AS time) < CAST(:endTime AS time)
+    	           AND CAST(KhungGioKetThuc AS time) > CAST(:startTime AS time))
     	      AND (GhiChu IS NULL OR LOWER(GhiChu) NOT LIKE N'%hủy%')
     	    """, nativeQuery = true)
     	List<ThueSan> findOverlappingBookings(
@@ -128,6 +127,5 @@ public interface CustomerThueSanRepository extends JpaRepository<ThueSan, Intege
     	        @Param("startTime") String startTime,
     	        @Param("endTime") String endTime
     	);
-
 
 }
