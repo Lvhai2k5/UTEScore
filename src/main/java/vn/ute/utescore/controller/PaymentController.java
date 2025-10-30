@@ -1,10 +1,16 @@
 package vn.ute.utescore.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import jakarta.servlet.http.HttpSession;
+import vn.ute.utescore.model.NhanVien;
 import vn.ute.utescore.model.ThanhToan;
+import vn.ute.utescore.repository.NhanVienRepository;
 import vn.ute.utescore.repository.ThanhToanRepository;
+import vn.ute.utescore.utils.SessionUtil;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -15,15 +21,29 @@ import java.util.Optional;
 @RequestMapping("/employee/payment")
 public class PaymentController {
 
-    private final ThanhToanRepository thanhToanRepository;
-
-    public PaymentController(ThanhToanRepository thanhToanRepository) {
-        this.thanhToanRepository = thanhToanRepository;
-    }
+	@Autowired
+	private NhanVienRepository nhanVienRepository;
+	
+	@Autowired
+    private ThanhToanRepository thanhToanRepository;
 
     // ✅ Khi vào /employee/payment → load tất cả đơn "Đặt cọc" có ghiChu = "1"
     @GetMapping
-    public String listDeposits(Model model) {
+    public String listDeposits(HttpSession session,Model model) {
+    	String email = SessionUtil.getCustomerEmail(session);
+
+        if (email != null) {
+            Optional<NhanVien> optionalNV = nhanVienRepository.findByEmail(email);
+
+            if (optionalNV.isPresent()) {
+                NhanVien nhanVien = optionalNV.get();
+                model.addAttribute("nhanVienDangNhap", nhanVien);
+            } else {
+                model.addAttribute("nhanVienDangNhap", null);
+            }
+        } else {
+                return "redirect:/login";
+        }
         List<ThanhToan> payments = thanhToanRepository.findDepositsCheckedIn("Hoàn tất", "1");
         model.addAttribute("payments", payments);
         return "employee/payment";

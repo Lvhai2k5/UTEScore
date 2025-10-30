@@ -94,4 +94,10 @@ public interface ThanhToanRepository extends JpaRepository<ThanhToan, Integer> {
     @Query("SELECT t FROM ThanhToan t WHERE t.TrangThaiThanhToan <> :status")
     List<ThanhToan> findUncompletedPayments(@Param("status") String status);
 
+        @Query("SELECT tt FROM ThanhToan tt WHERE tt.LoaiThanhToan = :status")
+        List<ThanhToan> findRefundPayments(@Param("status") String status);
+        default List<ThanhToan> findRefundPaymentsDefault() {
+            return findRefundPayments("Hoàn tiền");
+        }
+   
 }

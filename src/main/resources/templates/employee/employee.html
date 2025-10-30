@@ -6,56 +6,71 @@
 <title>UTEScore – Giao diện Nhân viên</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  :root{
+    --bg1:#667eea; --bg2:#764ba2; --ink:#1e293b;
+    --card:#ffffff; --muted:#64748b; --ring:#a78bfa;
+    --elev:0 20px 60px rgba(0,0,0,.10); --elev-sm:0 4px 12px rgba(0,0,0,.06);
+    --border:#e2e8f0; --sidebar1:#1e293b; --sidebar2:#0f172a;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: #1e293b;
+    background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
+    color: var(--ink);
     display: flex;
     height: 100vh;
     overflow: hidden;
   }
 
-  /* ===== SIDEBAR ===== */
+/* ===== SIDEBAR ===== */
   .sidebar {
     width: 270px;
-    background: linear-gradient(180deg, #1e293b, #0f172a);
+    background: linear-gradient(180deg, #1e293b, #0f172a, #312e81);
     color: white;
     display: flex;
     flex-direction: column;
-    box-shadow: 4px 0 24px rgba(0,0,0,0.3);
+    box-shadow: 4px 0 24px rgba(0,0,0,0.4);
     overflow-y: auto;
   }
   .logo-section {
     padding: 24px 16px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
   }
   .logo {
-    font-size: 26px;
-    font-weight: 700;
+    font-size: 28px;
+    font-weight: 800;
     text-align: center;
-    background: linear-gradient(135deg, #667eea, #a78bfa);
+    background: linear-gradient(90deg, #38bdf8, #a78bfa, #f472b6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease infinite;
   }
+  @keyframes gradientShift {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+
   .staff-info {
     text-align: center;
     margin-top: 16px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 12px;
-    padding: 12px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
   }
   .staff-avatar {
-    width: 60px; height: 60px;
+    width: 70px; height: 70px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    margin: 0 auto 10px;
+    background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+    margin: 0 auto 12px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 26px;
+    font-size: 30px; color: #fff;
+    box-shadow: 0 0 20px rgba(59,130,246,0.7);
   }
-  .staff-name { font-weight: 600; font-size: 15px; }
-  .staff-role { font-size: 13px; color: #94a3b8; }
+  .staff-name { font-weight: 700; font-size: 16px; }
+  .staff-role { font-size: 13px; color: #cbd5e1; }
 
   .menu {
     padding: 16px;
@@ -63,38 +78,39 @@
   }
   .menu-title {
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     color: #94a3b8;
-    margin: 8px 0;
+    margin: 12px 0;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
   }
   .menu-link {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     color: white;
     text-decoration: none;
-    background: rgba(255,255,255,0.05);
-    padding: 12px 14px;
-    border-radius: 10px;
-    margin-bottom: 6px;
+    background: rgba(255,255,255,0.08);
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin-bottom: 8px;
     font-size: 15px;
     transition: all 0.3s ease;
   }
   .menu-link:hover {
-    background: rgba(255,255,255,0.1);
-    transform: translateX(4px);
+    background: linear-gradient(135deg, #38bdf8, #a855f7);
+    transform: translateX(6px) scale(1.03);
+    box-shadow: 0 0 15px rgba(168,85,247,0.5);
   }
   .menu-link.active {
-    background: linear-gradient(135deg, rgba(102,126,234,0.4), rgba(118,75,162,0.4));
+    background: linear-gradient(135deg, #38bdf8, #f472b6);
+    box-shadow: 0 0 20px rgba(236,72,153,0.6);
   }
   .menu-icon {
     font-size: 18px;
     width: 26px;
     text-align: center;
   }
-
   /* ===== CONTENT ===== */
   .content {
     flex: 1;
@@ -102,13 +118,13 @@
     margin: 24px;
     border-radius: 24px;
     padding: 32px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    box-shadow: var(--elev);
     overflow-y: auto;
   }
 
   header {
     display: flex;
-    justify-content: flex-start; /* ✅ Không còn phần bên phải */
+    justify-content: flex-start;
     align-items: center;
     margin-bottom: 32px;
   }
@@ -118,6 +134,19 @@
     background: linear-gradient(135deg, #1e293b, #475569);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    position: relative;
+  }
+  header h2::after{
+    content:"";
+    position:absolute; left:0; bottom:-8px; width:56px; height:4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--bg1), var(--bg2));
+    box-shadow: 0 4px 16px rgba(118,75,162,.45);
+    animation: slidebar 3s ease-in-out infinite;
+  }
+  @keyframes slidebar {
+    0%,100%{transform:translateX(0); opacity:.9}
+    50%{transform:translateX(12px); opacity:1}
   }
 
   /* ===== CARDS ===== */
@@ -127,7 +156,11 @@
     padding: 32px;
     color: white;
     margin-bottom: 24px;
+    box-shadow: 0 12px 36px rgba(118,75,162,.35);
+    transform: translateY(6px);
+    opacity: 0;
   }
+
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -135,10 +168,12 @@
     margin-bottom: 24px;
   }
   .stat-card {
-    background: white;
+    background: var(--card);
     border-radius: 16px;
     padding: 24px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    box-shadow: var(--elev-sm);
+    transform: translateY(10px);
+    opacity: 0;
   }
   .stat-header {
     display: flex; justify-content: space-between; align-items: center;
@@ -154,17 +189,17 @@
   .stat-icon.green { background: #dcfce7; color: #166534; }
   .stat-icon.purple { background: #ede9fe; color: #5b21b6; }
 
-  .stat-value { font-size: 30px; font-weight: 700; color: #1e293b; }
-  .stat-label { font-size: 13px; color: #64748b; }
+  .stat-value { font-size: 30px; font-weight: 700; color: var(--ink); line-height: 1; }
+  .stat-label { font-size: 13px; color: var(--muted); }
 
   .quick-actions {
-    background: white;
+    background: var(--card);
     border-radius: 16px;
     padding: 24px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    box-shadow: var(--elev-sm);
   }
   .quick-actions h4 {
-    font-size: 20px; margin-bottom: 20px; font-weight: 600; color: #1e293b;
+    font-size: 20px; margin-bottom: 20px; font-weight: 600; color: var(--ink);
   }
   .action-grid {
     display: grid;
@@ -172,52 +207,106 @@
     gap: 16px;
   }
   .action-btn {
+    position: relative;
+    overflow: hidden;
     background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-    border: 2px solid #e2e8f0;
+    border: 2px solid var(--border);
     padding: 20px;
     border-radius: 12px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
     text-align: center;
     font-weight: 500;
+    will-change: transform, box-shadow;
   }
-  .action-btn:hover {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
-    transform: translateY(-2px);
-  }
+  .action-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.08); border-color: #c7d2fe; }
+  .action-btn:active { transform: translateY(0); }
+  .action-btn:focus-visible { outline: 0; box-shadow: 0 0 0 4px rgba(167,139,250,.35); border-color: var(--ring); }
   .action-btn-icon { font-size: 30px; display: block; margin-bottom: 6px; }
+
+  /* ===== Ripple effect for buttons & menu links ===== */
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    background: rgba(167,139,250,.35);
+    animation: ripple .6s linear;
+    pointer-events: none;
+  }
+  @keyframes ripple {
+    to { transform: scale(12); opacity: 0; }
+  }
+
+  /* ===== Table enhancements (applies to any table inside .content) ===== */
+  .content table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--elev-sm);
+  }
+  .content th, .content td { padding: 12px 14px; border-bottom: 1px solid #eef2f7; text-align: left; }
+  .content th { background: #f1f5f9; font-weight: 600; color: #0f172a; }
+  .content tbody tr { opacity: 0; transform: translateY(8px); }
+  .content tbody tr.shown { opacity: 1; transform: none; transition: opacity .35s ease, transform .35s ease; }
+  .content tbody tr:hover { background: #f8fafc; }
+
+  /* Skeleton loader for table rows */
+  .skeleton {
+    display: inline-block; height: 12px; width: 100%;
+    background: linear-gradient(90deg, #eef2f7 25%, #e5eaf1 37%, #eef2f7 63%);
+    background-size: 400% 100%;
+    animation: shimmer 1.2s ease-in-out infinite;
+    border-radius: 6px;
+  }
+  @keyframes shimmer {
+    0% { background-position: 100% 0; }
+    100% { background-position: 0 0; }
+  }
+
+  /* Reveal animations */
+  .reveal { opacity: 0; transform: translateY(12px); }
+  .reveal.show { opacity: 1; transform: none; transition: opacity .5s ease, transform .5s ease; }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .menu-link, .action-btn, .stat-card, .welcome-card, .reveal, .content tbody tr { transition: none !important; animation: none !important; transform: none !important; }
+  }
 </style>
 </head>
 <body>
-  <!-- SIDEBAR -->
   <aside class="sidebar">
-    <div class="logo-section">
-      <div class="logo">UTEScore</div>
-      <div class="staff-info">
-        <div class="staff-avatar">⚙️</div>
-        <div class="staff-name" th:text="${nhanVienDangNhap?.hoTen}">Nhân viên</div>
-        <div class="staff-role">Bộ phận sân bóng</div>
-      </div>
+  <div class="logo-section">
+    <div class="logo">UTEScore</div>
+    <div class="staff-info">
+      <div class="staff-avatar">💎</div>
+      <div class="staff-name" th:text="${nhanVienDangNhap?.fullName ?: 'Nhân viên'}">Nhân viên</div>
+      <div class="staff-role">Bộ phận sân bóng</div>
     </div>
+  </div>
 
-    <div class="menu">
-      <p class="menu-title">🏟️ Quản lý sân</p>
-      <a href="/employee/booking" class="menu-link active"><span class="menu-icon">📋</span>Đơn đặt sân</a>
-      <a href="/employee/checkin" class="menu-link"><span class="menu-icon">🎫</span>Check-in khách</a>
-      <a href="/employee/payment" class="menu-link"><span class="menu-icon">💰</span>Thanh toán</a>
-      <a href="/employee/refund" class="menu-link"><span class="menu-icon">👥</span>Hoàn tiền</a>
-      <a href="/employee/schedule" class="menu-link"><span class="menu-icon">📅</span>Lịch sân</a>
+  <div class="menu">
+    <p class="menu-title">🏟️ Quản lý sân</p>
+    <a href="/employee/booking"  class="menu-link"><span class="menu-icon">📋</span>Đơn đặt sân</a>
+    <a href="/employee/checkin"  class="menu-link"><span class="menu-icon">🎫</span>Check-in khách</a>
+    <a href="/employee/payment"  class="menu-link"><span class="menu-icon">💰</span>Thanh toán</a>
+    <a href="/employee/refund"   class="menu-link"><span class="menu-icon">👥</span>Hoàn tiền</a>
+    <a href="/employee/schedule" class="menu-link"><span class="menu-icon">📅</span>Lịch sân</a>
+	
 
-      <p class="menu-title">📢 Báo cáo & Thông tin</p>
-      <a href="/employee/incidents" class="menu-link"><span class="menu-icon">⚠️</span>Sự cố / Ghi chú</a>
-      <a href="/employee/report" class="menu-link"><span class="menu-icon">📊</span>Thống kê công việc</a>
+	
+    <p class="menu-title">📢 Báo cáo & Thông tin</p>
+    <a href="/employee/incidents" class="menu-link"><span class="menu-icon">⚠️</span>Sự cố / Ghi chú</a>
+    <a href="/employee/report"    class="menu-link"><span class="menu-icon">📊</span>Thống kê công việc</a>
+    <a href="/chat/employee"    class="menu-link"><span class="menu-icon">💌</span>Trả lời khách hàng</a>
 
-      <p class="menu-title">⚙️ Cá nhân</p>
-      <a href="/employee/profile" class="menu-link"><span class="menu-icon">👤</span>Thông tin cá nhân</a>
-      <a href="/logout" class="menu-link"><span class="menu-icon">🚪</span>Đăng xuất</a>
-    </div>
-  </aside>
+    <p class="menu-title">⚙️ Cá nhân</p>
+    <a href="/employee/profile" class="menu-link"><span class="menu-icon">👤</span>Thông tin cá nhân</a>
+    <a href="/logout"           class="menu-link"><span class="menu-icon">🚪</span>Đăng xuất</a>
+  </div>
+</aside>
+
 
   <!-- MAIN CONTENT -->
   <section class="content">
@@ -225,30 +314,30 @@
       <h2>Bảng điều khiển</h2>
     </header>
 
-    <div class="welcome-card">
+    <div class="welcome-card reveal">
       <h3>Chào mừng trở lại! 👋</h3>
       <p>Chúc bạn một ngày làm việc hiệu quả và tràn đầy năng lượng!</p>
     </div>
 
     <div class="stats-grid">
-      <div class="stat-card">
+      <div class="stat-card reveal">
         <div class="stat-header"><div>Đơn hôm nay</div><div class="stat-icon blue">📋</div></div>
-        <div class="stat-value">12</div>
+        <div class="stat-value" data-counter data-target="12">12</div>
         <div class="stat-label">Tổng số đơn</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card reveal">
         <div class="stat-header"><div>Khách đang chơi</div><div class="stat-icon green">👥</div></div>
-        <div class="stat-value">4</div>
+        <div class="stat-value" data-counter data-target="4">4</div>
         <div class="stat-label">Đang hoạt động</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card reveal">
         <div class="stat-header"><div>Doanh thu ca</div><div class="stat-icon purple">💰</div></div>
-        <div class="stat-value">6.35M</div>
+        <div class="stat-value" data-counter data-target="6350000" data-format="currency">6.35M</div>
         <div class="stat-label">Triệu đồng</div>
       </div>
     </div>
 
-    <div class="quick-actions">
+    <div class="quick-actions reveal">
       <h4>Thao tác nhanh</h4>
       <div class="action-grid">
         <button class="action-btn" onclick="window.location.href='/employee/checkin'">
@@ -262,17 +351,212 @@
         </button>
       </div>
     </div>
+
+    <!-- Ví dụ 1 bảng (nếu trang này render thêm bảng từ Thymeleaf, script bên dưới vẫn tự động áp dụng) -->
+    <!--
+    <table>
+      <thead>
+        <tr><th>Mã đơn</th><th>Khách hàng</th><th>Giờ</th><th>Trạng thái</th></tr>
+      </thead>
+      <tbody id="orders-body"></tbody>
+    </table>
+    -->
   </section>
 
   <script>
-    // Active link highlight
-    const menuLinks = document.querySelectorAll('.menu-link');
-    menuLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        menuLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
+    // =========================
+    // Utility: number format
+    // =========================
+    const VND = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND', maximumFractionDigits: 0 });
+    const shortMoney = n => {
+      if (n >= 1e9) return (n/1e9).toFixed(2).replace(/\.?0+$/,'') + 'B';
+      if (n >= 1e6) return (n/1e6).toFixed(2).replace(/\.?0+$/,'') + 'M';
+      if (n >= 1e3) return (n/1e3).toFixed(2).replace(/\.?0+$/,'') + 'K';
+      return n.toString();
+    };
+
+    // =========================
+    // Counter animation
+    // =========================
+    function animateCounter(el, to, format){
+      const dur = 900; // ms
+      const start = performance.now();
+      const from = 0;
+      function frame(t){
+        const p = Math.min((t - start)/dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+        const val = Math.floor(from + (to - from) * eased);
+        el.textContent = format === 'currency' ? shortMoney(val) : val.toLocaleString('vi-VN');
+        if(p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+
+    // =========================
+    // Intersection reveal
+    // =========================
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('show');
+          io.unobserve(e.target);
+        }
+      });
+    }, {threshold: .15});
+    document.querySelectorAll('.reveal, .stat-card, .welcome-card').forEach(el=>io.observe(el));
+
+    // Khởi tạo counter khi card hiển thị
+    const statCards = document.querySelectorAll('[data-counter]');
+    const ioCounter = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const el = e.target;
+          const to = parseInt(el.getAttribute('data-target') || el.textContent, 10);
+          const fmt = el.getAttribute('data-format');
+          animateCounter(el, to, fmt);
+          ioCounter.unobserve(el);
+        }
+      });
+    }, {threshold: .5});
+    statCards.forEach(el=>ioCounter.observe(el));
+
+    // =========================
+    // Ripple for buttons & menu links
+    // =========================
+    function addRipple(e){
+      const btn = e.currentTarget;
+      const circle = document.createElement('span');
+      const d = Math.max(btn.clientWidth, btn.clientHeight);
+      const r = d / 2;
+      circle.classList.add('ripple');
+      circle.style.width = circle.style.height = `${d}px`;
+      const rect = btn.getBoundingClientRect();
+      circle.style.left = `${e.clientX - rect.left - r}px`;
+      circle.style.top = `${e.clientY - rect.top - r}px`;
+      btn.appendChild(circle);
+      setTimeout(()=>circle.remove(), 600);
+    }
+    document.querySelectorAll('.action-btn, .menu-link').forEach(b=>{
+      b.addEventListener('click', addRipple);
+    });
+
+    // =========================
+    // Active menu by URL path
+    // =========================
+    (function syncActive(){
+      const path = location.pathname;
+      const links = document.querySelectorAll('.menu-link');
+      let matched = false;
+      links.forEach(a=>{
+        a.classList.remove('active');
+        if (path !== '/' && a.getAttribute('href') && path.startsWith(a.getAttribute('href'))){
+          a.classList.add('active'); matched = true;
+        }
+      });
+      if(!matched) links[0]?.classList.add('active');
+    })();
+
+    // =========================
+    // Table: skeleton + staged row reveal
+    // =========================
+    function applyTableEnhance(){
+      const tables = document.querySelectorAll('.content table');
+      tables.forEach(tbl=>{
+        const tbody = tbl.querySelector('tbody');
+        if(!tbody) return;
+
+        // If tbody empty -> create temporary skeleton rows (auto removed when real data arrives)
+        if(!tbody.children.length){
+          const cols = tbl.querySelectorAll('thead th').length || 4;
+          const skelRows = 5;
+          const frag = document.createDocumentFragment();
+          for(let i=0;i<skelRows;i++){
+            const tr = document.createElement('tr');
+            for(let c=0;c<cols;c++){
+              const td = document.createElement('td');
+              const sk = document.createElement('span');
+              sk.className = 'skeleton';
+              td.appendChild(sk);
+              tr.appendChild(td);
+            }
+            frag.appendChild(tr);
+          }
+          tbody.appendChild(frag);
+        }
+
+        // When rows exist, stagger reveal
+        [...tbody.rows].forEach((tr, idx)=>{
+          setTimeout(()=>tr.classList.add('shown'), 60 * idx);
+        });
+      });
+    }
+    applyTableEnhance();
+
+    // =========================
+    // Example: fetch & hydrate (thay API thật của bạn)
+    // =========================
+    async function hydrateDashboard(){
+      try{
+        // Ví dụ API (đổi sang API thật): /api/employee/dashboard
+        // const res = await fetch('/api/employee/dashboard');
+        // const data = await res.json();
+        // Demo giả lập:
+        const data = await new Promise(r=>setTimeout(()=>r({
+          ordersToday: 17,
+          playingNow: 6,
+          shiftRevenue: 8125000,
+          orders: [
+            {id:'DH-1021', name:'Nguyễn Minh An', time:'18:00–19:30', status:'Đang chơi'},
+            {id:'DH-1022', name:'Lê Vũ Hải', time:'19:30–21:00', status:'Chờ'},
+            {id:'DH-1023', name:'Trần Gia Huy', time:'17:00–18:00', status:'Hoàn tất'},
+          ]
+        }), 900));
+
+        // Cập nhật counter (mượt bằng counter animation)
+        const orderEl = document.querySelector('.stat-card .stat-value[data-counter]');
+        const [v1,v2,v3] = document.querySelectorAll('.stat-value[data-counter]');
+        if(v1) animateCounter(v1, data.ordersToday);
+        if(v2) animateCounter(v2, data.playingNow);
+        if(v3) animateCounter(v3, data.shiftRevenue, 'currency');
+
+        // Nếu có bảng #orders-body thì gắn dữ liệu
+        const body = document.getElementById('orders-body');
+        if(body){
+          body.innerHTML = '';
+          const frag = document.createDocumentFragment();
+          data.orders.forEach((o,i)=>{
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td>${o.id}</td>
+              <td>${o.name}</td>
+              <td>${o.time}</td>
+              <td><span class="badge">${o.status}</span></td>
+            `;
+            frag.appendChild(tr);
+          });
+          body.appendChild(frag);
+          // Reveal lại
+          [...body.rows].forEach((tr, idx)=>setTimeout(()=>tr.classList.add('shown'), 50*idx));
+        }
+      }catch(e){
+        console.error('Hydrate error', e);
+      }
+    }
+    // Gọi ngay khi load
+    hydrateDashboard();
+
+    // =========================
+    // Minor accessibility/keyboard
+    // =========================
+    document.querySelectorAll('.action-btn, .menu-link').forEach(el=>{
+      el.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          el.click();
+        }
       });
     });
+
   </script>
 </body>
 </html>

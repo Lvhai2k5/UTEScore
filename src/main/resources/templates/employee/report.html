@@ -17,132 +17,415 @@
     overflow: hidden;
   }
 
-  /* ===== SIDEBAR ===== */
+ /* ===== SIDEBAR ===== */
   .sidebar {
     width: 270px;
-    background: linear-gradient(180deg, #1e293b, #0f172a);
+    background: linear-gradient(180deg, #1e293b, #0f172a, #312e81);
     color: white;
     display: flex;
     flex-direction: column;
-    box-shadow: 4px 0 24px rgba(0,0,0,0.3);
+    box-shadow: 4px 0 24px rgba(0,0,0,0.4);
     overflow-y: auto;
   }
-  .logo-section { padding: 24px 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-  .logo {
-    font-size: 26px; font-weight: 700; text-align: center;
-    background: linear-gradient(135deg, #667eea, #a78bfa);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  .logo-section {
+    padding: 24px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
   }
+  .logo {
+    font-size: 28px;
+    font-weight: 800;
+    text-align: center;
+    background: linear-gradient(90deg, #38bdf8, #a78bfa, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease infinite;
+  }
+  @keyframes gradientShift {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+
   .staff-info {
-    text-align: center; margin-top: 16px;
-    background: rgba(255,255,255,0.05); border-radius: 12px; padding: 12px;
+    text-align: center;
+    margin-top: 16px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
   }
   .staff-avatar {
-    width: 60px; height: 60px; border-radius: 50%;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    margin: 0 auto 10px;
+    width: 70px; height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+    margin: 0 auto 12px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 26px;
+    font-size: 30px; color: #fff;
+    box-shadow: 0 0 20px rgba(59,130,246,0.7);
   }
-  .staff-name { font-weight: 600; font-size: 15px; }
-  .staff-role { font-size: 13px; color: #94a3b8; }
+  .staff-name { font-weight: 700; font-size: 16px; }
+  .staff-role { font-size: 13px; color: #cbd5e1; }
 
-  .menu { padding: 16px; flex: 1; }
+  .menu {
+    padding: 16px;
+    flex: 1;
+  }
   .menu-title {
-    font-size: 13px; font-weight: 600; color: #94a3b8;
-    margin: 8px 0; text-transform: uppercase; letter-spacing: 0.5px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #94a3b8;
+    margin: 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
   .menu-link {
-    display: flex; align-items: center; gap: 10px;
-    color: white; text-decoration: none;
-    background: rgba(255,255,255,0.05);
-    padding: 12px 14px; border-radius: 10px;
-    margin-bottom: 6px; font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    text-decoration: none;
+    background: rgba(255,255,255,0.08);
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    font-size: 15px;
     transition: all 0.3s ease;
   }
-  .menu-link:hover { background: rgba(255,255,255,0.1); transform: translateX(4px); }
+  .menu-link:hover {
+    background: linear-gradient(135deg, #38bdf8, #a855f7);
+    transform: translateX(6px) scale(1.03);
+    box-shadow: 0 0 15px rgba(168,85,247,0.5);
+  }
   .menu-link.active {
-    background: linear-gradient(135deg, rgba(102,126,234,0.4), rgba(118,75,162,0.4));
+    background: linear-gradient(135deg, #38bdf8, #f472b6);
+    box-shadow: 0 0 20px rgba(236,72,153,0.6);
   }
-  .menu-icon { font-size: 18px; width: 26px; text-align: center; }
+  .menu-icon {
+    font-size: 18px;
+    width: 26px;
+    text-align: center;
+  }
+/* =========================
+   REPORT – Neon HyperGlow v4
+   ========================= */
 
-  /* ===== CONTENT ===== */
-  .content {
-    flex: 1; background: #f8fafc; margin: 24px;
-    border-radius: 24px; padding: 32px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-    overflow-y: auto;
-  }
-  header { margin-bottom: 24px; }
-  header h2 {
-    font-size: 30px; font-weight: 700;
-    background: linear-gradient(135deg, #1e293b, #475569);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  }
+/* ===== Vars & Keyframes ===== */
+:root {
+  --ink:#0f172a; --text:#0b1220;
+  --n1:#7c3aed; --n2:#2563eb; --n3:#22d3ee; --n4:#10b981; --n5:#f43f5e; --n6:#eab308;
+  --soft:#f8fafc; --soft2:#eef2ff; --r-lg:24px; --r-md:14px; --r-sm:10px;
+}
+@keyframes gradShift {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+@keyframes sweep {
+  0% {left:-80%;opacity:0;}
+  20% {opacity:1;}
+  60% {left:120%;opacity:1;}
+  100% {left:150%;opacity:0;}
+}
+@keyframes glowPulse {
+  0%,100% {box-shadow:0 0 25px rgba(59,130,246,.25),0 0 45px rgba(147,51,234,.25);}
+  50% {box-shadow:0 0 45px rgba(59,130,246,.45),0 0 90px rgba(147,51,234,.35);}
+}
+@keyframes borderRotate {to {transform: rotate(360deg)}}
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {opacity:1;}
+  20%, 24%, 55% {opacity:.6;}
+}
+@keyframes shimmerFlow {
+  0% {background-position: 0% 50%; filter:hue-rotate(0deg);}
+  50% {background-position: 100% 50%; filter:hue-rotate(60deg);}
+  100% {background-position: 0% 50%; filter:hue-rotate(360deg);}
+}
 
-  /* ===== TABLE REPORT ===== */
-  .filter-box {
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; margin-bottom: 20px;
-  }
-  label { font-weight: 600; }
-  input[type=date] {
-    padding: 8px 10px; border: 1px solid #ccc; border-radius: 6px;
-    font-size: 14px;
-  }
-  button, .btn {
-    padding: 8px 14px; border: none; border-radius: 8px;
-    font-weight: 600; cursor: pointer;
-    background: linear-gradient(135deg, #667eea, #764ba2); color: white;
-    transition: all .2s ease;
-  }
-  button:hover, .btn:hover { opacity: .9; transform: translateY(-1px); }
+/* ===== CONTENT ===== */
+.content {
+  flex: 1;
+  background:
+    radial-gradient(900px 450px at 110% -10%, rgba(59,130,246,.15), transparent 60%),
+    radial-gradient(900px 520px at -10% 110%, rgba(147,51,234,.12), transparent 70%),
+    linear-gradient(180deg,#ffffff,#f8fafc);
+  margin: 24px; border-radius: var(--r-lg); padding: 32px;
+  position: relative; overflow:auto;
+  box-shadow: 0 0 40px rgba(59,130,246,0.15), 0 0 100px rgba(168,85,247,0.1);
+  animation: glowPulse 5s ease-in-out infinite;
+}
+.content::before {
+  content: "";
+  position: absolute; inset: 0; padding: 2px; border-radius: inherit;
+  background: linear-gradient(120deg,var(--n2),var(--n1),var(--n3),var(--n4),var(--n5),var(--n6),var(--n2));
+  background-size: 400% 400%; animation: shimmerFlow 12s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  filter: drop-shadow(0 0 25px rgba(147,51,234,.35));
+  pointer-events:none; opacity:.95;
+}
 
-  table {
-    width: 100%; border-collapse: collapse; margin-top: 10px;
-    border-radius: 10px; overflow: hidden;
-  }
-  th, td {
-    padding: 10px 12px; border: 1px solid #e5e7eb; text-align: center;
-  }
-  th {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white; font-weight: 600;
-  }
-  tr:nth-child(even) { background: #f9fafb; }
-  tr:hover { background: #eef2ff; }
-  tfoot td { font-weight: 700; background: #e0e7ff; color: #2563eb; }
+/* ===== HEADER ===== */
+header {
+  margin-bottom: 24px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+header h2 {
+  font-size: 32px; font-weight: 900; margin: 0;
+  background: linear-gradient(135deg,#3b82f6,#9333ea,#f43f5e,#22d3ee);
+  background-size: 300% 300%;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  animation: shimmerFlow 10s ease infinite;
+  text-shadow: 0 0 24px rgba(99,102,241,.25);
+}
+
+/* ===== FILTER BOX ===== */
+.filter-box {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px; padding: 16px 18px;
+  background: linear-gradient(145deg,rgba(255,255,255,0.85),rgba(240,249,255,0.9));
+  border-radius: var(--r-md);
+  box-shadow: 0 10px 30px rgba(2,6,23,.08), 0 1px 0 rgba(255,255,255,.7) inset;
+  position: relative; overflow: hidden;
+}
+.filter-box::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg,var(--n2),var(--n1),var(--n3),var(--n5),var(--n4));
+  background-size: 400% 400%; opacity: 0.3;
+  animation: shimmerFlow 6s linear infinite;
+}
+.filter-box::after {
+  content: ""; position: absolute; inset: auto 0 0 0; height: 2px;
+  background: linear-gradient(90deg,var(--n2),var(--n1),var(--n3),var(--n5),var(--n4),var(--n2));
+  background-size: 400% 400%; animation: shimmerFlow 8s linear infinite;
+  opacity: .9;
+}
+label {font-weight: 800; color: #1e293b;}
+input[type=date] {
+  padding:10px 12px; border:1px solid #cbd5e1; border-radius:10px;
+  font-size:14px; background:white; transition: all .25s ease;
+}
+input[type=date]:focus {
+  border-color:#38bdf8; box-shadow:0 0 10px rgba(59,130,246,.3);
+  outline:none;
+}
+
+/* ===== BUTTONS ===== */
+button, .btn {
+  padding:10px 16px; border:none; border-radius:12px;
+  font-weight:800; cursor:pointer; color:white;
+  background: linear-gradient(135deg,var(--n2),var(--n1),var(--n3),var(--n5));
+  background-size: 300% 300%;
+  box-shadow:0 0 25px rgba(99,102,241,.25);
+  transition: all .3s ease; position:relative; overflow:hidden;
+}
+button:hover, .btn:hover {
+  background-position: 100% 0;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(99,102,241,.4), 0 0 20px rgba(168,85,247,.3);
+}
+button::after, .btn::after {
+  content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  background:radial-gradient(circle at 50% 50%, rgba(255,255,255,.4), transparent 45%);
+  opacity:0; transition:opacity .35s ease;
+}
+button:hover::after, .btn:hover::after {opacity:1;}
+button:active, .btn:active {transform:translateY(0) scale(.97);}
+
+/* ===== TABLE ===== */
+table {
+  width:100%; border-collapse:separate; border-spacing:0; margin-top:16px;
+  border-radius:14px; overflow:hidden; background:#fff; position:relative;
+  box-shadow:0 10px 28px rgba(2,6,23,.1);
+}
+th, td {padding:12px 14px; border:1px solid #e5e7eb; text-align:center;}
+
+/* Header gradient chuyển động mạnh */
+th {
+  background: linear-gradient(120deg,#2563eb,#9333ea,#22d3ee,#f43f5e,#38bdf8);
+  background-size: 500% 500%;
+  animation: shimmerFlow 8s ease infinite;
+  color: #fff; font-weight:900; letter-spacing:.4px; position:sticky; top:0; z-index:1;
+  text-shadow:0 0 12px rgba(59,130,246,.35);
+  border:none;
+}
+
+/* Body & Hover rows */
+tbody tr:nth-child(odd){background:#fbfdff;}
+tbody tr:nth-child(even){background:#f1f5f9;}
+tbody tr{
+  position:relative; transition: all .3s ease; cursor:pointer;
+}
+tbody tr:hover {
+  background:linear-gradient(120deg,rgba(99,102,241,.1),rgba(168,85,247,.15),rgba(59,130,246,.1));
+  background-size:220% 220%; animation:gradShift 3s linear infinite;
+  transform:translateY(-2px) scale(1.01);
+  box-shadow:0 6px 20px rgba(99,102,241,.2);
+}
+tbody tr:hover td {
+  color:#0b1220;
+  text-shadow:0 0 10px rgba(59,130,246,.25);
+}
+tbody tr::after {
+  content:""; position:absolute; top:0; left:-70%; width:50%; height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.6),transparent);
+  transform:skewX(-18deg); opacity:0; pointer-events:none;
+}
+tbody tr:hover::after {opacity:1; animation:sweep 1.2s ease-out;}
+
+/* ===== FOOTER (Tổng kết neon) ===== */
+tfoot td {
+  font-weight:900;
+  background:linear-gradient(90deg,#c7d2fe,#dbeafe,#c7d2fe);
+  color:#1e40af;
+  border-top:2px solid #93c5fd;
+  box-shadow: inset 0 1px 8px rgba(59,130,246,.25);
+  text-shadow:0 0 10px rgba(59,130,246,.3);
+}
+
+/* ===== GLOW BORDER AROUND TABLE ===== */
+table::before {
+  content:""; position:absolute; inset:0; border-radius:inherit; padding:2px;
+  background:linear-gradient(135deg,#3b82f6,#9333ea,#22d3ee,#10b981,#f43f5e);
+  background-size:400% 400%; animation:shimmerFlow 10s linear infinite;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  pointer-events:none; opacity:.8;
+}
+
+/* =======================
+   FOOTER – Neon Frame Glow
+   ======================= */
+.footer-box {
+  margin-top: auto;
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(248,250,252,0.95));
+  border-radius: 18px;
+  padding: 18px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(99,102,241,0.15), inset 0 1px 2px rgba(255,255,255,0.6);
+}
+
+/* Viền neon động quanh footer */
+.footer-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(120deg, #38bdf8, #a855f7, #22d3ee, #10b981, #f43f5e, #38bdf8);
+  background-size: 400% 400%;
+  animation: footerFlow 10s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 18px rgba(59,130,246,.3));
+}
+
+@keyframes footerFlow {
+  0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+  50% { background-position: 100% 50%; filter: hue-rotate(40deg); }
+  100% { background-position: 0% 50%; filter: hue-rotate(360deg); }
+}
+
+/* Dòng chữ © bên trong */
+.footer-text {
+  font-weight: 700;
+  font-size: 15px;
+  background: linear-gradient(90deg, #38bdf8, #a855f7, #f472b6, #22d3ee);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 8s ease infinite;
+  letter-spacing: 0.3px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 10px rgba(147,51,234,0.25);
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Ánh sáng quét qua dòng chữ */
+.footer-text::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -70%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,.5), transparent);
+  transform: skewX(-18deg);
+  opacity: 0;
+}
+.footer-text:hover::after {
+  opacity: 1;
+  animation: footerSweep 1.4s ease-out;
+}
+
+@keyframes footerSweep {
+  0% { left: -70%; opacity: 0; }
+  25% { opacity: 1; }
+  70% { left: 110%; opacity: 1; }
+  100% { left: 130%; opacity: 0; }
+}
+
+/* ===== FIX: Allow interaction inside filter-box ===== */
+.filter-box::before,
+.filter-box::after {
+  pointer-events: none;
+}
+
+/* ===== Responsive ===== */
+@media(max-width:768px){
+  header h2{font-size:24px}
+  th,td{padding:10px;font-size:13px}
+  .filter-box{padding:12px}
+  button{padding:8px 14px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+
+
 </style>
 </head>
 <body>
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="logo-section">
+ <aside class="sidebar">
+  <div class="logo-section">
     <div class="logo">UTEScore</div>
     <div class="staff-info">
-      <div class="staff-avatar">⚙️</div>
-      <div class="staff-name" th:text="${nhanVienDangNhap?.hoTen}">Nhân viên</div>
+      <div class="staff-avatar">💎</div>
+      <div class="staff-name" th:text="${nhanVienDangNhap?.fullName ?: 'Nhân viên'}">Nhân viên</div>
       <div class="staff-role">Bộ phận sân bóng</div>
     </div>
   </div>
 
-    <div class="menu">
-      <p class="menu-title">🏟️ Quản lý sân</p>
-      <a href="/employee/booking" class="menu-link active"><span class="menu-icon">📋</span>Đơn đặt sân</a>
-        <a href="/employee/checkin" class="menu-link"><span class="menu-icon">🎫</span>Check-in khách</a>
-        <a href="/employee/payment" class="menu-link"><span class="menu-icon">💰</span>Thanh toán</a>
-        <a href="/employee/refund" class="menu-link"><span class="menu-icon">👥</span>Hoàn tiền</a>
-        <a href="/employee/schedule" class="menu-link"><span class="menu-icon">📅</span>Lịch sân</a>
+  <div class="menu">
+    <p class="menu-title">🏟️ Quản lý sân</p>
+    <a href="/employee/booking"  class="menu-link"><span class="menu-icon">📋</span>Đơn đặt sân</a>
+    <a href="/employee/checkin"  class="menu-link"><span class="menu-icon">🎫</span>Check-in khách</a>
+    <a href="/employee/payment"  class="menu-link"><span class="menu-icon">💰</span>Thanh toán</a>
+    <a href="/employee/refund"   class="menu-link"><span class="menu-icon">👥</span>Hoàn tiền</a>
+    <a href="/employee/schedule" class="menu-link"><span class="menu-icon">📅</span>Lịch sân</a>
 
-      <p class="menu-title">📢 Báo cáo & Thông tin</p>
-      <a href="/employee/incidents" class="menu-link"><span class="menu-icon">⚠️</span>Sự cố / Ghi chú</a>
-      <a href="/employee/report" class="menu-link"><span class="menu-icon">📊</span>Thống kê công việc</a>
+    <p class="menu-title">📢 Báo cáo & Thông tin</p>
+    <a href="/employee/incidents" class="menu-link"><span class="menu-icon">⚠️</span>Sự cố / Ghi chú</a>
+    <a href="/employee/report"    class="menu-link"><span class="menu-icon">📊</span>Thống kê công việc</a>
+    <a href="/chat/employee"    class="menu-link"><span class="menu-icon">💌</span>Trả lời khách hàng</a>
 
-      <p class="menu-title">⚙️ Cá nhân</p>
-      <a href="/employee/profile" class="menu-link"><span class="menu-icon">👤</span>Thông tin cá nhân</a>
-      <a href="/logout" class="menu-link"><span class="menu-icon">🚪</span>Đăng xuất</a>
-    </div>
-  </aside>
+    <p class="menu-title">⚙️ Cá nhân</p>
+    <a href="/employee/profile" class="menu-link"><span class="menu-icon">👤</span>Thông tin cá nhân</a>
+    <a href="/logout"           class="menu-link"><span class="menu-icon">🚪</span>Đăng xuất</a>
+  </div>
+</aside>
+
 
   <!-- MAIN CONTENT -->
   <section class="content">
@@ -189,6 +472,9 @@
         </tr>
       </tfoot>
     </table>
+    <div class="footer-box">
+  <p class="footer-text">UTEScore - Employee</p>
+</div>
   </section>
 
   <script>

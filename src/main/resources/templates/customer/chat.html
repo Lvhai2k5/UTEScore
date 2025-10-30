@@ -2,68 +2,294 @@
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>💬 Khách hàng – Trò chuyện</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTEScore – Chat Khách hàng</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
 <style>
-  body{font-family:'Inter',sans-serif;background:#f0f9ff;margin:0;padding:24px;}
-  .box{max-width:860px;margin:auto;background:#fff;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.08);overflow:hidden}
-  header{background:#38b6ff;color:#fff;padding:16px 20px;font-weight:600}
-  #messages{height:460px;overflow-y:auto;padding:16px;background:#f8fafc}
-  .msg{margin-bottom:10px}
-  .mine{text-align:right}
-  .mine span{background:#38b6ff;color:#fff}
-  .theirs span{background:#e2e8f0;color:#111827}
-  span{display:inline-block;padding:10px 14px;border-radius:20px;max-width:70%;word-wrap:break-word}
-  .input{display:flex;padding:12px;border-top:1px solid #e5e7eb;background:#fff}
-  input{flex:1;padding:10px 14px;border-radius:20px;border:1px solid #cbd5e1}
-  button{margin-left:8px;padding:10px 16px;border:0;border-radius:20px;background:#38b6ff;color:#fff;cursor:pointer}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Inter',system-ui;
+    background:linear-gradient(135deg,#2563eb,#9333ea);
+    display:flex;
+    height:100vh;
+    color:#f8fafc;
+    overflow:hidden;
+  }
+
+  /* SIDEBAR */
+  .sidebar{
+    width:300px;
+    background:rgba(15,23,42,0.75);
+    backdrop-filter:blur(16px);
+    color:#fff;
+    padding:24px;
+    overflow-y:auto;
+    box-shadow:4px 0 25px rgba(0,0,0,0.4);
+    animation:slideInLeft 1s ease;
+  }
+
+  .sidebar h3{
+    font-size:18px;
+    font-weight:700;
+    text-align:center;
+    background:linear-gradient(90deg,#60a5fa,#a78bfa);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    margin-bottom:16px;
+  }
+
+  label{font-size:14px;color:#e2e8f0}
+  select{
+    width:100%;
+    padding:10px;
+    border-radius:10px;
+    border:0;
+    margin:8px 0;
+    background:rgba(255,255,255,0.1);
+    color:#fff;
+    font-size:15px;
+    outline:none;
+  }
+
+  button{
+    background:linear-gradient(90deg,#38bdf8,#3b82f6);
+    border:0;
+    border-radius:10px;
+    padding:10px 16px;
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:all .25s;
+  }
+  button:hover{
+    background:linear-gradient(90deg,#60a5fa,#3b82f6);
+    transform:translateY(-2px);
+  }
+
+  .conv{
+    padding:12px;
+    border-radius:14px;
+    margin:10px 0;
+    background:rgba(255,255,255,0.1);
+    cursor:pointer;
+    transition:all .25s;
+  }
+  .conv:hover{
+    background:rgba(255,255,255,0.25);
+    transform:translateX(6px);
+  }
+  .conv b{font-size:15px;color:#f9fafb}
+  .conv small{display:block;margin-top:2px;color:#cbd5e1;font-size:13px}
+
+  /* CONTENT */
+  .content{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    background:radial-gradient(circle at top left,#f0f9ff 0%,#e0e7ff 50%,#fdf4ff 100%);
+    color:#1e293b;
+    animation:fadeIn 1.2s ease;
+  }
+
+  .header{
+    padding:18px 24px;
+    background:#fff;
+    border-bottom:1px solid #e2e8f0;
+    font-weight:700;
+    font-size:20px;
+    color:#1e293b;
+    box-shadow:0 4px 10px rgba(0,0,0,0.05);
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+
+  .back-btn{
+    background:linear-gradient(90deg,#6366f1,#9333ea);
+    color:white;
+    border:none;
+    padding:8px 16px;
+    border-radius:10px;
+    font-weight:600;
+    cursor:pointer;
+    transition:all .25s ease;
+    box-shadow:0 3px 8px rgba(0,0,0,0.2);
+  }
+  .back-btn:hover{
+    transform:scale(1.05);
+    filter:brightness(1.1);
+  }
+
+  .messages{
+    flex:1;
+    padding:24px;
+    overflow-y:auto;
+    background:linear-gradient(180deg,#f1f5f9,#f8fafc);
+  }
+
+  .msg{
+    max-width:65%;
+    margin:10px 0;
+    padding:12px 18px;
+    border-radius:16px;
+    background:#fff;
+    color:#0f172a;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    animation:fadeUp .3s ease;
+  }
+
+  .msg.me{
+    margin-left:auto;
+    background:linear-gradient(135deg,#06b6d4,#0ea5e9);
+    color:white;
+    box-shadow:0 6px 16px rgba(14,165,233,0.4);
+  }
+
+  .composer{
+    display:flex;
+    gap:10px;
+    padding:14px 20px;
+    background:rgba(255,255,255,0.95);
+    border-top:1px solid #e2e8f0;
+    backdrop-filter:blur(6px);
+  }
+
+  .composer input{
+    flex:1;
+    padding:12px 16px;
+    border:1px solid #cbd5e1;
+    border-radius:12px;
+    font-size:15px;
+    transition:all .25s;
+  }
+
+  .composer input:focus{
+    outline:none;
+    border-color:#3b82f6;
+    box-shadow:0 0 0 3px rgba(59,130,246,0.3);
+  }
+
+  .composer button{
+    padding:12px 20px;
+    border:0;
+    border-radius:12px;
+    background:linear-gradient(90deg,#3b82f6,#2563eb);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:background .25s ease,transform .2s;
+  }
+  .composer button:hover{
+    background:linear-gradient(90deg,#60a5fa,#3b82f6);
+    transform:translateY(-2px);
+  }
+
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes slideInLeft{from{transform:translateX(-100px);opacity:0}to{transform:translateX(0);opacity:1}}
 </style>
 </head>
 <body>
-<div class="box">
-  <header>💬 Trò chuyện với nhân viên</header>
-  <div id="messages"></div>
-  <div class="input">
-    <input id="msg" type="text" placeholder="Nhập tin nhắn...">
-    <button id="send">Gửi</button>
-  </div>
-</div>
+  <aside class="sidebar">
+    <h3>💬 Xin chào, <span th:text="${khachHangDangNhap.hoTen}">Khách hàng</span></h3>
+    <label>Chọn Nhân viên hỗ trợ</label>
+    <select id="nvSelect">
+      <option th:each="nv : ${nhanViens}" th:value="${nv.userID}" th:text="${nv.fullName}"></option>
+    </select>
+    <button id="startBtn">Bắt đầu trò chuyện 🚀</button>
+
+    <hr style="margin:16px 0;border:0;height:1px;background:rgba(255,255,255,0.2)">
+    <div th:each="c : ${conversations}" class="conv" th:attr="data-id=${c.id},data-nv=${c.nhanVien.userID}">
+      <div><b th:text="${c.nhanVien.fullName}">Tên NV</b></div>
+      <small th:text="${#temporals.format(c.lastMessageAt, 'HH:mm dd/MM')}">--</small>
+    </div>
+  </aside>
+
+  <main class="content">
+    <div class="header">
+      <button class="back-btn" onclick="window.location.href='/customer/home'">← Quay về</button>
+      <span id="chatTitle">Chọn nhân viên để bắt đầu 💬</span>
+    </div>
+
+    <div class="messages" id="messages"></div>
+
+    <div class="composer">
+      <input id="input" placeholder="Nhập tin nhắn của bạn..." />
+      <button id="sendBtn">Gửi ✨</button>
+    </div>
+  </main>
 
 <script th:inline="javascript">
-  const sender = /*[[${sender}]]*/ "";
-  const receiver = /*[[${receiver}]]*/ "";
-  const sock = new SockJS('/ws-checkin');
-  const stomp = Stomp.over(sock);
-  const board = document.getElementById('messages');
+  const khId = /*[[${khachHangDangNhap.maKhachHang}]]*/ 0;
+  let convId = null; let nvId = null; let stomp = null;
 
-  function add(user, text, ts) {
-    const d=document.createElement('div');
-    d.className='msg ' + (user===sender?'mine':'theirs');
-    d.innerHTML = `<span>${text}</span>`;
-    board.appendChild(d); board.scrollTop=board.scrollHeight;
+  function connect(conversationId){
+    const sock = new SockJS('/ws-chat');
+    stomp = Stomp.over(sock);
+    stomp.connect({}, () => {
+      stomp.subscribe('/topic/chat/' + conversationId, (frame) => {
+        const msg = JSON.parse(frame.body);
+        renderMessage(msg);
+      });
+    });
   }
 
-  // Lịch sử
-  fetch(`/support/history?a=${encodeURIComponent(sender)}&b=${encodeURIComponent(receiver)}`)
-    .then(r=>r.json()).then(list=>list.forEach(m=>add(m.sender,m.content,m.timestamp)));
+  async function openConversation(khachHangId, nhanVienId){
+    const res = await fetch(`/api/chat/conversation?khachHangId=${khachHangId}&nhanVienId=${nhanVienId}`);
+    convId = await res.json();
+    document.getElementById('chatTitle').textContent = '💬 Đang chat với nhân viên #' + nhanVienId;
+    if(stomp) try{stomp.disconnect(()=>{});}catch(err){}
+    connect(convId);
+    await loadHistory(convId);
+  }
 
-  // WS
-  stomp.connect({}, ()=>{
-    stomp.subscribe(`/topic/chat/${sender}`, (frame)=>{
-      const m=JSON.parse(frame.body); add(m.sender,m.content,m.timestamp);
+  async function loadHistory(conversationId){
+    const res = await fetch(`/api/chat/${conversationId}/messages`);
+    const data = await res.json();
+    const box = document.getElementById('messages');
+    box.innerHTML = '';
+    data.forEach(renderMessage);
+    box.scrollTop = box.scrollHeight;
+  }
+
+  function renderMessage(m){
+    const box = document.getElementById('messages');
+    const div = document.createElement('div');
+    div.className = 'msg ' + (m.senderType === 'KHACH_HANG' ? 'me' : '');
+    div.textContent = m.content;
+    box.appendChild(div);
+    box.scrollTop = box.scrollHeight;
+  }
+
+  document.getElementById('startBtn').addEventListener('click', async () => {
+    nvId = document.getElementById('nvSelect').value;
+    if(!nvId) return;
+    await openConversation(khId, nvId);
+  });
+
+  document.querySelectorAll('.conv').forEach(e => {
+    e.addEventListener('click', async () => {
+      convId = e.dataset.id; nvId = e.dataset.nv;
+      document.getElementById('chatTitle').textContent = '💬 Đang chat với nhân viên #' + nvId;
+      if(stomp) try{stomp.disconnect(()=>{});}catch(err){}
+      connect(convId);
+      await loadHistory(convId);
     });
   });
 
-  // Gửi
-  document.getElementById('send').onclick=()=>{
-    const t=document.getElementById('msg'); const v=t.value.trim();
-    if(!v) return;
-    stomp.send('/app/chat.send', {}, JSON.stringify({sender, receiver, content:v}));
-    t.value='';
-  };
-  document.getElementById('msg').addEventListener('keydown', e=>{ if(e.key==='Enter') document.getElementById('send').click(); });
+  document.getElementById('sendBtn').addEventListener('click', () => {
+    const content = document.getElementById('input').value.trim();
+    if(!content || !convId) return;
+    stomp.send('/app/chat.send', {}, JSON.stringify({
+      conversationId: Number(convId),
+      khachHangId: Number(khId),
+      nhanVienId: null,
+      content
+    }));
+    document.getElementById('input').value='';
+  });
 </script>
 </body>
 </html>

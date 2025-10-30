@@ -12,18 +12,37 @@ import vn.ute.utescore.model.ThueSan;
 
 public interface ThueSanRepository extends JpaRepository<ThueSan, Integer> {
 
-	    @Query("""
-	        SELECT DISTINCT t
-	        FROM ThueSan t
-	        WHERE t.ngayThue > :from
-	          AND NOT EXISTS (
-	              SELECT 1 FROM CheckinLog c
-	              WHERE c.thueSan.maDonDat = t.maDonDat
-	                AND c.ghiChu = '1'   
-	          )
-	        ORDER BY t.ngayThue ASC
-	    """)
-	    List<ThueSan> findNotCheckedIn(@Param("from") LocalDateTime from);
+	@Query("""
+		    SELECT DISTINCT t
+		    FROM ThueSan t
+		    WHERE t.ngayThue >= :from
+		      AND NOT EXISTS (
+		          SELECT 1 FROM CheckinLog c
+		          WHERE c.thueSan.maDonDat = t.maDonDat
+		            AND c.ghiChu = '1'
+		      )
+		    ORDER BY t.ngayThue ASC
+		""")
+		List<ThueSan> findNotCheckedIn(@Param("from") LocalDateTime from);
+
+	@Query("""
+		    SELECT DISTINCT t
+		    FROM ThueSan t
+		    JOIN t.thanhToans a
+		    WHERE t.ngayThue >= :from
+		      AND a.TrangThaiThanhToan = :status
+		      AND NOT EXISTS (
+		          SELECT 1
+		          FROM CheckinLog c
+		          WHERE c.thueSan.maDonDat = t.maDonDat
+		            AND c.ghiChu = '1'
+		      )
+		    ORDER BY t.ngayThue ASC
+		""")
+		List<ThueSan> findNotCheckedInWithStatus(
+		        @Param("from") LocalDateTime from,
+		        @Param("status") String status);
+
 	    List<ThueSan> findBySanBong_MaSanAndNgayThueBetween(Integer sanId,
                 LocalDateTime start,
                 LocalDateTime end);

@@ -241,7 +241,9 @@
     <!-- 🔹 Nút hành động -->
     <div class="text-center mt-4">
       <a th:href="@{/customer/pitch-list}" class="btn-action btn-back me-3">⬅ Quay lại</a>
-      <a th:href="@{/customer/booking(pitch=${san.tenSan}, type=${san.loaiSan})}" class="btn-action btn-book">⚽ Đặt sân ngay</a>
+      <a th:href="@{/customer/booking(pitch=${san.maSan})}" class="btn-action btn-book">
+  ⚽ Đặt sân ngay
+</a>
     </div>
   </main>
 

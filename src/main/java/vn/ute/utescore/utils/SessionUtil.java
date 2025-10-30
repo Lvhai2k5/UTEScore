@@ -34,4 +34,16 @@ public class SessionUtil {
         session.removeAttribute(EMAIL_KEY);
         session.removeAttribute(ROLE_KEY);
     }
+    public static String getEmail(HttpSession session) {
+        Object o = session.getAttribute("email");
+        return o == null ? null : o.toString();
+    }
+    public static String getRole(HttpSession session) {
+        Object o = session.getAttribute("role");
+        return o == null ? null : o.toString();
+    }
+    public static String getEmployeeEmail(HttpSession session){
+        Object v = session.getAttribute("EMPLOYEE_EMAIL");
+        return v == null ? null : v.toString();
+    }
 }

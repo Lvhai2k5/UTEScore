@@ -16,121 +16,400 @@
     overflow: hidden;
   }
 
-  /* ===== SIDEBAR ===== */
+ /* ===== SIDEBAR ===== */
   .sidebar {
     width: 270px;
-    background: linear-gradient(180deg, #1e293b, #0f172a);
+    background: linear-gradient(180deg, #1e293b, #0f172a, #312e81);
     color: white;
     display: flex;
     flex-direction: column;
-    box-shadow: 4px 0 24px rgba(0,0,0,0.3);
+    box-shadow: 4px 0 24px rgba(0,0,0,0.4);
     overflow-y: auto;
   }
-  .logo-section { padding: 24px 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-  .logo {
-    font-size: 26px; font-weight: 700; text-align: center;
-    background: linear-gradient(135deg, #667eea, #a78bfa);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  .logo-section {
+    padding: 24px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
   }
+  .logo {
+    font-size: 28px;
+    font-weight: 800;
+    text-align: center;
+    background: linear-gradient(90deg, #38bdf8, #a78bfa, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease infinite;
+  }
+  @keyframes gradientShift {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+
   .staff-info {
-    text-align: center; margin-top: 16px;
-    background: rgba(255,255,255,0.05); border-radius: 12px; padding: 12px;
+    text-align: center;
+    margin-top: 16px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
   }
   .staff-avatar {
-    width: 60px; height: 60px; border-radius: 50%;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 26px;
+    width: 70px; height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+    margin: 0 auto 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px; color: #fff;
+    box-shadow: 0 0 20px rgba(59,130,246,0.7);
   }
-  .staff-name { font-weight: 600; font-size: 15px; }
-  .staff-role { font-size: 13px; color: #94a3b8; }
+  .staff-name { font-weight: 700; font-size: 16px; }
+  .staff-role { font-size: 13px; color: #cbd5e1; }
 
-  .menu { padding: 16px; flex: 1; }
-  .menu-title { font-size: 13px; font-weight: 600; color: #94a3b8; margin: 8px 0; text-transform: uppercase; letter-spacing: 0.5px; }
-  .menu-link {
-    display: flex; align-items: center; gap: 10px; color: white; text-decoration: none;
-    background: rgba(255,255,255,0.05); padding: 12px 14px; border-radius: 10px;
-    margin-bottom: 6px; font-size: 15px; transition: all 0.3s ease;
-  }
-  .menu-link:hover { background: rgba(255,255,255,0.1); transform: translateX(4px); }
-  .menu-link.active { background: linear-gradient(135deg, rgba(102,126,234,0.4), rgba(118,75,162,0.4)); }
-
-  /* ===== CONTENT ===== */
-  .content {
+  .menu {
+    padding: 16px;
     flex: 1;
-    background: #f8fafc;
-    margin: 24px;
-    border-radius: 24px;
-    padding: 32px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-    overflow-y: auto;
   }
-  header {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 32px;
+  .menu-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #94a3b8;
+    margin: 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
-  header h2 {
-    font-size: 28px; font-weight: 700;
-    background: linear-gradient(135deg, #1e293b, #475569);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  }
-
-  /* ===== TABLE ===== */
-  .table-container {
-    background: white;
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-  }
-  table {
-    width: 100%; border-collapse: collapse; margin-top: 10px;
-  }
-  th, td {
-    padding: 12px 10px; text-align: center; border-bottom: 1px solid #e2e8f0;
-  }
-  th {
-    background: #f1f5f9; color: #1e293b; font-weight: 600; font-size: 14px;
-  }
-  td { font-size: 14px; color: #475569; }
-
-  .button {
-    display: inline-block; padding: 8px 14px; border-radius: 8px;
-    background: linear-gradient(135deg, #38b6ff, #1e90ff);
-    color: white; text-decoration: none; font-weight: 500;
+  .menu-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    text-decoration: none;
+    background: rgba(255,255,255,0.08);
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    font-size: 15px;
     transition: all 0.3s ease;
   }
-  .button:hover { transform: translateY(-2px); background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+  .menu-link:hover {
+    background: linear-gradient(135deg, #38bdf8, #a855f7);
+    transform: translateX(6px) scale(1.03);
+    box-shadow: 0 0 15px rgba(168,85,247,0.5);
+  }
+  .menu-link.active {
+    background: linear-gradient(135deg, #38bdf8, #f472b6);
+    box-shadow: 0 0 20px rgba(236,72,153,0.6);
+  }
+  .menu-icon {
+    font-size: 18px;
+    width: 26px;
+    text-align: center;
+  }
+ /* =========================
+   Neon Pro Max – WOW Edition
+   ========================= */
+
+/* ===== Variables & Keyframes ===== */
+:root{
+  --bg:#0b1020;
+  --ink:#0f172a;
+  --text:#eaf2ff;
+  --muted:#94a3b8;
+  --n1:#6d28d9;  /* purple */
+  --n2:#3b82f6;  /* blue   */
+  --n3:#22d3ee;  /* cyan   */
+  --n4:#10b981;  /* green  */
+  --n5:#f43f5e;  /* pink   */
+  --shadow: 0 20px 60px rgba(0,0,0,.18);
+  --radius-xl: 24px;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+}
+
+@keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes rotateBorder{to{transform:rotate(360deg)}}
+@keyframes sweep{
+  0%{left:-60%;opacity:0}
+  20%{opacity:1}
+  60%{left:110%;opacity:1}
+  100%{left:150%;opacity:0}
+}
+@keyframes breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes pulseShadow{
+  0%{box-shadow:0 12px 30px rgba(59,130,246,.22),0 0 18px rgba(168,85,247,.18)}
+  50%{box-shadow:0 18px 40px rgba(59,130,246,.35),0 0 26px rgba(168,85,247,.28)}
+  100%{box-shadow:0 12px 30px rgba(59,130,246,.22),0 0 18px rgba(168,85,247,.18)}
+}
+
+/* ===== CONTENT ===== */
+.content{
+  flex:1;
+  background:
+    radial-gradient(1200px 600px at 110% -10%, rgba(59,130,246,.12), transparent 60%),
+    radial-gradient(1000px 600px at -10% 110%, rgba(168,85,247,.10), transparent 60%),
+    linear-gradient(180deg,#ffffff,#f8fafc);
+  margin:24px;
+  border-radius:var(--radius-xl);
+  padding:32px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:auto;
+}
+.content::before{
+  content:"";
+  position:absolute; inset:0; padding:2px; border-radius:inherit;
+  background:linear-gradient(120deg,var(--n2),var(--n1),var(--n3),var(--n4),var(--n5),var(--n2));
+  background-size:300% 300%;
+  animation:gradientShift 8s linear infinite;
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+  pointer-events:none;
+  filter:drop-shadow(0 0 18px rgba(99,102,241,.35));
+}
+
+/* ===== Header ===== */
+header{
+  display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;
+}
+header h2{
+  font-size:32px; font-weight:900; margin:0;
+  background:linear-gradient(135deg,#0f172a,#334155,#64748b,#0f172a);
+  background-size:250% 250%;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  animation:gradientShift 10s ease infinite;
+  letter-spacing:.4px;
+}
+
+/* ===== TABLE WRAPPER ===== */
+.table-container{
+  position:relative;
+  background:#ffffffcc;
+  border-radius:var(--radius-lg);
+  padding:24px;
+  box-shadow:0 12px 30px rgba(2,6,23,.08);
+  overflow:hidden;
+}
+.table-container::before{
+  /* LED border loop */
+  content:"";
+  position:absolute; inset:-2px; border-radius:inherit;
+  background:conic-gradient(from 0deg,var(--n2),var(--n1),var(--n3),var(--n4),var(--n5),var(--n2));
+  filter:blur(10px); opacity:.45; pointer-events:none;
+  animation:rotateBorder 9s linear infinite;
+  -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+  padding:2px;
+}
+
+/* ===== TABLE ===== */
+table{ width:100%; border-collapse:collapse; margin-top:10px; font-family:'Inter',system-ui,Segoe UI,Arial; }
+th,td{ padding:12px 10px; text-align:center; border-bottom:1px solid #e2e8f0; }
+
+/* Header trượt & nổi */
+th{
+  background:linear-gradient(120deg,#e2e8f0,#f1f5f9,#e2e8f0);
+  background-size:300% 300%;
+  animation:gradientShift 12s ease infinite;
+  color:#0b1220; font-weight:800; font-size:14px; letter-spacing:.4px;
+  position:sticky; top:0; z-index:1;
+}
+
+/* Hàng zebra + quét sáng khi hover */
+tbody tr:nth-child(odd){ background:#f8fafc; }
+tbody tr:nth-child(even){ background:#ffffff; }
+td{ font-size:14px; color:#334155; }
+
+/* Hover: gradient chạy dài + glow */
+tbody tr{
+  position:relative; transition:transform .25s ease, box-shadow .25s ease, background-position .6s linear;
+}
+tbody tr:hover{
+  background:
+    linear-gradient(120deg, rgba(99,102,241,.12), rgba(34,211,238,.14), rgba(168,85,247,.12));
+  background-size:220% 220%;
+  animation:gradientShift 3.6s linear infinite;
+  transform:translateY(-2px);
+  box-shadow:0 10px 28px rgba(99,102,241,.18), 0 0 0 1px rgba(59,130,246,.15) inset;
+}
+tbody tr:hover td{
+  color:#0b1220;
+  text-shadow:0 0 8px rgba(59,130,246,.25);
+}
+
+/* Sweep beam */
+tbody tr::after{
+  content:""; position:absolute; top:0; left:-60%;
+  width:40%; height:100%;
+  background:linear-gradient(120deg, transparent, rgba(255,255,255,.45), transparent);
+  transform:skewX(-20deg);
+  opacity:0; pointer-events:none;
+}
+tbody tr:hover::after{ opacity:1; animation:sweep 1.2s ease-out; }
+
+/* Active click ripple effect (subtle) */
+tbody tr:active{
+  transform:translateY(0);
+  box-shadow:0 0 0 2px rgba(34,211,238,.35) inset, 0 0 18px rgba(34,211,238,.18);
+}
+
+/* ===== BUTTON ===== */
+.button{
+  display:inline-block; padding:10px 16px; border-radius:12px;
+  background:linear-gradient(135deg,var(--n2),var(--n1),var(--n3));
+  background-size:200% 200%;
+  color:#fff; text-decoration:none; font-weight:800; letter-spacing:.2px;
+  border:1px solid rgba(255,255,255,.2);
+  transition:transform .18s ease, filter .18s ease, box-shadow .18s ease, background-position .35s ease;
+  box-shadow:0 10px 26px rgba(99,102,241,.25);
+  position:relative; overflow:hidden;
+  animation:breathe 4s ease-in-out infinite;
+}
+.button:hover{
+  transform:translateY(-2px) scale(1.02);
+  background-position:100% 0;
+  filter:saturate(120%);
+  animation-play-state:paused;
+  box-shadow:0 16px 36px rgba(99,102,241,.4), 0 0 24px rgba(168,85,247,.35);
+}
+.button:active{ transform:translateY(0) scale(.98); }
+/* Ripple */
+.button::after{
+  content:""; position:absolute; inset:0; border-radius:inherit;
+  background:radial-gradient(circle at var(--x,50%) var(--y,50%), rgba(255,255,255,.35), transparent 45%);
+  opacity:0; transition:opacity .35s ease;
+}
+.button:is(:hover,:focus)::after{ opacity:1; }
+/* =======================
+   FOOTER – Neon Frame Glow
+   ======================= */
+.footer-box {
+  margin-top: auto;
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(248,250,252,0.95));
+  border-radius: 18px;
+  padding: 18px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(99,102,241,0.15), inset 0 1px 2px rgba(255,255,255,0.6);
+}
+
+/* Viền neon động quanh footer */
+.footer-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(120deg, #38bdf8, #a855f7, #22d3ee, #10b981, #f43f5e, #38bdf8);
+  background-size: 400% 400%;
+  animation: footerFlow 10s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 18px rgba(59,130,246,.3));
+}
+
+@keyframes footerFlow {
+  0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+  50% { background-position: 100% 50%; filter: hue-rotate(40deg); }
+  100% { background-position: 0% 50%; filter: hue-rotate(360deg); }
+}
+
+/* Dòng chữ © bên trong */
+.footer-text {
+  font-weight: 700;
+  font-size: 15px;
+  background: linear-gradient(90deg, #38bdf8, #a855f7, #f472b6, #22d3ee);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 8s ease infinite;
+  letter-spacing: 0.3px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 10px rgba(147,51,234,0.25);
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Ánh sáng quét qua dòng chữ */
+.footer-text::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -70%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,.5), transparent);
+  transform: skewX(-18deg);
+  opacity: 0;
+}
+.footer-text:hover::after {
+  opacity: 1;
+  animation: footerSweep 1.4s ease-out;
+}
+
+@keyframes footerSweep {
+  0% { left: -70%; opacity: 0; }
+  25% { opacity: 1; }
+  70% { left: 110%; opacity: 1; }
+  100% { left: 130%; opacity: 0; }
+}
+
+
+/* Pointer coords for ripple (requires tiny JS; nếu không có JS vẫn đẹp) */
+.button{ --x:50%; --y:50%; }
+
+/* ===== Responsive polish ===== */
+@media (max-width:768px){
+  header h2{ font-size:24px }
+  th,td{ padding:10px 8px; font-size:13px }
+  .button{ padding:9px 14px }
+}
+
+/* ===== Reduced motion ===== */
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important; transition:none !important }
+}
+
 </style>
 </head>
 <body>
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="logo-section">
+ <aside class="sidebar">
+  <div class="logo-section">
     <div class="logo">UTEScore</div>
     <div class="staff-info">
-      <div class="staff-avatar">⚙️</div>
-      <div class="staff-name" th:text="${nhanVienDangNhap?.hoTen}">Nhân viên</div>
+      <div class="staff-avatar">💎</div>
+      <div class="staff-name" th:text="${nhanVienDangNhap?.fullName ?: 'Nhân viên'}">Nhân viên</div>
       <div class="staff-role">Bộ phận sân bóng</div>
     </div>
   </div>
 
-   <div class="menu">
-      <p class="menu-title">🏟️ Quản lý sân</p>
-      <a href="/employee/booking" class="menu-link active"><span class="menu-icon">📋</span>Đơn đặt sân</a>
-        <a href="/employee/checkin" class="menu-link"><span class="menu-icon">🎫</span>Check-in khách</a>
-        <a href="/employee/payment" class="menu-link"><span class="menu-icon">💰</span>Thanh toán</a>
-        <a href="/employee/refund" class="menu-link"><span class="menu-icon">👥</span>Hoàn tiền</a>
-        <a href="/employee/schedule" class="menu-link"><span class="menu-icon">📅</span>Lịch sân</a>
+  <div class="menu">
+    <p class="menu-title">🏟️ Quản lý sân</p>
+    <a href="/employee/booking"  class="menu-link"><span class="menu-icon">📋</span>Đơn đặt sân</a>
+    <a href="/employee/checkin"  class="menu-link"><span class="menu-icon">🎫</span>Check-in khách</a>
+    <a href="/employee/payment"  class="menu-link"><span class="menu-icon">💰</span>Thanh toán</a>
+    <a href="/employee/refund"   class="menu-link"><span class="menu-icon">👥</span>Hoàn tiền</a>
+    <a href="/employee/schedule" class="menu-link"><span class="menu-icon">📅</span>Lịch sân</a>
 
-      <p class="menu-title">📢 Báo cáo & Thông tin</p>
-      <a href="/employee/incidents" class="menu-link"><span class="menu-icon">⚠️</span>Sự cố / Ghi chú</a>
-      <a href="/employee/report" class="menu-link"><span class="menu-icon">📊</span>Thống kê công việc</a>
+    <p class="menu-title">📢 Báo cáo & Thông tin</p>
+    <a href="/employee/incidents" class="menu-link"><span class="menu-icon">⚠️</span>Sự cố / Ghi chú</a>
+    <a href="/employee/report"    class="menu-link"><span class="menu-icon">📊</span>Thống kê công việc</a>
+    <a href="/chat/employee"    class="menu-link"><span class="menu-icon">💌</span>Trả lời khách hàng</a>
 
-      <p class="menu-title">⚙️ Cá nhân</p>
-      <a href="/employee/profile" class="menu-link"><span class="menu-icon">👤</span>Thông tin cá nhân</a>
-      <a href="/logout" class="menu-link"><span class="menu-icon">🚪</span>Đăng xuất</a>
-    </div>
-  </aside>
+    <p class="menu-title">⚙️ Cá nhân</p>
+    <a href="/employee/profile" class="menu-link"><span class="menu-icon">👤</span>Thông tin cá nhân</a>
+    <a href="/logout"           class="menu-link"><span class="menu-icon">🚪</span>Đăng xuất</a>
+  </div>
+</aside>
+
   <!-- MAIN CONTENT -->
   <section class="content">
     <header>
@@ -161,6 +440,10 @@
         </tbody>
       </table>
     </div>
+    <div class="footer-box">
+  <p class="footer-text">UTEScore - Employee</p>
+</div>
+    
   </section>
 </body>
 </html>

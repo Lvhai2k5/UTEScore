@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UTEScore – Thông tin nhân viên</title>
+<title th:text="${pageTitle}">UTEScore – Thông tin nhân viên</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 30%, #ec4899 100%);
     color: #1e293b;
     display: flex;
     height: 100vh;
@@ -20,42 +19,51 @@
   /* ===== SIDEBAR ===== */
   .sidebar {
     width: 270px;
-    background: linear-gradient(180deg, #1e293b, #0f172a);
+    background: linear-gradient(180deg, #1e293b, #0f172a, #312e81);
     color: white;
     display: flex;
     flex-direction: column;
-    box-shadow: 4px 0 24px rgba(0,0,0,0.3);
+    box-shadow: 4px 0 24px rgba(0,0,0,0.4);
     overflow-y: auto;
   }
   .logo-section {
     padding: 24px 16px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
   }
   .logo {
-    font-size: 26px;
-    font-weight: 700;
+    font-size: 28px;
+    font-weight: 800;
     text-align: center;
-    background: linear-gradient(135deg, #667eea, #a78bfa);
+    background: linear-gradient(90deg, #38bdf8, #a78bfa, #f472b6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease infinite;
   }
+  @keyframes gradientShift {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+
   .staff-info {
     text-align: center;
     margin-top: 16px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 12px;
-    padding: 12px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
   }
   .staff-avatar {
-    width: 60px; height: 60px;
+    width: 70px; height: 70px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    margin: 0 auto 10px;
+    background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+    margin: 0 auto 12px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 26px;
+    font-size: 30px; color: #fff;
+    box-shadow: 0 0 20px rgba(59,130,246,0.7);
   }
-  .staff-name { font-weight: 600; font-size: 15px; }
-  .staff-role { font-size: 13px; color: #94a3b8; }
+  .staff-name { font-weight: 700; font-size: 16px; }
+  .staff-role { font-size: 13px; color: #cbd5e1; }
 
   .menu {
     padding: 16px;
@@ -63,31 +71,33 @@
   }
   .menu-title {
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     color: #94a3b8;
-    margin: 8px 0;
+    margin: 12px 0;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
   }
   .menu-link {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     color: white;
     text-decoration: none;
-    background: rgba(255,255,255,0.05);
-    padding: 12px 14px;
-    border-radius: 10px;
-    margin-bottom: 6px;
+    background: rgba(255,255,255,0.08);
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin-bottom: 8px;
     font-size: 15px;
     transition: all 0.3s ease;
   }
   .menu-link:hover {
-    background: rgba(255,255,255,0.1);
-    transform: translateX(4px);
+    background: linear-gradient(135deg, #38bdf8, #a855f7);
+    transform: translateX(6px) scale(1.03);
+    box-shadow: 0 0 15px rgba(168,85,247,0.5);
   }
   .menu-link.active {
-    background: linear-gradient(135deg, rgba(102,126,234,0.4), rgba(118,75,162,0.4));
+    background: linear-gradient(135deg, #38bdf8, #f472b6);
+    box-shadow: 0 0 20px rgba(236,72,153,0.6);
   }
   .menu-icon {
     font-size: 18px;
@@ -98,60 +108,157 @@
   /* ===== CONTENT ===== */
   .content {
     flex: 1;
-    background: #f8fafc;
+    background: radial-gradient(circle at top left, #f0f9ff, #fdf4ff);
     margin: 24px;
     border-radius: 24px;
     padding: 40px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.15);
     overflow-y: auto;
   }
   h2 {
-    font-size: 32px;
-    font-weight: 700;
-    background: linear-gradient(135deg, #1e293b, #475569);
+    font-size: 34px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #0ea5e9, #9333ea, #f43f5e);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 30px;
+    margin-bottom: 32px;
+    text-align: center;
   }
 
   .profile-card {
     background: white;
-    border-radius: 16px;
-    padding: 40px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-    max-width: 700px;
+    border-radius: 20px;
+    padding: 50px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    max-width: 720px;
     margin: auto;
+    animation: fadeIn 1.2s ease;
+  }
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
   }
 
   .avatar {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #667eea;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
     color: white;
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
-    font-size: 36px;
+    font-size: 42px;
     font-weight: bold;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 24px auto;
+    box-shadow: 0 0 25px rgba(96,165,250,0.7);
   }
 
   .info {
-    font-size: 16px;
-    line-height: 1.8;
+    font-size: 17px;
+    line-height: 1.9;
+    color: #1e293b;
   }
 
   .info strong {
     width: 160px;
     display: inline-block;
-    color: #1e293b;
+    color: #475569;
   }
 
   .info p {
-    margin-bottom: 8px;
+    margin-bottom: 12px;
   }
 
+  .divider {
+    height: 2px;
+    background: linear-gradient(90deg, #a78bfa, #f472b6, #38bdf8);
+    border-radius: 4px;
+    margin: 24px 0;
+    box-shadow: 0 0 15px rgba(147,51,234,0.5);
+  }
+  /* =======================
+   FOOTER – Neon Frame Glow
+   ======================= */
+.footer-box {
+  margin-top: auto;
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(248,250,252,0.95));
+  border-radius: 18px;
+  padding: 18px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(99,102,241,0.15), inset 0 1px 2px rgba(255,255,255,0.6);
+}
+
+/* Viền neon động quanh footer */
+.footer-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(120deg, #38bdf8, #a855f7, #22d3ee, #10b981, #f43f5e, #38bdf8);
+  background-size: 400% 400%;
+  animation: footerFlow 10s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 18px rgba(59,130,246,.3));
+}
+
+@keyframes footerFlow {
+  0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+  50% { background-position: 100% 50%; filter: hue-rotate(40deg); }
+  100% { background-position: 0% 50%; filter: hue-rotate(360deg); }
+}
+
+/* Dòng chữ © bên trong */
+.footer-text {
+  font-weight: 700;
+  font-size: 15px;
+  background: linear-gradient(90deg, #38bdf8, #a855f7, #f472b6, #22d3ee);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 8s ease infinite;
+  letter-spacing: 0.3px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 10px rgba(147,51,234,0.25);
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Ánh sáng quét qua dòng chữ */
+.footer-text::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -70%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,.5), transparent);
+  transform: skewX(-18deg);
+  opacity: 0;
+}
+.footer-text:hover::after {
+  opacity: 1;
+  animation: footerSweep 1.4s ease-out;
+}
+
+@keyframes footerSweep {
+  0% { left: -70%; opacity: 0; }
+  25% { opacity: 1; }
+  70% { left: 110%; opacity: 1; }
+  100% { left: 130%; opacity: 0; }
+}
 </style>
 </head>
 <body>
@@ -160,8 +267,8 @@
     <div class="logo-section">
       <div class="logo">UTEScore</div>
       <div class="staff-info">
-        <div class="staff-avatar">⚙️</div>
-        <div class="staff-name" th:text="${nhanVienDangNhap?.hoTen ?: 'Nhân viên'}">Nhân viên</div>
+        <div class="staff-avatar">💎</div>
+        <div class="staff-name" th:text="${nhanVienDangNhap?.fullName ?: 'Nhân viên'}">Nhân viên</div>
         <div class="staff-role">Bộ phận sân bóng</div>
       </div>
     </div>
@@ -177,6 +284,7 @@
       <p class="menu-title">📢 Báo cáo & Thông tin</p>
       <a href="/employee/incidents" class="menu-link"><span class="menu-icon">⚠️</span>Sự cố / Ghi chú</a>
       <a href="/employee/report" class="menu-link"><span class="menu-icon">📊</span>Thống kê công việc</a>
+      <a href="/chat/employee"    class="menu-link"><span class="menu-icon">💌</span>Trả lời khách hàng</a>
 
       <p class="menu-title">⚙️ Cá nhân</p>
       <a href="/employee/profile" class="menu-link active"><span class="menu-icon">👤</span>Thông tin cá nhân</a>
@@ -186,37 +294,33 @@
 
   <!-- MAIN CONTENT -->
   <section class="content">
-    <h2>Thông tin cá nhân</h2>
+    <h2>🌈 Hồ sơ nhân viên – Tỏa sáng như cầu vồng 🌈</h2>
 
     <div class="profile-card">
       <div class="avatar" th:text="${nhanVien != null && nhanVien.fullName != null ? nhanVien.fullName.substring(0,1) : '?'}">?</div>
 
-      <h3 style="text-align:center; margin-bottom:24px;"
+      <h3 style="text-align:center; margin-bottom:16px; font-size:22px;"
           th:text="${nhanVien != null && nhanVien.fullName != null ? nhanVien.fullName : 'Chưa có tên'}">
         Chưa có tên
       </h3>
 
+      <div class="divider"></div>
+
       <div class="info">
-        <p><strong>Email:</strong> 
-          <span th:text="${nhanVien != null && nhanVien.email != null ? nhanVien.email : 'Chưa có'}">Chưa có</span>
+        <p><strong>📧 Email:</strong> 
+          <span th:text="${nhanVien?.email ?: 'Chưa có'}">Chưa có</span>
         </p>
-        <p><strong>Số điện thoại:</strong> 
-          <span th:text="${nhanVien != null && nhanVien.phone != null ? nhanVien.phone : 'Chưa có'}">Chưa có</span>
+        <p><strong>📱 Số điện thoại:</strong> 
+          <span th:text="${nhanVien?.phone ?: 'Chưa có'}">Chưa có</span>
         </p>
-        <p><strong>Trạng thái:</strong> 
-          <span th:text="${nhanVien != null && nhanVien.status != null ? nhanVien.status : 'Không xác định'}">Không xác định</span>
-        </p>
-        <p><strong>Ngày tạo:</strong> 
-          <span th:text="${nhanVien != null && nhanVien.createdAt != null ? #temporals.format(nhanVien.createdAt, 'dd/MM/yyyy HH:mm') : 'N/A'}">N/A</span>
-        </p>
-        <p><strong>Cập nhật lần cuối:</strong> 
-          <span th:text="${nhanVien != null && nhanVien.updateAt != null ? #temporals.format(nhanVien.updateAt, 'dd/MM/yyyy HH:mm') : 'N/A'}">N/A</span>
-        </p>
-        <p><strong>Vai trò:</strong> 
-          <span th:text="${nhanVien != null && nhanVien.role != null && nhanVien.role.roleName != null ? nhanVien.role.roleName : 'Chưa có vai trò'}">Chưa có vai trò</span>
+        <p><strong>💼 Trạng thái:</strong> 
+          <span th:text="${nhanVien?.status ?: 'Không xác định'}">Không xác định</span>
         </p>
       </div>
     </div>
+    <div class="footer-box">
+  <p class="footer-text">UTEScore - Employee</p>
+</div>
   </section>
 </body>
 </html>

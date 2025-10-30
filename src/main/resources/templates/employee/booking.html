@@ -6,157 +6,410 @@
 <title>UTEScore – Đơn đặt sân</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: #1e293b;
-    display: flex;
-    height: 100vh;
-    overflow: hidden;
-  }
-  /* Sidebar */
+/* ===== Base giữ nguyên ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #1e293b;
+  display: flex; height: 100vh; overflow: hidden;
+}
+/* ===== SIDEBAR ===== */
   .sidebar {
     width: 270px;
-    background: linear-gradient(180deg, #1e293b, #0f172a);
+    background: linear-gradient(180deg, #1e293b, #0f172a, #312e81);
     color: white;
     display: flex;
     flex-direction: column;
-    box-shadow: 4px 0 24px rgba(0,0,0,0.3);
+    box-shadow: 4px 0 24px rgba(0,0,0,0.4);
     overflow-y: auto;
   }
-  .logo-section { padding: 24px 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-  .logo { font-size: 26px; font-weight: 700; text-align: center; background: linear-gradient(135deg,#667eea,#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-  .staff-info { text-align:center; margin-top:16px; background:rgba(255,255,255,0.05); border-radius:12px; padding:12px; }
-  .staff-avatar { width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#667eea,#764ba2);margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:26px; }
-  .staff-name{font-weight:600;font-size:15px;}
-  .staff-role{font-size:13px;color:#94a3b8;}
-  .menu{padding:16px;flex:1;}
-  .menu-title{font-size:13px;font-weight:600;color:#94a3b8;margin:8px 0;text-transform:uppercase;letter-spacing:0.5px;}
-  .menu-link{display:flex;align-items:center;gap:10px;color:white;text-decoration:none;background:rgba(255,255,255,0.05);padding:12px 14px;border-radius:10px;margin-bottom:6px;font-size:15px;transition:all 0.3s ease;}
-  .menu-link:hover{background:rgba(255,255,255,0.1);transform:translateX(4px);}
-  .menu-link.active{background:linear-gradient(135deg,rgba(102,126,234,0.4),rgba(118,75,162,0.4));}
-  .menu-icon{font-size:18px;width:26px;text-align:center;}
+  .logo-section {
+    padding: 24px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+  .logo {
+    font-size: 28px;
+    font-weight: 800;
+    text-align: center;
+    background: linear-gradient(90deg, #38bdf8, #a78bfa, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease infinite;
+  }
+  @keyframes gradientShift {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
 
-  /* Content */
-  .content {
+  .staff-info {
+    text-align: center;
+    margin-top: 16px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
+  }
+  .staff-avatar {
+    width: 70px; height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+    margin: 0 auto 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px; color: #fff;
+    box-shadow: 0 0 20px rgba(59,130,246,0.7);
+  }
+  .staff-name { font-weight: 700; font-size: 16px; }
+  .staff-role { font-size: 13px; color: #cbd5e1; }
+
+  .menu {
+    padding: 16px;
     flex: 1;
-    background: #f8fafc;
-    margin: 24px;
-    border-radius: 24px;
-    padding: 32px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-    overflow-y: auto;
   }
-  header { display:flex;justify-content:space-between;align-items:center;margin-bottom:32px; }
-  header h2 {
-    font-size:32px;font-weight:700;
-    background:linear-gradient(135deg,#1e293b,#475569);
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  .menu-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #94a3b8;
+    margin: 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
-  .btn { background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;padding:10px 18px;border-radius:10px;cursor:pointer;font-weight:600;transition:all .3s; }
-  .btn:hover{transform:translateY(-2px);}
-  .btn-secondary{background:white;color:#1e293b;border:1px solid #e2e8f0;padding:10px 18px;border-radius:10px;font-weight:500;cursor:pointer;}
-  .toolbar{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;}
-  .input,.select{padding:10px 14px;border-radius:8px;border:1px solid #cbd5e1;font-size:15px;}
-  .card{
-    background:white;
-    border-radius:16px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.06);
-    padding:24px;
+  .menu-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    text-decoration: none;
+    background: rgba(255,255,255,0.08);
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
   }
-  .table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:12px;
+  .menu-link:hover {
+    background: linear-gradient(135deg, #38bdf8, #a855f7);
+    transform: translateX(6px) scale(1.03);
+    box-shadow: 0 0 15px rgba(168,85,247,0.5);
   }
-  .table th,.table td{
-    padding:12px 14px;
-    border-bottom:1px solid #e2e8f0;
-    text-align:left;
+  .menu-link.active {
+    background: linear-gradient(135deg, #38bdf8, #f472b6);
+    box-shadow: 0 0 20px rgba(236,72,153,0.6);
   }
-  .table th{background:#f1f5f9;color:#1e293b;font-weight:600;}
-  .table tr:hover{background:#f9fafb;}
-  .badge{padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600;}
-  .badge.green{background:#dcfce7;color:#166534;}
-  .badge.gray{background:#f1f5f9;color:#475569;}
-  .footer-note{text-align:center;margin-top:16px;color:#64748b;font-size:13px;}
+  .menu-icon {
+    font-size: 18px;
+    width: 26px;
+    text-align: center;
+  }
 
-  /* Modal */
-  .modal-overlay{
-    position:fixed; inset:0; display:none; align-items:center; justify-content:center;
-    background:rgba(15,23,42,.55); z-index:1000;
-  }
-  .modal{
-    background:#fff; border-radius:16px; padding:24px; width:min(640px,92vw);
-    box-shadow:0 20px 60px rgba(0,0,0,.2);
-  }
-  .modal header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-  .modal h3{font-size:20px;margin:0}
-  .close{cursor:pointer;border:none;background:#e2e8f0;border-radius:8px;padding:6px 10px}
-  .modal .row{display:flex;gap:12px;margin:8px 0}
-  .modal .label{width:140px;color:#64748b}
-  .modal .value{font-weight:600}
-  .modal .badge{padding:4px 10px;border-radius:8px;font-size:13px;font-weight:600}
-  .modal .badge.green{background:#dcfce7;color:#166534}
-  .modal .badge.gray{background:#f1f5f9;color:#475569}
+/* ===== Content (nâng cấp bên trong) ===== */
+.content{
+  flex:1; background:#f8fafc; margin:24px; border-radius:24px; padding:32px;
+  box-shadow:0 20px 60px rgba(0,0,0,.1); overflow-y:auto; position:relative; isolation:isolate;
+}
+.content::after{
+  content:""; position:absolute; inset:10px; border-radius:20px;
+  background:conic-gradient(from 0turn,#ff0080,#ff8c00,#ffe600,#22c55e,#06b6d4,#3b82f6,#a78bfa,#ff0080);
+  -webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+  padding:2px; opacity:.55; filter:blur(.5px); animation:spin 8s linear infinite; pointer-events:none;
+}
+/* Đảm bảo .card là khung chứa có vị trí tương đối */
+.card {
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  padding: 24px;
+  padding-bottom: 60px; /* chừa khoảng cho footer nằm trong (nếu cần dùng cách 2) */
+}
+
+/* Footer riêng của card (footer đầu tiên) – KHÔNG dùng trong Cách 1 */
+/* .card .footer-note { ... } */
+
+/* Footer toàn trang */
+section > .footer-note {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 14px;
+  color: #475569;
+  opacity: 0.8;
+}
+
+/* Hiệu ứng xuất hiện nhẹ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;}
+header h2{
+  font-size:32px;font-weight:700;background:linear-gradient(135deg,#1e293b,#475569);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+
+/* ===== Toolbar PRO (decor) ===== */
+.toolbar{
+  display:flex; flex-wrap:wrap; align-items:center; gap:12px;
+  background:rgba(255,255,255,.35); backdrop-filter:blur(8px);
+  border-radius:16px; padding:14px 16px; margin-bottom:24px;
+  border:1px solid rgba(147,197,253,.35); position:relative; overflow:hidden;
+  box-shadow:0 4px 18px rgba(99,102,241,.15);
+}
+.toolbar::before{
+  content:""; position:absolute; inset:0; border-radius:16px;
+  background:linear-gradient(135deg,#667eea,#a855f7,#f472b6); opacity:.25;
+  animation:toolbarShift 8s linear infinite; background-size:200% 200%;
+}
+@keyframes toolbarShift{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+
+.toolbar form{display:flex; gap:10px; align-items:center; position:relative; z-index:1;}
+.input{
+  padding:10px 40px 10px 14px; border-radius:10px; border:1px solid #c7d2fe; font-size:15px; background:#fff;
+  box-shadow:inset 0 0 6px rgba(0,0,0,.08); transition:all .3s; position:relative;
+}
+.input:focus{border-color:#6366f1; box-shadow:0 0 8px rgba(99,102,241,.4); outline:none;}
+/* Icon kính lúp bằng SVG data URI để không lệ thuộc CDN */
+.input.icon-search{
+  background-image:url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='11' cy='11' r='7' stroke='%236366F1' stroke-width='2'/%3E%3Cpath d='M20 20L17 17' stroke='%236366F1' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-size:18px; background-position:calc(100% - 12px) center;
+}
+
+.select{
+  padding:10px 14px; border-radius:10px; border:1px solid #cbd5e1; font-size:15px; cursor:pointer; background:#fff; transition:all .3s;
+}
+.select:hover{border-color:#6366f1; box-shadow:0 0 8px rgba(99,102,241,.3);}
+
+.btn{
+  background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; border:none; padding:10px 20px; border-radius:10px; cursor:pointer; font-weight:600; transition:all .3s; position:relative; overflow:hidden;
+}
+.btn::before{
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,.3), transparent 60%);
+  opacity:0; transition:opacity .2s;
+}
+.btn:hover::before{opacity:1}
+.btn:hover{transform:translateY(-2px); box-shadow:0 6px 18px rgba(99,102,241,.25);}
+.btn:active{transform:scale(.97);}
+
+/* Header button neon-border */
+.btn-secondary{
+  background:#fff; color:#0f172a; border:none; padding:10px 18px; border-radius:12px; font-weight:600; cursor:pointer;
+  transition:transform .2s ease, box-shadow .2s ease; position:relative; overflow:hidden;
+}
+.btn-secondary::before{
+  content:""; position:absolute; inset:-2px; border-radius:12px;
+  background:conic-gradient(from 0turn,#ff0080,#ff8c00,#ffe600,#22c55e,#06b6d4,#3b82f6,#a78bfa,#ff0080);
+  filter:blur(6px); opacity:.8; animation:spin 6s linear infinite; z-index:-1;
+}
+.btn-secondary::after{
+  content:""; position:absolute; inset:0; margin:2px; border-radius:10px; background:#fff; z-index:-1;
+}
+.btn-secondary:hover{transform:translateY(-2px) scale(1.02); box-shadow:0 10px 26px rgba(59,130,246,.18);}
+.btn-secondary:active{transform:scale(.98)}
+
+/* Card + Table */
+.card{background:#fff;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,.06);padding:24px;}
+.table{width:100%;border-collapse:collapse;margin-top:12px;}
+.table th,.table td{padding:12px 14px;border-bottom:1px solid #e2e8f0;text-align:left;}
+.table th{background:linear-gradient(90deg,#eef2ff,#f3e8ff,#e0f2fe);font-weight:700;}
+.table tr:hover{background:linear-gradient(90deg,rgba(255,240,245,.6),rgba(230,255,250,.6),rgba(240,255,255,.6));box-shadow:inset 0 8px 18px rgba(99,102,241,.15);}
+
+/* Badge */
+.badge{position:relative;padding:4px 10px;border-radius:999px;font-size:12.5px;font-weight:800;letter-spacing:.2px;}
+.badge.green{background:#dcfce7;color:#166534;}
+.badge.gray{background:#f1f5f9;color:#475569;}
+.badge::after{
+  content:""; position:absolute; inset:-1px; border-radius:inherit;
+  background:conic-gradient(from .2turn,#ff8c00,#ffe600,#22c55e,#06b6d4,#a78bfa,#ff0080,#ff8c00);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude; padding:1px; opacity:.55; filter:blur(.3px); pointer-events:none;
+}
+
+/* Nút Chi tiết (bự ra – nhỏ vô + neon) */
+.table .btn-detail{
+  background:#fff; color:#1e293b; border:1px solid #e2e8f0; padding:10px 18px; border-radius:10px; font-weight:600; cursor:pointer;
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+  position:relative; overflow:hidden;
+}
+.table .btn-detail:hover{
+  transform:scale(1.06);
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);
+  color:#fff; border-color:transparent; box-shadow:0 12px 28px rgba(99,102,241,.35);
+}
+.table .btn-detail:active{transform:scale(.96)}
+.table .btn-detail::before{
+  content:""; position:absolute; inset:-2px; border-radius:12px;
+  background:
+    radial-gradient(120px 80px at var(--mx,50%) var(--my,50%), rgba(255,255,255,.35), transparent 40%),
+    conic-gradient(from 0turn, #a78bfa, #22c55e, #06b6d4, #f59e0b, #ef4444, #a78bfa);
+  mix-blend-mode:screen; opacity:0; transition:opacity .2s; filter:blur(8px);
+}
+.table .btn-detail:hover::before{opacity:.75}
+
+/* Modal */
+.modal-overlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(15,23,42,.55);z-index:1000;}
+.modal{background:#fff;border-radius:16px;padding:24px;width:min(640px,92vw);box-shadow:0 20px 60px rgba(0,0,0,.2);}
+.modal header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.modal h3{font-size:20px;margin:0}
+.close{cursor:pointer;border:none;background:#e2e8f0;border-radius:8px;padding:6px 10px}
+.modal .row{display:flex;gap:12px;margin:8px 0}
+.modal .label{width:140px;color:#64748b}
+.modal .value{font-weight:600}
+
+/* ======= Dòng “Không có thêm đơn nào.” (Cách 1) ======= */
+.table .empty-cell{
+  text-align: center;
+  padding: 24px 12px;
+  color: #64748b;
+  background: linear-gradient(90deg, #f8fafc, #f1f5f9, #f8fafc);
+  border-bottom: none;
+  font-weight: 500;
+}
+/* =======================
+   FOOTER – Neon Frame Glow
+   ======================= */
+.footer-box {
+  margin-top: auto;
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(248,250,252,0.95));
+  border-radius: 18px;
+  padding: 18px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(99,102,241,0.15), inset 0 1px 2px rgba(255,255,255,0.6);
+}
+
+/* Viền neon động quanh footer */
+.footer-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(120deg, #38bdf8, #a855f7, #22d3ee, #10b981, #f43f5e, #38bdf8);
+  background-size: 400% 400%;
+  animation: footerFlow 10s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 18px rgba(59,130,246,.3));
+}
+
+@keyframes footerFlow {
+  0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+  50% { background-position: 100% 50%; filter: hue-rotate(40deg); }
+  100% { background-position: 0% 50%; filter: hue-rotate(360deg); }
+}
+
+/* Dòng chữ © bên trong */
+.footer-text {
+  font-weight: 700;
+  font-size: 15px;
+  background: linear-gradient(90deg, #38bdf8, #a855f7, #f472b6, #22d3ee);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 8s ease infinite;
+  letter-spacing: 0.3px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 10px rgba(147,51,234,0.25);
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Ánh sáng quét qua dòng chữ */
+.footer-text::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -70%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,.5), transparent);
+  transform: skewX(-18deg);
+  opacity: 0;
+}
+.footer-text:hover::after {
+  opacity: 1;
+  animation: footerSweep 1.4s ease-out;
+}
+
+@keyframes footerSweep {
+  0% { left: -70%; opacity: 0; }
+  25% { opacity: 1; }
+  70% { left: 110%; opacity: 1; }
+  100% { left: 130%; opacity: 0; }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-  <!-- SIDEBAR -->
   <aside class="sidebar">
-    <div class="logo-section">
+  <div class="logo-section">
     <div class="logo">UTEScore</div>
     <div class="staff-info">
-      <div class="staff-avatar">⚙️</div>
-      <div class="staff-name" th:text="${nhanVienDangNhap?.hoTen}">Nhân viên</div>
+      <div class="staff-avatar">💎</div>
+      <div class="staff-name" th:text="${nhanVienDangNhap?.fullName ?: 'Nhân viên'}">Nhân viên</div>
       <div class="staff-role">Bộ phận sân bóng</div>
     </div>
   </div>
 
-    <div class="menu">
-      <p class="menu-title">🏟️ Quản lý sân</p>
-      <a href="/employee/booking" class="menu-link active"><span class="menu-icon">📋</span>Đơn đặt sân</a>
-        <a href="/employee/checkin" class="menu-link"><span class="menu-icon">🎫</span>Check-in khách</a>
-        <a href="/employee/payment" class="menu-link"><span class="menu-icon">💰</span>Thanh toán</a>
-        <a href="/employee/refund" class="menu-link"><span class="menu-icon">👥</span>Hoàn tiền</a>
-        <a href="/employee/schedule" class="menu-link"><span class="menu-icon">📅</span>Lịch sân</a>
+  <div class="menu">
+    <p class="menu-title">🏟️ Quản lý sân</p>
+    <a href="/employee/booking"  class="menu-link"><span class="menu-icon">📋</span>Đơn đặt sân</a>
+    <a href="/employee/checkin"  class="menu-link"><span class="menu-icon">🎫</span>Check-in khách</a>
+    <a href="/employee/payment"  class="menu-link"><span class="menu-icon">💰</span>Thanh toán</a>
+    <a href="/employee/refund"   class="menu-link"><span class="menu-icon">👥</span>Hoàn tiền</a>
+    <a href="/employee/schedule" class="menu-link"><span class="menu-icon">📅</span>Lịch sân</a>
 
-      <p class="menu-title">📢 Báo cáo & Thông tin</p>
-      <a href="/employee/incidents" class="menu-link"><span class="menu-icon">⚠️</span>Sự cố / Ghi chú</a>
-      <a href="/employee/report" class="menu-link"><span class="menu-icon">📊</span>Thống kê công việc</a>
+    <p class="menu-title">📢 Báo cáo & Thông tin</p>
+    <a href="/employee/incidents" class="menu-link"><span class="menu-icon">⚠️</span>Sự cố / Ghi chú</a>
+    <a href="/employee/report"    class="menu-link"><span class="menu-icon">📊</span>Thống kê công việc</a>
+	<a href="/chat/employee"    class="menu-link"><span class="menu-icon">💌</span>Trả lời khách hàng</a>
+	
+    <p class="menu-title">⚙️ Cá nhân</p>
+    <a href="/employee/profile" class="menu-link"><span class="menu-icon">👤</span>Thông tin cá nhân</a>
+    <a href="/logout"           class="menu-link"><span class="menu-icon">🚪</span>Đăng xuất</a>
+  </div>
+</aside>
 
-      <p class="menu-title">⚙️ Cá nhân</p>
-      <a href="/employee/profile" class="menu-link"><span class="menu-icon">👤</span>Thông tin cá nhân</a>
-      <a href="/logout" class="menu-link"><span class="menu-icon">🚪</span>Đăng xuất</a>
-    </div>
-  </aside>
 
   <!-- MAIN CONTENT -->
   <section class="content">
     <header>
-  <h2>Đơn đặt sân</h2>
-  <div>
-    <button class="btn-secondary" onclick="location.href='/employee'">Trang chủ</button>
-  </div>
-</header>
+      <h2>Đơn đặt sân</h2>
+      <button class="btn-secondary" onclick="location.href='/employee'">Trang chủ</button>
+    </header>
 
-
+    <!-- Toolbar PRO -->
     <div class="toolbar">
-      <form th:action="@{/employee/booking/search}" method="get" style="display:flex;gap:8px;">
-        <input class="input" name="keyword" placeholder="🔎 Tìm theo tên khách / mã đơn ..." style="max-width:320px">
+      <form th:action="@{/employee/booking/search}" method="get">
+        <input class="input icon-search" name="keyword" placeholder="🔎 Tìm theo tên khách / mã đơn ...">
         <button class="btn" type="submit">Tìm kiếm</button>
       </form>
 
       <form th:action="@{/employee/booking/filter}" method="get">
-        <select name="type" class="select" style="max-width:180px" onchange="this.form.submit()">
+        <select name="type" class="select" onchange="this.form.submit()">
           <option value="" th:selected="${selectedType == null or selectedType == ''}">Tất cả</option>
           <option value="Đặt cọc" th:selected="${selectedType == 'Đặt cọc'}">Đặt cọc</option>
           <option value="Đã thanh toán" th:selected="${selectedType == 'Đã thanh toán'}">Đã thanh toán</option>
           <option value="Hoàn tất" th:selected="${selectedType == 'Hoàn tất'}">Hoàn tất</option>
+          <option value="Hoàn tiền" th:selected="${selectedType == 'Hoàn tiền'}">Hoàn tiền</option>
         </select>
       </form>
-
     </div>
 
     <div class="card">
@@ -166,18 +419,25 @@
             <th>Mã đơn</th><th>Khách hàng</th><th>Sân</th><th>Thời gian</th><th>Trạng thái</th><th>Tổng tiền</th><th>Thao tác</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="booking-body">
+          <!-- Hàng thông báo khi không có dữ liệu -->
+          <tr th:if="${#lists.isEmpty(bookings)}">
+            <td class="empty-cell" colspan="7">Không có thêm đơn nào.</td>
+          </tr>
+
+          <!-- Dữ liệu thực tế -->
           <tr th:each="b : ${bookings}">
             <td th:text="'#D' + ${b.maDonDat}">#Mã</td>
             <td th:text="${b.khachHang.hoTen}">Tên khách</td>
             <td th:text="${b.sanBong.tenSan}">Tên sân</td>
             <td th:text="${b.khungGioBatDau} + ' - ' + ${b.khungGioKetThuc}">18:00–19:30</td>
             <td>
-              <span class="badge green" th:text="${not #lists.isEmpty(b.thanhToans) ? b.thanhToans.get(0).loaiThanhToan : 'Chưa thanh toán'}">Đã cọc</span>
+              <span class="badge green"
+                    th:text="${not #lists.isEmpty(b.thanhToans) ? b.thanhToans.get(0).loaiThanhToan : 'Chưa thanh toán'}">Đã cọc</span>
             </td>
             <td th:text="${#numbers.formatDecimal(b.tongTien,0,'COMMA',0,'POINT')} + ' đ'">350.000 đ</td>
             <td>
-              <button class="btn-secondary btn-detail"
+              <button class="btn-detail"
                 th:attr="data-madon=${'#D' + b.maDonDat},
                          data-khach=${b.khachHang.hoTen},
                          data-san=${b.sanBong.tenSan},
@@ -192,9 +452,13 @@
           </tr>
         </tbody>
       </table>
-      <p class="footer-note" th:if="${#lists.isEmpty(bookings)}">Không có thêm đơn nào.</p>
+      <!-- ĐÃ GỠ: <p class="footer-note" th:if="${#lists.isEmpty(bookings)}">Không có thêm đơn nào.</p> -->
     </div>
-    <p class="footer-note">© 2025 UTEScore • Employee UI</p>
+
+   <div class="footer-box">
+  <p class="footer-text">UTEScore - Employee</p>
+</div>
+
   </section>
 
   <!-- MODAL CHI TIẾT -->
@@ -215,26 +479,47 @@
 
   <script>
   document.addEventListener('DOMContentLoaded', ()=>{
+    // Shine theo con trỏ cho các nút (btn, btn-secondary, btn-detail)
+    function attachShine(el){
+      el.addEventListener('pointermove', (e)=>{
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    }
+    document.querySelectorAll('.btn, .btn-secondary, .btn-detail').forEach(attachShine);
+
+    // Row reveal nhẹ khi tải
+    const body = document.getElementById('booking-body');
+    if(body){
+      [...body.rows].forEach((tr, i)=>{
+        tr.style.opacity='0'; tr.style.transform='translateY(8px)';
+        setTimeout(()=>{
+          tr.style.transition='opacity .35s ease, transform .35s ease';
+          tr.style.opacity='1'; tr.style.transform='none';
+        }, 60*i);
+      });
+    }
+
+    // Modal logic
     const modal = document.getElementById('detailModal');
     const closeBtn = document.getElementById('closeModal');
-
     document.querySelectorAll('.btn-detail').forEach(btn=>{
       btn.addEventListener('click', ()=>{
         const d = btn.dataset;
-        document.getElementById('mMaDon').textContent = d.madon || '';
-        document.getElementById('mKhach').textContent = d.khach || '';
-        document.getElementById('mSan').textContent = d.san || '';
+        document.getElementById('mMaDon').textContent    = d.madon || '';
+        document.getElementById('mKhach').textContent    = d.khach || '';
+        document.getElementById('mSan').textContent      = d.san || '';
         document.getElementById('mThoiGian').textContent = (d.batdau||'') + ' - ' + (d.ketthuc||'');
-        document.getElementById('mNgay').textContent = d.ngay || '';
+        document.getElementById('mNgay').textContent     = d.ngay || '';
         document.getElementById('mTongTien').textContent = d.tongtien || '';
         const badge = document.getElementById('mTrangThai');
         const tt = d.trangthai || 'Chưa thanh toán';
         badge.textContent = tt;
-        badge.className = 'badge ' + ((tt === 'Đã cọc' || tt === 'Hoàn tất') ? 'green' : 'gray');
+        badge.className = 'badge ' + ((tt === 'Đã cọc' || tt === 'Hoàn tất' || tt === 'Đã thanh toán') ? 'green' : 'gray');
         modal.style.display = 'flex';
       });
     });
-
     closeBtn.addEventListener('click', ()=> modal.style.display='none');
     modal.addEventListener('click', e=>{ if(e.target===modal) modal.style.display='none'; });
     document.addEventListener('keydown', e=>{ if(e.key === 'Escape') modal.style.display='none'; });

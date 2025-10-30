@@ -36,6 +36,10 @@
               <li><a class="dropdown-item fs-6" th:href="@{/customer/history}">📅 Lịch sử đặt sân</a></li>
               <li><a class="dropdown-item fs-6" th:href="@{/customer/feedback}">⭐ Góp ý & Đánh giá</a></li>
               <li><a class="dropdown-item fs-6" th:href="@{/customer/account}">👤 Tài khoản</a></li>
+              <li><a class="dropdown-item fs-6" th:href="@{/chat/customer}">💌 Chat nhân viên</a></li>
+              
+              <!-- 🔹 Nút mới: Chat realtime -->
+      
               <li><hr class="dropdown-divider"></li>
               <li><a href="#" class="dropdown-item text-danger fw-semibold fs-6" data-logout>🚪 Đăng xuất</a></li>
             </ul>
@@ -152,7 +156,7 @@
         cancelButtonText: 'Hủy'
       }).then((r) => {
         if (r.isConfirmed) {
-          window.location.href = /*[[ @{/customer/logout} ]]*/ '/customer/logout';
+          window.location.href = /*[[ @{/logout} ]]*/ '/customer/logout';
         }
       });
     });

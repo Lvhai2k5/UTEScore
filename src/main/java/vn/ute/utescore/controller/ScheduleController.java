@@ -1,13 +1,16 @@
 package vn.ute.utescore.controller;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import jakarta.servlet.http.HttpSession;
+import vn.ute.utescore.model.NhanVien;
 import vn.ute.utescore.model.ThueSan;
 import vn.ute.utescore.repository.ThueSanRepository;
+import vn.ute.utescore.utils.SessionUtil;
+import vn.ute.utescore.repository.NhanVienRepository;
 import vn.ute.utescore.repository.SanBongRepository;
 
 import java.time.LocalDate;
@@ -17,14 +20,17 @@ import java.util.*;
 @Controller
 public class ScheduleController {
 
-   
-    private ThueSanRepository thueSanRepository;
-    private SanBongRepository sanBongRepository;
-    
-    public ScheduleController(ThueSanRepository thueSanRepository,SanBongRepository sanBongRepository)
-    {
-    	this.thueSanRepository=thueSanRepository;
-    	this.sanBongRepository=sanBongRepository;
+	private final ThueSanRepository thueSanRepository;
+    private final SanBongRepository sanBongRepository;
+    private final NhanVienRepository nhanVienRepository;
+
+    // ✅ Constructor injection (ổn định, dễ test, không cần @Autowired)
+    public ScheduleController(ThueSanRepository thueSanRepository,
+                          SanBongRepository sanBongRepository,
+                          NhanVienRepository nhanVienRepository) {
+        this.thueSanRepository = thueSanRepository;
+        this.sanBongRepository = sanBongRepository;
+        this.nhanVienRepository = nhanVienRepository;
     }
 
     // 📅 Chọn 1 ngày và sân để lọc lại danh sách khung giờ
@@ -34,8 +40,22 @@ public class ScheduleController {
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
             LocalDate date,
             @RequestParam(required = false) Integer sanId,
+            HttpSession session,
             Model model) {
+    	String email = SessionUtil.getCustomerEmail(session);
 
+        if (email != null) {
+            Optional<NhanVien> optionalNV = nhanVienRepository.findByEmail(email);
+
+            if (optionalNV.isPresent()) {
+                NhanVien nhanVien = optionalNV.get();
+                model.addAttribute("nhanVienDangNhap", nhanVien);
+            } else {
+                model.addAttribute("nhanVienDangNhap", null);
+            }
+        } else {
+                return "redirect:/login";
+        }
         // Mặc định là hôm nay
         if (date == null) {
             date = LocalDate.now();

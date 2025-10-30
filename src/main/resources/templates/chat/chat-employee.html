@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>UTEScore – Chat (Nhân viên)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+  <style>
+    *{box-sizing:border-box} body{margin:0;font-family:'Inter',sans-serif;background:#0f172a;color:#0f172a}
+    .wrap{display:grid;grid-template-columns:260px 1fr;height:100vh}
+    .side{background:linear-gradient(180deg,#1e293b,#0f172a);color:#fff;padding:16px 12px}
+    .side h3{margin:8px 8px 12px;font-size:16px;opacity:.9}
+    .room{padding:10px 12px;border-radius:12px;margin:6px 6px;background:rgba(255,255,255,.06);cursor:pointer}
+    .room:hover{background:rgba(255,255,255,.1)}
+    .main{display:flex;flex-direction:column;background:linear-gradient(180deg,#f8fafc,#eef2ff)}
+    .header{padding:16px 20px;background:#fff;border-bottom:1px solid #e2e8f0;font-weight:700}
+    .body{flex:1;overflow-y:auto;padding:20px}
+    .msg{max-width:70%;padding:12px 16px;border-radius:16px;margin:8px 0;background:#fff;box-shadow:0 6px 20px rgba(0,0,0,.08)}
+    .me{background:#e0f2fe;margin-left:auto;border-bottom-right-radius:6px}
+    .other{background:#f1f5f9;border-bottom-left-radius:6px}
+    .meta{font-size:12px;color:#64748b;margin-top:4px}
+    .input{display:flex;gap:10px;padding:16px;background:#fff;border-top:1px solid #e2e8f0}
+    .input input{flex:1;padding:12px 14px;border:1px solid #cbd5e1;border-radius:10px}
+    .input button{padding:12px 18px;border:none;border-radius:10px;background:#6366f1;color:#fff;font-weight:600;cursor:pointer}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <aside class="side">
+    <h3>👤 Khách đang chat</h3>
+    <!-- Nếu muốn, render danh sách khách gần nhất từ controller riêng -->
+    <div class="room">
+      <div th:text="${customerEmail}">customer@example.com</div>
+      <small>Nhấp để chat</small>
+    </div>
+  </aside>
+
+  <section class="main">
+    <div class="header">💬 Nhân viên chat với: <span th:text="${customerEmail}"></span></div>
+    <div id="chatBody" class="body"></div>
+    <div class="input">
+      <input id="msgInput" type="text" placeholder="Nhập tin nhắn...">
+      <button id="sendBtn">Gửi</button>
+    </div>
+  </section>
+</div>
+
+<script>
+  const customerEmail = /*[[${customerEmail}]]*/ '';
+  const employeeEmail = /*[[${employeeEmail}]]*/ '';
+  const currentEmail = /*[[${currentEmail}]]*/ '';
+  const currentRole  = /*[[${currentRole}]]*/ '';
+  let roomCode = '';
+  let stompClient = null;
+
+  function fmt(ts){
+    if(!ts) return '';
+    const d = new Date(ts);
+    return d.toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'}) + ' ' + d.toLocaleDateString('vi-VN');
+  }
+
+  function appendMsg(m){
+    const el = document.createElement('div');
+    el.className = 'msg ' + (m.senderEmail === currentEmail ? 'me' : 'other');
+    el.innerHTML = `<div>${m.content}</div><div class="meta">${m.senderEmail} • ${fmt(m.sentAt)}</div>`;
+    const body = document.getElementById('chatBody');
+    body.appendChild(el); body.scrollTop = body.scrollHeight;
+  }
+
+  async function ensureRoom(){
+    const r = await fetch(`/chat/room?customerEmail=${encodeURIComponent(customerEmail)}&employeeEmail=${encodeURIComponent(employeeEmail)}`);
+    roomCode = await r.text();
+  }
+
+  async function loadHistory(){
+    const r = await fetch(`/chat/${roomCode}/history`);
+    (await r.json()).forEach(appendMsg);
+  }
+
+  function connect(){
+    const socket = new SockJS('/ws-checkin');
+    stompClient = Stomp.over(socket);
+    stompClient.connect({}, () => {
+      stompClient.subscribe(`/topic/chat/${roomCode}`, (e) => appendMsg(JSON.parse(e.body)));
+    });
+  }
+
+  function send(){
+    const content = document.getElementById('msgInput').value.trim();
+    if(!content) return;
+    const msg = { roomCode, senderEmail: currentEmail, senderRole: currentRole, content };
+    stompClient.send(`/app/chat.send/${roomCode}`, {}, JSON.stringify(msg));
+    document.getElementById('msgInput').value = '';
+  }
+
+  document.getElementById('sendBtn').onclick = send;
+  document.getElementById('msgInput').addEventListener('keypress', e => { if(e.key==='Enter') send(); });
+
+  (async () => { await ensureRoom(); await loadHistory(); connect(); })();
+</script>
+</body>
+</html>

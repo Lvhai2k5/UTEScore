@@ -128,4 +128,8 @@ public interface CustomerThueSanRepository extends JpaRepository<ThueSan, Intege
     	        @Param("endTime") String endTime
     	);
 
+
+
+
+
 }

@@ -97,4 +97,16 @@ public interface CustomerThanhToanRepository extends JpaRepository<ThanhToan, In
             AND (ts.GhiChu IS NULL OR LOWER(ts.GhiChu) NOT LIKE N'%hủy%')
         """, nativeQuery = true)
     List<ThanhToan> findUpcomingPayments();
+    @Query("""
+            SELECT t FROM ThanhToan t
+            WHERE t.thueSan = :thueSan
+              AND LOWER(t.LoaiThanhToan) = LOWER(:loai)
+              AND LOWER(t.TrangThaiThanhToan) = LOWER(:trangThai)
+            ORDER BY t.NgayThanhToan DESC
+        """)
+        List<ThanhToan> findByThueSanAndLoaiThanhToanAndTrangThaiThanhToan(
+                @Param("thueSan") ThueSan thueSan,
+                @Param("loai") String loai,
+                @Param("trangThai") String trangThai
+        );
 }

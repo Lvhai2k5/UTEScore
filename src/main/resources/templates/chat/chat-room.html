@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${pageTitle}">Phòng chat</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background:#f1f5f9; margin:0; color:#0f172a;}
+  .wrap { max-width: 960px; margin: 24px auto; padding: 16px; }
+  .card { background: #fff; border-radius: 16px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+  .header { display:flex; align-items:center; gap:10px; margin-bottom: 14px; }
+  .room { font-weight: 700; font-size: 18px; color:#1f2937; }
+  #messages { height: 520px; overflow-y: auto; padding: 12px; background:#f8fafc; border-radius: 12px; border:1px solid #e5e7eb; display:flex; flex-direction:column; gap:10px;}
+  .msg { max-width: 70%; padding: 10px 14px; border-radius: 14px; line-height:1.4; }
+  .me { margin-left: auto; background:#dbeafe; border:1px solid #bfdbfe; }
+  .other { background:#f3f4f6; border:1px solid #e5e7eb; }
+  .meta { font-size:12px; opacity:.7; margin-bottom:4px; }
+  .composer { display:flex; gap:8px; margin-top:12px; }
+  .composer input { flex:1; padding:12px 14px; border-radius:12px; border:1px solid #e5e7eb; outline:none; }
+  .composer button { padding:12px 18px; border:none; border-radius:12px; background:linear-gradient(90deg,#16a34a,#3b82f6); color:#fff; font-weight:700; cursor:pointer; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="header">
+      <div class="room">Phòng: <span th:text="${roomCode}"></span></div>
+      <div style="margin-left:auto; opacity:.7; font-size:13px;">
+        Bạn: <b th:text="${meEmail}"></b> (<span th:text="${meRole}"></span>)
+      </div>
+    </div>
+
+    <div id="messages">
+      <div th:each="m : ${messages}"
+           th:class="'msg ' + (${m.senderEmail} == ${meEmail} ? 'me' : 'other')">
+        <div class="meta"
+             th:text="${#temporals.format(m.sentAt, 'dd/MM/yyyy HH:mm')} + ' • ' + ${m.senderEmail} + ' (' + ${m.senderRole} + ')'"></div>
+        <div th:text="${m.content}"></div>
+      </div>
+    </div>
+
+    <div class="composer">
+      <input id="message" type="text" placeholder="Nhập tin nhắn và nhấn Gửi...">
+      <button id="sendBtn" type="button">Gửi</button>
+    </div>
+  </div>
+</div>
+
+<script th:inline="javascript">
+  const roomCode   = /*[[${roomCode}]]*/ '';
+  const meEmail    = /*[[${meEmail}]]*/ '';
+  const meRole     = /*[[${meRole}]]*/ '';
+
+  // roomCode = customerEmail__employeeEmail
+  const parts = roomCode.split("__");
+  const customerEmail = parts[0];
+  const employeeEmail = parts[1];
+
+  const socket = new SockJS('/ws-chat');
+  const stompClient = Stomp.over(socket);
+  stompClient.debug = null; // tắt log
+
+  const messagesEl = document.getElementById('messages');
+  const inputEl = document.getElementById('message');
+  const btnEl = document.getElementById('sendBtn');
+
+  function scrollBottom() { messagesEl.scrollTop = messagesEl.scrollHeight; }
+  scrollBottom();
+
+  stompClient.connect({}, () => {
+    stompClient.subscribe(`/topic/chat/${roomCode}`, (frame) => {
+      const msg = JSON.parse(frame.body);
+      const wrap = document.createElement('div');
+      wrap.className = 'msg ' + (msg.senderEmail === meEmail ? 'me' : 'other');
+
+      const meta = document.createElement('div');
+      meta.className = 'meta';
+      const ts = (msg.sentAt || '').replace('T',' ').substring(0,16);
+      meta.textContent = `${ts} • ${msg.senderEmail} (${msg.senderRole})`;
+
+      const content = document.createElement('div');
+      content.textContent = msg.content;
+
+      wrap.appendChild(meta);
+      wrap.appendChild(content);
+      messagesEl.appendChild(wrap);
+      scrollBottom();
+    });
+  });
+
+  function sendNow() {
+    const content = (inputEl.value || '').trim();
+    if (!content) return;
+    stompClient.send('/app/sendMessage', {}, JSON.stringify({
+      customerEmail, employeeEmail,
+      senderEmail: meEmail, senderRole: meRole, content
+    }));
+    inputEl.value = '';
+  }
+
+  btnEl.addEventListener('click', sendNow);
+  inputEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendNow(); });
+</script>
+</body>
+</html>

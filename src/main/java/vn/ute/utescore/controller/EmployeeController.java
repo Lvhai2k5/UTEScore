@@ -1,5 +1,6 @@
 package vn.ute.utescore.controller;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -8,15 +9,19 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+import jakarta.servlet.http.HttpSession;
 import vn.ute.utescore.model.CheckinLog;
+import vn.ute.utescore.model.NhanVien;
 import vn.ute.utescore.model.ThanhToan;
 import vn.ute.utescore.model.ThueSan;
 import vn.ute.utescore.repository.CheckinLogRepository;
+import vn.ute.utescore.repository.NhanVienRepository;
+import vn.ute.utescore.repository.TaiKhoanRepository;
 import vn.ute.utescore.repository.ThanhToanRepository;
 import vn.ute.utescore.repository.ThueSanRepository;
 import vn.ute.utescore.service.BookingService;
 import vn.ute.utescore.service.ThueSanService;
+import vn.ute.utescore.utils.SessionUtil;
 
 @Controller
 public class EmployeeController {
@@ -26,6 +31,7 @@ public class EmployeeController {
     private final ThueSanRepository thueSanRepository;
     private final CheckinLogRepository checkinLogRepository;
     private final ThanhToanRepository thanhToanRepository;
+    private final NhanVienRepository nhanVienRepository;
     private final SimpMessagingTemplate messagingTemplate; 
 
     public EmployeeController(ThueSanService thueSanService,
@@ -33,28 +39,61 @@ public class EmployeeController {
                               ThueSanRepository thueSanRepository,
                               CheckinLogRepository checkinLogRepository,
                               ThanhToanRepository thanhToanRepository,
+                              NhanVienRepository nhanVienRepository,
                               SimpMessagingTemplate messagingTemplate) {
     	this.thueSanService=thueSanService;
         this.bookingService = bookingService;
         this.thueSanRepository = thueSanRepository;
         this.checkinLogRepository = checkinLogRepository;
         this.thanhToanRepository=thanhToanRepository;
+        this.nhanVienRepository=nhanVienRepository;
         this.messagingTemplate=messagingTemplate;
     }
 
     /* ---------------------- TRANG NHÂN VIÊN ---------------------- */
 
-    
-    
+   
     @GetMapping("/employee")
-    public String employee() {
-        return "employee/employee";
+    public String employee(HttpSession session,Model model) {
+            String email = SessionUtil.getCustomerEmail(session);
+
+            if (email != null) {
+                Optional<NhanVien> optionalNV = nhanVienRepository.findByEmail(email);
+
+                if (optionalNV.isPresent()) {
+                    NhanVien nhanVien = optionalNV.get();
+                    model.addAttribute("nhanVienDangNhap", nhanVien);
+                } else {
+                    model.addAttribute("nhanVienDangNhap", null);
+                }
+            } else {
+                    return "redirect:/login";
+            }
+
+            model.addAttribute("pageTitle", "UTEScore – Trang nhân viên");
+            return "employee/employee";
+  
     }
 
     /* ---------------------- QUẢN LÝ ĐƠN ĐẶT SÂN ---------------------- */
 
     @GetMapping("/employee/booking")
-    public String viewBookings(Model model) {
+    public String viewBookings(HttpSession session,Model model) {
+    	String email = SessionUtil.getCustomerEmail(session);
+
+        if (email != null) {
+            Optional<NhanVien> optionalNV = nhanVienRepository.findByEmail(email);
+
+            if (optionalNV.isPresent()) {
+                NhanVien nhanVien = optionalNV.get();
+                model.addAttribute("nhanVienDangNhap", nhanVien);
+            } else {
+                model.addAttribute("nhanVienDangNhap", null);
+            }
+        } else {
+                return "redirect:/login";
+        }
+
         List<ThueSan> bookings = bookingService.findAll();
         model.addAttribute("bookings", bookings);
         model.addAttribute("selectedType", "");
@@ -63,8 +102,23 @@ public class EmployeeController {
     }
 
     @GetMapping("employee/booking/filter")
-    public String filterBookings(@RequestParam(required = false) String type, Model model) {
-        List<ThueSan> bookings;
+    public String filterBookings(@RequestParam(required = false) String type, HttpSession session,Model model) {
+    	String email = SessionUtil.getCustomerEmail(session);
+
+        if (email != null) {
+            Optional<NhanVien> optionalNV = nhanVienRepository.findByEmail(email);
+
+            if (optionalNV.isPresent()) {
+                NhanVien nhanVien = optionalNV.get();
+                model.addAttribute("nhanVienDangNhap", nhanVien);
+            } else {
+                model.addAttribute("nhanVienDangNhap", null);
+            }
+        } else {
+                return "redirect:/login";
+        }
+
+    	List<ThueSan> bookings;
 
         if (type == null || type.isEmpty()) {
             bookings = bookingService.findAll();
@@ -79,8 +133,22 @@ public class EmployeeController {
     }
 
     @GetMapping("employee/booking/search")
-    public String searchBookings(@RequestParam(required = false) String keyword, Model model) {
-        if (keyword == null || keyword.trim().isEmpty()) {
+    public String searchBookings(@RequestParam(required = false) String keyword,HttpSession session, Model model) {
+    	String email = SessionUtil.getCustomerEmail(session);
+
+        if (email != null) {
+            Optional<NhanVien> optionalNV = nhanVienRepository.findByEmail(email);
+
+            if (optionalNV.isPresent()) {
+                NhanVien nhanVien = optionalNV.get();
+                model.addAttribute("nhanVienDangNhap", nhanVien);
+            } else {
+                model.addAttribute("nhanVienDangNhap", null);
+            }
+        } else {
+                return "redirect:/login";
+        }
+    	if (keyword == null || keyword.trim().isEmpty()) {
             model.addAttribute("bookings", bookingService.findAll());
         } else {
             model.addAttribute("bookings", bookingService.searchByKeyword(keyword.trim()));
@@ -92,16 +160,28 @@ public class EmployeeController {
     /* ========================= CHỨC NĂNG CHECK-IN ========================= */
 
     @GetMapping("employee/checkin/search")
-    public String checkinSearch(@RequestParam(required = false) String keyword, Model model) {
-        LocalDateTime from = LocalDateTime.now().minusHours(1); // mốc thời gian: chỉ lấy đơn chưa checkin trong tương lai gần
+    public String checkinSearch(@RequestParam(required = false) String keyword,HttpSession session, Model model) {
+    	String email = SessionUtil.getCustomerEmail(session);
+
+        if (email != null) {
+            Optional<NhanVien> optionalNV = nhanVienRepository.findByEmail(email);
+
+            if (optionalNV.isPresent()) {
+                NhanVien nhanVien = optionalNV.get();
+                model.addAttribute("nhanVienDangNhap", nhanVien);
+            } else {
+                model.addAttribute("nhanVienDangNhap", null);
+            }
+        } else {
+                return "redirect:/login";
+        }
+    	LocalDateTime from = LocalDateTime.now().minusHours(1); // mốc thời gian: chỉ lấy đơn chưa checkin trong tương lai gần
 
         List<ThueSan> donDatSans;
 
         if (keyword == null || keyword.trim().isEmpty()) {
-            // 🟢 Trường hợp không nhập keyword → lấy toàn bộ đơn chưa checkin
             donDatSans = thueSanRepository.findNotCheckedIn(from);
         } else {
-            // 🟢 Có keyword → lọc theo tên khách hoặc mã đơn + chưa checkin + thời gian
             donDatSans = thueSanService.searchFutureUncheckin(keyword);
             model.addAttribute("keyword", keyword);
         }
@@ -112,16 +192,43 @@ public class EmployeeController {
 
     // Danh sách chỉ những đơn CHƯA check-in và còn hiệu lực (từ 1h trước trở đi)
     @GetMapping("employee/checkin")
-    public String listBookingsForCheckin(Model model) {
-        LocalDateTime from = LocalDateTime.now().minusHours(1);
-        List<ThueSan> donDatSans = thueSanRepository.findNotCheckedIn(from);
+    public String listBookingsForCheckin(HttpSession session,Model model) {
+    	String email = SessionUtil.getCustomerEmail(session);
+
+        if (email != null) {
+            Optional<NhanVien> optionalNV = nhanVienRepository.findByEmail(email);
+
+            if (optionalNV.isPresent()) {
+                NhanVien nhanVien = optionalNV.get();
+                model.addAttribute("nhanVienDangNhap", nhanVien);
+            } else {
+                model.addAttribute("nhanVienDangNhap", null);
+            }
+        } else {
+                return "redirect:/login";
+        }LocalDateTime from = LocalDate.now().atStartOfDay(); // 00:00:00
+        List<ThueSan> donDatSans = thueSanRepository.findNotCheckedInWithStatus(from,"Thành công");
         model.addAttribute("donDatSans", donDatSans);
         return "employee/checkin";
     }
 
     // Trang hiển thị QR cho 1 đơn
     @GetMapping("employee/checkin/generate/{id}")
-    public String generateQr(@PathVariable("id") Integer id, Model model) {
+    public String generateQr(@PathVariable("id") Integer id,HttpSession session, Model model) {
+    	String email = SessionUtil.getCustomerEmail(session);
+
+        if (email != null) {
+            Optional<NhanVien> optionalNV = nhanVienRepository.findByEmail(email);
+
+            if (optionalNV.isPresent()) {
+                NhanVien nhanVien = optionalNV.get();
+                model.addAttribute("nhanVienDangNhap", nhanVien);
+            } else {
+                model.addAttribute("nhanVienDangNhap", null);
+            }
+        } else {
+                return "redirect:/login";
+        }
         model.addAttribute("maDonDat", id);
         return "employee/checkin_qr";
     }

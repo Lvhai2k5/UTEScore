@@ -221,16 +221,16 @@
         <label class="form-label">Loại sân</label>
         <select class="form-select" name="loaiSan">
           <option value="">Tất cả</option>
-          <option value="5 người" th:selected="${loaiSan == '5 người'}">5 người</option>
-          <option value="7 người" th:selected="${loaiSan == '7 người'}">7 người</option>
-          <option value="11 người" th:selected="${loaiSan == '11 người'}">11 người</option>
+          <option value="Sân 5" th:selected="${loaiSan == 'Sân 5'}">5 người</option>
+          <option value="Sân 7" th:selected="${loaiSan == 'Sân 7'}">7 người</option>
+          <option value="Sân 11" th:selected="${loaiSan == 'Sân 11'}">11 người</option>
         </select>
       </div>
       <div class="col-lg-3 col-md-6">
         <label class="form-label">Trạng thái</label>
         <select class="form-select" name="trangThai">
           <option value="">Tất cả</option>
-          <option value="HoatDong" th:selected="${trangThai == 'HoatDong'}">Hoạt động</option>
+          <option value="Hoạt động" th:selected="${trangThai == 'Hoạt động'}">Hoạt động</option>
           <option value="Bảo trì" th:selected="${trangThai == 'Bảo trì'}">Bảo trì</option>
           <option value="Ngưng sử dụng" th:selected="${trangThai == 'Ngưng sử dụng'}">Ngưng sử dụng</option>
         </select>

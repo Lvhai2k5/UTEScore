@@ -45,28 +45,30 @@ public class Guest_AuthController {
 
     @PostMapping("/login")
     public String login(@ModelAttribute("dto") Guest_LoginDTO dto, HttpSession session, Model model) {
-        var user = authService.login(dto);
+    	try {
+            TaiKhoan user = authService.login(dto);
 
-        if (user == null) {
-            model.addAttribute("error", "Sai thông tin đăng nhập!");
-            return "guest/login";
-        }
+            // ✅ Lưu session
+            SessionUtil.setCustomer(session, user.getEmail(), user.getRole().getRoleName());
+            System.out.println("✅ Đăng nhập thành công: " + user.getEmail() +
+                    " | Role: " + user.getRole().getRoleName());
 
-        // ✅ Lưu session đúng chuẩn
-        SessionUtil.setCustomer(session, user.getEmail(), user.getRole().getRoleName());
-        System.out.println("✅ Đăng nhập thành công: " + user.getEmail() +
-                " | Role: " + user.getRole().getRoleName());
+            // ✅ Chuyển hướng theo vai trò
+            switch (user.getRole().getRoleName()) {
+                case "KhachHang":
+                    return "redirect:/customer/home";
+                case "NhanVien":
+                    return "redirect:/employee";
+                case "QuanLy":
+                    return "redirect:/admin/fields";
+                default:
+                    return "redirect:/login";
+            }
 
-        // ✅ Chuyển hướng theo vai trò
-        switch (user.getRole().getRoleName()) {
-            case "KhachHang":
-                return "redirect:/customer/home";
-            case "NhanVien":
-                return "redirect:/employee";
-            case "QuanLy":
-                return "redirect:/admin/fields";
-            default:
-                return "redirect:/";
+        } catch (RuntimeException ex) {
+            // ✅ Nếu có lỗi trong service thì hiển thị lại trang login
+            model.addAttribute("error", ex.getMessage());
+            return "guest/login"; // ❗ Không redirect, vì redirect sẽ mất attribute error
         }
     }
     @GetMapping("/logout")

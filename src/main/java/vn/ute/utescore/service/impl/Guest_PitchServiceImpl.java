@@ -25,7 +25,7 @@ public class Guest_PitchServiceImpl implements Guest_PitchService {
 
     @Override
     public List<Guest_PitchDTO> getAllActive() {
-        List<SanBong> list = repo.findByTrangThaiIgnoreCase("HoatDong");
+        List<SanBong> list = repo.findByTrangThaiIgnoreCase("Hoạt động");
         return Guest_MapperUtils.toPitchDTOList(list);
     }
 
@@ -36,7 +36,7 @@ public class Guest_PitchServiceImpl implements Guest_PitchService {
 
     @Override
     public List<Guest_PitchDTO> getTop3Featured() {
-        List<SanBong> list = repo.findTop3ByTrangThaiIgnoreCaseOrderByTenSanAsc("HoatDong");
+        List<SanBong> list = repo.findTop3ByTrangThaiIgnoreCaseOrderByTenSanAsc("Hoạt động");
         return Guest_MapperUtils.toPitchDTOList(list);
     }
 

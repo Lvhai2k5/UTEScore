@@ -8,11 +8,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import vn.ute.utescore.model.HoanTien;
+import vn.ute.utescore.model.ThanhToan;
 
 @Repository
 public interface HoanTienRepository extends JpaRepository<HoanTien, Integer> {
 	// Find all refunds
     List<HoanTien> findAll();
+    
+    
     
     // Find refunds by status
     @Query("SELECT h FROM HoanTien h WHERE h.trangThaiHoan = :status")
@@ -29,6 +32,7 @@ public interface HoanTienRepository extends JpaRepository<HoanTien, Integer> {
     // Find rejected refunds (Từ chối)
     @Query("SELECT h FROM HoanTien h WHERE h.trangThaiHoan = 'Từ chối'")
     List<HoanTien> findRejectedRefunds();
+    
     
     // Find refunds by date range
     @Query("SELECT h FROM HoanTien h WHERE h.ngayYeuCau BETWEEN :startDate AND :endDate")

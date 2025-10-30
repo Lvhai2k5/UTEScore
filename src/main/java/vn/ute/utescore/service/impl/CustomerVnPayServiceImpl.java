@@ -56,14 +56,16 @@ this.thueSanRepo = thueSanRepo;
                 throw new IllegalArgumentException("orderInfo phải có dạng 'sdt_madon'");
             }
 
-            String[] parts = orderInfo.split("_", 2);
+            String[] parts = orderInfo.split("_");
             String sdt = parts[0].trim();
             String maDon = parts[1].trim();
 
             String vnp_CreateDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
             String vnp_IpAddr = getClientIp(request);
             String vnp_Amount = String.valueOf(cocAmount * 100);
-
+            
+            String vnp_TxnRef = "UTES" + System.currentTimeMillis();
+            
             Map<String, String> vnp_Params = new HashMap<>();
             vnp_Params.put("vnp_Version", vnp_Version);
             vnp_Params.put("vnp_Command", "pay");
